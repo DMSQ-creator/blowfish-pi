@@ -1,0 +1,18 @@
+baseURL = "/"
+languageCode = "zh-cn"
+title = "Pi 派币中文网"
+theme = "blowfish"
+
+[params]
+  defaultAppearance = "dark"
+  showAppearanceSwitcher = true
+
+  [params.homepage]
+    layout = "background"
+    header_title = "Pi 派币：全球领先的移动端社交区块链"
+    header_description = "通过手机即可零成本参与，开启你的 Web3 资产之旅。"
+    showRecent = true
+
+  [params.footer]
+    showCopyright = true
+    showPoweredBy = false
