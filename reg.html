@@ -3,108 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>注册下载图文教程 | 派币中文网 - 邀请码 nbjh</title>
+    <title>注册下载保姆级教程 | Pi Network 派币中文网</title>
+    <link rel="icon" type="image/png" href="https://minepi.com/wp-content/uploads/2022/06/cropped-pi1-32x32.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         body { background-color: #0f021a; color: white; line-height: 1.8; font-family: 'Inter', sans-serif; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .step-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; margin-bottom: 3rem; position: relative; }
-        .step-num { position: absolute; left: -1.5rem; top: 2rem; width: 3rem; height: 3rem; background: #f4af47; color: #0f021a; border-radius: 50%; display: flex; items-center; justify-center; font-bold; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(244,175,71,0.3); }
-        .mock-app { background: #1e0a27; border: 8px solid #2d1b3d; border-radius: 40px; padding: 2rem; margin: 2rem 0; shadow: 2xl; }
-        .invitation-box { background: #f4af47; color: #0f021a; font-weight: 900; padding: 1rem 3rem; border-radius: 15px; font-size: 2rem; display: inline-block; margin: 1.5rem 0; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .app-screen { background: #1e0a27; border: 8px solid #2d1b3d; border-radius: 40px; padding: 1.5rem; margin: 2rem 0; box-shadow: 0 30px 60px rgba(0,0,0,0.5); width: 100%; max-width: 280px; margin-left: auto; margin-right: auto; }
+        .guide-step { border-left: 2px dashed #f4af47; padding-left: 2.5rem; margin-left: 1rem; position: relative; padding-bottom: 5rem; }
+        .guide-dot { position: absolute; left: -0.75rem; top: 0; width: 1.5rem; height: 1.5rem; background: #f4af47; border-radius: 50%; display: flex; items-center; justify-center; color: #0f021a; font-weight: 900; font-size: 0.8rem; }
+        .highlight-yellow { color: #f4af47; font-weight: 900; text-decoration: underline; }
     </style>
 </head>
-<body class="min-h-screen">
-    <nav class="p-6 border-b border-white/5 backdrop-blur-xl sticky top-0 bg-[#0f021a]/80 z-50">
+<body class="bg-[#0f021a]">
+    <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-gray-400 hover:text-white font-bold uppercase tracking-widest">← 首页</a>
-            <span class="text-[#f4af47] font-black uppercase">保姆级图文教程</span>
+            <a href="index.html" class="text-gray-400 hover:text-white font-bold">← 返回首页</a>
+            <span class="text-[#f4af47] font-black uppercase">注册下载保姆教程</span>
         </div>
     </nav>
 
-    <main class="max-w-3xl mx-auto py-20 px-6">
-        <header class="text-center mb-24">
-            <h1 class="text-5xl md:text-7xl font-black mb-8 tracking-tighter">手把手教你<br><span class="text-pi-gold italic">注册挖矿</span></h1>
-            <p class="text-xl text-gray-400">请严格按照以下步骤操作，确保顺利加入全球共识。</p>
+    <main class="max-w-4xl mx-auto py-20 px-6">
+        <header class="text-center mb-20">
+            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tighter">零基础手把手<br><span class="text-pi-gold italic">注册挖矿指南</span></h1>
+            <p class="text-gray-400 text-lg">目前全球最详细的图文演示，请严格按步骤操作。</p>
         </header>
 
-        <!-- Step 1 -->
-        <div class="step-box">
-            <div class="step-num">1</div>
-            <h2 class="text-3xl font-bold mb-6">下载与安装</h2>
-            <p class="text-gray-300">由于网络限制，安卓用户请直接使用下方的备用链接下载 APK，苹果用户需海外账号。</p>
-            <div class="flex flex-col gap-4 mt-8">
-                <a href="https://url37.ctfile.com/d/29771337-41022096-ba3187?p=5597" target="_blank" class="bg-[#f4af47] text-[#0f021a] py-4 rounded-xl font-black text-center text-lg hover:scale-105 transition-all">
-                    安卓 APK 极速下载 (访问密码: 5597)
-                </a>
-            </div>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="step-box">
-            <div class="step-num">2</div>
-            <h2 class="text-3xl font-bold mb-6">选择手机注册</h2>
-            <p class="text-gray-300">打开 App 后，看到下方界面，请务必选择 <span class="text-[#f4af47] font-bold">"Continue with phone number"</span>。</p>
-            <div class="mock-app">
-                <div class="w-full py-4 bg-blue-600 rounded-xl mb-4 text-center text-xs opacity-50">Continue with Facebook</div>
-                <div class="w-full py-4 border-2 border-[#f4af47] rounded-xl text-center text-sm font-black text-[#f4af47]">Continue with phone number</div>
-            </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="step-box">
-            <div class="step-num">3</div>
-            <h2 class="text-3xl font-bold mb-6">设置手机号</h2>
-            <p class="text-gray-300">点击左侧代码处，滑动选择 <span class="text-[#f4af47] font-bold">China (+86)</span>，然后输入您的手机号。</p>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="step-box">
-            <div class="step-num">4</div>
-            <h2 class="text-3xl font-bold mb-6">设置密码</h2>
-            <p class="text-gray-300">请设置一个同时包含：<br>✅ 大写字母 ✅ 小写字母 ✅ 数字<br>的 8 位以上密码。</p>
-        </div>
-
-        <!-- Step 5 -->
-        <div class="step-box">
-            <div class="step-num">5</div>
-            <h2 class="text-3xl font-bold mb-6">填写真实姓名</h2>
-            <p class="text-gray-300">请用拼音填写真实姓名。注意：First Name 填“名”，Last Name 填“姓”。</p>
-        </div>
-
-        <!-- Step 6 (CRITICAL) -->
-        <div class="step-box border-2 border-orange-500 shadow-2xl shadow-orange-500/20 bg-orange-500/5">
-            <div class="step-num">6</div>
-            <h2 class="text-3xl font-bold mb-6 text-[#f4af47]">填写邀请码 (核心步骤)</h2>
-            <p class="text-gray-300 leading-relaxed text-lg">在这一步，系统会询问：<br><span class="italic text-gray-500">"Who invited you?"</span><br>请输入邀请人的专属代码：</p>
-            <div class="text-center">
-                <div class="invitation-box">nbjh</div>
-            </div>
-            <p class="text-gray-400 text-sm">⚠️ 提示：不填邀请码无法进入下一步。填写 <strong>nbjh</strong> 可获得 1 Pi 初始奖励并进入中文高产矿圈。</p>
-        </div>
-
-        <!-- Step 7 -->
-        <div class="step-box">
-            <div class="step-num">7</div>
-            <h2 class="text-3xl font-bold mb-6 text-white">开启挖掘</h2>
-            <p class="text-gray-300">看到 App 主页上的“闪电”图标了吗？点击它，看到变成绿色即为成功！</p>
-            <div class="text-center py-10">
-                <div class="inline-block w-20 h-20 bg-green-500 rounded-full flex items-center justify-center animate-pulse">
-                    <span class="text-white text-3xl font-black">⚡</span>
+        <!-- 流程开始 -->
+        <div class="space-y-0">
+            
+            <!-- Step 1 -->
+            <div class="guide-step">
+                <div class="guide-dot">1</div>
+                <h2 class="text-3xl font-black mb-4 text-white">下载 Pi 应用程序</h2>
+                <p class="text-gray-400 mb-8">安卓用户推荐下载我们的直连 APK 极速安装包。苹果用户需使用非中国区 ID 下载。</p>
+                
+                <div class="flex flex-col gap-4">
+                    <a href="https://url37.ctfile.com/d/29771337-41022096-ba3187?p=5597" target="_blank" class="bg-[#f4af47] text-[#0f021a] py-4 rounded-2xl font-black text-center text-xl hover:scale-105 transition-all shadow-xl shadow-orange-500/20">
+                        安卓 APK 极速下载 (密码: 5597)
+                    </a>
+                    <p class="text-xs text-center text-gray-600 italic">安装时若提示安全预警，请选择“信任并继续安装”</p>
                 </div>
             </div>
+
+            <!-- Step 2 -->
+            <div class="guide-step">
+                <div class="guide-dot">2</div>
+                <h2 class="text-3xl font-black mb-4">开启手机号注册模式</h2>
+                <p class="text-gray-400">打开 App 后，点击最下方的蓝色边框按钮开始注册。</p>
+                
+                <div class="app-screen">
+                    <div class="w-full py-3 bg-blue-600 rounded-lg text-center text-[10px] font-bold mb-3 opacity-50">Continue with Facebook</div>
+                    <div class="w-full py-3 border-2 border-[#f4af47] rounded-lg text-center text-[10px] font-black text-[#f4af47] animate-pulse">Continue with phone number</div>
+                </div>
+                <p class="text-sm text-[#f4af47] italic text-center">💡 提醒：中国地区手机号注册最稳定</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="guide-step">
+                <div class="guide-dot">3</div>
+                <h2 class="text-3xl font-black mb-4">定位中国代码 (+86)</h2>
+                <p class="text-gray-400">点击左侧列表，搜索并选中 <span class="highlight-yellow">China (+86)</span>，然后输入您的 11 位常用手机号。</p>
+                <div class="app-screen">
+                    <div class="flex gap-2">
+                        <div class="w-1/3 py-2 border border-white/20 rounded bg-white/5 text-[10px] text-center font-bold">+86</div>
+                        <div class="w-2/3 py-2 border border-white/20 rounded bg-white/5 text-[10px] px-2">138****8888</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="guide-step">
+                <div class="guide-dot">4</div>
+                <h2 class="text-3xl font-black mb-4">设置强力账户密码</h2>
+                <p class="text-gray-400">请设置一个至少 8 位的密码，必须包含 <span class="text-white font-bold">大写字母、小写字母和数字</span>。请务必拿纸笔记录下来！</p>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="guide-step border-orange-500/50">
+                <div class="guide-dot">5</div>
+                <h2 class="text-3xl font-black mb-4">填写真实姓名 (关键)</h2>
+                <p class="text-gray-400 mb-6">这一步必须填拼音，且与证件一致。First Name 填“名”，Last Name 填“姓”。</p>
+                <div class="app-screen text-[10px]">
+                    <label class="block text-gray-500 mb-1 uppercase">First Name (名)</label>
+                    <div class="w-full p-2 bg-white/5 border border-white/10 rounded mb-4">SAN</div>
+                    <label class="block text-gray-500 mb-1 uppercase">Last Name (姓)</label>
+                    <div class="w-full p-2 bg-white/5 border border-white/10 rounded mb-4">ZHANG</div>
+                    <label class="block text-gray-500 mb-1 uppercase">Choose your username</label>
+                    <div class="w-full p-2 bg-white/5 border border-white/10 rounded italic">zhangsan888</div>
+                </div>
+            </div>
+
+            <!-- Step 6 - THE MOST IMPORTANT -->
+            <div class="guide-step border-l-8 border-[#f4af47] bg-[#f4af47]/5 p-10 rounded-r-[50px]">
+                <div class="guide-dot scale-150">6</div>
+                <h2 class="text-4xl font-black mb-6 text-[#f4af47]">填写邀请码 (必填项)</h2>
+                <p class="text-xl text-white font-bold mb-10 leading-relaxed">系统将询问：Who invited you? <br>此时请准确输入以下代码：</p>
+                
+                <div class="text-center py-6">
+                    <div class="inline-block bg-[#f4af47] text-[#0f021a] px-12 py-5 rounded-2xl font-black text-4xl shadow-[0_0_50px_rgba(244,175,71,0.5)] transform -rotate-2">
+                        nbjh
+                    </div>
+                </div>
+                
+                <p class="text-gray-400 mt-10 text-sm italic">✅ 填写后果：立即获得 1 Pi 奖励，采矿速率增加 25%，并加入我们的中文核心安全圈。</p>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="guide-step">
+                <div class="guide-dot">7</div>
+                <h2 class="text-3xl font-black mb-4">点击闪电，开始赚钱</h2>
+                <p class="text-gray-400">完成注册后，点击主页右侧的白色“闪电”图标。当它变成绿色时，说明您已经正式开启了挖掘流程。</p>
+                <div class="flex justify-center py-10">
+                    <div class="w-24 h-24 rounded-full bg-green-500/20 border-4 border-green-500 flex items-center justify-center animate-pulse">
+                        <span class="text-4xl">⚡</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Call to Action -->
-        <div class="bg-blue-600 p-12 rounded-[50px] text-center shadow-3xl">
-            <h2 class="text-3xl font-black mb-6">还是搞不懂？</h2>
-            <p class="font-bold mb-10 text-blue-100">由于网络环境复杂，建议您立即进群，由我们的志愿者手把手教您注册。</p>
-            <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" class="bg-white text-blue-600 px-16 py-6 rounded-2xl font-black text-2xl hover:scale-105 transition-all inline-block">
-                点我加入电报群
+        <!-- End Section -->
+        <div class="mt-20 p-12 bg-blue-600 rounded-[50px] text-center shadow-3xl">
+            <h2 class="text-3xl font-black mb-6">遇到任何困难？</h2>
+            <p class="text-blue-100 mb-10 font-bold">由于运营商限制，部分地区可能无法直接发送短信。请点击下方按钮进入电报交流群，获取实时技术支持。</p>
+            <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" class="bg-white text-blue-600 px-12 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all inline-block shadow-2xl">
+                ✈️ 立即进入电报交流群
             </a>
         </div>
     </main>
+
+    <footer class="py-24 bg-black/60 border-t border-white/5 text-center">
+        <p class="text-[10px] font-bold tracking-[0.6em] text-gray-600 uppercase mb-4">© 2026 PI NETWORK 官方中文社区门户网</p>
+        <p class="text-[10px] text-gray-700 font-black">邀请码: nbjh (输入即得算力加成)</p>
+    </footer>
 </body>
 </html>
