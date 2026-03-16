@@ -3,43 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi 节点与区块链技术 | 派币中文网</title>
+    <title>Pi 节点 (Node) 运行详解 | Pi Network 中文网</title>
+    <link rel="icon" type="image/png" href="https://minepi.com/wp-content/uploads/2022/06/cropped-pi1-32x32.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #0f021a; color: white; line-height: 1.8; font-family: sans-serif; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; }
+        .content-section { margin-bottom: 5rem; }
+        h2 { font-size: 2rem; font-weight: 900; margin: 3rem 0 1.5rem; color: #f4af47; border-left: 5px solid #f4af47; padding-left: 1.5rem; }
+        h3 { font-size: 1.4rem; font-weight: 800; margin: 2rem 0 1rem; color: white; }
+        p { color: #cbd5e1; margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .info-table { width: 100%; border-collapse: collapse; margin: 2rem 0; background: rgba(255,255,255,0.02); border-radius: 15px; overflow: hidden; }
+        .info-table th, .info-table td { padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; }
+        .info-table th { background: rgba(244,175,71,0.1); color: #f4af47; font-weight: 900; }
+        .faq-item { background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 20px; margin-bottom: 1rem; }
     </style>
 </head>
 <body class="min-h-screen">
-    <nav class="p-6 border-b border-white/5 backdrop-blur-xl sticky top-0 bg-[#0f021a]/80 z-50">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-gray-400 hover:text-white font-bold">← 返回首页</a>
-            <span class="text-[#f4af47] font-black uppercase">Blockchain & Nodes</span>
+    <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-gray-400 hover:text-white font-bold tracking-tighter">← 返回首页</a>
+            <span class="text-[#f4af47] font-black uppercase">Pi Node Official Guide</span>
         </div>
     </nav>
 
-    <main class="max-w-5xl mx-auto py-20 px-6">
-        <div class="text-center mb-20">
-            <h1 class="text-6xl font-black mb-6">Pi 区块链节点</h1>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto">让你的电脑成为 Pi 网络的一部分，支持去中心化并获得额外奖励。</p>
-        </div>
+    <main class="max-w-5xl mx-auto py-24 px-6">
+        <header class="text-center mb-24">
+            <h1 class="text-5xl md:text-7xl font-black mb-8 tracking-tighter leading-tight">Pi 节点<br><span class="text-pi-gold italic">迈向以用户为中心的去中心化</span></h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">运行 Pi 节点是参与网络安全、贡献去中心化算力并获得 Web3 奖励的核心方式。</p>
+        </header>
 
-        <div class="grid md:grid-cols-2 gap-10">
-            <div class="card">
-                <h3 class="text-2xl font-bold mb-4 text-[#f4af47]">Pi 节点的作用</h3>
-                <p class="text-gray-400">节点是 Pi 网络的基石。它们负责验证交易并运行共识协议，确保整个账本的去中心化和安全性。</p>
-            </div>
-            <div class="card">
-                <h3 class="text-2xl font-bold mb-4 text-[#f4af47]">如何运行节点</h3>
-                <p class="text-gray-400">目前已有数十万用户在 Windows 或 Mac 上运行 Pi Node。这不仅能支持社区，还能让你在未来获得节点的算力加成。</p>
-            </div>
-        </div>
-
-        <section class="mt-20 text-center">
-            <h2 class="text-3xl font-black mb-8 italic">正在同步更多技术文档...</h2>
-            <div class="inline-block px-10 py-4 bg-[#f4af47] text-[#0f021a] rounded-full font-black">下载节点软件 (暂仅限官网)</div>
+        <section class="content-section">
+            <h2>什么是 Pi 节点？</h2>
+            <p>节点是 Pi 生态系统中的第四个角色，运行在笔记本电脑和台式机上，而不是手机上。与其他区块链类似，Pi 节点将负责在分布式账本上验证交易，并通过共识机制算法达成一致。</p>
+            <p>不同于比特币使用的工作量证明（PoW），Pi 节点基于恒星共识协议（SCP）。在 SCP 中，节点形成信任组（法定人数切片），仅同意那些受信任节点也同意的交易。通过手机采矿形成的安全圈，在宏观上汇聚成了全球信任图，这使得 Pi 节点能够高效、低能耗地运行。</p>
         </section>
+
+        <section class="content-section">
+            <h2>参与级别与要求</h2>
+            <p>目前先锋可以通过三个不同的级别使用 Pi Node 软件：</p>
+            
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>级别</th>
+                        <th>职责说明</th>
+                        <th>硬件/网络要求</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>电脑 App</strong></td>
+                        <td>仅使用桌面界面进行聊天、查看余额。</td>
+                        <td>基础办公电脑，互联网连接即可。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>普通节点</strong></td>
+                        <td>验证区块链有效性，提交交易，未来可贡献存储和带宽。</td>
+                        <td>稳定在线，支持 Docker 环境，建议 4 核 CPU/8G 内存。</td>
+                    </tr>
+                    <tr>
+                        <td><strong>超级节点</strong></td>
+                        <td>Pi 区块链的主干。负责运行共识算法，写入账本，同步全网状态。</td>
+                        <td>24/7 全天候在线，高速且极稳的网络，需开放端口。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="content-section">
+            <h2>节点选拔标准</h2>
+            <p>核心团队将根据以下标准从申请者中筛选正式节点：</p>
+            <ul class="list-disc ml-8 space-y-4 text-gray-300">
+                <li><strong>运行时间：</strong> 能够保持 24/7 持续在线。</li>
+                <li><strong>网络质量：</strong> 具有快速且稳定的互联网连接。</li>
+                <li><strong>开放端口：</strong> 能够在其本地路由器上进行端口转发（初级阶段要求）。</li>
+                <li><strong>硬件性能：</strong> 具有足够的处理器速度和内存容量。</li>
+                <li><strong>社区信任：</strong> 根据在 Pi 网络中的信用评分和安全圈贡献。</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>测试网路线图</h2>
+            <div class="space-y-8">
+                <div>
+                    <h3>1. 筛选阶段 (Selection Stage)</h3>
+                    <p>核心团队运行共识算法，校准硬件要求，并评估各节点的可靠性和连接性。此阶段将定义正式运行的阈值。</p>
+                </div>
+                <div>
+                    <h3>2. 修订阶段 (Revision Stage)</h3>
+                    <p>迭代测试共识算法的压力，模拟各种极端场景（如网络断开、大量节点下线等），以增强网络的鲁棒性。</p>
+                </div>
+                <div>
+                    <h3>3. 实时测试网 (Live Testnet)</h3>
+                    <p>节点开始处理真实数据，运行由手机采矿产生的真实交易。这是进入主网前的最后实战演习。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>常见问题 (FAQ)</h2>
+            <div class="faq-item">
+                <h3 class="text-[#f4af47]">运行节点对设备有损耗吗？</h3>
+                <p class="mb-0 text-sm">如果您不开启 Node 功能，仅作为电脑版 App 使用，几乎不消耗资源。开启节点功能后，会占用一定的 CPU、内存和网络带宽。在测试期间，我们会持续优化性能消耗。</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="text-[#f4af47]">运行节点有奖励吗？</h3>
+                <p class="mb-0 text-sm">目前处于测试网阶段。运行节点的主要目的是测试性能。根据后续政策，为网络提供稳定贡献的节点将在主网阶段获得相应的算力加成或 Pi 奖励。</p>
+            </div>
+        </section>
+
+        <div class="mt-20 p-10 bg-gradient-to-br from-[#f4af47] to-[#fab44b] rounded-[40px] text-[#0f021a] text-center">
+            <h2 class="text-3xl font-black mb-4 border-none p-0">准备好运行节点了吗？</h2>
+            <p class="font-bold mb-8 opacity-80">点击下方按钮前往下载页面，或加入我们的交流群获取技术支持。</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://minepi.com/pi-node/" class="bg-[#0f021a] text-white px-8 py-3 rounded-xl font-bold">前往官网下载</a>
+                <a href="https://t.me/+6tlAJx6e1081Mjhh" class="bg-white text-blue-600 px-8 py-3 rounded-xl font-bold">加入电报技术群</a>
+            </div>
+        </div>
     </main>
+
+    <footer class="py-24 bg-black/60 border-t border-white/5 text-center">
+        <p class="text-[10px] font-bold tracking-[0.6em] text-gray-600 uppercase mb-4">© 2026 PI NETWORK 官方中文社区门户网</p>
+        <p class="text-[10px] text-gray-700 font-black">官方邀请码: nbjh (输入即得采矿奖励)</p>
+    </footer>
 </body>
 </html>
