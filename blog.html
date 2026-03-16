@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>社区资讯中心 | 派币中文网</title>
+    <title>社区资讯中心 | Pi Network 中文网</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #0f021a; color: white; line-height: 1.8; font-family: sans-serif; }
@@ -13,14 +13,13 @@
     <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="index.html" class="text-xl font-black uppercase tracking-tighter">← 返回首页</a>
-            <span class="text-[#f4af47] font-bold uppercase">Community Blog</span>
+            <span class="text-[#f4af47] font-bold">LATEST NEWS</span>
         </div>
     </nav>
 
     <main class="max-w-5xl mx-auto py-20 px-6">
         <header class="mb-16">
-            <h1 class="text-6xl font-black mb-4 tracking-tighter">社区最新动态</h1>
-            <p class="text-gray-500 uppercase tracking-[0.2em] text-sm">所有资讯均同步自 MinePi.com 官方博客</p>
+            <h1 class="text-6xl font-black mb-4 tracking-tighter">社区动态</h1>
         </header>
 
         <div id="blog-list" class="space-y-8">
@@ -34,21 +33,17 @@
                 const response = await fetch('data/news.json');
                 const news = await response.json();
                 const container = document.getElementById('blog-list');
-                
-                // 按日期倒序排列
                 news.sort((a, b) => new Date(b.date) - new Date(a.date));
 
                 container.innerHTML = news.map(item => `
                     <div class="group p-10 rounded-[40px] bg-white/5 border border-white/10 hover:border-[#f4af47] transition-all cursor-pointer" onclick="location.href='article.html?id=${item.id}'">
                         <div class="flex items-center gap-4 mb-4">
                             <span class="text-[#f4af47] font-bold text-sm uppercase">${item.date}</span>
-                            <span class="w-2 h-2 bg-white/10 rounded-full"></span>
-                            <span class="text-gray-500 text-xs font-bold uppercase">Official Blog</span>
                         </div>
                         <h2 class="text-3xl font-bold group-hover:text-[#f4af47] transition-colors mb-4 leading-tight">${item.title}</h2>
                         <p class="text-gray-400 mb-6 text-lg">${item.excerpt}</p>
                         <div class="flex items-center gap-2">
-                            <span class="text-white font-bold border-b border-white hover:text-[#f4af47] transition-all pb-1 text-sm uppercase tracking-widest">阅读全文</span>
+                            <span class="text-white font-bold border-b border-white hover:text-[#f4af47] transition-all pb-1 text-sm uppercase tracking-widest">阅读正文</span>
                         </div>
                     </div>
                 `).join('');
