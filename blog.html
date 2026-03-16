@@ -3,53 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>社区资讯中心 | Pi Network 中文网</title>
+    <title>社区动态 | Pi Network 中文网</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #0f021a; color: white; line-height: 1.8; font-family: sans-serif; }
+        .page-btn { padding: 0.5rem 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; transition: all 0.3s; }
+        .page-btn:hover, .page-btn.active { background: #f4af47; color: #0f021a; font-weight: bold; border-color: #f4af47; }
     </style>
 </head>
-<body class="min-h-screen bg-[#0f021a]">
+<body class="min-h-screen">
     <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-xl font-black uppercase tracking-tighter">← 返回首页</a>
-            <span class="text-[#f4af47] font-bold">LATEST NEWS</span>
+            <a href="index.html" class="text-xl font-black">← 返回首页</a>
+            <span class="text-[#f4af47] font-bold">PI NETWORK NEWS</span>
         </div>
     </nav>
 
     <main class="max-w-5xl mx-auto py-20 px-6">
-        <header class="mb-16">
-            <h1 class="text-6xl font-black mb-4 tracking-tighter">社区动态</h1>
-        </header>
+        <h1 class="text-6xl font-black mb-16 tracking-tighter">社区最新动态</h1>
+        
+        <div id="blog-container" class="space-y-12">
+            <!-- 文章列表将由 JS 动态生成并实现分页 -->
+        </div>
 
-        <div id="blog-list" class="space-y-8">
-            <!-- 自动加载区域 -->
+        <!-- 分页控制器 -->
+        <div id="pagination" class="mt-20 flex justify-center items-center gap-4">
+            <!-- 分页按钮 -->
         </div>
     </main>
 
     <script>
-        async function loadBlog() {
+        const PAGE_SIZE = 6;
+        let currentPage = 1;
+        let allNews = [];
+
+        async function initBlog() {
             try {
                 const response = await fetch('data/news.json');
-                const news = await response.json();
-                const container = document.getElementById('blog-list');
-                news.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-                container.innerHTML = news.map(item => `
-                    <div class="group p-10 rounded-[40px] bg-white/5 border border-white/10 hover:border-[#f4af47] transition-all cursor-pointer" onclick="location.href='article.html?id=${item.id}'">
-                        <div class="flex items-center gap-4 mb-4">
-                            <span class="text-[#f4af47] font-bold text-sm uppercase">${item.date}</span>
-                        </div>
-                        <h2 class="text-3xl font-bold group-hover:text-[#f4af47] transition-colors mb-4 leading-tight">${item.title}</h2>
-                        <p class="text-gray-400 mb-6 text-lg">${item.excerpt}</p>
-                        <div class="flex items-center gap-2">
-                            <span class="text-white font-bold border-b border-white hover:text-[#f4af47] transition-all pb-1 text-sm uppercase tracking-widest">阅读正文</span>
-                        </div>
-                    </div>
-                `).join('');
-            } catch (e) {}
+                allNews = await response.json();
+                allNews.sort((a, b) => new Date(b.date) - new Date(a.date));
+                renderPage(1);
+            } catch (e) { console.error(e); }
         }
-        loadBlog();
+
+        function renderPage(page) {
+            currentPage = page;
+            const start = (page - 1) * PAGE_SIZE;
+            const end = start + PAGE_SIZE;
+            const pagedItems = allNews.slice(start, end);
+            
+            const container = document.getElementById('blog-container');
+            container.innerHTML = pagedItems.map(item => `
+                <div class="group p-10 rounded-[40px] bg-white/5 border border-white/10 hover:border-[#f4af47] transition-all cursor-pointer" onclick="location.href='article.html?id=${item.id}'">
+                    <div class="text-[#f4af47] font-bold text-sm mb-4 uppercase tracking-widest">${item.date}</div>
+                    <h2 class="text-3xl font-bold group-hover:text-[#f4af47] transition-all leading-tight mb-4">${item.title}</h2>
+                    <p class="text-gray-500 text-lg mb-6 line-clamp-3">${item.excerpt}</p>
+                    <div class="flex items-center gap-2">
+                        <span class="text-white font-bold border-b border-white hover:text-[#f4af47] hover:border-[#f4af47] pb-1 text-sm uppercase">阅读完整版正文 →</span>
+                    </div>
+                </div>
+            `).join('');
+
+            renderPagination();
+            window.scrollTo(0, 0);
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(allNews.length / PAGE_SIZE);
+            const container = document.getElementById('pagination');
+            let btns = '';
+            for (let i = 1; i <= totalPages; i++) {
+                btns += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="renderPage(${i})">${i}</button>`;
+            }
+            container.innerHTML = btns;
+        }
+
+        initBlog();
     </script>
 </body>
 </html>
