@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi 浏览器 | 生态应用中心 | Pi Network 中文网</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f021a; color: white; line-height: 1.8; font-family: sans-serif; }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .app-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 2.5rem; transition: all 0.3s; }
+        .app-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.02); }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="p-6 border-b border-white/5 backdrop-blur-xl sticky top-0 bg-[#0f021a]/80 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-gray-400 hover:text-white font-bold tracking-tighter uppercase">← 首页</a>
+            <span class="text-[#f4af47] font-black uppercase">Ecosystem Apps</span>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto py-24 px-6">
+        <header class="text-center mb-24">
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 italic">Pi 浏览器</h1>
+            <p class="text-2xl text-gray-400 max-w-2xl mx-auto">这是通往 Pi 生态系统和 Web3 体验的门户。</p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="app-card">
+                <div class="text-4xl mb-6">👛</div>
+                <h3 class="text-2xl font-black mb-4">Pi 钱包 (Wallet)</h3>
+                <p class="text-gray-400">目前世界上最先进的非托管加密货币钱包之一。它允许先锋们在主网上安全地存储和交易他们的 Pi。</p>
+            </div>
+            <div class="app-card">
+                <div class="text-4xl mb-6">🆔</div>
+                <h3 class="text-2xl font-black mb-4">KYC 验证 (Identity)</h3>
+                <p class="text-gray-400">首创的分布式 KYC 方案。通过全球真实先锋的人工审查，确保网络中的每个账号都对应一个真实的独立个体。</p>
+            </div>
+            <div class="app-card">
+                <div class="text-4xl mb-6">⚡</div>
+                <h3 class="text-2xl font-black mb-4">Pi 聊天室 (Chat)</h3>
+                <p class="text-gray-400">去中心化的社交空间。先锋可以在这里分享经验、了解项目进展，并获得核心团队的官方支持。</p>
+            </div>
+            <div class="app-card">
+                <div class="text-4xl mb-6">🏗️</div>
+                <h3 class="text-2xl font-black mb-4">Pi 开发者平台</h3>
+                <p class="text-gray-400">为全球 Web3 开发者提供一站式接入。通过 Pi SDK，开发者可以轻松地将现有的网页应用转换为赚取 Pi 奖励的去中心化应用 (dApp)。</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-20 text-center border-t border-white/5 opacity-30">
+        <p class="text-[10px] font-bold tracking-[0.5em] uppercase">© 2026 PI NETWORK 中文社区网</p>
+    </footer>
+</body>
+</html>

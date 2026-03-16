@@ -3,43 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi 技术白皮书 | Pi 派币中文网</title>
+    <title>技术白皮书 | Pi Network 中文网</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0f021a; color: white; line-height: 1.8; font-family: sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { background-color: #0f021a; color: white; line-height: 1.8; font-family: 'Inter', sans-serif; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        h2 { font-size: 1.8rem; font-weight: 800; color: #f4af47; margin-top: 3rem; margin-bottom: 1rem; border-left: 4px solid #f4af47; padding-left: 1rem; }
+        .sidebar-item { border-left: 2px solid rgba(255,255,255,0.1); padding-left: 1.5rem; margin-bottom: 1rem; cursor: pointer; transition: all 0.3s; color: #94a3b8; font-size: 0.9rem; }
+        .sidebar-item:hover, .sidebar-item.active { border-left-color: #f4af47; color: white; }
+        h2 { font-size: 2.25rem; font-weight: 900; margin: 4rem 0 2rem; tracking: -0.025em; }
+        h3 { font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1rem; color: #f4af47; }
         p { color: #cbd5e1; margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .content-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 3rem; }
     </style>
 </head>
 <body class="min-h-screen">
-    <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-gray-400 hover:text-white font-bold tracking-tighter">← 返回首页</a>
-            <span class="text-[#f4af47] font-black uppercase">Technical Whitepaper</span>
+    <nav class="p-6 border-b border-white/5 backdrop-blur-xl sticky top-0 bg-[#0f021a]/80 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-gray-400 hover:text-white font-bold tracking-tighter uppercase">← HOME / 首页</a>
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-[#f4af47] rounded-full flex items-center justify-center"><span class="text-[#0f021a] font-bold text-xs">π</span></div>
+                <span class="text-[#f4af47] font-black uppercase text-sm">Whitepaper</span>
+            </div>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto py-20 px-6">
-        <h1 class="text-5xl font-black mb-10 tracking-tighter">Pi 技术白皮书 <br><span class="text-pi-gold text-3xl">（官方中文版复刻）</span></h1>
-        
-        <section class="prose prose-invert max-w-none">
-            <h2>简介</h2>
-            <p>Pi 是一种新型的加密货币和智能合约平台，由斯坦福大学博士团队开发。它旨在纠正第一代加密货币（如比特币）过度集中和能耗巨大的缺陷。</p>
-            
-            <h2>设计原理</h2>
-            <p>Pi 采用联邦拜占庭协议（FBA）的一个变种——恒星共识协议（SCP）。这使得普通用户可以在手机上通过建立信任图（安全圈）来验证交易，而不需要像比特币那样进行高能效的哈希计算。</p>
-            
-            <h2>代币模型</h2>
-            <p>Pi 的供应机制旨在平衡稀缺性和可访问性。随着网络规模的扩大，采矿速率将逐步减半，以保护早期持有者的利益并确保长期稳定。</p>
-            
-            <h2>发展路线图</h2>
-            <p>目前 Pi 处于封闭主网阶段。我们的重点是完成大规模 KYC（了解你的客户）以及完善内部生态应用，为最终的开放网络（Open Network）做准备。</p>
-        </section>
-    </main>
+    <div class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-4 gap-16">
+        <!-- Sidebar Navigation -->
+        <aside class="hidden lg:block sticky top-32 h-fit">
+            <h4 class="text-[10px] font-black tracking-[0.3em] text-gray-500 uppercase mb-8">目录 / Contents</h4>
+            <div class="sidebar-item active">项目愿景与背景</div>
+            <div class="sidebar-item">恒星共识协议 (SCP)</div>
+            <div class="sidebar-item">安全圈与信任图</div>
+            <div class="sidebar-item">代币经济学模型</div>
+            <div class="sidebar-item">路线图与主网阶段</div>
+        </aside>
 
-    <footer class="py-20 text-center opacity-30 text-[10px] font-bold">
-        © 2026 PI 派币中文社区网 · 严禁用于非法用途
+        <!-- Main Content -->
+        <main class="lg:col-span-3">
+            <header class="mb-20">
+                <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-tight mb-8">技术白皮书</h1>
+                <p class="text-2xl text-gray-400 font-medium leading-relaxed">Pi Network 是第一个为普通人打造的去中心化移动端加密货币网络。</p>
+            </header>
+
+            <div class="content-box">
+                <section id="vision">
+                    <h2>项目愿景</h2>
+                    <p>随着数字资产的普及，第一代区块链（如比特币）暴露了其固有的局限性：极高的能耗和算力垄断。Pi Network 的愿景是建立一个由普通人共同拥有和运营的全球性数字经济体系。</p>
+                    <h3>核心挑战</h3>
+                    <p>传统的加密货币验证方式（工作量证明 PoW）依赖于昂贵的硬件和海量的电力消耗。这导致了权力的集中，并将 99% 的普通用户拒之门外。</p>
+                </section>
+
+                <section id="protocol">
+                    <h2>恒星共识协议 (SCP)</h2>
+                    <p>不同于比特币的挖矿，Pi 使用了联邦拜占庭协议（FBA）的一个分支——SCP。它不依赖于计算哈希，而是通过节点之间的“共识机制”来验证账本。</p>
+                    <h3>移动端友好</h3>
+                    <p>因为 SCP 不涉及复杂的数学计算，它对手机性能的消耗几乎为零。您的手机只需作为信任证明的参与点，而不需要作为算力产出点。</p>
+                </section>
+
+                <section id="tokenomics">
+                    <h2>代币经济学</h2>
+                    <p>Pi 的供应机制是动态的，旨在奖励早期的参与者。每当网络活跃用户数量增加 10 倍，挖掘速率就会减半一次。这种机制模拟了贵金属的开采难度递增，确保了稀缺性。</p>
+                    <div class="bg-orange-500/10 p-6 rounded-2xl border border-orange-500/20 my-8">
+                        <p class="text-[#f4af47] font-bold mb-0">注：Pi 不会要求用户存入任何资金或支付入场费。所有获得的 Pi 均通过社区贡献产出。</p>
+                    </div>
+                </section>
+
+                <section id="roadmap">
+                    <h2>项目路线图</h2>
+                    <h3>第一阶段：设计与分发 (Beta)</h3>
+                    <p>建立原型并分发测试币。该阶段主要用于验证算法的稳定性。</p>
+                    <h3>第二阶段：测试网 (Testnet)</h3>
+                    <p>在全球部署测试节点，模拟真实的网络环境。开发者开始构建测试应用。</p>
+                    <h3>第三阶段：主网 (Mainnet)</h3>
+                    <p>分为“封闭主网”和“开放主网”。目前我们正处于封闭主网阶段，重点是完成大规模 KYC，确保网络由真实的人类组成。</p>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <footer class="py-20 text-center border-t border-white/5 opacity-30">
+        <p class="text-[10px] font-bold tracking-[0.5em] uppercase">© 2026 PI NETWORK 中文社区网</p>
     </footer>
 </body>
 </html>
