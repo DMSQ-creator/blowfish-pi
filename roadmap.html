@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目路线图 | Pi Network 中文网</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f021a; color: white; line-height: 1.8; font-family: sans-serif; }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .step { position: relative; padding-left: 4rem; padding-bottom: 4rem; border-left: 2px solid rgba(255,255,255,0.1); }
+        .step-num { position: absolute; left: -1.25rem; width: 2.5rem; height: 2.5rem; background: #f4af47; color: #0f021a; border-radius: 50%; display: flex; items-center; justify-center; font-bold; top: 0; }
+        .step-active { border-left-color: #f4af47; }
+        .badge { background: rgba(244,175,71,0.2); color: #f4af47; padding: 0.25rem 0.75rem; rounded-full; font-size: 0.75rem; font-weight: 900; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="p-6 border-b border-white/5 backdrop-blur-xl sticky top-0 bg-[#0f021a]/80 z-50">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-gray-400 hover:text-white font-bold">← 返回首页</a>
+            <span class="text-[#f4af47] font-black uppercase tracking-widest text-sm">Official Roadmap</span>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto py-24 px-6">
+        <h1 class="text-6xl font-black mb-20 tracking-tighter">Pi 的发展阶段</h1>
+
+        <div class="space-y-0">
+            <!-- Phase 1 -->
+            <div class="step">
+                <div class="step-num text-[#0f021a]">1</div>
+                <div class="mb-2 uppercase text-xs font-black tracking-widest text-gray-500">第一阶段</div>
+                <h2 class="text-3xl font-bold mb-4 text-white">设计、分发与原型认证</h2>
+                <p class="text-gray-400">Pi 服务器作为模拟分散系统行为的中心运行。在此阶段，我们实现了简便的用户入驻和基础的信任图构建。所有代币都在此阶段产生并作为未来主网的凭证。</p>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="step">
+                <div class="step-num text-[#0f021a]">2</div>
+                <div class="mb-2 uppercase text-xs font-black tracking-widest text-gray-500">第二阶段</div>
+                <h2 class="text-3xl font-bold mb-4 text-white">测试网 (Testnet)</h2>
+                <p class="text-gray-400">在主网启动之前，我们在测试网上模拟了真实的节点运行。这允许开发者构建和测试应用。数万名先锋在此阶段参与了节点的压力测试，确保了 SCP 共识算法的稳定性。</p>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="step step-active">
+                <div class="step-num text-[#0f021a]">3</div>
+                <div class="flex items-center gap-4 mb-2">
+                    <span class="uppercase text-xs font-black tracking-widest text-gray-500">第三阶段</span>
+                    <span class="badge animate-pulse">当前阶段</span>
+                </div>
+                <h2 class="text-3xl font-bold mb-4 text-white">主网 (Mainnet)</h2>
+                <h3 class="text-[#f4af47] font-bold mb-2">A. 封闭网络阶段</h3>
+                <p class="text-gray-400 mb-6">目前 Pi 处于此子阶段。主网已启动，但受到防火墙保护，禁止外部连接。这一时期专门用于完成数千万用户的 KYC 验证，并将余额安全地从手机应用迁移到主网钱包。</p>
+                <h3 class="text-white font-bold mb-2">B. 开放网络阶段</h3>
+                <p class="text-gray-400">一旦 KYC 到达临界规模且生态系统足够成熟，我们将拆除防火墙。届时，Pi 将允许连接到其他区块链和交易所，实现真正的全网自由流通。</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
