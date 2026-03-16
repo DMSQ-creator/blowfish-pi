@@ -7,83 +7,89 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { background-color: #0f021a; color: white; line-height: 1.8; font-family: 'Inter', sans-serif; }
+        body { background-color: #0f021a; color: white; line-height: 1.8; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .sidebar-item { border-left: 2px solid rgba(255,255,255,0.1); padding-left: 1.5rem; margin-bottom: 1rem; cursor: pointer; transition: all 0.3s; color: #94a3b8; font-size: 0.9rem; }
-        .sidebar-item:hover, .sidebar-item.active { border-left-color: #f4af47; color: white; }
-        h2 { font-size: 2.25rem; font-weight: 900; margin: 4rem 0 2rem; tracking: -0.025em; }
-        h3 { font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1rem; color: #f4af47; }
-        p { color: #cbd5e1; margin-bottom: 1.5rem; font-size: 1.1rem; }
-        .content-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 3rem; }
+        .sidebar-link { display: block; border-left: 2px solid rgba(255,255,255,0.1); padding: 0.5rem 1.5rem; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.3s; color: #94a3b8; font-size: 0.9rem; }
+        .sidebar-link:hover { border-left-color: #f4af47; color: white; background: rgba(244,175,71,0.05); }
+        section { margin-bottom: 6rem; border-top: 1px solid rgba(255,255,255,0.05); pt-20; }
+        h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem; color: #f4af47; }
+        h3 { font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 1rem; color: white; }
+        p { color: #cbd5e1; margin-bottom: 1.5rem; font-size: 1.1rem; text-align: justify; }
+        .highlight-box { background: rgba(244,175,71,0.05); border: 1px solid rgba(244,175,71,0.1); border-radius: 20px; padding: 2rem; margin: 2rem 0; }
     </style>
 </head>
 <body class="min-h-screen">
     <nav class="p-6 border-b border-white/5 backdrop-blur-xl sticky top-0 bg-[#0f021a]/80 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-gray-400 hover:text-white font-bold tracking-tighter uppercase">← HOME / 首页</a>
-            <div class="flex items-center gap-2">
-                <div class="w-6 h-6 bg-[#f4af47] rounded-full flex items-center justify-center"><span class="text-[#0f021a] font-bold text-xs">π</span></div>
-                <span class="text-[#f4af47] font-black uppercase text-sm">Whitepaper</span>
-            </div>
+            <a href="index.html" class="text-gray-400 hover:text-white font-bold tracking-tighter uppercase">← 首页</a>
+            <span class="text-[#f4af47] font-black uppercase tracking-widest text-sm">Pi Technical Whitepaper</span>
         </div>
     </nav>
 
     <div class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-4 gap-16">
-        <!-- Sidebar Navigation -->
+        <!-- Sidebar with Working Links -->
         <aside class="hidden lg:block sticky top-32 h-fit">
-            <h4 class="text-[10px] font-black tracking-[0.3em] text-gray-500 uppercase mb-8">目录 / Contents</h4>
-            <div class="sidebar-item active">项目愿景与背景</div>
-            <div class="sidebar-item">恒星共识协议 (SCP)</div>
-            <div class="sidebar-item">安全圈与信任图</div>
-            <div class="sidebar-item">代币经济学模型</div>
-            <div class="sidebar-item">路线图与主网阶段</div>
+            <h4 class="text-[10px] font-black tracking-[0.3em] text-gray-500 uppercase mb-8">白皮书目录</h4>
+            <a href="#vision" class="sidebar-link">项目愿景与背景</a>
+            <a href="#scp" class="sidebar-link">恒星共识协议 (SCP)</a>
+            <a href="#security-circle" class="sidebar-link">安全圈与信任图</a>
+            <a href="#tokenomics" class="sidebar-link">代币经济学模型</a>
+            <a href="#phases" class="sidebar-link">路线图与主网阶段</a>
         </aside>
 
         <!-- Main Content -->
         <main class="lg:col-span-3">
-            <header class="mb-20">
-                <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-tight mb-8">技术白皮书</h1>
-                <p class="text-2xl text-gray-400 font-medium leading-relaxed">Pi Network 是第一个为普通人打造的去中心化移动端加密货币网络。</p>
-            </header>
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-tight mb-20">技术白皮书</h1>
 
-            <div class="content-box">
-                <section id="vision">
-                    <h2>项目愿景</h2>
-                    <p>随着数字资产的普及，第一代区块链（如比特币）暴露了其固有的局限性：极高的能耗和算力垄断。Pi Network 的愿景是建立一个由普通人共同拥有和运营的全球性数字经济体系。</p>
-                    <h3>核心挑战</h3>
-                    <p>传统的加密货币验证方式（工作量证明 PoW）依赖于昂贵的硬件和海量的电力消耗。这导致了权力的集中，并将 99% 的普通用户拒之门外。</p>
-                </section>
+            <!-- Section 1 -->
+            <section id="vision" class="pt-10">
+                <h2>项目愿景与背景</h2>
+                <p>自比特币诞生以来，区块链展示了去中心化金融的巨大潜力。然而，现有的系统面临着严峻的挑战：算力高度集中、能效低下、对普通大众门槛极高。</p>
+                <p>Pi Network 的愿景是打破这一壁垒。我们致力于建立一个由普通用户共同拥有、由移动设备驱动的去中心化网络。通过降低参与门槛，Pi 旨在成为世界上使用最广泛的加密货币。</p>
+                <div class="highlight-box">
+                    <h3 class="mt-0">核心理念</h3>
+                    <p class="mb-0">每一个拥有智能手机的人都应该有公平的机会参与数字资产的创造。我们利用社交网络的人际关系，而非昂贵的矿机，来构建信任基础。</p>
+                </div>
+            </section>
 
-                <section id="protocol">
-                    <h2>恒星共识协议 (SCP)</h2>
-                    <p>不同于比特币的挖矿，Pi 使用了联邦拜占庭协议（FBA）的一个分支——SCP。它不依赖于计算哈希，而是通过节点之间的“共识机制”来验证账本。</p>
-                    <h3>移动端友好</h3>
-                    <p>因为 SCP 不涉及复杂的数学计算，它对手机性能的消耗几乎为零。您的手机只需作为信任证明的参与点，而不需要作为算力产出点。</p>
-                </section>
+            <!-- Section 2 -->
+            <section id="scp" class="pt-10">
+                <h2>恒星共识协议 (SCP)</h2>
+                <p>Pi 并没有使用比特币的“工作量证明（PoW）”，而是采用了基于“恒星共识协议（SCP）”的创新算法。这种算法不需要节点通过计算复杂的数学难题来竞争记账权。</p>
+                <h3>为什么它能在手机上运行？</h3>
+                <p>SCP 通过各节点形成的“共识分片”来达成一致。节点只需定期通过网络发送轻量级的验证信息。这意味着在手机上运行 Pi 挖掘几乎不会产生额外的 CPU 占用或电量损耗。</p>
+            </section>
 
-                <section id="tokenomics">
-                    <h2>代币经济学</h2>
-                    <p>Pi 的供应机制是动态的，旨在奖励早期的参与者。每当网络活跃用户数量增加 10 倍，挖掘速率就会减半一次。这种机制模拟了贵金属的开采难度递增，确保了稀缺性。</p>
-                    <div class="bg-orange-500/10 p-6 rounded-2xl border border-orange-500/20 my-8">
-                        <p class="text-[#f4af47] font-bold mb-0">注：Pi 不会要求用户存入任何资金或支付入场费。所有获得的 Pi 均通过社区贡献产出。</p>
-                    </div>
-                </section>
+            <!-- Section 3 -->
+            <section id="security-circle" class="pt-10">
+                <h2>安全圈与信任图</h2>
+                <p>安全圈是 Pi Network 独有的安全机制。每个先锋都可以通过添加 3-5 个自己信任的人来建立一个小型的信任网络。</p>
+                <p>这些无数个相互交织的安全圈构成了全球性的“信任图”，算法通过这张图来识别哪些节点是真实的个体，哪些是恶意的机器人攻击。这种基于社交关系的防御系统使得 Pi 能够在低能耗下保持高度的安全性。</p>
+            </section>
 
-                <section id="roadmap">
-                    <h2>项目路线图</h2>
-                    <h3>第一阶段：设计与分发 (Beta)</h3>
-                    <p>建立原型并分发测试币。该阶段主要用于验证算法的稳定性。</p>
-                    <h3>第二阶段：测试网 (Testnet)</h3>
-                    <p>在全球部署测试节点，模拟真实的网络环境。开发者开始构建测试应用。</p>
-                    <h3>第三阶段：主网 (Mainnet)</h3>
-                    <p>分为“封闭主网”和“开放主网”。目前我们正处于封闭主网阶段，重点是完成大规模 KYC，确保网络由真实的人类组成。</p>
-                </section>
-            </div>
+            <!-- Section 4 -->
+            <section id="tokenomics" class="pt-10">
+                <h2>代币经济学模型</h2>
+                <p>Pi 的供应总量设计考虑了长期的可持续性和稀缺性。其产出机制遵循“减半法则”：当活跃用户数量每增加 10 倍，基础采矿率就会减半。</p>
+                <p>这种设计确保了早期参与者能够获得更多的奖励，同时也为后来者保留了进入的机会。Pi 的价值来源于数千万用户的共识、生态内的应用需求以及点对点的真实交易。</p>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="phases" class="pt-10">
+                <h2>路线图与主网阶段</h2>
+                <p>Pi 的发展分为三个明确的时期：</p>
+                <h3>Beta 阶段 (2019-2020)</h3>
+                <p>初始用户的入驻和移动端 App 的测试。主要关注用户量的积累和信任图的建立。</p>
+                <h3>Testnet 阶段 (2020-2021)</h3>
+                <p>全球节点网络的部署，开发者开始在测试网上构建 dApp。</p>
+                <h3>Mainnet 阶段 (2021 至今)</h3>
+                <p>目前我们处于“封闭主网”阶段。这一时期的核心任务是完成全球 Pioneer 的 KYC 验证，并培育健康的生态应用环境，为最终拆除防火墙、进入“开放主网”做最后的冲刺。</p>
+            </section>
         </main>
     </div>
 
-    <footer class="py-20 text-center border-t border-white/5 opacity-30">
-        <p class="text-[10px] font-bold tracking-[0.5em] uppercase">© 2026 PI NETWORK 中文社区网</p>
+    <footer class="py-20 text-center border-t border-white/5 opacity-30 text-[10px] font-bold">
+        © 2026 PI NETWORK 中文社区网
     </footer>
 </body>
 </html>
