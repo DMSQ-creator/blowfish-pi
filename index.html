@@ -11,12 +11,14 @@
         .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); position: relative; overflow: hidden; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .dropdown:hover .dropdown-menu { display: block; }
-        .nav-link { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #cbd5e1; transition: all 0.3s; }
+        .nav-link { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #cbd5e1; transition: all 0.3s; cursor: pointer; }
         .nav-link:hover { color: #f4af47; }
+        .dropdown-menu a { display: block; padding: 0.75rem 1.5rem; font-size: 0.875rem; color: #cbd5e1; transition: all 0.2s; }
+        .dropdown-menu a:hover { background: rgba(255,255,255,0.05); color: #f4af47; }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
+    <!-- 全量 1:1 导航栏 -->
     <header class="fixed w-full z-50 bg-[#1e0a27]/90 backdrop-blur-xl border-b border-white/5">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center gap-2 cursor-pointer" onclick="location.href='index.html'">
@@ -25,15 +27,49 @@
             </div>
             
             <div class="hidden lg:flex items-center gap-10">
+                <!-- Blockchain -->
+                <div class="dropdown relative group">
+                    <div class="nav-link flex items-center gap-1 uppercase">Pi 区块链 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    <div class="dropdown-menu absolute hidden pt-4 w-48 left-0">
+                        <div class="bg-[#2d1b3d] rounded-xl shadow-2xl border border-white/10 overflow-hidden">
+                            <a href="nodes.html">Pi 节点</a>
+                            <a href="blockchain.html">区块浏览器</a>
+                            <a href="whitepaper.html">技术白皮书</a>
+                            <a href="roadmap.html">项目路线图</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ecosystem -->
+                <div class="dropdown relative group">
+                    <div class="nav-link flex items-center gap-1 uppercase">生态系统 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    <div class="dropdown-menu absolute hidden pt-4 w-56 left-0">
+                        <div class="bg-[#2d1b3d] rounded-xl shadow-2xl border border-white/10 overflow-hidden">
+                            <a href="developers.html">开发者中心</a>
+                            <a href="browser.html">Pi 浏览器下载</a>
+                            <a href="kyc.html">KYC 身份验证</a>
+                        </div>
+                    </div>
+                </div>
+
                 <a href="about.html" class="nav-link uppercase">关于我们</a>
-                <a href="blog.html" class="nav-link uppercase">社区资讯</a>
-                <a href="reg.html" class="nav-link uppercase">注册指南</a>
-                <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" class="nav-link uppercase text-[#f4af47]">电报交流群</a>
+
+                <!-- Community -->
+                <div class="dropdown relative group">
+                    <div class="nav-link flex items-center gap-1 uppercase text-[#f4af47]">社区资讯 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    <div class="dropdown-menu absolute hidden pt-4 w-56 left-0">
+                        <div class="bg-[#2d1b3d] rounded-xl shadow-2xl border border-white/10 overflow-hidden">
+                            <a href="blog.html" class="font-bold">官方资讯同步</a>
+                            <a href="reg.html" class="text-orange-400">保姆级注册教程</a>
+                            <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" class="bg-blue-600/20">加入电报交流群</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="flex gap-4">
-                <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" class="hidden sm:flex items-center justify-center w-10 h-10 rounded-full border border-white/10 hover:bg-blue-500 transition-all">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
+            <div class="flex items-center gap-4">
+                <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-400 transition-all shadow-lg shadow-blue-500/20">
+                    <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
                 </a>
                 <a href="reg.html" class="bg-[#f4af47] text-[#1e0a27] px-6 py-2.5 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl shadow-orange-500/10 uppercase">
                     邀请码: nbjh
@@ -42,56 +78,48 @@
         </nav>
     </header>
 
-    <!-- 首页大屏 -->
+    <!-- 首页主屏 (保持之前的高级视觉) -->
     <section class="hero-bg min-h-screen flex items-center pt-20 px-6">
         <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
             <div class="text-left">
                 <div class="inline-block px-4 py-1 rounded-full bg-white/5 border border-white/10 text-[#f4af47] text-[10px] font-black tracking-widest uppercase mb-6">
                     STANFORD PH.D 团队打造 · 邀请码: nbjh
                 </div>
-                <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tighter text-white">
+                <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tighter">
                     首个在手机上<br />
                     <span class="text-pi-gold">轻松挖掘的货币</span>
                 </h1>
                 <p class="text-xl text-gray-400 max-w-xl mb-12">
-                    Pi 使加密货币挖掘变得简单。通过手机即可零成本参与，无需消耗额外电量。
+                    Pi 使加密货币挖掘变得简单。通过手机即可零成本参与，无需消耗额外电量。已有超过 5500 万先锋加入。
                 </p>
                 <div class="flex flex-col sm:flex-row gap-6 items-center">
-                    <a href="reg.html" class="bg-[#f4af47] text-[#1e0a27] px-12 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl shadow-orange-500/30 text-center">
-                        立即下载教程
-                    </a>
-                    <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" class="text-[#f4af47] font-bold text-lg hover:underline underline-offset-8 decoration-dashed">
-                        加入 Telegram 交流群 →
-                    </a>
+                    <a href="reg.html" class="bg-[#f4af47] text-[#1e0a27] px-12 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl shadow-orange-500/30">立即注册下载</a>
+                    <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" class="text-[#f4af47] font-bold text-lg hover:underline decoration-dashed">加入电报交流群 →</a>
                 </div>
             </div>
             <div class="hidden lg:flex justify-end">
-                <div class="w-80 h-[600px] bg-gradient-to-b from-[#f4af47] to-[#1e0a27] rounded-[50px] border-[10px] border-[#2d1b3d] shadow-2xl flex flex-col items-center justify-center p-6 text-center cursor-pointer hover:scale-105 transition-transform" onclick="location.href='reg.html'">
+                <div class="w-80 h-[600px] bg-gradient-to-b from-[#f4af47] to-[#1e0a27] rounded-[50px] border-[10px] border-[#2d1b3d] shadow-2xl flex flex-col items-center justify-center p-6 text-center cursor-pointer" onclick="location.href='reg.html'">
                     <div class="text-white font-black text-7xl mb-6">π</div>
                     <div class="text-[#f4af47] font-bold text-2xl uppercase mb-4 tracking-widest">JOIN PI</div>
-                    <p class="text-white text-xs font-bold mb-8 uppercase">Code: <span class="text-[#f4af47] text-xl">nbjh</span></p>
+                    <p class="text-white text-xs font-bold mb-8">Code: <span class="text-[#f4af47] text-xl">nbjh</span></p>
                     <div class="w-full h-1 bg-white/10 rounded-full"><div class="w-3/4 h-full bg-[#f4af47] animate-pulse"></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 最新资讯 -->
+    <!-- 最新资讯同步 -->
     <section class="py-24 px-6 bg-[#1e0a27]">
         <div class="container mx-auto">
-            <h2 class="text-5xl font-black mb-12 uppercase border-l-4 border-[#f4af47] pl-8 text-white">最新社区动态</h2>
+            <h2 class="text-5xl font-black mb-12 uppercase border-l-4 border-[#f4af47] pl-8">最新社区动态</h2>
             <div id="latest-news" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                <!-- 由 API 自动同步填充 -->
+                <!-- 资讯由脚本自动加载 -->
             </div>
         </div>
     </section>
 
-    <footer class="py-20 text-center border-t border-white/5 opacity-50">
-        <div class="text-[#f4af47] font-black text-3xl mb-6">π</div>
-        <p class="text-[10px] font-bold tracking-[0.5em] text-white uppercase mb-6">© 2026 PI NETWORK 中文社区网 · 推荐邀请码: nbjh</p>
-        <div class="flex justify-center">
-            <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" class="text-gray-400 hover:text-white transition-colors text-xs font-bold uppercase">加入电报讨论组</a>
-        </div>
+    <footer class="py-20 text-center border-t border-white/5 opacity-50 font-black tracking-[0.5em] text-[10px]">
+        © 2026 PI NETWORK 中文社区网 · 官方资讯同步中心
     </footer>
 
     <script>
