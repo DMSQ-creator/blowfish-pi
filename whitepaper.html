@@ -3,93 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>技术白皮书 | 派币中文网</title>
+    <title>技术白皮书全量版 | Pi Network 中文网</title>
+    <link rel="icon" type="image/png" href="https://minepi.com/wp-content/uploads/2022/06/cropped-pi1-32x32.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         body { background-color: #0f021a; color: white; line-height: 1.8; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .sidebar-link { display: block; border-left: 2px solid rgba(255,255,255,0.1); padding: 0.5rem 1.5rem; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.3s; color: #94a3b8; font-size: 0.9rem; }
+        .sidebar-link { display: block; border-left: 2px solid rgba(255,255,255,0.1); padding: 0.5rem 1.5rem; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.3s; color: #94a3b8; font-size: 0.85rem; font-weight: bold; }
         .sidebar-link:hover { border-left-color: #f4af47; color: white; background: rgba(244,175,71,0.05); }
-        section { margin-bottom: 6rem; border-top: 1px solid rgba(255,255,255,0.05); pt-20; }
-        h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem; color: #f4af47; }
-        h3 { font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 1rem; color: white; }
-        p { color: #cbd5e1; margin-bottom: 1.5rem; font-size: 1.1rem; text-align: justify; }
-        .highlight-box { background: rgba(244,175,71,0.05); border: 1px solid rgba(244,175,71,0.1); border-radius: 20px; padding: 2rem; margin: 2rem 0; }
+        section { margin-bottom: 8rem; padding-top: 100px; margin-top: -100px; }
+        h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 2rem; color: #f4af47; tracking: -0.05em; }
+        h3 { font-size: 1.6rem; font-weight: 700; margin: 2.5rem 0 1.2rem; color: white; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; }
+        p { color: #cbd5e1; margin-bottom: 1.8rem; font-size: 1.1rem; text-align: justify; }
+        .formula-box { background: rgba(0,0,0,0.3); border: 1px solid rgba(244,175,71,0.2); padding: 2rem; border-radius: 20px; font-family: monospace; color: #f4af47; margin: 2rem 0; }
+        ul { list-style: disc; margin-left: 2rem; margin-bottom: 2rem; color: #cbd5e1; }
+        li { margin-bottom: 0.8rem; }
     </style>
 </head>
 <body class="min-h-screen">
-    <nav class="p-6 border-b border-white/5 backdrop-blur-xl sticky top-0 bg-[#0f021a]/80 z-50">
+    <!-- 统一导航 -->
+    <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-gray-400 hover:text-white font-bold tracking-tighter uppercase">← 首页</a>
-            <span class="text-[#f4af47] font-black uppercase tracking-widest text-sm">Pi Technical Whitepaper</span>
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="https://minepi.com/wp-content/uploads/2022/06/cropped-pi1-32x32.png" class="w-8 h-8">
+                <span class="font-black uppercase tracking-tighter">Pi Network</span>
+            </a>
+            <a href="index.html" class="text-gray-400 hover:text-white font-bold text-sm">返回首页 →</a>
         </div>
     </nav>
 
     <div class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-4 gap-16">
-        <!-- Sidebar with Working Links -->
+        <!-- 侧边栏 -->
         <aside class="hidden lg:block sticky top-32 h-fit">
-            <h4 class="text-[10px] font-black tracking-[0.3em] text-gray-500 uppercase mb-8">白皮书目录</h4>
-            <a href="#vision" class="sidebar-link">项目愿景与背景</a>
-            <a href="#scp" class="sidebar-link">恒星共识协议 (SCP)</a>
-            <a href="#security-circle" class="sidebar-link">安全圈与信任图</a>
-            <a href="#tokenomics" class="sidebar-link">代币经济学模型</a>
-            <a href="#phases" class="sidebar-link">路线图与主网阶段</a>
+            <h4 class="text-[10px] font-black tracking-[0.3em] text-gray-500 uppercase mb-8">白皮书大纲</h4>
+            <a href="#vision" class="sidebar-link">01. 愿景与项目背景</a>
+            <a href="#scp" class="sidebar-link">02. 恒星共识协议 (SCP)</a>
+            <a href="#trust" class="sidebar-link">03. 信任图与安全圈</a>
+            <a href="#token" class="sidebar-link">04. 代币经济与采矿模型</a>
+            <a href="#roadmap" class="sidebar-link">05. 路线图与主网阶段</a>
         </aside>
 
-        <!-- Main Content -->
+        <!-- 正文 -->
         <main class="lg:col-span-3">
-            <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-tight mb-20">技术白皮书</h1>
+            <h1 class="text-6xl md:text-9xl font-black tracking-tighter leading-tight mb-24 uppercase">Technical<br><span class="text-pi-gold">Whitepaper</span></h1>
 
             <!-- Section 1 -->
-            <section id="vision" class="pt-10">
-                <h2>项目愿景与背景</h2>
-                <p>自比特币诞生以来，区块链展示了去中心化金融的巨大潜力。然而，现有的系统面临着严峻的挑战：算力高度集中、能效低下、对普通大众门槛极高。</p>
-                <p>Pi Network 的愿景是打破这一壁垒。我们致力于建立一个由普通用户共同拥有、由移动设备驱动的去中心化网络。通过降低参与门槛，Pi 旨在成为世界上使用最广泛的加密货币。</p>
-                <div class="highlight-box">
-                    <h3 class="mt-0">核心理念</h3>
-                    <p class="mb-0">每一个拥有智能手机的人都应该有公平的机会参与数字资产的创造。我们利用社交网络的人际关系，而非昂贵的矿机，来构建信任基础。</p>
-                </div>
+            <section id="vision">
+                <h2>01. 愿景与项目背景</h2>
+                <p>随着互联网进入 Web3 时代，数字货币正逐渐从极客圈走向大众。然而，比特币等第一代加密货币由于采用了工作量证明 (PoW) 机制，导致了严重的权力集中和惊人的资源浪费。全球只有不到 1% 的人能够参与到这些网络的底层运作中。</p>
+                <p>Pi Network 的愿景是建立世界上最具包容性的 peer-to-peer 生态系统。我们通过技术手段降低了参与门槛，让每一个拥有普通智能手机的人都能成为网络的节点和维护者。我们的目标是构建一个由普通人共同拥有和管理的去中心化加密货币网络。</p>
+                <h3>核心痛点解决</h3>
+                <ul>
+                    <li><strong>消除准入门槛：</strong> 无需购买数万元的矿机，手机即是矿机。</li>
+                    <li><strong>零能耗损耗：</strong> 采用不基于算力竞赛的共识算法，保护地球环境。</li>
+                    <li><strong>真正的民主化：</strong> 每个人通过社交贡献获得的奖励是公平且可持续的。</li>
+                </ul>
             </section>
 
             <!-- Section 2 -->
-            <section id="scp" class="pt-10">
-                <h2>恒星共识协议 (SCP)</h2>
-                <p>Pi 并没有使用比特币的“工作量证明（PoW）”，而是采用了基于“恒星共识协议（SCP）”的创新算法。这种算法不需要节点通过计算复杂的数学难题来竞争记账权。</p>
-                <h3>为什么它能在手机上运行？</h3>
-                <p>SCP 通过各节点形成的“共识分片”来达成一致。节点只需定期通过网络发送轻量级的验证信息。这意味着在手机上运行 Pi 挖掘几乎不会产生额外的 CPU 占用或电量损耗。</p>
+            <section id="scp">
+                <h2>02. 恒星共识协议 (SCP)</h2>
+                <p>Pi 网络的心脏是恒星共识协议 (SCP)，这是由斯坦福大学计算机教授 David Mazières 设计的一种分布式共识算法。不同于 PoW 这种通过竞速解决数学难题的方式，SCP 采用联邦拜占庭协议 (FBA)。</p>
+                <p>在 Pi 网络中，节点不需要全网广播算力，而是通过与自己信任的节点达成一致来确认账本。这种方式极大地提高了处理速度，并确保了即使在网络受到攻击时，账本也能保持一致性和安全性。</p>
+                <div class="formula-box">
+                    // Pi 共识逻辑核心：<br>
+                    Quorum = {Nodes that trust each other}<br>
+                    Confidence = f(Social Trust Circles)
+                </div>
             </section>
 
             <!-- Section 3 -->
-            <section id="security-circle" class="pt-10">
-                <h2>安全圈与信任图</h2>
-                <p>安全圈是 Pi Network 独有的安全机制。每个先锋都可以通过添加 3-5 个自己信任的人来建立一个小型的信任网络。</p>
-                <p>这些无数个相互交织的安全圈构成了全球性的“信任图”，算法通过这张图来识别哪些节点是真实的个体，哪些是恶意的机器人攻击。这种基于社交关系的防御系统使得 Pi 能够在低能耗下保持高度的安全性。</p>
+            <section id="trust">
+                <h2>03. 信任图与安全圈</h2>
+                <p>安全圈是 Pi 独特设计的精髓。每一个 Pioneer 都可以选择 3 到 5 个自己信任的真实成员组成安全圈。这些成千上万的小圈子相互连接，最终在宏观上形成了一张全球性的“信任图”。</p>
+                <p>Pi 的共识算法利用这张信任图来识别哪些是真实的个人，哪些是恶意攻击的机器人。这种通过“社交证明”而非“硬件证明”的方式，是 Pi 能够实现在手机上进行零能耗挖掘的根本原因。</p>
+                <h3>安全圈的职责</h3>
+                <ul>
+                    <li><strong>验证身份：</strong> 协助识别并过滤机器人账号。</li>
+                    <li><strong>提升算力：</strong> 建立活跃的安全圈会为您带来额外的采矿收益加成。</li>
+                    <li><strong>维护共识：</strong> 在未来主网阶段，安全圈将直接支持节点的交易验证决策。</li>
+                </ul>
             </section>
 
             <!-- Section 4 -->
-            <section id="tokenomics" class="pt-10">
-                <h2>代币经济学模型</h2>
-                <p>Pi 的供应总量设计考虑了长期的可持续性和稀缺性。其产出机制遵循“减半法则”：当活跃用户数量每增加 10 倍，基础采矿率就会减半。</p>
-                <p>这种设计确保了早期参与者能够获得更多的奖励，同时也为后来者保留了进入的机会。Pi 的价值来源于数千万用户的共识、生态内的应用需求以及点对点的真实交易。</p>
+            <section id="token">
+                <h2>04. 代币经济与采矿模型</h2>
+                <p>Pi 的经济模型旨在平衡早期贡献者的奖励与长期网络的扩展。Pi 的挖掘速率是动态变化的：</p>
+                <div class="formula-box">
+                    M = I + S + R<br>
+                    M: 总采矿速率 | I: 基础个人速率 | S: 安全圈奖励 | R: 邀请奖励
+                </div>
+                <h3>稀缺性保证</h3>
+                <p>Pi 引入了“减半”机制。每当网络活跃用户数量增加 10 倍，基础采矿率就会减半。第一次减半发生在 10 万用户时，第二次在 100 万用户，第三次在 1000 万用户。目前，采矿率正处于一个极其稀缺的阶段。</p>
             </section>
 
             <!-- Section 5 -->
-            <section id="phases" class="pt-10">
-                <h2>路线图与主网阶段</h2>
-                <p>Pi 的发展分为三个明确的时期：</p>
-                <h3>Beta 阶段 (2019-2020)</h3>
-                <p>初始用户的入驻和移动端 App 的测试。主要关注用户量的积累和信任图的建立。</p>
-                <h3>Testnet 阶段 (2020-2021)</h3>
-                <p>全球节点网络的部署，开发者开始在测试网上构建 dApp。</p>
-                <h3>Mainnet 阶段 (2021 至今)</h3>
-                <p>目前我们处于“封闭主网”阶段。这一时期的核心任务是完成全球 Pioneer 的 KYC 验证，并培育健康的生态应用环境，为最终拆除防火墙、进入“开放主网”做最后的冲刺。</p>
+            <section id="roadmap">
+                <h2>05. 路线图与主网阶段</h2>
+                <p>Pi 的发展路径清晰、稳健，分为以下三个主要时期：</p>
+                <h3>第一阶段：设计与初始分发</h3>
+                <p>2019年启动。重点是吸引首批先锋，验证移动挖掘的逻辑并建立信任基础。</p>
+                <h3>第二阶段：测试网 (Testnet)</h3>
+                <p>2020年启动。在全球范围内测试节点软件，开发者开始在 Pi 浏览器上构建生态应用。</p>
+                <h3>第三阶段：主网 (Mainnet)</h3>
+                <p><strong>封闭主网阶段（当前）：</strong> 此阶段主网已上线并运行，但通过防火墙禁止外部连接。这是为了让数千万先锋有充足的时间完成 KYC 和主网迁移，并让生态应用有时间进行真实交易测试。</p>
+                <p><strong>开放主网阶段（未来）：</strong> 移除防火墙。届时，Pi 将能与交易所、其他区块链以及真实的商业支付系统进行无缝对接，实现 Pi 币的真正全球流通。</p>
             </section>
         </main>
     </div>
 
-    <footer class="py-20 text-center border-t border-white/5 opacity-30 text-[10px] font-bold">
-        © 2026 PI NETWORK 中文社区网
+    <!-- 统一页脚 -->
+    <footer class="py-24 bg-black/60 border-t border-white/5 text-center">
+        <p class="text-[10px] font-bold tracking-[0.6em] text-gray-600 uppercase mb-4">© 2026 PI NETWORK 中文社区门户网 · 邀请码: nbjh</p>
     </footer>
 </body>
 </html>
