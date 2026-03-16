@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章详情 | Pi 派币中文网</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f021a; color: white; font-family: sans-serif; line-height: 1.8; }
+        .content h2 { font-size: 2rem; font-weight: 800; margin: 2rem 0 1rem; color: #f4af47; }
+        .content h3 { font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 1rem; }
+        .content p { margin-bottom: 1.5rem; color: #cbd5e1; font-size: 1.1rem; }
+        .content ul { list-style: disc; margin-left: 2rem; margin-bottom: 1.5rem; color: #cbd5e1; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="p-6 border-b border-white/5 backdrop-blur-xl sticky top-0 bg-[#0f021a]/80 z-50">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="blog.html" class="text-gray-400 hover:text-white font-bold">← 返回列表</a>
+            <span class="text-[#f4af47] font-black uppercase">Article / 正文</span>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto py-20 px-6">
+        <div id="article-header" class="mb-16 border-b border-white/10 pb-16 text-center">
+            <p id="article-date" class="text-[#f4af47] font-bold tracking-widest mb-4"></p>
+            <h1 id="article-title" class="text-4xl md:text-6xl font-black tracking-tighter leading-tight"></h1>
+        </div>
+
+        <article id="article-content" class="content">
+            <!-- 动态加载内容 -->
+        </article>
+    </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+        async function loadArticle() {
+            const response = await fetch('data/news.json');
+            const news = await response.json();
+            const article = news.find(a => a.id === id);
+
+            if (article) {
+                document.title = article.title + " | Pi 派币中文网";
+                document.getElementById('article-date').innerText = article.date + " / 官方资讯";
+                document.getElementById('article-title').innerText = article.title;
+                document.getElementById('article-content').innerHTML = article.content;
+            } else {
+                document.getElementById('article-content').innerHTML = "<h1>文章未找到</h1>";
+            }
+        }
+        loadArticle();
+    </script>
+
+    <footer class="py-20 text-center opacity-30 text-[10px] font-bold tracking-[0.5em]">
+        © 2026 PI 派币中文社区网
+    </footer>
+</body>
+</html>
