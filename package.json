@@ -2,7 +2,6 @@
   "name": "blowfish-pi",
   "version": "1.0.0",
   "scripts": {
-    "install-theme": "mkdir -p themes && cd themes && rm -rf blowfish && git clone --depth 1 https://github.com/nunocoracao/blowfish.git",
-    "build": "npm run install-theme && hugo --gc --minify"
+    "build": "hugo --gc --minify"
   }
 }

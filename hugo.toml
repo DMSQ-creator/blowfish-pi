@@ -4,15 +4,18 @@ title = "Pi 派币中文网"
 theme = "blowfish"
 
 [params]
+  description = "Pi 派币中文社区 - 开启你的 Web3 数字资产之旅"
   defaultAppearance = "dark"
   showAppearanceSwitcher = true
-
+  
   [params.homepage]
+    showRecent = true
+    showMoreLink = true
+    cardView = true
     layout = "background"
     header_title = "Pi 派币：全球领先的移动端社交区块链"
-    header_description = "通过手机即可零成本参与，开启你的 Web3 资产之旅。"
-    showRecent = true
-
+    header_description = "让加密货币走进大众。通过手机即可零成本参与，无需消耗额外电量，开启你的 Web3 数字资产之旅。"
+    
   [params.footer]
     showCopyright = true
     showPoweredBy = false
