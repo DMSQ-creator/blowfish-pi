@@ -8,52 +8,65 @@
     <style>
         body { background-color: #0f021a; color: white; line-height: 1.8; font-family: sans-serif; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .step { position: relative; padding-left: 4rem; padding-bottom: 4rem; border-left: 2px solid rgba(255,255,255,0.1); }
-        .step-num { position: absolute; left: -1.25rem; width: 2.5rem; height: 2.5rem; background: #f4af47; color: #0f021a; border-radius: 50%; display: flex; items-center; justify-center; font-bold; top: 0; }
-        .step-active { border-left-color: #f4af47; }
-        .badge { background: rgba(244,175,71,0.2); color: #f4af47; padding: 0.25rem 0.75rem; rounded-full; font-size: 0.75rem; font-weight: 900; }
+        .timeline-item { position: relative; padding-left: 4rem; padding-bottom: 5rem; border-left: 2px solid rgba(255,255,255,0.1); }
+        .dot { position: absolute; left: -0.65rem; top: 0; width: 1.2rem; height: 1.2rem; background: #f4af47; border-radius: 50%; box-shadow: 0 0 20px rgba(244,175,71,0.5); }
+        .phase-badge { background: #f4af47; color: #0f021a; font-weight: 900; padding: 0.2rem 0.8rem; border-radius: 6px; font-size: 0.75rem; text-transform: uppercase; }
+        h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; color: white; }
+        p { color: #94a3b8; font-size: 1.05rem; }
     </style>
 </head>
 <body class="min-h-screen">
-    <nav class="p-6 border-b border-white/5 backdrop-blur-xl sticky top-0 bg-[#0f021a]/80 z-50">
+    <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-gray-400 hover:text-white font-bold">← 返回首页</a>
-            <span class="text-[#f4af47] font-black uppercase tracking-widest text-sm">Official Roadmap</span>
+            <a href="index.html" class="text-gray-400 hover:text-white font-bold tracking-tighter uppercase">← 首页</a>
+            <span class="text-[#f4af47] font-black uppercase">Project Roadmap</span>
         </div>
     </nav>
 
     <main class="max-w-4xl mx-auto py-24 px-6">
-        <h1 class="text-6xl font-black mb-20 tracking-tighter">Pi 的发展阶段</h1>
+        <h1 class="text-6xl md:text-8xl font-black mb-24 tracking-tighter">发展路线图</h1>
 
-        <div class="space-y-0">
+        <div class="timeline">
             <!-- Phase 1 -->
-            <div class="step">
-                <div class="step-num text-[#0f021a]">1</div>
-                <div class="mb-2 uppercase text-xs font-black tracking-widest text-gray-500">第一阶段</div>
-                <h2 class="text-3xl font-bold mb-4 text-white">设计、分发与原型认证</h2>
-                <p class="text-gray-400">Pi 服务器作为模拟分散系统行为的中心运行。在此阶段，我们实现了简便的用户入驻和基础的信任图构建。所有代币都在此阶段产生并作为未来主网的凭证。</p>
+            <div class="timeline-item">
+                <div class="dot"></div>
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="phase-badge">Phase 1</span>
+                    <span class="text-gray-500 font-bold tracking-widest text-sm">2019年3月14日 - 启动</span>
+                </div>
+                <h2>测试、分发与设计阶段</h2>
+                <p>这是 Pi Network 的萌芽期。我们在此阶段成功分发了初始代币，并在全球范围内测试了移动挖掘的稳定性。在此期间，社区规模迅速突破了 100 万活跃用户，确立了以社交图谱为基础的挖掘模型。</p>
             </div>
 
             <!-- Phase 2 -->
-            <div class="step">
-                <div class="step-num text-[#0f021a]">2</div>
-                <div class="mb-2 uppercase text-xs font-black tracking-widest text-gray-500">第二阶段</div>
-                <h2 class="text-3xl font-bold mb-4 text-white">测试网 (Testnet)</h2>
-                <p class="text-gray-400">在主网启动之前，我们在测试网上模拟了真实的节点运行。这允许开发者构建和测试应用。数万名先锋在此阶段参与了节点的压力测试，确保了 SCP 共识算法的稳定性。</p>
+            <div class="timeline-item">
+                <div class="dot"></div>
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="phase-badge">Phase 2</span>
+                    <span class="text-gray-500 font-bold tracking-widest text-sm">2020年 - 测试网</span>
+                </div>
+                <h2>测试网与开发者生态</h2>
+                <p>随着 Testnet 的上线，我们开启了全球节点测试。数万名 Pioneer 运行电脑节点，共同维护账本的完整性。同时，Pi 浏览器和首个开发者 SDK 发布，开启了基于 Pi 币的 DApp 开发热潮。</p>
             </div>
 
             <!-- Phase 3 -->
-            <div class="step step-active">
-                <div class="step-num text-[#0f021a]">3</div>
-                <div class="flex items-center gap-4 mb-2">
-                    <span class="uppercase text-xs font-black tracking-widest text-gray-500">第三阶段</span>
-                    <span class="badge animate-pulse">当前阶段</span>
+            <div class="timeline-item border-l-4 border-[#f4af47]">
+                <div class="dot scale-150"></div>
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="phase-badge">Phase 3</span>
+                    <span class="bg-[#f4af47]/20 text-[#f4af47] px-3 py-1 rounded-full text-xs font-black animate-pulse">正在进行中</span>
                 </div>
-                <h2 class="text-3xl font-bold mb-4 text-white">主网 (Mainnet)</h2>
-                <h3 class="text-[#f4af47] font-bold mb-2">A. 封闭网络阶段</h3>
-                <p class="text-gray-400 mb-6">目前 Pi 处于此子阶段。主网已启动，但受到防火墙保护，禁止外部连接。这一时期专门用于完成数千万用户的 KYC 验证，并将余额安全地从手机应用迁移到主网钱包。</p>
-                <h3 class="text-white font-bold mb-2">B. 开放网络阶段</h3>
-                <p class="text-gray-400">一旦 KYC 到达临界规模且生态系统足够成熟，我们将拆除防火墙。届时，Pi 将允许连接到其他区块链和交易所，实现真正的全网自由流通。</p>
+                <h2 class="text-pi-gold">主网阶段 (Mainnet)</h2>
+                <div class="space-y-10 mt-10">
+                    <div class="bg-white/5 p-8 rounded-3xl border border-white/10">
+                        <h3 class="text-xl font-bold text-white mb-3">A. 封闭式网络阶段 (Closed Network)</h3>
+                        <p class="text-sm">这是我们目前所处的关键阶段。主网已经启动，但由于防火墙的存在，禁止外部区块链的连接。这一阶段的目标是：1. 迁移数千万用户的余额；2. 构建真实的应用实用性；3. 筛选并剔除机器人干扰。</p>
+                    </div>
+                    <div class="p-8 border border-white/5 rounded-3xl">
+                        <h3 class="text-xl font-bold text-gray-500 mb-3">B. 开放式网络阶段 (Open Network)</h3>
+                        <p class="text-sm">最终的目标。我们将移除防火墙，允许 Pi 币与外部加密货币、交易所和钱包自由交换。这一阶段的启动将取决于社区是否满足既定的 KYC 进度和生态繁荣目标。</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

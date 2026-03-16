@@ -3,47 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KYC 身份验证 | Pi Network 中文网</title>
+    <title>KYC 身份认证深度解析 | Pi Network 中文网</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #0f021a; color: white; line-height: 1.8; font-family: sans-serif; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .feature-box { background: rgba(244,175,71,0.05); border: 1px solid rgba(244,175,71,0.1); border-radius: 24px; padding: 2.5rem; }
+        .feature-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2.5rem; }
+        h2 { font-size: 2.5rem; font-weight: 900; margin: 4rem 0 2rem; color: #f4af47; }
+        h3 { font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1rem; }
+        p { color: #cbd5e1; margin-bottom: 1.5rem; font-size: 1.1rem; }
     </style>
 </head>
 <body class="min-h-screen">
     <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-gray-400 hover:text-white font-bold tracking-tighter uppercase">← 首页</a>
-            <span class="text-[#f4af47] font-black uppercase">KYC Identity</span>
+            <a href="index.html" class="text-gray-400 hover:text-white font-bold tracking-tighter">← 返回首页</a>
+            <span class="text-[#f4af47] font-black uppercase">KYC & Identity</span>
         </div>
     </nav>
 
     <main class="max-w-4xl mx-auto py-24 px-6">
-        <h1 class="text-6xl font-black mb-12 tracking-tighter leading-[0.9]">Pi KYC:<br><span class="text-pi-gold italic">去中心化身份验证</span></h1>
+        <h1 class="text-6xl md:text-8xl font-black mb-12 tracking-tighter">Pi KYC:<br><span class="text-pi-gold italic">去中心化解决方案</span></h1>
         
-        <section class="space-y-12">
-            <div class="feature-box">
-                <h2 class="text-2xl font-bold mb-4 text-[#f4af47]">为什么需要 KYC？</h2>
-                <p class="text-gray-300">Pi Network 的核心价值在于建立一个真实人类社区。为了防止机器人恶意刷票、保护网络的安全性和公平性，我们要求每个 Pioneer 在迁移到主网前必须完成身份验证。</p>
+        <section>
+            <h2>我们为何选择自研 KYC？</h2>
+            <p>在加密货币领域，KYC（了解你的客户）是防止虚假账户、保护网络价值的关键屏障。Pi Network 的目标是建立全球最具包容性的经济体，这意味着我们需要一种能够跨越语言障碍、覆盖 230 多个国家，且对普通人完全免费或极低成本的验证方案。</p>
+            <p>传统的中心化 KYC 公司不仅收费昂贵，而且难以处理某些偏远地区的复杂证件。因此，Pi 核心团队开发了一套全球独创的分布式 KYC 架构。</p>
+
+            <div class="grid gap-8 my-16">
+                <div class="feature-card">
+                    <h3 class="text-[#f4af47] mt-0">1. AI 驱动的初次扫描</h3>
+                    <p>我们的系统利用先进的机器视觉技术，能够自动识别全球数千种不同格式的身份证件，并检测证件的防伪特征、照片一致性以及是否为真人录制的活体检测视频。</p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="text-[#f4af47] mt-0">2. 全球真人验证者网络</h3>
+                    <p>当 AI 完成初步过滤后，加密后的隐私片段将被分发给该地区的本地验证者。这些验证者是已经通过 KYC 的真人 Pioneer，这种“群智合力”确保了验证的高度准确性和去中心化。</p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="text-[#f4af47] mt-0">3. 极致的隐私保护</h3>
+                    <p>隐私是我们的首要任务。系统会自动对证件上的敏感信息进行脱敏处理，验证者只能看到经过处理的特定片段，用于比对真伪，他们永远无法获取用户的全量个人资料。</p>
+                </div>
             </div>
 
-            <h2 class="text-3xl font-black uppercase">我们的创新之处</h2>
-            <p class="text-xl text-gray-400">传统的 KYC 依赖于第三方中心化公司，成本高昂且无法覆盖全球。Pi 独创了“群智合力”的验证方案：</p>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
-                    <h3 class="font-bold text-xl mb-4">自动化处理</h3>
-                    <p class="text-sm text-gray-400">利用先进的 AI 机器视觉，自动识别全球数百种身份证件的真实性。</p>
-                </div>
-                <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
-                    <h3 class="font-bold text-xl mb-4">人工双重校验</h3>
-                    <p class="text-sm text-gray-400">由通过认证的本地“真人验证者”进行最终确认，确保万无一失且尊重隐私。</p>
-                </div>
-            </div>
-
-            <p class="text-gray-400 italic">“这是区块链历史上最大规模的人类身份验证实验，旨在为未来的 Web3 生态提供一个坚实的可信基础。”</p>
+            <h2>KYC 的重要里程碑</h2>
+            <p>截至目前，已经有数千万先锋提交了申请，超过一千万先锋顺利通过验证并迁移至主网。这是人类历史上规模最大的一场去中心化身份验证实验。</p>
+            <p class="mt-10 italic text-gray-500">“通过 KYC，我们不仅在保护 Pi 的价值，更是在为 Web3 的未来建立一个真实的、有尊严的身份基础设施。”</p>
         </section>
     </main>
+
+    <footer class="py-20 text-center border-t border-white/5 opacity-30 text-[10px] font-bold">
+        © 2026 PI NETWORK 中文社区网 · 非官方附属机构
+    </footer>
 </body>
 </html>
