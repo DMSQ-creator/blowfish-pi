@@ -3,36 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中文社区资讯 | Pi Network 中文网</title>
+    <title>社区资讯中心 | Pi Network 中文网</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0f021a; color: white; font-family: sans-serif; }
+        body { background-color: #0f021a; color: white; line-height: 1.8; font-family: sans-serif; }
     </style>
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen bg-[#0f021a]">
     <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-gray-400 hover:text-white font-bold tracking-tighter uppercase">← 返回首页</a>
-            <span class="text-[#f4af47] font-black uppercase">Community News</span>
+            <a href="index.html" class="text-xl font-black uppercase tracking-tighter">← 返回首页</a>
+            <span class="text-[#f4af47] font-bold uppercase">Community Blog</span>
         </div>
     </nav>
+
     <main class="max-w-5xl mx-auto py-20 px-6">
-        <h1 class="text-6xl font-black mb-16 tracking-tighter">最新资讯列表</h1>
-        <div class="space-y-10">
-            <!-- Article 1 -->
-            <a href="blog/pi-day-2026/" class="block group p-10 rounded-[40px] bg-white/5 border border-white/10 hover:border-[#f4af47] transition-all">
-                <div class="text-[#f4af47] font-bold mb-4">2026.03.14</div>
-                <h2 class="text-3xl font-bold group-hover:text-[#f4af47] mb-4 transition-colors">喜迎 2026 年 Pi Day：重大功能与生态发布</h2>
-                <p class="text-gray-400">我们在主网迁移和 KYC 进度上取得了突破性进展，点击查看全文详情。</p>
-            </a>
-            
-            <!-- Article 2 -->
-            <div class="block group p-10 rounded-[40px] bg-white/5 border border-white/10 opacity-50 cursor-not-allowed">
-                <div class="text-[#f4af47] font-bold mb-4">2026.03.05</div>
-                <h2 class="text-3xl font-bold mb-4 transition-colors">Pi 节点去中心化计算案例研究</h2>
-                <p class="text-gray-400">正在同步正文内容，请稍后再试...</p>
-            </div>
+        <header class="mb-16">
+            <h1 class="text-6xl font-black mb-4 tracking-tighter">社区最新动态</h1>
+            <p class="text-gray-500 uppercase tracking-[0.2em] text-sm">所有资讯均同步自 MinePi.com 官方博客</p>
+        </header>
+
+        <div id="blog-list" class="space-y-8">
+            <!-- 自动加载区域 -->
         </div>
     </main>
+
+    <script>
+        async function loadBlog() {
+            try {
+                const response = await fetch('data/news.json');
+                const news = await response.json();
+                const container = document.getElementById('blog-list');
+                
+                // 按日期倒序排列
+                news.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                container.innerHTML = news.map(item => `
+                    <div class="group p-10 rounded-[40px] bg-white/5 border border-white/10 hover:border-[#f4af47] transition-all cursor-pointer" onclick="location.href='article.html?id=${item.id}'">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-[#f4af47] font-bold text-sm uppercase">${item.date}</span>
+                            <span class="w-2 h-2 bg-white/10 rounded-full"></span>
+                            <span class="text-gray-500 text-xs font-bold uppercase">Official Blog</span>
+                        </div>
+                        <h2 class="text-3xl font-bold group-hover:text-[#f4af47] transition-colors mb-4 leading-tight">${item.title}</h2>
+                        <p class="text-gray-400 mb-6 text-lg">${item.excerpt}</p>
+                        <div class="flex items-center gap-2">
+                            <span class="text-white font-bold border-b border-white hover:text-[#f4af47] transition-all pb-1 text-sm uppercase tracking-widest">阅读全文</span>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (e) {}
+        }
+        loadBlog();
+    </script>
 </body>
 </html>
