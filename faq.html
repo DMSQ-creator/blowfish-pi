@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见问题 (FAQ) | Pi Network 派币中文社区网</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f021a; color: white; line-height: 1.8; font-family: sans-serif; }
+        .faq-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2rem; margin-bottom: 1.5rem; transition: all 0.3s; }
+        .faq-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .answer { color: #94a3b8; font-size: 1rem; margin-top: 1rem; display: none; }
+        .faq-card.active .answer { display: block; }
+        .question { cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 1.2rem; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-gray-400 hover:text-white font-bold uppercase tracking-tighter">← 返回首页</a>
+            <span class="text-[#f4af47] font-black uppercase">FAQ / 常见问题</span>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto py-20 px-6">
+        <header class="text-center mb-16">
+            <h1 class="text-5xl font-black mb-4 tracking-tighter">新手必看 FAQ</h1>
+            <p class="text-gray-400">为您解答关于 Pi Network 注册、挖矿与主网的所有疑惑。</p>
+        </header>
+
+        <div id="faq-container">
+            <div class="faq-card" onclick="this.classList.toggle('active')">
+                <div class="question">
+                    <span>1. 什么是 Pi Network（派币）？</span>
+                    <svg class="w-5 h-5 text-[#f4af47]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div class="answer">
+                    Pi Network 是由斯坦福大学博士团队开发的一种新型加密货币。它是全球首个可以在手机上挖掘、且不损耗电量和流量的区块链项目，目前全球拥有超过 5500 万活跃先锋。
+                </div>
+            </div>
+
+            <div class="faq-card" onclick="this.classList.toggle('active')">
+                <div class="question">
+                    <span>2. 注册时必须填写邀请码吗？</span>
+                    <svg class="w-5 h-5 text-[#f4af47]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div class="answer">
+                    是的，Pi 采用严格的邀请制以确保社区的真实性。填写官方认证邀请码 <strong class="text-[#f4af47]">nbjh</strong> 不仅能顺利进入系统，还能立得 1 Pi 奖励，并享受中文社区的算力加成。
+                </div>
+            </div>
+
+            <div class="faq-card" onclick="this.classList.toggle('active')">
+                <div class="question">
+                    <span>3. Pi 币目前价值多少？什么时候可以变现？</span>
+                    <svg class="w-5 h-5 text-[#f4af47]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div class="answer">
+                    Pi 目前处于“封闭主网”阶段。在这个阶段，Pi 已经可以在生态内进行商品换购。真正的交易所变现将在“开放主网”阶段开启。根据官方路线图，大规模的 KYC 正在进行，这是进入开放网络的前提。
+                </div>
+            </div>
+
+            <div class="faq-card" onclick="this.classList.toggle('active')">
+                <div class="question">
+                    <span>4. KYC 认证一直卡住、没收到推送怎么办？</span>
+                    <svg class="w-5 h-5 text-[#f4af47]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div class="answer">
+                    KYC 采用分批次推送机制。如果您的账户一直没有收到，请确保已绑定手机号或 Facebook。如果遇到具体问题，建议立即加入我们的 <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" class="text-blue-400 underline">Telegram 交流群</a>，群内有经验丰富的志愿者为您提供一对一指导。
+                </div>
+            </div>
+
+            <div class="faq-card" onclick="this.classList.toggle('active')">
+                <div class="question">
+                    <span>5. 为什么我的采矿速率变慢了？</span>
+                    <svg class="w-5 h-5 text-[#f4af47]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div class="answer">
+                    Pi 具有减半机制。随着全球用户量的增加，基础采矿率会不断下降。要提升速度，您可以通过：1. 邀请新成员；2. 运行电脑节点；3. 锁定您的 Pi 资产；4. 在 Pi 浏览器中使用 DApp。
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 p-10 bg-[#f4af47] rounded-[40px] text-[#0f021a] text-center">
+            <h2 class="text-3xl font-black mb-4">更多问题？加入社群！</h2>
+            <p class="font-bold mb-8">在这里，你将获得全网最快、最真实的 Pi 币资讯。</p>
+            <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" class="bg-[#0f021a] text-white px-10 py-4 rounded-2xl font-black text-xl hover:scale-105 transition-all inline-block">立即进入 Telegram 群组</a>
+        </div>
+    </main>
+</body>
+</html>
