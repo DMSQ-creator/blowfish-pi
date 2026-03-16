@@ -3,36 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>最新社区动态 | Pi Network 中文网</title>
+    <title>社区资讯中心 | Pi Network 中文网</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #0f021a; color: white; line-height: 1.8; font-family: sans-serif; }
-        .blog-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 2.5rem; transition: all 0.3s; }
+        .blog-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 2.5rem; transition: all 0.3s; cursor: pointer; }
         .blog-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
     </style>
 </head>
 <body class="min-h-screen">
     <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-xl font-black uppercase">← 返回首页</a>
-            <span class="text-[#f4af47] font-bold">社区动态</span>
-        </div>
+        <div class="max-w-7xl mx-auto flex justify-between items-center"><a href="index.html" class="font-bold tracking-tighter uppercase">← 首页</a><span class="text-[#f4af47] font-black uppercase">NEWS CENTER</span></div>
     </nav>
     <main class="max-w-5xl mx-auto py-20 px-6">
-        <h1 class="text-6xl font-black mb-16 tracking-tighter">最新资讯列表</h1>
-        <div class="grid gap-10">
+        <h1 class="text-6xl font-black mb-16 tracking-tighter">最新动态</h1>
+        <div id="blog-grid" class="grid gap-10">
+            <!-- 2026.03.14 -->
             <a href="blog/pi-day-2026.html" class="blog-card block">
-                <div class="text-[#f4af47] font-bold mb-4">2026.03.14 · 官方公告</div>
-                <h2 class="text-3xl font-bold mb-4">喜迎 2026 年 Pi Day：重大功能与生态发布</h2>
-                <p class="text-gray-400 mb-6 line-clamp-2">回顾过去一年，Pi Network 在主网迁移、KYC 以及生态应用多样性上取得了突破性进展...</p>
-                <span class="text-white border-b border-white pb-1 font-bold">阅读全量正文 (含多图) →</span>
-            </a>
-            <a href="blog/node-study.html" class="blog-card block opacity-80">
-                <div class="text-[#f4af47] font-bold mb-4">2026.03.05 · 技术案例</div>
-                <h2 class="text-3xl font-bold mb-4">Pi 节点去中心化计算案例研究</h2>
-                <p class="text-gray-400 mb-6">探索全球节点网络支持去中心化计算的能力，利用闲置算力构建算力市场...</p>
+                <div class="text-[#f4af47] font-bold mb-4">2026.03.14</div>
+                <h2 class="text-3xl font-bold mb-4 leading-tight">喜迎 2026 年 Pi Day：重大功能与生态发布</h2>
+                <p class="text-gray-500 mb-6 line-clamp-2">回顾过去一年，我们在主网迁移、KYC 以及生态应用多样性上取得了突破性进展。</p>
                 <span class="text-white border-b border-white pb-1 font-bold">阅读全量正文 →</span>
             </a>
+            <!-- 2026.03.05 -->
+            <a href="blog/node-study.html" class="blog-card block">
+                <div class="text-[#f4af47] font-bold mb-4">2026.03.05</div>
+                <h2 class="text-3xl font-bold mb-4 leading-tight">Pi 节点去中心化计算案例研究</h2>
+                <p class="text-gray-500 mb-6 line-clamp-2">探索全球节点网络支持去中心化计算的能力，利用闲置算力构建算力市场。</p>
+                <span class="text-white border-b border-white pb-1 font-bold">阅读全量正文 →</span>
+            </a>
+            <!-- 2026.02.26 -->
+            <a href="blog/badges-raffle.html" class="blog-card block">
+                <div class="text-[#f4af47] font-bold mb-4">2026.02.26</div>
+                <h2 class="text-3xl font-bold mb-4 leading-tight">庆祝先锋社区：Pi 勋章、抽奖与代币反馈</h2>
+                <p class="text-gray-500 mb-6 line-clamp-2">上周是开放网络的一周年纪念，我们推出了全新的社区勋章系统并开启大抽奖。</p>
+                <span class="text-white border-b border-white pb-1 font-bold">阅读全量正文 →</span>
+            </a>
+            <!-- 2026.02.20 -->
+            <a href="blog/open-network-anniversary.html" class="blog-card block">
+                <div class="text-[#f4af47] font-bold mb-4">2026.02.20</div>
+                <h2 class="text-3xl font-bold mb-4 leading-tight">开放网络一周年：成就与未来规划</h2>
+                <p class="text-gray-500 mb-6 line-clamp-2">主网正式开启一周年数据回顾：链上交易已突破 10 亿次，生态应用爆发式增长。</p>
+                <span class="text-white border-b border-white pb-1 font-bold">阅读全量正文 →</span>
+            </a>
+        </div>
+        
+        <!-- 分页占位 -->
+        <div class="mt-20 flex justify-center gap-4">
+            <button class="w-10 h-10 rounded-lg bg-[#f4af47] text-[#0f021a] font-bold">1</button>
+            <button class="w-10 h-10 rounded-lg bg-white/5 text-gray-500 font-bold hover:bg-white/10 transition-all">2</button>
+            <button class="w-10 h-10 rounded-lg bg-white/5 text-gray-500 font-bold hover:bg-white/10 transition-all">3</button>
         </div>
     </main>
 </body>
