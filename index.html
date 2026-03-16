@@ -50,10 +50,10 @@
 
                 <a href="about.html" class="nav-link uppercase">关于我们</a>
                 <a href="blog.html" class="nav-link uppercase">社区资讯</a>
-                <a href="blog/tutorial/" class="nav-link uppercase text-[#f4af47]">注册指南</a>
+                <a href="reg.html" class="nav-link uppercase text-[#f4af47]">注册指南</a>
             </div>
 
-            <a href="https://minepi.com/nbjh" class="bg-[#f4af47] text-[#1e0a27] px-8 py-2.5 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl shadow-orange-500/10 uppercase">
+            <a href="reg.html" class="bg-[#f4af47] text-[#1e0a27] px-8 py-2.5 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl shadow-orange-500/10 uppercase">
                 邀请码: nbjh
             </a>
         </nav>
@@ -71,30 +71,34 @@
                     <span class="text-pi-gold">轻松挖掘的货币</span>
                 </h1>
                 <p class="text-xl text-gray-400 max-w-xl mb-12">
-                    Pi 使加密货币挖掘变得简单。通过手机即可零成本参与，已有超过 5500 万先锋加入我们的全球生态。
+                    Pi 使加密货币挖掘变得简单。通过手机即可零成本参与，无需消耗额外电量。已有超过 5500 万先锋加入我们的全球生态。
                 </p>
                 <div class="flex flex-col sm:flex-row gap-6">
-                    <a href="blog/tutorial/" class="bg-[#f4af47] text-[#1e0a27] px-12 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl shadow-orange-500/30 text-center">立即加入教程</a>
-                    <button class="border-2 border-white/20 px-12 py-5 rounded-2xl font-black text-xl hover:bg-white/10 transition-all text-white" onclick="location.href='whitepaper.html'">技术白皮书</button>
+                    <a href="reg.html" class="bg-[#f4af47] text-[#1e0a27] px-12 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl shadow-orange-500/30 text-center uppercase tracking-widest">
+                        立即加入教程
+                    </a>
+                    <button class="border-2 border-white/20 px-12 py-5 rounded-2xl font-black text-xl hover:bg-white/10 transition-all text-white text-center" onclick="location.href='whitepaper.html'">
+                        技术白皮书
+                    </button>
                 </div>
             </div>
             <div class="hidden lg:flex justify-end">
-                <div class="w-80 h-[600px] bg-gradient-to-b from-[#f4af47] to-[#1e0a27] rounded-[50px] border-[10px] border-[#2d1b3d] shadow-2xl flex flex-col items-center justify-center p-6 text-center">
+                <div class="w-80 h-[600px] bg-gradient-to-b from-[#f4af47] to-[#1e0a27] rounded-[50px] border-[10px] border-[#2d1b3d] shadow-2xl flex flex-col items-center justify-center p-6 text-center cursor-pointer hover:scale-105 transition-transform" onclick="location.href='reg.html'">
                     <div class="text-white font-black text-7xl mb-6">π</div>
                     <div class="text-[#f4af47] font-bold text-2xl uppercase mb-4 tracking-widest">JOIN PI</div>
-                    <p class="text-white text-xs font-bold mb-8">使用邀请码: <span class="text-[#f4af47] text-lg">nbjh</span></p>
+                    <p class="text-white text-xs font-bold mb-8">使用邀请码: <span class="text-[#f4af47] text-lg uppercase">nbjh</span></p>
                     <div class="w-full h-1 bg-white/10 rounded-full"><div class="w-3/4 h-full bg-[#f4af47] animate-pulse"></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 最新资讯 (修复静态链接) -->
+    <!-- 最新资讯 -->
     <section class="py-24 px-6 bg-[#1e0a27]">
         <div class="container mx-auto">
             <h2 class="text-5xl font-black mb-12 uppercase border-l-4 border-[#f4af47] pl-8 text-white">最新社区动态</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                <!-- 直接链接到静态路径 -->
+                <!-- 资讯卡片 1 -->
                 <a href="blog/pi-day-2026/" class="group p-10 rounded-[40px] bg-white/[0.03] border border-white/5 hover:border-[#f4af47]/40 transition-all">
                     <div class="text-[#f4af47] text-xs mb-4 font-bold uppercase">2026.03.14 · 公告</div>
                     <h3 class="text-2xl font-bold mb-4 group-hover:text-[#f4af47]">喜迎 2026 年 Pi Day</h3>
@@ -102,11 +106,12 @@
                     <span class="text-white border-b border-white pb-1 text-xs font-bold uppercase">阅读详情</span>
                 </a>
 
-                <a href="blog/tutorial/" class="group p-10 rounded-[40px] bg-orange-500/10 border border-[#f4af47]/30 hover:border-[#f4af47] transition-all">
+                <!-- 注册教程入口卡片 -->
+                <a href="reg.html" class="group p-10 rounded-[40px] bg-orange-500/10 border border-[#f4af47]/30 hover:border-[#f4af47] transition-all scale-105 shadow-2xl">
                     <div class="text-[#f4af47] text-xs mb-4 font-bold uppercase">HOT · 新手必看</div>
-                    <h3 class="text-2xl font-bold mb-4">Pi 派币详细注册教程</h3>
-                    <p class="text-gray-500 mb-6 text-sm text-white">手把手教你如何下载、注册并输入邀请码 <strong>nbjh</strong> 开启挖矿。</p>
-                    <span class="text-white border-b border-white pb-1 text-xs font-bold uppercase">立即查看</span>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Pi 派币 1:1 图文注册教程</h3>
+                    <p class="text-gray-500 mb-6 text-sm text-white font-medium">手把手教你完成注册并输入邀请码 <span class="text-[#f4af47] font-black underline">nbjh</span> 获得奖励。</p>
+                    <span class="text-[#f4af47] border-b border-[#f4af47] pb-1 text-xs font-bold uppercase">立即点击开始 →</span>
                 </a>
             </div>
         </div>
