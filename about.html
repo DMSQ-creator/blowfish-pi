@@ -10,110 +10,37 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
         body { background-color: #0f021a; color: white; line-height: 1.8; font-family: 'Inter', sans-serif; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .section-tag { color: #f4af47; font-weight: 900; font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1.5rem; display: block; }
         .stat-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2.5rem; transition: all 0.3s; }
-        .stat-card:hover { border-color: #f4af47; transform: translateY(-5px); }
         .vision-box { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); border-radius: 40px; padding: 4rem 2rem; border: 1px solid rgba(255,255,255,0.05); }
-        h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem; tracking: -0.025em; }
-        p { color: #cbd5e1; margin-bottom: 1.5rem; font-size: 1.1rem; text-align: justify; }
+        h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem; }
     </style>
 </head>
 <body class="min-h-screen">
-    <!-- 导航栏保持 -->
     <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2">
-                <img src="https://minepi.com/wp-content/uploads/2022/06/cropped-pi1-32x32.png" class="w-8 h-8">
-                <span class="font-black uppercase tracking-tighter">Pi Network</span>
-            </a>
-            <a href="index.html" class="text-gray-400 hover:text-white font-bold text-sm">返回首页 →</a>
-        </div>
+        <div class="max-w-7xl mx-auto flex justify-between items-center"><a href="index.html" class="font-bold">← 返回首页</a><span class="text-[#f4af47] font-black uppercase">About Pi Network</span></div>
     </nav>
-
-    <!-- Hero Section -->
-    <header class="pt-32 pb-20 px-6 text-center max-w-5xl mx-auto">
-        <h1 class="text-5xl md:text-7xl font-black mb-10 tracking-tighter">Pi Network:<br><span class="text-pi-gold italic">Web3 社交加密货币的未来</span></h1>
-    </header>
-
-    <!-- 1:1 四大指标板块复刻 -->
+    <header class="pt-32 pb-20 px-6 text-center max-w-5xl mx-auto"><h1 class="text-5xl md:text-7xl font-black mb-10 tracking-tighter">Pi Network:<br><span class="text-pi-gold italic">Web3 社交加密货币的未来</span></h1></header>
     <section class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-32">
-        <div class="stat-card">
-            <h3 class="text-2xl font-bold mb-4 text-white">6000万+ 活跃成员</h3>
-            <p class="text-sm text-gray-500 mb-0 leading-relaxed">一个由加密货币驱动的开放社区，提供极高的可访问性和强大的公用事业驱动型 Web3 生态系统。</p>
-        </div>
-        <div class="stat-card">
-            <h3 class="text-2xl font-bold mb-4 text-white">免费采矿</h3>
-            <p class="text-sm text-gray-500 mb-0 leading-relaxed">Pi 始终支持在移动端免费挖掘，将权力交还给全球大众，打造更公平、更广泛分发的加密货币。</p>
-        </div>
-        <div class="stat-card">
-            <h3 class="text-2xl font-bold mb-4 text-white">35+ 全职团队成员</h3>
-            <p class="text-sm text-gray-500 mb-0 leading-relaxed">核心团队成员遍布全球，从硅谷总部到美国、欧洲和亚洲，具备真正的全球化视野与影响力。</p>
-        </div>
-        <div class="stat-card">
-            <h3 class="text-2xl font-bold mb-4 text-white">独创革命性技术</h3>
-            <p class="text-sm text-gray-500 mb-0 leading-relaxed">Pi 利用轻量级挖掘方法结合大规模分布式 KYC 方案，为 Web3 时代的身份验证提供准入标准。</p>
-        </div>
+        <div class="stat-card"><h3 class="text-2xl font-bold mb-4">6000万+ 活跃成员</h3><p class="text-sm text-gray-500">开放社区驱动，提供极高可访问性的 Web3 生态。</p></div>
+        <div class="stat-card"><h3 class="text-2xl font-bold mb-4">免费采矿</h3><p class="text-sm text-gray-500">手机端零成本挖掘，打造公平、广泛分发的加密货币。</p></div>
+        <div class="stat-card"><h3 class="text-2xl font-bold mb-4">35+ 全职成员</h3><p class="text-sm text-gray-500">核心团队具备全球化视野，分布于美国、欧洲和亚洲。</p></div>
+        <div class="stat-card"><h3 class="text-2xl font-bold mb-4">独创革命技术</h3><p class="text-sm text-gray-500">轻量级采矿结合分布式 KYC，树立身份验证新标杆。</p></div>
     </section>
-
-    <!-- Who We Are -->
     <main class="max-w-4xl mx-auto px-6 space-y-32 mb-32">
-        <section id="who-we-are">
-            <span class="section-tag">谁是 PI NETWORK</span>
-            <h2>我们的起源</h2>
-            <p>为了创造一个更好的加密货币世界，Pi 的创始人意识到必须将理论与实践相结合。他们将自己在斯坦福大学获得的计算机和社交科学博士学位的所学，应用到了真实的世界环境中。</p>
-            <p>在确定了加密货币可访问性和采用的核心障碍后，Pi 创始人开始构建集成了区块链的下一代网络。Pi Network 于 2019 年 3 月 14 日（Pi Day）正式启动。今天，遍布全球的 35 多名全职核心团队成员致力于推动一个庞大、充满热情且遍布全球的先锋社区。</p>
-        </section>
-
-        <!-- Our Vision -->
-        <section class="vision-box text-center">
-            <span class="section-tag">我们的愿景 / OUR VISION</span>
-            <p class="text-3xl md:text-5xl font-black text-white leading-tight">
-                建立世界上最具包容性的 <br>
-                <span class="text-pi-gold">点对点生态系统和在线体验</span> <br>
-                由全球使用最广泛的加密货币 Pi 驱动。
-            </p>
-        </section>
-
-        <!-- Built for Everyone -->
-        <section>
-            <span class="section-tag">为每个人打造，由每个人构建</span>
-            <h2>社区共建</h2>
-            <p>Pi Network 是一个由数千万真实人类组成的社区，他们通过在移动设备上挖掘 Pi 代币，共同构建起了一个庞大的 Web3 应用生态系统。这个网络不依赖于昂贵的矿机，而是奖励每一位 Pioneers 的多样化贡献和数字公民身份。</p>
-            <p>为了确保公平性、保护区块链安全并维护生态系统的完整性，赋予全球真实的人权力至关重要。Pi 依靠其先锋社区通过手机进行精英化的代币挖掘，而 Pi KYC 则作为核心机制，确保网络由真实的人类组成，从而为日常生活创造具有实际用途的去中心化生态系统。</p>
-            <p>易于接入的开发者平台，结合大规模身份验证的加密社交网络，使 Pi Network 成为下一波技术革命的支柱。</p>
-        </section>
-
-        <!-- Founders -->
-        <section id="founders">
-            <span class="section-tag">创始人团队 / THE FOUNDERS</span>
+        <section><h2>我们的起源</h2><p>Pi Network 由三位斯坦福博士创立，旨在消除普通大众参与区块链的障碍。于 2019 年 3 月 14 日正式启动。</p></section>
+        <section class="vision-box text-center"><p class="text-3xl md:text-5xl font-black text-white leading-tight text-pi-gold">建立全球最具包容性的点对点生态系统。</p></section>
+        <section><h2>创始人团队</h2>
             <div class="space-y-16 mt-16">
                 <div class="grid md:grid-cols-3 gap-12 items-center">
-                    <div class="col-span-1 rounded-[50px] overflow-hidden border-4 border-[#f4af47]/20 shadow-2xl">
-                        <img src="https://minepi.com/wp-content/uploads/2022/11/nicolas-kokkalis.jpg" class="w-full grayscale hover:grayscale-0 transition-all duration-700">
-                    </div>
-                    <div class="md:col-span-2">
-                        <h3 class="text-4xl font-black mb-2">Nicolas Kokkalis</h3>
-                        <p class="text-[#f4af47] font-bold text-sm uppercase mb-6 tracking-widest">技术负责人 / Head of Technology</p>
-                        <p class="text-gray-400">斯坦福大学博士。他是斯坦福大学 2018 年首个去中心化应用课程 CS359B 的主讲师。Nicolas 的工作专注于将分布式系统与人机交互相结合，将加密货币带入每个人的生活。作为加密货币技术、财务和社会潜力的长期信徒，他致力于将区块链的力量扩展到目前的局限之外，让每个人都能掌握自己的数字命运。</p>
-                    </div>
+                    <div class="col-span-1 rounded-[50px] overflow-hidden border-4 border-[#f4af47]/20 shadow-2xl"><img src="static/img/nicolas.jpg" class="w-full"></div>
+                    <div class="md:col-span-2"><h3 class="text-4xl font-black mb-2">Nicolas Kokkalis</h3><p class="text-[#f4af47] font-bold text-sm uppercase mb-4 tracking-widest">技术负责人</p><p class="text-gray-400">斯坦福大学博士。专注于分布式系统与人机交互，致力于将区块链力量带给普通人。</p></div>
                 </div>
-
                 <div class="grid md:grid-cols-3 gap-12 items-center">
-                    <div class="col-span-1 rounded-[50px] overflow-hidden border-4 border-[#f4af47]/20 shadow-2xl md:order-2">
-                        <img src="https://minepi.com/wp-content/uploads/2022/11/chengdiao-fan.jpg" class="w-full grayscale hover:grayscale-0 transition-all duration-700">
-                    </div>
-                    <div class="md:col-span-2 md:order-1">
-                        <h3 class="text-4xl font-black mb-2 text-right md:text-left">Chengdiao Fan</h3>
-                        <p class="text-[#f4af47] font-bold text-sm uppercase mb-6 tracking-widest text-right md:text-left">产品负责人 / Head of Product</p>
-                        <p class="text-gray-400 text-right md:text-left">斯坦福大学人类学博士。她专注于利用社交计算（Social Computing）在在全球范围内解锁人类潜力。通过优化人机交互和预演未来的社交经济生活，她正在动员全球数千万个人参与并获得奖励，建立一个让所有人都能捕捉自身agency的包容性生态，进而为社会创造真正的实用价值。</p>
-                    </div>
+                    <div class="col-span-1 rounded-[50px] overflow-hidden border-4 border-[#f4af47]/20 shadow-2xl md:order-2"><img src="static/img/chengdiao.jpg" class="w-full"></div>
+                    <div class="md:col-span-2 md:order-1 text-right md:text-left"><h3 class="text-4xl font-black mb-2">Chengdiao Fan</h3><p class="text-[#f4af47] font-bold text-sm uppercase mb-4 tracking-widest">产品负责人</p><p class="text-gray-400 text-right md:text-left">斯坦福大学人类学博士。研究社交计算，动员全球个人参与并创造 Web3 社会价值。</p></div>
                 </div>
             </div>
         </section>
     </main>
-
-    <footer class="py-24 bg-black/60 border-t border-white/5 text-center">
-        <p class="text-[10px] font-bold tracking-[0.5em] text-gray-500 uppercase">© 2026 PI NETWORK 中文社区门户网</p>
-    </footer>
 </body>
 </html>
