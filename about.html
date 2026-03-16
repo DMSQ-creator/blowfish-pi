@@ -7,37 +7,49 @@
     <link rel="icon" type="image/png" href="https://minepi.com/wp-content/uploads/2022/06/cropped-pi1-32x32.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
-        body { background-color: #0f021a; color: white; line-height: 1.8; font-family: 'Inter', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { background-color: #0f021a; color: white; line-height: 2; font-family: 'Inter', sans-serif; text-align: justify; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .stat-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2.5rem; transition: all 0.3s; }
-        .vision-box { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); border-radius: 40px; padding: 4rem 2rem; border: 1px solid rgba(255,255,255,0.05); }
-        h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem; }
+        .avatar-placeholder { width: 100%; aspect-ratio: 1/1; background: linear-gradient(135deg, #2d1b3d 0%, #0f021a 100%); border: 2px solid rgba(244, 175, 71, 0.3); border-radius: 50px; display: flex; items-center; justify-center; font-size: 4rem; font-weight: 900; color: #f4af47; box-shadow: 0 0 40px rgba(244, 175, 71, 0.1); }
+        .stat-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+        h2 { font-size: 2.2rem; font-weight: 900; margin: 5rem 0 2rem; color: #f4af47; border-bottom: 2px solid rgba(244,175,71,0.1); padding-bottom: 1rem; }
     </style>
 </head>
 <body class="min-h-screen">
     <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex justify-between items-center"><a href="index.html" class="font-bold">← 返回首页</a><span class="text-[#f4af47] font-black uppercase">About Pi Network</span></div>
+        <div class="max-w-7xl mx-auto flex justify-between items-center"><a href="index.html" class="font-bold">← 返回首页</a><span class="text-[#f4af47] font-black uppercase">Official About</span></div>
     </nav>
-    <header class="pt-32 pb-20 px-6 text-center max-w-5xl mx-auto"><h1 class="text-5xl md:text-7xl font-black mb-10 tracking-tighter">Pi Network:<br><span class="text-pi-gold italic">Web3 社交加密货币的未来</span></h1></header>
-    <section class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-32">
-        <div class="stat-card"><h3 class="text-2xl font-bold mb-4">6000万+ 活跃成员</h3><p class="text-sm text-gray-500">开放社区驱动，提供极高可访问性的 Web3 生态。</p></div>
-        <div class="stat-card"><h3 class="text-2xl font-bold mb-4">免费采矿</h3><p class="text-sm text-gray-500">手机端零成本挖掘，打造公平、广泛分发的加密货币。</p></div>
-        <div class="stat-card"><h3 class="text-2xl font-bold mb-4">35+ 全职成员</h3><p class="text-sm text-gray-500">核心团队具备全球化视野，分布于美国、欧洲和亚洲。</p></div>
-        <div class="stat-card"><h3 class="text-2xl font-bold mb-4">独创革命技术</h3><p class="text-sm text-gray-500">轻量级采矿结合分布式 KYC，树立身份验证新标杆。</p></div>
-    </section>
-    <main class="max-w-4xl mx-auto px-6 space-y-32 mb-32">
-        <section><h2>我们的起源</h2><p>Pi Network 由三位斯坦福博士创立，旨在消除普通大众参与区块链的障碍。于 2019 年 3 月 14 日正式启动。</p></section>
-        <section class="vision-box text-center"><p class="text-3xl md:text-5xl font-black text-white leading-tight text-pi-gold">建立全球最具包容性的点对点生态系统。</p></section>
-        <section><h2>创始人团队</h2>
-            <div class="space-y-16 mt-16">
+    <main class="max-w-4xl mx-auto py-24 px-6">
+        <header class="text-center mb-32">
+            <h1 class="text-6xl md:text-8xl font-black mb-10 tracking-tighter leading-tight uppercase">About <span class="text-pi-gold italic">Pi Network</span></h1>
+        </header>
+
+        <section class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-32">
+            <div class="stat-card"><h3>6000万+ 活跃成员</h3><p class="text-sm opacity-50">一个由加密货币驱动的开放社区，提供极高可访问性。</p></div>
+            <div class="stat-card"><h3>免费手机采矿</h3><p class="text-sm opacity-50">全球首创零成本手机挖掘模式，将权力交还大众。</p></div>
+            <div class="stat-card"><h3>35+ 全职核心团队</h3><p class="text-sm opacity-50">遍布全球的科学家与工程师，共同构建 Web3 未来。</p></div>
+            <div class="stat-card"><h3>独创 KYC 方案</h3><p class="text-sm opacity-50">利用群智合力解决全球身份验证难题。</p></div>
+        </section>
+
+        <section id="founders">
+            <h2>核心创始人</h2>
+            <div class="space-y-24 mt-16">
                 <div class="grid md:grid-cols-3 gap-12 items-center">
-                    <div class="col-span-1 rounded-[50px] overflow-hidden border-4 border-[#f4af47]/20 shadow-2xl"><img src="/static/img/nicolas.jpg?v=2026" class="w-full"></div>
-                    <div class="md:col-span-2"><h3 class="text-4xl font-black mb-2">Nicolas Kokkalis</h3><p class="text-[#f4af47] font-bold text-sm uppercase mb-4 tracking-widest">技术负责人</p><p class="text-gray-400">斯坦福大学博士。专注于分布式系统与人机交互，致力于将区块链力量带给普通人。</p></div>
+                    <div class="col-span-1"><div class="avatar-placeholder">N</div></div>
+                    <div class="md:col-span-2">
+                        <h3 class="text-4xl font-black mb-4">Nicolas Kokkalis</h3>
+                        <p class="text-pi-gold font-bold text-sm uppercase mb-4 tracking-widest">技术负责人</p>
+                        <p class="text-gray-400">斯坦福大学博士。他是 2018 年斯坦福大学历史上首个去中心化应用课程 CS359B 的主讲师。Nicolas 坚信加密货币能够超越目前的技术限制，致力于将区块链的力量带给每个人。</p>
+                    </div>
                 </div>
+
                 <div class="grid md:grid-cols-3 gap-12 items-center">
-                    <div class="col-span-1 rounded-[50px] overflow-hidden border-4 border-[#f4af47]/20 shadow-2xl md:order-2"><img src="/static/img/chengdiao.jpg?v=2026" class="w-full"></div>
-                    <div class="md:col-span-2 md:order-1 text-right md:text-left"><h3 class="text-4xl font-black mb-2">Chengdiao Fan</h3><p class="text-[#f4af47] font-bold text-sm uppercase mb-4 tracking-widest">产品负责人</p><p class="text-gray-400 text-right md:text-left">斯坦福大学人类学博士。研究社交计算，动员全球个人参与并创造 Web3 社会价值。</p></div>
+                    <div class="col-span-1 md:order-2"><div class="avatar-placeholder">C</div></div>
+                    <div class="md:col-span-2 md:order-1">
+                        <h3 class="text-4xl font-black mb-4 text-right md:text-left">Chengdiao Fan</h3>
+                        <p class="text-pi-gold font-bold text-sm uppercase mb-4 tracking-widest text-right md:text-left">产品负责人</p>
+                        <p class="text-gray-400 text-right md:text-left">斯坦福大学人类学博士。她专注于利用社交计算在在全球范围内释放人类的协作潜力。通过构思 Web3 时代的社交经济生活，她正在动员全球数千万先锋参与并获得回报。</p>
+                    </div>
                 </div>
             </div>
         </section>
