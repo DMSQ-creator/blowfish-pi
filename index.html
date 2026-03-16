@@ -4,107 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pi 派币中文网 | 全球领先移动社交区块链</title>
-    <!-- 引入强大的 Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0f021a; color: white; margin: 0; font-family: sans-serif; overflow-x: hidden; }
-        .pi-hero-bg {
-            background: radial-gradient(circle at 20% 30%, rgba(89, 59, 139, 0.4) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(66, 63, 136, 0.3) 0%, transparent 50%);
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap');
+        body { 
+            background-color: #12011a; 
+            color: #ffffff; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .hero-mesh {
+            background-color: #12011a;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(273,85%,13%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,80%,20%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(273,85%,13%,1) 0, transparent 50%);
         }
         .text-pi-gold {
-            background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%);
+            background: linear-gradient(135deg, #f4af47 0%, #fab44b 50%, #f4af47 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(244, 175, 71, 0.3));
+        }
+        .nav-blur {
+            background: rgba(18, 1, 26, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
         }
     </style>
 </head>
-<body class="pi-hero-bg min-h-screen">
+<body class="hero-mesh min-h-screen">
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 px-6 py-5 bg-[#0f021a]/80 backdrop-blur-2xl border-b border-white/5">
+    <nav class="fixed w-full z-50 px-6 py-4 nav-blur border-b border-white/5">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-gradient-to-br from-[#f4af47] to-[#fab44b] rounded-full flex items-center justify-center shadow-lg shadow-orange-500/20">
-                    <span class="text-[#1e0a27] font-black text-2xl">π</span>
+            <div class="flex items-center gap-2">
+                <div class="w-9 h-9 bg-[#f4af47] rounded-full flex items-center justify-center">
+                    <span class="text-[#12011a] font-bold text-xl">π</span>
                 </div>
-                <span class="text-xl font-black tracking-tight uppercase">Pi 派币中文网</span>
+                <span class="text-lg font-extrabold tracking-tight uppercase">Pi 派币中文网</span>
             </div>
-            <div class="hidden md:flex gap-10 text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase">
-                <a href="/" class="hover:text-[#f4af47] transition-colors font-bold">首页</a>
-                <a href="#" class="hover:text-[#f4af47] transition-colors font-bold">技术文档</a>
-                <a href="#" class="hover:text-[#f4af47] transition-colors font-bold">生态节点</a>
-                <a href="#" class="hover:text-[#f4af47] transition-colors font-bold">中文社区</a>
+            <div class="hidden lg:flex gap-8 text-[11px] font-bold tracking-widest text-gray-300">
+                <a href="/" class="hover:text-[#f4af47] transition-all">首页</a>
+                <a href="#" class="hover:text-[#f4af47] transition-all">白皮书</a>
+                <a href="#" class="hover:text-[#f4af47] transition-all">生态应用</a>
+                <a href="#" class="hover:text-[#f4af47] transition-all">中文社区</a>
             </div>
-            <button class="bg-[#f4af47] text-[#1e0a27] px-8 py-2.5 rounded-full font-black text-xs hover:scale-105 transition-all">
-                立即参与
+            <button class="bg-[#f4af47] text-[#12011a] px-6 py-2 rounded-full font-bold text-xs hover:scale-105 transition-all shadow-lg shadow-orange-500/20">
+                立即加入
             </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <main class="relative flex flex-col items-center justify-center text-center pt-52 pb-32 px-6 max-w-6xl mx-auto">
-        <div class="inline-block px-5 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#f4af47] text-[10px] font-black tracking-[0.25em] uppercase mb-10">
-            斯坦福博士团队打造
+    <!-- Main Hero -->
+    <main class="relative pt-44 pb-20 px-6 max-w-5xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-[#f4af47] text-[11px] font-bold uppercase tracking-wider mb-10 mx-auto">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f4af47] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#f4af47]"></span>
+            </span>
+            Stanford Ph.D 团队倾力打造
         </div>
-        <h1 class="text-6xl md:text-[8rem] font-black mb-10 leading-[0.9] tracking-tighter">
-            全球首个移动<br />
-            <span class="text-pi-gold">区块链网络</span>
+        
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tighter">
+            全球首个可以在手机上<br />
+            <span class="text-pi-gold">轻松挖掘的数字货币</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-16 leading-relaxed font-medium">
-            Pi 让加密货币挖掘变得简单。突破性技术让您在手机上零成本开启 Web3 资产之旅。
+        
+        <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-14 leading-relaxed">
+            Pi 使加密货币挖掘变得简单。突破性技术让您在手机上零成本参与，不费电、不耗流量，开启您的 Web3 社交资产之旅。
         </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-6">
-            <button class="bg-[#f4af47] text-[#1e0a27] px-16 py-6 rounded-2xl font-black text-xl hover:scale-110 transition-transform shadow-2xl shadow-orange-500/40">
+        
+        <div class="flex flex-col sm:flex-row justify-center gap-5">
+            <button class="bg-[#f4af47] text-[#12011a] px-10 py-4 rounded-xl font-bold text-lg hover:brightness-110 transition-all shadow-xl shadow-orange-500/20">
                 进入中文社区
             </button>
-            <button class="border-2 border-white/10 hover:bg-white/5 px-16 py-6 rounded-2xl font-black text-xl transition-all text-white">
+            <button class="bg-white/5 border border-white/10 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all">
                 了解技术白皮书
             </button>
         </div>
     </main>
 
-    <!-- Stats -->
-    <section class="py-24 bg-black/50 border-y border-white/5 backdrop-blur-sm">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16">
-            <div class="flex flex-col items-center">
-                <div class="text-[#f4af47] text-7xl font-black mb-4">55M+</div>
-                <div class="text-[10px] font-black tracking-[0.4em] text-gray-500 uppercase">全球活跃矿工</div>
+    <!-- Stats Bar -->
+    <section class="py-16 bg-black/20 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="text-center">
+                <div class="text-4xl font-extrabold mb-1">55M+</div>
+                <div class="text-[10px] font-bold tracking-widest text-gray-500 uppercase">全球活跃矿工</div>
             </div>
-            <div class="flex flex-col items-center border-y md:border-y-0 md:border-x border-white/5 py-10 md:py-0">
-                <div class="text-white text-7xl font-black mb-4">100%</div>
-                <div class="text-[10px] font-black tracking-[0.4em] text-gray-500 uppercase">去中心化网络</div>
+            <div class="text-center border-y md:border-y-0 md:border-x border-white/5 py-6 md:py-0">
+                <div class="text-4xl font-extrabold mb-1">100%</div>
+                <div class="text-[10px] font-bold tracking-widest text-gray-500 uppercase">去中心化网络</div>
             </div>
-            <div class="flex flex-col items-center">
-                <div class="text-[#f4af47] text-7xl font-black mb-4">FREE</div>
-                <div class="text-[10px] font-black tracking-[0.4em] text-gray-500 uppercase">零手机电量损耗</div>
+            <div class="text-center">
+                <div class="text-4xl font-extrabold mb-1">FREE</div>
+                <div class="text-[10px] font-bold tracking-widest text-gray-500 uppercase">零手机电量损耗</div>
             </div>
         </div>
     </section>
 
-    <!-- Blog Section -->
-    <section class="py-32 px-6 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row items-center justify-between mb-20 gap-10">
-            <div class="text-left">
-                <h2 class="text-5xl font-black tracking-tighter uppercase mb-4">资讯同步 <span class="text-[#f4af47]">BLOG</span></h2>
-                <p class="text-gray-500 text-lg font-bold">实时同步自 MinePi.com 的中文资讯</p>
+    <!-- Blog Area (Sync Ready) -->
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-16">
+            <div class="text-left border-l-4 border-[#f4af47] pl-6">
+                <h2 class="text-3xl font-extrabold uppercase">最新资讯同步</h2>
+                <p class="text-sm text-gray-500 mt-1 uppercase tracking-widest">Real-time Sync From MinePi.com</p>
             </div>
         </div>
         
-        <div class="grid md:grid-cols-2 gap-12 text-left">
-            <div class="p-12 rounded-[50px] bg-gradient-to-br from-white/10 to-transparent border border-white/10 hover:border-orange-500/40 transition-all group">
-                <div class="text-[#f4af47] font-black text-xs uppercase tracking-[0.3em] mb-10">Latest News / 最新</div>
-                <h3 class="text-4xl font-black mb-8 leading-tight group-hover:text-orange-400 transition-colors">Pi 自动抓取机器人<br />正在初始化中...</h3>
-                <p class="text-gray-400 leading-relaxed text-xl mb-12 italic">很快，我们将通过 pi_sync.py 自动为您呈现官方博客的最新中文动态。</p>
-                <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                    <div class="w-2/3 h-full bg-gradient-to-r from-orange-400 to-yellow-500 animate-pulse"></div>
+        <div class="grid md:grid-cols-2 gap-8 text-left">
+            <div class="group p-10 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-orange-500/30 transition-all">
+                <div class="text-[#f4af47] font-bold text-xs mb-6 uppercase tracking-widest">最新动态 / NEW</div>
+                <h3 class="text-2xl font-bold mb-4 leading-tight">全自动抓取机器人正在同步文章...</h3>
+                <p class="text-gray-400 leading-relaxed mb-8">正在为您建立从 MinePi.com 官方博客到 pibizh.com 的实时中文同步链路。</p>
+                <div class="flex items-center gap-3">
+                    <div class="h-1 flex-1 bg-white/5 rounded-full overflow-hidden">
+                        <div class="w-1/3 h-full bg-[#f4af47] animate-pulse"></div>
+                    </div>
+                    <span class="text-[10px] text-gray-600 font-bold uppercase">Syncing...</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-20 text-center border-t border-white/5 opacity-50">
-        <div class="text-2xl font-black text-[#f4af47] mb-6">π</div>
-        <p class="text-[9px] font-black tracking-[0.5em] text-white">© 2026 PI 派币中文社区网 · 开启 WEB3 社交时代</p>
+    <footer class="py-16 text-center opacity-40 grayscale hover:grayscale-0 transition-all">
+        <p class="text-[10px] font-bold tracking-[0.4em] uppercase">© 2026 PI 派币中文社区网 · 开启 WEB3 时代</p>
     </footer>
 </body>
 </html>
