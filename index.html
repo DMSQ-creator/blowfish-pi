@@ -8,7 +8,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; }
-        .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); position: relative; overflow-hidden; }
+        .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); position: relative; overflow: hidden; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .dropdown:hover .dropdown-menu { display: block; }
         .nav-link { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #cbd5e1; transition: all 0.3s; }
@@ -19,7 +19,7 @@
     <!-- 导航栏 -->
     <header class="fixed w-full z-50 bg-[#1e0a27]/90 backdrop-blur-xl border-b border-white/5">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-2 cursor-pointer" onclick="location.href='/'">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="location.href='index.html'">
                 <div class="w-10 h-10 bg-[#f4af47] rounded-full flex items-center justify-center shadow-lg"><span class="text-[#1e0a27] font-black text-2xl">π</span></div>
                 <span class="text-xl font-black tracking-tighter uppercase">Pi Network 中文网</span>
             </div>
@@ -29,10 +29,10 @@
                     <button class="nav-link flex items-center gap-1 uppercase">Pi 区块链 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                     <div class="dropdown-menu absolute hidden pt-4 w-48">
                         <div class="bg-[#2d1b3d] rounded-xl shadow-2xl border border-white/10 p-2">
-                            <a href="nodes.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">Pi 节点</a>
-                            <a href="blockchain.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">区块浏览器</a>
-                            <a href="whitepaper.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">技术白皮书</a>
-                            <a href="roadmap.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">项目路线图</a>
+                            <a href="nodes.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition text-white">Pi 节点</a>
+                            <a href="blockchain.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition text-white">区块浏览器</a>
+                            <a href="whitepaper.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition text-white">技术白皮书</a>
+                            <a href="roadmap.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition text-white">项目路线图</a>
                         </div>
                     </div>
                 </div>
@@ -41,20 +41,21 @@
                     <button class="nav-link flex items-center gap-1 uppercase">生态系统 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                     <div class="dropdown-menu absolute hidden pt-4 w-56">
                         <div class="bg-[#2d1b3d] rounded-xl shadow-2xl border border-white/10 p-2">
-                            <a href="developers.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">开发者中心</a>
-                            <a href="browser.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">Pi 浏览器</a>
-                            <a href="kyc.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">KYB 认证方案</a>
+                            <a href="developers.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition text-white">开发者中心</a>
+                            <a href="browser.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition text-white">Pi 浏览器</a>
+                            <a href="kyc.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition text-white">KYB 认证方案</a>
                         </div>
                     </div>
                 </div>
 
                 <a href="about.html" class="nav-link uppercase">关于我们</a>
                 <a href="blog.html" class="nav-link uppercase">社区资讯</a>
+                <a href="blog/tutorial/" class="nav-link uppercase text-[#f4af47]">注册指南</a>
             </div>
 
-            <button class="bg-[#f4af47] text-[#1e0a27] px-8 py-2.5 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl shadow-orange-500/10 uppercase">
-                下载官方 APP
-            </button>
+            <a href="https://minepi.com/nbjh" class="bg-[#f4af47] text-[#1e0a27] px-8 py-2.5 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl shadow-orange-500/10 uppercase">
+                邀请码: nbjh
+            </a>
         </nav>
     </header>
 
@@ -63,72 +64,57 @@
         <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
             <div class="text-left">
                 <div class="inline-block px-4 py-1 rounded-full bg-white/5 border border-white/10 text-[#f4af47] text-[10px] font-black tracking-widest uppercase mb-6">
-                    斯坦福博士团队打造 · 全球移动挖掘先驱
+                    STANFORD PH.D 团队打造 · 邀请码: nbjh
                 </div>
                 <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tighter">
                     首个在手机上<br />
                     <span class="text-pi-gold">轻松挖掘的货币</span>
                 </h1>
                 <p class="text-xl text-gray-400 max-w-xl mb-12">
-                    Pi 使加密货币挖掘变得简单。突破性技术让您在手机上即可零成本参与，无需消耗额外电量。已有超过 5500 万 Pioneer 加入我们的全球生态。
+                    Pi 使加密货币挖掘变得简单。通过手机即可零成本参与，已有超过 5500 万先锋加入我们的全球生态。
                 </p>
                 <div class="flex flex-col sm:flex-row gap-6">
-                    <button class="bg-[#f4af47] text-[#1e0a27] px-12 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl shadow-orange-500/30">立即开启</button>
+                    <a href="blog/tutorial/" class="bg-[#f4af47] text-[#1e0a27] px-12 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl shadow-orange-500/30 text-center">立即加入教程</a>
                     <button class="border-2 border-white/20 px-12 py-5 rounded-2xl font-black text-xl hover:bg-white/10 transition-all text-white" onclick="location.href='whitepaper.html'">技术白皮书</button>
                 </div>
             </div>
             <div class="hidden lg:flex justify-end">
-                <!-- 手机预览卡片 -->
                 <div class="w-80 h-[600px] bg-gradient-to-b from-[#f4af47] to-[#1e0a27] rounded-[50px] border-[10px] border-[#2d1b3d] shadow-2xl flex flex-col items-center justify-center p-6 text-center">
                     <div class="text-white font-black text-7xl mb-6">π</div>
-                    <div class="text-[#f4af47] font-bold text-2xl mb-8 uppercase tracking-widest">Mining...</div>
+                    <div class="text-[#f4af47] font-bold text-2xl uppercase mb-4 tracking-widest">JOIN PI</div>
+                    <p class="text-white text-xs font-bold mb-8">使用邀请码: <span class="text-[#f4af47] text-lg">nbjh</span></p>
                     <div class="w-full h-1 bg-white/10 rounded-full"><div class="w-3/4 h-full bg-[#f4af47] animate-pulse"></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 特色区块 -->
-    <section class="py-24 px-6 bg-black/40 border-y border-white/5">
-        <div class="container mx-auto grid md:grid-cols-3 gap-16 text-center">
-            <div><div class="text-5xl mb-6">🛡️</div><h3 class="text-2xl font-bold mb-4">去中心化</h3><p class="text-gray-400">安全、不可篡改、可互操作的数字货币，保护全球用户的每一分资产。</p></div>
-            <div><div class="text-5xl mb-6">📱</div><h3 class="text-2xl font-bold mb-4">移动优先</h3><p class="text-gray-400">首创移动端挖掘技术，不占内存、不发热，手机即是全功能节点。</p></div>
-            <div><div class="text-5xl mb-6">🌍</div><h3 class="text-2xl font-bold mb-4">全球共识</h3><p class="text-gray-400">数千万 Pioneer 共同构建，是目前全球覆盖面最广的 Web3 社交网络。</p></div>
-        </div>
-    </section>
-
-    <!-- 最新资讯 -->
+    <!-- 最新资讯 (修复静态链接) -->
     <section class="py-24 px-6 bg-[#1e0a27]">
         <div class="container mx-auto">
-            <h2 class="text-5xl font-black mb-12 uppercase border-l-4 border-[#f4af47] pl-8">最新社区动态</h2>
-            <div id="latest-news" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 由 JSON 自动填充 -->
+            <h2 class="text-5xl font-black mb-12 uppercase border-l-4 border-[#f4af47] pl-8 text-white">最新社区动态</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                <!-- 直接链接到静态路径 -->
+                <a href="blog/pi-day-2026/" class="group p-10 rounded-[40px] bg-white/[0.03] border border-white/5 hover:border-[#f4af47]/40 transition-all">
+                    <div class="text-[#f4af47] text-xs mb-4 font-bold uppercase">2026.03.14 · 公告</div>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-[#f4af47]">喜迎 2026 年 Pi Day</h3>
+                    <p class="text-gray-500 mb-6 text-sm text-white">回顾过去一年，Pi Network 在主网迁移和 KYC 上取得了突破性进展。</p>
+                    <span class="text-white border-b border-white pb-1 text-xs font-bold uppercase">阅读详情</span>
+                </a>
+
+                <a href="blog/tutorial/" class="group p-10 rounded-[40px] bg-orange-500/10 border border-[#f4af47]/30 hover:border-[#f4af47] transition-all">
+                    <div class="text-[#f4af47] text-xs mb-4 font-bold uppercase">HOT · 新手必看</div>
+                    <h3 class="text-2xl font-bold mb-4">Pi 派币详细注册教程</h3>
+                    <p class="text-gray-500 mb-6 text-sm text-white">手把手教你如何下载、注册并输入邀请码 <strong>nbjh</strong> 开启挖矿。</p>
+                    <span class="text-white border-b border-white pb-1 text-xs font-bold uppercase">立即查看</span>
+                </a>
             </div>
         </div>
     </section>
 
     <footer class="py-20 text-center border-t border-white/5 opacity-50">
         <div class="text-[#f4af47] font-black text-3xl mb-6">π</div>
-        <p class="text-[10px] font-bold tracking-[0.5em] text-white uppercase italic">© 2026 PI NETWORK 中文社区网</p>
+        <p class="text-[10px] font-bold tracking-[0.5em] text-white uppercase italic">© 2026 PI NETWORK 中文社区网 · 推荐邀请码: nbjh</p>
     </footer>
-
-    <script>
-        async function loadNews() {
-            try {
-                const response = await fetch('data/news.json');
-                const news = await response.json();
-                const container = document.getElementById('latest-news');
-                container.innerHTML = news.slice(0, 3).map(item => `
-                    <div class="group p-10 rounded-[40px] bg-white/[0.03] border border-white/5 hover:border-[#f4af47]/40 transition-all cursor-pointer" onclick="location.href='article.html?id=${item.id}'">
-                        <div class="text-[#f4af47] text-xs mb-4 font-bold uppercase">${item.date}</div>
-                        <h3 class="text-2xl font-bold mb-4 group-hover:text-[#f4af47]">${item.title}</h3>
-                        <p class="text-gray-500 mb-6 text-sm">${item.excerpt}</p>
-                        <span class="text-white border-b border-white pb-1 text-xs font-bold uppercase">阅读详情</span>
-                    </div>
-                `).join('');
-            } catch (e) {}
-        }
-        loadNews();
-    </script>
 </body>
 </html>
