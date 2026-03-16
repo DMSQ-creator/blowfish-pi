@@ -9,7 +9,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; }
         .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); position: relative; overflow: hidden; }
-        .hero-bg::before { content: ""; position: absolute; top: -10%; left: -10%; width: 50%; height: 50%; background: #593b8b; filter: blur(150px); opacity: 0.3; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .dropdown:hover .dropdown-menu { display: block; }
         .nav-link { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: #cbd5e1; transition: all 0.3s; }
@@ -17,7 +16,7 @@
     </style>
 </head>
 <body>
-    <!-- Navbar (1:1 Clone of MinePi) -->
+    <!-- Navbar (Fixed Links) -->
     <header class="fixed w-full z-50 bg-[#1e0a27]/90 backdrop-blur-xl border-b border-white/5">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center gap-2 cursor-pointer" onclick="location.href='index.html'">
@@ -26,48 +25,19 @@
             </div>
             
             <div class="hidden lg:flex items-center gap-10">
-                <!-- Dropdown: Blockchain -->
                 <div class="dropdown relative group">
-                    <button class="nav-link flex items-center gap-1 uppercase">Pi 区块链 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                    <button class="nav-link flex items-center gap-1 uppercase text-[#f4af47]">Pi 区块链 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                     <div class="dropdown-menu absolute hidden pt-4 w-48">
                         <div class="bg-[#2d1b3d] rounded-xl shadow-2xl border border-white/10 p-2">
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">Pi 节点 (Node)</a>
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">区块浏览器</a>
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">白皮书</a>
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">路线图</a>
+                            <a href="nodes.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">Pi 节点 (Node)</a>
+                            <a href="whitepaper.html" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">白皮书</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Dropdown: Ecosystem -->
-                <div class="dropdown relative group">
-                    <button class="nav-link flex items-center gap-1 uppercase">生态系统 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-                    <div class="dropdown-menu absolute hidden pt-4 w-56">
-                        <div class="bg-[#2d1b3d] rounded-xl shadow-2xl border border-white/10 p-2">
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">开发者中心</a>
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">Pi 浏览器下载</a>
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">KYB 验证方案</a>
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">合作伙伴</a>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="#" class="nav-link uppercase">关于我们</a>
-
-                <!-- Dropdown: Community -->
-                <div class="dropdown relative group">
-                    <button class="nav-link flex items-center gap-1 uppercase">中文社区 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-                    <div class="dropdown-menu absolute hidden pt-4 w-48">
-                        <div class="bg-[#2d1b3d] rounded-xl shadow-2xl border border-white/10 p-2">
-                            <a href="blog.html" class="block px-4 py-2 text-sm hover:bg-[#f4af47] hover:text-black rounded-lg transition font-bold">官方博客 (已同步)</a>
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">媒体报道</a>
-                            <a href="#" class="block px-4 py-2 text-sm hover:bg-white/5 rounded-lg transition">安全中心</a>
-                        </div>
-                    </div>
-                </div>
+                <a href="blog.html" class="nav-link uppercase">中文社区资讯</a>
             </div>
 
-            <button class="bg-[#f4af47] text-[#1e0a27] px-8 py-2.5 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl shadow-orange-500/10 uppercase">
+            <button class="bg-[#f4af47] text-[#1e0a27] px-8 py-2.5 rounded-full font-black text-xs hover:scale-105 transition-all">
                 立即下载 App
             </button>
         </nav>
@@ -75,68 +45,56 @@
 
     <!-- Hero Section -->
     <section class="hero-bg min-h-screen flex items-center pt-20 px-6">
-        <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
-            <div class="text-left">
-                <div class="inline-block px-4 py-1 rounded-full bg-white/5 border border-white/10 text-[#f4af47] text-[10px] font-black tracking-widest uppercase mb-6">
-                    Stanford Ph.D 团队打造 · 移动端革命
-                </div>
+        <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center text-left">
+            <div>
                 <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tighter">
                     首个在手机上<br />
                     <span class="text-pi-gold">轻松挖掘的货币</span>
                 </h1>
-                <p class="text-xl text-gray-400 max-w-xl mb-12 leading-relaxed">
-                    Pi 让加密货币挖掘变得简单。突破性技术让您在手机上零成本参与，无需消耗额外电量。开启您的 Web3 数字资产之旅。
+                <p class="text-xl text-gray-400 max-w-xl mb-12">
+                    Pi 让加密货币挖掘变得简单。斯坦福博士团队打造，开启你的 Web3 资产之旅。
                 </p>
-                <div class="flex flex-col sm:flex-row gap-6">
-                    <button class="bg-[#f4af47] text-[#1e0a27] px-12 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all">立即加入社区</button>
-                    <button class="border-2 border-white/20 px-12 py-5 rounded-2xl font-black text-xl hover:bg-white/10 transition-all text-white">了解技术原理</button>
+                <div class="flex gap-6">
+                    <button class="bg-[#f4af47] text-[#1e0a27] px-12 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all" onclick="location.href='blog.html'">进入社区</button>
+                    <button class="border-2 border-white/20 px-12 py-5 rounded-2xl font-black text-xl hover:bg-white/10 transition-all text-white" onclick="location.href='whitepaper.html'">查看白皮书</button>
                 </div>
             </div>
             <div class="hidden lg:flex justify-end relative">
-                <!-- 复刻官网手机模型图 -->
-                <div class="w-80 h-[600px] bg-gradient-to-b from-[#f4af47] to-[#1e0a27] rounded-[50px] border-[10px] border-[#2d1b3d] shadow-2xl relative overflow-hidden flex flex-col items-center justify-center text-center p-6">
+                <div class="w-80 h-[600px] bg-gradient-to-b from-[#f4af47] to-[#1e0a27] rounded-[50px] border-[10px] border-[#2d1b3d] shadow-2xl flex flex-col items-center justify-center p-6">
                     <div class="text-white font-black text-6xl mb-4">π</div>
-                    <div class="text-[#f4af47] font-bold text-2xl mb-8">Mining In Progress</div>
-                    <div class="w-full h-1 bg-white/10 rounded-full mb-4"><div class="w-3/4 h-full bg-[#f4af47] animate-pulse"></div></div>
+                    <div class="text-[#f4af47] font-bold text-2xl">Mining...</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Blog Sync Grid (The Part You Wanted Dynamic) -->
-    <section class="py-32 px-6 bg-black/40 border-y border-white/5">
+    <!-- Blog Section (Dynamic Ready) -->
+    <section class="py-24 px-6 bg-black/40 border-y border-white/5">
         <div class="container mx-auto">
-            <div class="flex items-end justify-between mb-20 border-l-4 border-[#f4af47] pl-8">
-                <div>
-                    <h2 class="text-5xl font-black tracking-tighter uppercase">最新资讯同步</h2>
-                    <p class="text-gray-400 mt-4 text-xl">实时同步自 MinePi.com 官方博客 (机器人调试中)</p>
-                </div>
-                <a href="blog.html" class="text-[#f4af47] font-bold text-lg hover:underline transition-all">进入博客中心 →</a>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Card 1 -->
-                <div class="group p-10 rounded-[40px] bg-white/[0.03] border border-white/5 hover:border-[#f4af47]/40 transition-all cursor-pointer" onclick="location.href='blog.html'">
-                    <div class="text-[#f4af47] font-bold text-xs mb-6 uppercase tracking-widest">2026.03.14 · 公告</div>
-                    <h3 class="text-2xl font-bold mb-6 leading-tight group-hover:text-orange-400">喜迎 2026 Pi Day：重大功能版本正式发布</h3>
-                    <p class="text-gray-500 leading-relaxed mb-8">回顾过去一年，Pi Network 在主网迁移、KYC 以及生态应用上取得了历史性突破...</p>
-                    <span class="text-white font-bold border-b border-white hover:text-[#f4af47] hover:border-[#f4af47] pb-1">阅读详情</span>
-                </div>
-                
-                <!-- Card 2 -->
-                <div class="group p-10 rounded-[40px] bg-white/[0.03] border border-white/5 hover:border-[#f4af47]/40 transition-all cursor-pointer" onclick="location.href='blog.html'">
-                    <div class="text-[#f4af47] font-bold text-xs mb-6 uppercase tracking-widest">2026.03.05 · 技术</div>
-                    <h3 class="text-2xl font-bold mb-6 leading-tight group-hover:text-orange-400">Pi 节点去中心化计算：赋能 Web3 基础设施</h3>
-                    <p class="text-gray-500 leading-relaxed mb-8">通过分布式算力，我们将全球数千万手机节点转化为真正的区块链引擎...</p>
-                    <span class="text-white font-bold border-b border-white hover:text-[#f4af47] hover:border-[#f4af47] pb-1">阅读详情</span>
-                </div>
+            <h2 class="text-5xl font-black mb-12 uppercase border-l-4 border-[#f4af47] pl-6">最新同步内容</h2>
+            <div id="latest-news" class="grid md:grid-cols-2 gap-10">
+                <!-- Content will be here -->
             </div>
         </div>
     </section>
 
-    <footer class="py-24 text-center border-t border-white/5 opacity-50">
-        <div class="text-[#f4af47] font-black text-4xl mb-8">π</div>
-        <p class="text-[10px] font-black tracking-[0.6em] text-white uppercase italic">© 2026 PI 派币中文社区网 · 官方资讯同步中心</p>
-    </footer>
+    <script>
+        async function loadNews() {
+            try {
+                const response = await fetch('data/news.json');
+                const news = await response.json();
+                const container = document.getElementById('latest-news');
+                container.innerHTML = news.map(item => `
+                    <div class="p-10 rounded-[40px] bg-white/[0.03] border border-white/10 hover:border-orange-500/40 transition-all cursor-pointer" onclick="location.href='article.html?id=${item.id}'">
+                        <div class="text-[#f4af47] text-xs mb-4 font-bold uppercase">${item.date}</div>
+                        <h3 class="text-2xl font-bold mb-4">${item.title}</h3>
+                        <p class="text-gray-400 mb-6">${item.excerpt}</p>
+                        <span class="text-white border-b border-white pb-1 font-bold">查看全文 →</span>
+                    </div>
+                `).join('');
+            } catch (e) {}
+        }
+        loadNews();
+    </script>
 </body>
 </html>
