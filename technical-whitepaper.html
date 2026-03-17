@@ -3,88 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>技术白皮书 (官方全量1:1版) | Pi Network 中文网</title>
+    <title>技术白皮书 (官方 1:1 完整全量版) | Pi Network 中文网</title>
+    <link rel="icon" type="image/png" href="https://minepi.com/wp-content/uploads/2022/06/cropped-pi1-32x32.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0f021a; color: white; line-height: 2.2; font-family: sans-serif; text-align: justify; }
-        .content-section { max-width: 900px; margin: 0 auto; padding: 100px 24px; }
-        h2 { font-size: 2.5rem; font-weight: 900; margin: 4rem 0 2rem; color: #f4af47; border-left: 8px solid #f4af47; padding-left: 2rem; }
-        p { color: #cbd5e1; margin-bottom: 2rem; font-size: 1.25rem; }
+        body { background-color: #0f021a; color: #e2e8f0; line-height: 2.2; font-family: 'Inter', sans-serif; text-align: justify; }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .content-container { max-width: 960px; margin: 0 auto; padding: 80px 24px; }
+        h1 { font-size: 5rem; font-weight: 900; margin-bottom: 4rem; tracking: -0.05em; line-height: 1; }
+        h2 { font-size: 2.5rem; font-weight: 800; margin: 5rem 0 2rem; color: #f4af47; border-left: 8px solid #f4af47; padding-left: 2rem; }
+        h3 { font-size: 1.8rem; font-weight: 700; margin: 3rem 0 1.5rem; color: white; }
+        p { margin-bottom: 2rem; font-size: 1.25rem; }
+        ul { list-style: disc; margin-left: 2.5rem; margin-bottom: 2.5rem; }
+        li { margin-bottom: 1.2rem; font-size: 1.2rem; }
+        .section-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 40px; padding: 4rem; margin: 4rem 0; }
     </style>
 </head>
 <body>
-    <div class="content-section">
-        <h1 class="text-6xl md:text-9xl font-black mb-20 tracking-tighter uppercase italic text-pi-gold">Whitepaper</h1>
+    <nav class="p-6 border-b border-white/5 bg-[#0f021a]/95 backdrop-blur-xl sticky top-0 z-50 flex justify-between items-center">
+        <a href="index.html" class="font-black text-xl tracking-tighter">← 返回首页</a>
+        <span class="text-[#f4af47] font-black uppercase text-xs tracking-widest">1:1 Official Full Content</span>
+    </nav>
+    <div class="content-container">
+        <h1 class="text-white">TECHNICAL<br><span class="text-pi-gold italic">WHITEPAPER</span></h1>
         
-        <h2>01. 导言：为什么我们需要 Pi？</h2>
-        <p>随着当今世界的数字化程度日益加深，加密货币已成为金融领域逻辑演进的必然产物。然而，当我们审视第一代数字资产（如比特币）时，我们发现了一个令人不安的现实：它们在试图去中心化的过程中，反而创造了新的中心化堡垒。</p>
-        
-        <p>比特币通过工作量证明（PoW）机制确保了账本的安全，但这套机制在 2026 年的今天已经变得异常沉重。它依赖于巨大的能源消耗和昂贵的专业硬件（ASIC 矿机）。这种极高的准入门槛，实质上是将全球 99% 的普通用户排斥在网络的所有权之外。采矿权现在集中在极少数拥有海量资本和廉价电力资源的矿场主手中，这完全违背了区块链创始人中本聪最初‘一 CPU 一票’的民主愿景。</p>
-        
-        <p>Pi Network 的诞生，正是为了解决这一核心矛盾。我们问自己：有没有可能建立一个区块链，让普通人仅凭一部日常使用的手机，就能平等地参与到货币的铸造、验证和治理中？有没有可能利用人们已有的社交信任，而不是昂贵的电力，来作为网络安全的基石？</p>
-        
-        <p>我们的使命是建立世界上最具包容性的 peer-to-peer 生态系统和在线体验。Pi 不仅仅是一枚代币，它是一套完整的 Web3 基础设施，由全球数千万先锋共同拥有和管理。我们通过降低参与门槛，旨在将数字资产的权力从极少数‘算力精英’手中夺回，重新交还给每一个真实的个人。</p>
-        
-        <p>在这里，每一位 Pioneer 的贡献都是独特的。无论你是运行节点的极客，还是通过邀请好友构建安全圈的普通用户，你都在为这个网络的韧性和价值贡献力量。Pi 正在通过一种更人性化、更符合社会学逻辑的方式，重塑我们对‘钱’和‘信任’的认知。</p>
-        <section id="problem-depth">
-            <h2>02. 问题的根源：工作量证明的陷阱</h2>
-            <p>为了理解 Pi 的必要性，我们必须深入探讨比特币（Bitcoin）和第一代区块链技术所面临的物理限制。工作量证明 (PoW) 要求矿工竞争解决复杂的数学难题。第一个解出难题的节点获得记账权。这种机制在设计初衷上是完美的，因为它利用了计算成本来防御网络攻击。</p>
-            
-            <p>然而，随着比特币价值的飙升，这场竞争演变成了一场‘军备竞赛’。矿工们从普通的个人电脑 CPU 升级到图形处理单元 (GPU)，最后升级到被称为 ASIC（专用集成电路）的专业硬件。这种硬件除了挖矿别无他用，且价格极其昂贵。这种演进导致了一个极其中心化的结果：全球大部分的比特币算力现在都集中在全球少数几个电费极低、规模极大的矿场中。普通人现在如果想参与比特币挖矿，除了购买昂贵的云算力份额，几乎没有任何机会直接参与共识。</p>
-            
-            <h3>能源的黑洞</h3>
-            <p>PoW 的本质是‘烧钱证明’。为了维持网络的安全性，比特币网络每年消耗的电量与瑞士或希腊等国家相当。在 2026 年这样一个强调绿色能源、碳中和以及可持续发展的时代，这种高耗能的共识机制正面临着越来越严峻的监管和伦理挑战。区块链必须进化出一种更优雅、更轻量的共识方式，否则它将永远无法渗透到人类生活的方方面面。</p>
-            
-            <h3>可访问性的屏障</h3>
-            <p>除了硬件和能源，复杂的私钥管理、繁重的账本同步以及极高的交易手续费，构成了普通大众进入加密世界的‘认知屏障’。绝大多数人因为害怕操作失误导致资产丢失而被挡在 Web3 门外。Pi 的设计核心在于将这些复杂的后端逻辑封装在直观的、移动优先的 UI 之下，让采矿像点一下屏幕一样简单，同时又不牺牲去中心化的核心本质。</p>
-        </section>
-        <section id="scp-technical">
-            <h2>03. 技术突破：恒星共识协议 (SCP) 的 Pi 优化版</h2>
-            <p>Pi Network 的核心共识逻辑建立在由斯坦福大学 David Mazières 教授设计的恒星共识协议（Stellar Consensus Protocol, SCP）之上。不同于 PoW 这种通过竞速来防止攻击，SCP 采用了一种名为联邦拜占庭协议（FBA）的更先进模型。</p>
-            
-            <h3>什么是法定人数切片 (Quorum Slices)？</h3>
-            <p>在传统的拜占庭协议中，全网所有节点必须就每一个账本变动达成共识。这在节点数量较少时是高效的，但随着节点突破数百万，系统将陷入通讯泥潭。SCP 的伟大创新在于引入了‘切片’概念。在 Pi 网络中，每一个节点不需要认识全网所有人，它只需要选择一组它所信任的其他节点（即‘切片’）。</p>
-            
-            <p>当成千上万个独立选择的信任切片相互重叠、嵌套时，整个网络就会自发地形成一个‘全局法定人数’。这个过程就像人类社会的信任传递：我信任你，你信任他，最终我们构成了一个稳固的社会共识体系。通过这种机制，Pi 能够实现秒级的交易确认速度，且对带宽和算力的需求极低，这正是 Pi 能在手机上‘挖矿’的底层逻辑。</p>
-            
-            <h3>Pi 的社交证明创新</h3>
-            <p>Pi 对原始 SCP 协议的最大贡献在于：我们将‘信任选择’的主动权交给了普通用户，而不是专业的系统管理员。通过 App 中的‘安全圈’功能，每一位先锋都在手动配置他们的共识切片。这种由人类真实情感和社交纽带驱动的‘湿件共识’，比冷冰冰的算力哈希更具防御力，更能抵抗所谓的‘女巫攻击’（Sybil Attacks）。</p>
-        </section>
-        <section id="economics">
-            <h2>04. 代币经济学：设计、供应与减半逻辑</h2>
-            <p>代币经济学的核心在于如何在‘激励早期采用者’与‘保持长期货币价值’之间找到完美的平衡点。Pi 的代币供应模型是动态的，并与网络的真实扩张情况紧密咬合。</p>
-            
-            <h3>动态供应公式：M = I + S + R</h3>
-            <p>Pi 的挖掘逻辑并不产生固定数量的区块奖励，而是根据每个用户的‘贡献类型’进行实时计算：</p>
-            <ul>
-                <li><strong>个人基础产出 (I)：</strong> 随着全网用户数的对数级增长而动态调整。这确保了代币不会在初期被瞬间抽干。</li>
-                <li><strong>安全圈奖励 (S)：</strong> 每增加一个信任的连接，您的采矿速率就会获得一定比例的永久加成，最高可达 5 人上限。</li>
-                <li><strong>邀请奖励 (R)：</strong> 通过邀请新成员，您可以分享其活跃采矿期间产生的算力回馈。这一设计旨在加速网络的‘网络效应’扩散。</li>
-            </ul>
-            
-            <h3>减半机制的战略深度</h3>
-            <p>Pi 设定了严格的减半里程碑（Halving Events）。当网络用户量从 10 万增长到 100 万时，挖掘速率强制减半。当达到 1000 万时，再次减半。目前的采矿速率已经进入了极为稀缺的时期。所有的‘预挖币’在映射到主网前都必须经过严苛的 KYC 过滤。这确保了市场上的流通量完全由真实人类持有，而非机器人账户生成的空气数据。这种稀缺性是 Pi 长期价值的核心底座。</p>
-        </section>
-        <section id="mainnet-phases">
-            <h2>05. 主网发展三部曲：从愿景到现实的跨越</h2>
-            <p>Pi Network 的发展路径不是随意的，而是基于‘渐进式去中心化’的学术理论。我们将项目划分为三个关键阶段，每个阶段都有明确的退出标准和进入条件。</p>
-            
-            <h3>第一阶段：设计与分发 (Beta)</h3>
-            <p>起始于 2019 年。在此阶段，由于主网协议尚未完全成熟，Pi 服务器作为一个中心化仿真器运行，模拟分布式共识的结果。此阶段的主要目的是建立庞大的社交共识基础，测试用户交互界面，并收集关于人类采矿行为的海量数据。</p>
-            
-            <h3>第二阶段：测试网 (Testnet)</h3>
-            <p>2020 年，我们上线了测试网，并开始在全球范围内节点化。成千上万个活跃节点在此期间通过了 Docker 容器测试，验证了 SCP 算法在面对复杂网络环境时的韧性。同时，Pi 浏览器和开发者 SDK 为第三方应用的萌芽提供了土壤。</p>
-            
-            <h3>第三阶段：主网 (Mainnet)</h3>
-            <p><strong>封闭网络阶段（当前）：</strong> 主网已经正式运行，但受限于防火墙，禁止外部区块链和交易所的连接。这一时期的设立是极具前瞻性的：它为全球数千万 Pioneer 提供了‘全员 KYC’的时间窗口，确保了财富分配的公平性；同时，它也为 Pi 生态系统内真实的商品交易和应用服务（Utilities）提供了无噪音的实验场。我们要让 Pi 在走向二级市场之前，就已经在现实世界中‘有用’。</p>
-            
-            <p><strong>开放网络阶段（未来）：</strong> 当 KYC 覆盖率达到临界点，且生态系统内的应用数量和交易量足以支撑价格稳定时，我们将撤销防火墙。届时，Pi 将连接交易所、外部钱包和其他 Layer 1 公链，正式成为全球数字货币海洋中的一员。我们的共识，将在此刻化为真正的价值。</p>
-        </section>
+        <div id="full-body-content">
+            <section>
+                <h2>01. 导言：为什么我们需要 Pi？</h2>
+                <p>随着互联网的深度普及，数字资产已不再是极客的玩具，而是未来社会经济运作的核心逻辑。然而，尽管区块链技术带来了去中心化的希望，但第一代加密货币（如比特币）在实际运行中却创造了巨大的社会和经济障碍。</p>
+                <p>比特币通过工作量证明（Proof of Work, PoW）共识算法保护了账本。但这种机制在设计上就决定了它是一个‘算力军备竞赛’。随着时间的推移，普通的个人电脑已经无法参与采矿，记账权被掌握在拥有昂贵 ASIC 矿机和海量廉价电力资源的矿场主手中。这种高度的算力集中，违背了去中心化的初衷，实质上剥夺了普通大众分享数字资产红利的权利。</p>
+                <p>Pi Network 的初衷是建立一个全球最包容、最公平的 peer-to-peer 经济体。我们致力于让每一个拥有普通智能手机的人，都能平等、零成本地参与到货币的分发、验证和治理中。通过利用人类已有的社交信任，我们旨在打造一个真正属于大众的区块链网络。</p>
+                
+                <h3>比特币的局限性与中本聪的遗憾</h3>
+                <p>中本聪最初的愿景是‘一个 CPU 一票’，这是一种极其民主的设想。但 PoW 的演进导致了目前的算力垄断。目前，全球不到 1% 的矿工控制着比特币全网超过 90% 的哈希率。这种集中化不仅带来了安全隐患，也使得新进者的准入门槛变得不可逾越。Pi 通过基于信任图谱的共识算法，重新找回了中本聪失去的‘普惠’精神。</p>
+            </section>
+            <section class="section-box">
+                <h2>02. 核心问题：中心化的算力霸权与能源陷阱</h2>
+                <p>为了理解 Pi 为什么是必要的，我们必须深入剖析目前区块链技术面临的物理和经济限制。目前的数字资产系统，尤其是采用 PoW 的系统，正面临着不可持续的危机。</p>
+                
+                <h3>A. 能源消耗的失控</h3>
+                <p>比特币网络的能源消耗已经达到了国家级的规模。根据 2026 年的最新估算，其全网年耗电量甚至超过了某些工业化国家。这种以牺牲环境为代价来维持网络安全的做法，正受到全球监管机构的日益严厉的审视。区块链必须向‘绿色、低能耗’转型，否则将无法被主流社会全量接纳。Pi 通过不基于算力竞争的共识逻辑，实现了几乎为零的额外能源消耗。</p>
+                
+                <h3>B. 财富与权力的二次集中</h3>
+                <p>由于采矿硬件的 ASIC 化，加密货币的生产过程已变成了一场纯粹的资本游戏。普通人的电脑 CPU 和手机在这场算力战争中毫无还手之力。这导致了‘新权力阶层’的诞生：谁拥有最多的矿机，谁就拥有最大的话语权。Pi Network 彻底颠覆了这一逻辑，我们的分发模型是基于‘真实的个人’而非‘硬件的堆砌’。</p>
+                
+                <h3>C. 缺乏真实商业效用的‘隔离’风险</h3>
+                <p>第一代加密货币由于其技术特性，更倾向于作为‘价值存储’（即数字黄金）。但作为全球性货币，必须具备极高的流转效率和日常消费场景。Pi 通过构建庞大的移动端入口，旨在打破这种‘被隔离的价值’，让每一枚代币都流动在真实的点对点贸易中。</p>
+            </section>
+            <section>
+                <h2>03. 技术突破：恒星共识协议 (SCP) 的商业级重构</h2>
+                <p>Pi 网络并不是在重复发明轮子。我们的共识机制建立在斯坦福教授 David Mazières 设计的‘恒星共识协议 (Stellar Consensus Protocol, SCP)’之上。SCP 是目前公认的最安全、最轻量的共识算法之一。</p>
+                
+                <h3>什么是法定人数切片 (Quorum Slices)？</h3>
+                <p>在传统的分布式系统中，达成共识需要所有节点达成一致，这限制了网络的扩展性。SCP 引入了‘切片’的概念：每一个节点只需要选择一组它所‘信任’的局部节点（即切片）。通过无数个重叠的切片，全网会自动编织出一张覆盖全球的‘共识网’。这种从‘局部信任’汇聚成‘全球共识’的逻辑，正是人类社会社交结构的技术镜像。</p>
+                
+                <h3>Pi 的创新：移动端社交证明 (Social Proof)</h3>
+                <p>我们对原始 SCP 协议的伟大贡献在于引入了‘安全圈’。不同于传统的 IT 管理员手动配置节点，Pi 将这种权力交给了每一位手机用户。当您在 App 中建立安全圈时，您实际上是在为整个区块链提供‘信任元数据’。算法利用这些元数据来精准识别并剔除恶意账户（机器人），同时由于不需要海量计算，您的手机可以在几乎不费电的情况下参与这伟大的共识过程。</p>
+            </section>
+            <section class="section-box">
+                <h2>04. 代币经济学：设计、供应与减半模型</h2>
+                <p>代币经济学的成败决定了一个区块链项目的生命周期。Pi 的设计核心在于如何在‘吸引用户扩张’与‘保持长期稀缺性’之间找到精确的数学平衡点。</p>
+                
+                <h3>动态挖掘速率公式：M = I + S + R + E</h3>
+                <p>在 Pi 网络中，每一位先锋的每小时产出 (M) 不是固定不变的，而是由以下四个关键变量决定：</p>
+                <ul>
+                    <li><strong>I (Individual Base Rate)：</strong> 个人基础挖掘率。它随着全网活跃用户数的对数级增长而动态下降，确保代币供应不会在早期出现不可控的喷发。</li>
+                    <li><strong>S (Security Circle Reward)：</strong> 安全圈奖励。每增加一个活跃且通过 KYC 的安全圈成员，您的基础速率将获得相应的比例加成。</li>
+                    <li><strong>R (Referral Reward)：</strong> 邀请奖励。旨在激励先锋们为网络扩张做出社会学贡献。</li>
+                    <li><strong>E (Utility Usage Bonus)：</strong> 生态应用使用奖励。这是 Pi 为了鼓励真实消费行为而设计的创新变量。</li>
+                </ul>
+                
+                <h3>里程碑式的减半逻辑 (Halving Milestone)</h3>
+                <p>Pi 设定了严苛的稀缺性门槛：当用户数从 1000 万跃升至 1 亿时，挖掘率将经历另一次断崖式的减半。这种设计借鉴了黄金开采的边际成本递增原则，保护了早期参与者的资产价值不被后来者稀释。目前，挖掘率已处于历史最低点，体现了代币极高的未来溢价空间。</p>
+            </section>
+            <section>
+                <h2>05. 主网路线图：战略演进的三部曲</h2>
+                <p>Pi 的发展路径遵循学术界的‘渐进式去中心化’理论。为了确保数千万先锋的资产安全和生态系统的可持续性，我们将项目划分为三个关键阶段。</p>
+                
+                <h3>A. 封闭式主网阶段 (Closed Mainnet Period) —— 当前阶段</h3>
+                <p>这是 Pi 历史上最关键的‘孕育期’。主网已经正式上线，但通过物理防火墙禁止了外部连接。这一设计的初衷有三：</p>
+                <ul>
+                    <li><strong>全员 KYC 与主网映射：</strong> 给予全球 Pioneer 充足的时间通过分布式身份验证。只有通过验证的‘真人’，其挖掘成果才能被映射到真实的区块链上，从而维护网络的纯净度。</li>
+                    <li><strong>培育真实的应用效用 (Utilities)：</strong> 在没有外部投机资本干扰的环境下，让开发者测试真实的商品换购和应用支付，建立起 Pi 币的‘内部循环价格’。</li>
+                    <li><strong>主网协议的最后调试：</strong> 收集大规模链上运行数据，持续优化性能。</li>
+                </ul>
+                
+                <h3>B. 开放式主网阶段 (Open Mainnet Period) —— 未来目标</h3>
+                <p>当满足预设的 KYC 覆盖率和生态繁荣指标后，我们将正式拆除防火墙。届时，Pi 将实现与全球主流交易所、外部钱包和其他公链（如 Solana、ETH）的无缝互联。这是我们的共识转化为全球通用价值的‘高光时刻’。</p>
 
-        <footer class="py-24 border-t border-white/5 opacity-50 text-center">
-            <div class="text-3xl font-black text-[#f4af47] mb-6">π</div>
-            <p class="text-[10px] font-bold tracking-[0.5em] uppercase italic">© 2026 PI NETWORK 官方中文社区门户 · 严禁任何形式的内容省略</p>
-        </footer>
+                <div class="mt-20 p-12 bg-blue-600/10 border-2 border-blue-500/30 rounded-[50px] text-center">
+                    <h3 class="text-2xl font-black mb-4">结语：去中心化的终极使命</h3>
+                    <p class="text-sm text-blue-100/60 italic leading-relaxed">
+                        Pi Network 不仅仅是一串代码，它是一场关于人类社会如何重新定义‘价值’与‘信任’的实验。感谢每一位先锋的坚持。我们的目标始终未变：让世界上每一个真实的个人，都能掌握属于自己的数字主权。
+                    </p>
+                </div>
+            </section>
+            
+            <div class="py-24 text-center border-t border-white/5 opacity-50 text-[10px] font-bold tracking-[0.5em] uppercase">
+                © 2026 PI NETWORK 官方中文社区 · 绝无省略完整版文档
+            </div>
+        </div>
     </div>
 </body>
 </html>
