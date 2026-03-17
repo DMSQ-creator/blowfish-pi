@@ -3,72 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>项目路线图 | Pi Network 中文网</title>
+    <title>项目路线图 | Pi Network 派币中文网</title>
+    <link rel="icon" type="image/png" href="https://minepi.com/wp-content/uploads/2022/06/cropped-pi1-32x32.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0f021a; color: white; line-height: 1.8; font-family: sans-serif; }
+        body { background-color: #0f021a; color: white; line-height: 2; font-family: sans-serif; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .timeline-item { position: relative; padding-left: 4rem; padding-bottom: 5rem; border-left: 2px solid rgba(255,255,255,0.1); }
-        .dot { position: absolute; left: -0.65rem; top: 0; width: 1.2rem; height: 1.2rem; background: #f4af47; border-radius: 50%; box-shadow: 0 0 20px rgba(244,175,71,0.5); }
-        .phase-badge { background: #f4af47; color: #0f021a; font-weight: 900; padding: 0.2rem 0.8rem; border-radius: 6px; font-size: 0.75rem; text-transform: uppercase; }
-        h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; color: white; }
-        p { color: #94a3b8; font-size: 1.05rem; }
+        .content-wrap { max-width: 900px; margin: 0 auto; padding: 100px 24px; }
+        h2 { font-size: 2.5rem; font-weight: 900; margin: 4rem 0 2rem; color: #f4af47; }
+        h3 { font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1rem; color: white; border-left: 4px solid #f4af47; padding-left: 1rem; }
+        p { color: #cbd5e1; margin-bottom: 1.5rem; font-size: 1.1rem; text-align: justify; }
+        .milestone { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 3rem; margin-top: 2rem; }
     </style>
 </head>
-<body class="min-h-screen">
-    <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-gray-400 hover:text-white font-bold tracking-tighter uppercase">← 首页</a>
-            <span class="text-[#f4af47] font-black uppercase">Project Roadmap</span>
-        </div>
+<body>
+    <nav class="p-6 border-b border-white/5 bg-[#0f021a]/90 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center"><a href="index.html" class="font-bold">← 返回首页</a><span class="text-[#f4af47] font-black uppercase">Official Roadmap</span></div>
     </nav>
+    <div class="content-wrap">
+        <h1 class="text-6xl md:text-8xl font-black mb-16 tracking-tighter">发展路线图</h1>
+        <p class="text-xl text-gray-400 mb-20 font-medium">Pi Network 的愿景是建立世界上最具包容性的 peer-to-peer 生态系统，由全球使用最广泛的加密货币 Pi 驱动。为了实现这一愿景，我们将项目划分为三个主要阶段，每个阶段都承载着独特的技术和社区使命。</p>
 
-    <main class="max-w-4xl mx-auto py-24 px-6">
-        <h1 class="text-6xl md:text-8xl font-black mb-24 tracking-tighter">发展路线图</h1>
-
-        <div class="timeline">
-            <!-- Phase 1 -->
-            <div class="timeline-item">
-                <div class="dot"></div>
-                <div class="flex items-center gap-4 mb-4">
-                    <span class="phase-badge">Phase 1</span>
-                    <span class="text-gray-500 font-bold tracking-widest text-sm">2019年3月14日 - 启动</span>
-                </div>
-                <h2>测试、分发与设计阶段</h2>
-                <p>这是 Pi Network 的萌芽期。我们在此阶段成功分发了初始代币，并在全球范围内测试了移动挖掘的稳定性。在此期间，社区规模迅速突破了 100 万活跃用户，确立了以社交图谱为基础的挖掘模型。</p>
+        <section id="phase1">
+            <h2>第一阶段：设计、分发、信托图引导</h2>
+            <div class="milestone">
+                <h3>起步与愿景确认 (2019)</h3>
+                <p>在这一阶段，Pi 服务器作为模拟分散系统行为的中心运行。由于主网尚未启动，用户在手机上的操作实际上是在与中心化服务器交互，以累积未来的主网信用。这一阶段的核心是验证我们的“移动采矿”理念——即通过社交信任而非昂贵的硬件来安全地分发代币。</p>
+                <p>我们在这个时期成功实现了全球范围内的爆发式增长，数百万 Pioneers 加入了网络，并建立了庞大的安全圈。所有的挖掘数据都被详细记录，以便在主网启动后进行最终的映射转换。这是 Pi 历史上最重要的“共识积累”时期。</p>
             </div>
+        </section>
 
-            <!-- Phase 2 -->
-            <div class="timeline-item">
-                <div class="dot"></div>
-                <div class="flex items-center gap-4 mb-4">
-                    <span class="phase-badge">Phase 2</span>
-                    <span class="text-gray-500 font-bold tracking-widest text-sm">2020年 - 测试网</span>
-                </div>
-                <h2>测试网与开发者生态</h2>
-                <p>随着 Testnet 的上线，我们开启了全球节点测试。数万名 Pioneer 运行电脑节点，共同维护账本的完整性。同时，Pi 浏览器和首个开发者 SDK 发布，开启了基于 Pi 币的 DApp 开发热潮。</p>
+        <section id="phase2">
+            <h2>第二阶段：测试网 (Testnet)</h2>
+            <div class="milestone">
+                <h3>节点、区块链与生态系统构建 (2020)</h3>
+                <p>2020 年，Pi 迈出了去中心化的关键一步——上线测试网。我们在全球范围内分发了节点软件（Pi Node），让数万名拥有电脑的先锋能够参与到区块链的共识验证中。这个阶段的任务不仅是测试 SCP 算法在真实网络环境下的稳定性，更是为了让开发者能够开始在 Pi 浏览器上构建和测试应用（dApps）。</p>
+                <p>测试网不仅仅是技术实验，它是 Pi 经济价值的试炼场。通过测试网，我们确立了 Pi 钱包的安全性、Pi 浏览器的交互规范以及 SDK 的易用性。数百万次的测试交易为最终的主网启动提供了宝贵的数据支撑。</p>
             </div>
+        </section>
 
-            <!-- Phase 3 -->
-            <div class="timeline-item border-l-4 border-[#f4af47]">
-                <div class="dot scale-150"></div>
-                <div class="flex items-center gap-4 mb-4">
-                    <span class="phase-badge">Phase 3</span>
-                    <span class="bg-[#f4af47]/20 text-[#f4af47] px-3 py-1 rounded-full text-xs font-black animate-pulse">正在进行中</span>
-                </div>
-                <h2 class="text-pi-gold">主网阶段 (Mainnet)</h2>
-                <div class="space-y-10 mt-10">
-                    <div class="bg-white/5 p-8 rounded-3xl border border-white/10">
-                        <h3 class="text-xl font-bold text-white mb-3">A. 封闭式网络阶段 (Closed Network)</h3>
-                        <p class="text-sm">这是我们目前所处的关键阶段。主网已经启动，但由于防火墙的存在，禁止外部区块链的连接。这一阶段的目标是：1. 迁移数千万用户的余额；2. 构建真实的应用实用性；3. 筛选并剔除机器人干扰。</p>
-                    </div>
-                    <div class="p-8 border border-white/5 rounded-3xl">
-                        <h3 class="text-xl font-bold text-gray-500 mb-3">B. 开放式网络阶段 (Open Network)</h3>
-                        <p class="text-sm">最终的目标。我们将移除防火墙，允许 Pi 币与外部加密货币、交易所和钱包自由交换。这一阶段的启动将取决于社区是否满足既定的 KYC 进度和生态繁荣目标。</p>
-                    </div>
-                </div>
+        <section id="phase3">
+            <h2>第三阶段：主网 (Mainnet)</h2>
+            <div class="milestone">
+                <h3>A. 封闭网络阶段 (Closed Network)</h3>
+                <p>这是我们目前所处的关键历史时刻。主网于 2021 年底正式启动，但通过特殊的防火墙保护，暂时切断了与外部区块链的连接。这一设计的精妙之处在于：它为我们的生态系统提供了一个“育婴室”。</p>
+                <p>在封闭期间，我们集中精力完成两件史无前例的大事：</p>
+                <ul>
+                    <li><strong>大规模身份验证 (KYC)：</strong> 利用全球分布式验证系统，确保每一个迁移到主网的账户都对应一个真实的独立人类。这是为了彻底杜绝机器刷票，维护每一位 Pioneer 的利益。</li>
+                    <li><strong>主网余额迁移：</strong> 将数千万先锋累积的余额，分批次安全地映射到真正的区块链账本上。目前的迁移速度已经通过算法优化提升了 300% 以上。</li>
+                    <li><strong>应用实用性培育：</strong> 鼓励开发者在封闭环境下开发真正的“以物换物”应用，让 Pi 币在进入交易所之前就已经具备了真实的商业消费能力。</li>
+                </ul>
+                
+                <h3 class="mt-12">B. 开放网络阶段 (Open Network)</h3>
+                <p>这是 Pi 愿景的终极实现。我们将移除防火墙，让 Pi 区块链与外部世界彻底互联。届时，Pi 将能够与任何其他区块链通信，并在全球交易所进行自由交易。这一阶段的开启取决于我们社区在 KYC 覆盖率和生态系统成熟度上是否达到了既定目标。</p>
             </div>
-        </div>
-    </main>
+        </section>
 </body>
 </html>
