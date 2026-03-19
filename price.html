@@ -81,8 +81,8 @@
   <main class="pt-28 pb-20 px-6">
     <section class="container mx-auto max-w-7xl">
       <div class="glass rounded-[36px] p-8 md:p-12 shadow-[0_0_120px_rgba(244,175,71,0.12)]">
-        <div class="flex flex-col lg:flex-row gap-10 items-start">
-          <div class="flex-1">
+        <div class="flex flex-col gap-10">
+          <div class="w-full">
             <h1 class="text-5xl md:text-6xl font-black tracking-tighter leading-[1.05]">派币 <span class="text-pi-gold italic">实时价格</span></h1>
             <p class="text-gray-300 mt-6 max-w-2xl">自动拉取交易所公开行情（无需翻墙），展示最新价、24H涨跌、成交量，并提供价格曲线。</p>
 
@@ -115,13 +115,13 @@
             </div>
           </div>
 
-          <div class="w-full lg:w-[520px]">
+          <div class="w-full">
             <div class="metric rounded-[28px] p-6">
               <div class="flex items-center justify-between gap-4 mb-4">
                 <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">PI/USDT</div>
                 <a class="text-[#f4af47] text-xs font-black hover:underline whitespace-nowrap" href="blog.html">去看资讯 →</a>
               </div>
-              <canvas id="chart" height="380"></canvas>
+              <canvas id="chart" height="520"></canvas>
               <div class="mt-4 text-[10px] text-white/40 font-bold">声明：行情来自公开接口，仅供参考，不构成投资建议。</div>
             </div>
           </div>
@@ -201,7 +201,7 @@
       if (chart) chart.destroy();
       // ensure the container height is stable
       const parent = ctx.parentElement;
-      if (parent) parent.style.height = '360px';
+      if (parent) parent.style.height = '520px';
 
       chart = new Chart(ctx, {
         type: 'line',
