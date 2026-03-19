@@ -83,13 +83,11 @@
       <div class="glass rounded-[36px] p-8 md:p-12 shadow-[0_0_120px_rgba(244,175,71,0.12)]">
         <div class="flex flex-col lg:flex-row gap-10 items-start">
           <div class="flex-1">
-            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-orange-500/10 border border-[#f4af47]/20 text-[#f4af47] text-[10px] font-black uppercase tracking-widest mb-8">
-              Real-time · No VPN · Data by OKX
-            </div>
             <h1 class="text-5xl md:text-6xl font-black tracking-tighter leading-[1.05]">派币 <span class="text-pi-gold italic">实时价格</span></h1>
-            <p class="text-gray-300 mt-6 max-w-2xl">大气版实时行情页：自动拉取交易所公开行情（无需翻墙），展示最新价、24H涨跌、成交量，并提供可缩放的价格曲线。</p>
+            <p class="text-gray-300 mt-6 max-w-2xl">自动拉取交易所公开行情（无需翻墙），展示最新价、24H涨跌、成交量，并提供价格曲线。</p>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+              <!-- 为避免小屏溢出，数值允许换行/截断 -->
               <div class="metric rounded-2xl p-5">
                 <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">最新价 (USDT)</div>
                 <div id="m-last" class="text-2xl font-black mt-2 skeleton rounded-lg h-8"></div>
@@ -99,12 +97,12 @@
                 <div id="m-change" class="text-2xl font-black mt-2 skeleton rounded-lg h-8"></div>
               </div>
               <div class="metric rounded-2xl p-5">
-                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">24H 最高/最低</div>
-                <div id="m-hl" class="text-base font-black mt-3 skeleton rounded-lg h-7"></div>
+                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">24H 最高 / 最低</div>
+                <div id="m-hl" class="text-base font-black mt-3 skeleton rounded-lg h-7 break-words"></div>
               </div>
               <div class="metric rounded-2xl p-5">
                 <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">24H 成交量 (PI)</div>
-                <div id="m-vol" class="text-base font-black mt-3 skeleton rounded-lg h-7"></div>
+                <div id="m-vol" class="text-base font-black mt-3 skeleton rounded-lg h-7 break-words"></div>
               </div>
             </div>
 
@@ -113,17 +111,17 @@
               <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="1H" data-limit="168">1小时</button>
               <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="4H" data-limit="180">4小时</button>
               <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="1D" data-limit="200">日线</button>
-              <span id="updated" class="text-xs text-white/50 font-bold ml-2"></span>
+              <span id="updated" class="text-xs text-white/50 font-bold ml-2 whitespace-nowrap"></span>
             </div>
           </div>
 
           <div class="w-full lg:w-[520px]">
             <div class="metric rounded-[28px] p-6">
-              <div class="flex items-center justify-between mb-4">
-                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">PI/USDT · Price Chart</div>
-                <a class="text-[#f4af47] text-xs font-black hover:underline" href="blog.html">去看资讯 →</a>
+              <div class="flex items-center justify-between gap-4 mb-4">
+                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">PI/USDT</div>
+                <a class="text-[#f4af47] text-xs font-black hover:underline whitespace-nowrap" href="blog.html">去看资讯 →</a>
               </div>
-              <canvas id="chart" height="320"></canvas>
+              <canvas id="chart" height="380"></canvas>
               <div class="mt-4 text-[10px] text-white/40 font-bold">声明：行情来自公开接口，仅供参考，不构成投资建议。</div>
             </div>
           </div>
