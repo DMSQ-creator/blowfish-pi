@@ -23,6 +23,8 @@
 
     .glass { background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
     .metric { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+    #mobile-menu { transition: transform 0.4s ease-in-out; transform: translateX(100%); }
+    #mobile-menu.open { transform: translateX(0); }
     .skeleton { background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.12), rgba(255,255,255,0.05)); background-size: 200% 100%; animation: shimmer 1.2s infinite; }
     @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
   </style>
@@ -74,9 +76,29 @@
       <div class="flex items-center gap-4">
         <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg></a>
         <a href="reg.html" class="hidden sm:block bg-[#f4af47] text-[#1e0a27] px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">Code: nbjh</a>
+        <button id="m-btn" class="lg:hidden p-1.5 text-[#f4af47] border border-[#f4af47]/20 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
       </div>
     </nav>
   </header>
+
+  <!-- 手机侧边栏 -->
+  <div id="mobile-menu" class="fixed inset-0 z-[1000] bg-[#1e0a27] lg:hidden flex flex-col p-10 overflow-y-auto">
+    <button id="m-close" class="absolute top-6 right-6 p-2 text-[#f4af47] font-black">CLOSE</button>
+    <div class="flex flex-col gap-6 mt-16 text-3xl font-black uppercase text-white">
+      <a href="index.html">首页</a>
+      <div class="h-px bg-white/5 w-full"></div>
+      <a href="price.html" class="text-[#f4af47]">派币实时价格</a>
+      <a href="technical-whitepaper.html">技术白皮书</a>
+      <a href="nodes.html">Pi 节点运行</a>
+      <a href="roadmap.html">发展路线图</a>
+      <a href="kyc.html">身份认证 (KYC)</a>
+      <a href="blog.html">官方最新动态</a>
+      <a href="faq.html">常见问题 (FAQ)</a>
+      <a href="about.html">关于我们</a>
+      <a href="reg.html" class="text-orange-400 underline underline-offset-8">注册下载教程</a>
+    </div>
+    <div class="mt-auto"><a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" class="block w-full bg-blue-600 text-white py-5 rounded-3xl font-black text-center text-xl mb-4">加入官方电报群</a><p class="text-center text-gray-500 text-xs uppercase tracking-widest font-bold">推荐邀请码: nbjh</p></div>
+  </div>
 
   <main class="pt-28 pb-20 px-4">
     <section class="container mx-auto max-w-[1600px]">
@@ -313,6 +335,17 @@
       const up = document.getElementById('updated');
       if (up) up.textContent = '加载失败：请稍后刷新。';
     });
+  </script>
+
+  <!-- 移动端菜单 JS -->
+  <script>
+    const btn = document.getElementById('m-btn');
+    const close = document.getElementById('m-close');
+    const menu = document.getElementById('mobile-menu');
+    if (btn && close && menu) {
+      btn.onclick = () => menu.classList.add('open');
+      close.onclick = () => menu.classList.remove('open');
+    }
   </script>
 
   <!-- 弹幕系统 -->
