@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>派币实时价格 | Pi Network 中文网</title>
+  <link rel="icon" type="image/png" href="https://minepi.com/wp-content/uploads/2022/06/cropped-pi1-32x32.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+    body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+    .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
+    .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu { background: #2d1b3d; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+    .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .dropdown-menu a:last-child { border-bottom: none; }
+    .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
+
+    .glass { background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+    .metric { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+    .skeleton { background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.12), rgba(255,255,255,0.05)); background-size: 200% 100%; animation: shimmer 1.2s infinite; }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+  </style>
+</head>
+<body class="hero-bg min-h-screen">
+
+  <!-- 顶部导航（与首页一致的结构） -->
+  <header class="fixed w-full z-[100] nav-blur border-b border-white/5">
+    <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
+        <img src="https://minepi.com/wp-content/uploads/2022/06/cropped-pi1-32x32.png" class="w-10 h-10" />
+        <span class="text-xl font-black tracking-tighter uppercase whitespace-nowrap">Pi Network 中文网</span>
+      </div>
+
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="price.html" class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase">派币价格</a>
+
+        <div class="dropdown relative group">
+          <div class="text-[11px] font-black tracking-widest text-gray-400 uppercase cursor-pointer hover:text-[#f4af47] flex items-center gap-1">Pi 区块链 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+          <div class="dropdown-menu absolute hidden pt-4 w-48 left-0">
+            <a href="nodes.html">Pi 节点 (Node)</a>
+            <a href="blockchain.html">区块浏览器</a>
+            <a href="technical-whitepaper.html">技术白皮书</a>
+            <a href="roadmap.html">项目路线图</a>
+          </div>
+        </div>
+
+        <div class="dropdown relative group">
+          <div class="text-[11px] font-black tracking-widest text-gray-400 uppercase cursor-pointer hover:text-[#f4af47] flex items-center gap-1">生态系统 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+          <div class="dropdown-menu absolute hidden pt-4 w-56 left-0">
+            <a href="developers.html">开发者中心</a>
+            <a href="browser.html">Pi 浏览器下载</a>
+            <a href="kyc.html">KYC 身份认证</a>
+          </div>
+        </div>
+
+        <a href="about.html" class="text-[11px] font-black tracking-widest text-gray-400 uppercase hover:text-[#f4af47]">关于我们</a>
+
+        <div class="dropdown relative group">
+          <div class="text-[11px] font-black tracking-widest text-gray-400 uppercase cursor-pointer hover:text-[#f4af47] flex items-center gap-1">社区资讯 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+          <div class="dropdown-menu absolute hidden pt-4 w-52 left-0">
+            <a href="blog.html">官方新闻动态</a>
+            <a href="reg.html">保姆级注册教程</a>
+            <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank">Telegram 交流群</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg></a>
+        <a href="reg.html" class="hidden sm:block bg-[#f4af47] text-[#1e0a27] px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">Code: nbjh</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-28 pb-20 px-6">
+    <section class="container mx-auto max-w-7xl">
+      <div class="glass rounded-[36px] p-8 md:p-12 shadow-[0_0_120px_rgba(244,175,71,0.12)]">
+        <div class="flex flex-col lg:flex-row gap-10 items-start">
+          <div class="flex-1">
+            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-orange-500/10 border border-[#f4af47]/20 text-[#f4af47] text-[10px] font-black uppercase tracking-widest mb-8">
+              Real-time · No VPN · Data by OKX
+            </div>
+            <h1 class="text-5xl md:text-6xl font-black tracking-tighter leading-[1.05]">派币 <span class="text-pi-gold italic">实时价格</span></h1>
+            <p class="text-gray-300 mt-6 max-w-2xl">大气版实时行情页：自动拉取交易所公开行情（无需翻墙），展示最新价、24H涨跌、成交量，并提供可缩放的价格曲线。</p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+              <div class="metric rounded-2xl p-5">
+                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">最新价 (USDT)</div>
+                <div id="m-last" class="text-2xl font-black mt-2 skeleton rounded-lg h-8"></div>
+              </div>
+              <div class="metric rounded-2xl p-5">
+                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">24H 涨跌</div>
+                <div id="m-change" class="text-2xl font-black mt-2 skeleton rounded-lg h-8"></div>
+              </div>
+              <div class="metric rounded-2xl p-5">
+                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">24H 最高/最低</div>
+                <div id="m-hl" class="text-base font-black mt-3 skeleton rounded-lg h-7"></div>
+              </div>
+              <div class="metric rounded-2xl p-5">
+                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">24H 成交量 (PI)</div>
+                <div id="m-vol" class="text-base font-black mt-3 skeleton rounded-lg h-7"></div>
+              </div>
+            </div>
+
+            <div class="mt-10 flex flex-wrap items-center gap-3">
+              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="5m" data-limit="120">5分钟</button>
+              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="1H" data-limit="168">1小时</button>
+              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="4H" data-limit="180">4小时</button>
+              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="1D" data-limit="200">日线</button>
+              <span id="updated" class="text-xs text-white/50 font-bold ml-2"></span>
+            </div>
+          </div>
+
+          <div class="w-full lg:w-[520px]">
+            <div class="metric rounded-[28px] p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">PI/USDT · Price Chart</div>
+                <a class="text-[#f4af47] text-xs font-black hover:underline" href="blog.html">去看资讯 →</a>
+              </div>
+              <canvas id="chart" height="320"></canvas>
+              <div class="mt-4 text-[10px] text-white/40 font-bold">声明：行情来自公开接口，仅供参考，不构成投资建议。</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const OKX = {
+      ticker: (instId) => `https://www.okx.com/api/v5/market/ticker?instId=${encodeURIComponent(instId)}`,
+      candles: (instId, bar, limit) => `https://www.okx.com/api/v5/market/candles?instId=${encodeURIComponent(instId)}&bar=${encodeURIComponent(bar)}&limit=${encodeURIComponent(limit)}`
+    };
+
+    const instId = 'PI-USDT';
+
+    function fmt(n, digits=4){
+      const x = Number(n);
+      if (!Number.isFinite(x)) return '-';
+      return x.toFixed(digits);
+    }
+
+    function pct(n, digits=2){
+      const x = Number(n);
+      if (!Number.isFinite(x)) return '-';
+      const s = (x >= 0 ? '+' : '') + x.toFixed(digits) + '%';
+      return s;
+    }
+
+    function setBox(id, text, cls){
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.remove('skeleton','h-8','h-7','rounded-lg');
+      el.textContent = text;
+      el.className = el.className.replace(/text-\w+-\d+/g,'');
+      if (cls) el.classList.add(...cls.split(' '));
+    }
+
+    async function loadTicker(){
+      const res = await fetch(OKX.ticker(instId), { cache: 'no-store' });
+      const j = await res.json();
+      const d = j?.data?.[0];
+      if (!d) throw new Error('ticker empty');
+
+      const last = Number(d.last);
+      const open = Number(d.open24h);
+      const changePct = open ? ((last - open) / open) * 100 : 0;
+
+      setBox('m-last', fmt(last, 4), '');
+      setBox('m-change', pct(changePct, 2), changePct >= 0 ? 'text-green-400' : 'text-red-400');
+      setBox('m-hl', `${fmt(d.high24h,4)} / ${fmt(d.low24h,4)}`, '');
+      setBox('m-vol', `${Number(d.vol24h).toLocaleString()}`, '');
+
+      const up = document.getElementById('updated');
+      if (up) up.textContent = `更新：${new Date().toLocaleString()}`;
+    }
+
+    let chart;
+    async function loadCandles(bar='1H', limit=168){
+      const res = await fetch(OKX.candles(instId, bar, limit), { cache: 'no-store' });
+      const j = await res.json();
+      const data = (j?.data || []).map(row => ({
+        t: new Date(Number(row[0])),
+        o: Number(row[1]),
+        h: Number(row[2]),
+        l: Number(row[3]),
+        c: Number(row[4])
+      })).reverse();
+
+      const labels = data.map(x => x.t);
+      const closes = data.map(x => x.c);
+
+      const ctx = document.getElementById('chart');
+      if (!ctx) return;
+
+      if (chart) chart.destroy();
+      chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            label: 'PI/USDT',
+            data: closes,
+            borderColor: '#f4af47',
+            backgroundColor: 'rgba(244,175,71,0.10)',
+            fill: true,
+            tension: 0.22,
+            pointRadius: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              mode: 'index',
+              intersect: false,
+              callbacks: {
+                label: (ctx) => `  ${ctx.parsed.y?.toFixed(4)}`
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: 'rgba(255,255,255,0.55)', maxTicksLimit: 6 },
+              grid: { color: 'rgba(255,255,255,0.06)' }
+            },
+            y: {
+              ticks: { color: 'rgba(255,255,255,0.55)' },
+              grid: { color: 'rgba(255,255,255,0.06)' }
+            }
+          }
+        }
+      });
+    }
+
+    function setActiveRange(btn){
+      document.querySelectorAll('.range').forEach(b => b.classList.remove('border-[#f4af47]','bg-[#f4af47]/15'));
+      btn.classList.add('border-[#f4af47]','bg-[#f4af47]/15');
+    }
+
+    async function refreshAll(bar='1H', limit=168){
+      await Promise.all([loadTicker(), loadCandles(bar, limit)]);
+    }
+
+    // init
+    document.querySelectorAll('.range').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        setActiveRange(btn);
+        await refreshAll(btn.dataset.bar, Number(btn.dataset.limit || 168));
+      });
+    });
+
+    (async () => {
+      const first = document.querySelector('.range[data-bar="1H"]') || document.querySelector('.range');
+      if (first) setActiveRange(first);
+      await refreshAll('1H', 168);
+      // refresh ticker periodically
+      setInterval(() => loadTicker().catch(()=>{}), 15000);
+    })().catch(err => {
+      console.error(err);
+      const up = document.getElementById('updated');
+      if (up) up.textContent = '加载失败：请稍后刷新。';
+    });
+  </script>
+</body>
+</html>
