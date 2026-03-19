@@ -6,7 +6,9 @@
   <title>派币实时价格 | Pi Network 中文网</title>
   <link rel="icon" type="image/png" href="https://minepi.com/wp-content/uploads/2022/06/cropped-pi1-32x32.png" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- Chart.js CDN: use cdnjs (often more stable), with jsDelivr as backup -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha512-vVqJtBQUlO1XkU+PjcsnYv51NV7C7I8K+eJqR5i0J3JtY1xj5Z1mXGx6h0+N6qvPqvH3b4o9wQz3o3xw0Z3o1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
     body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
@@ -199,6 +201,10 @@
       if (!ctx) return;
 
       if (chart) chart.destroy();
+      // ensure the container height is stable
+      const parent = ctx.parentElement;
+      if (parent) parent.style.height = '360px';
+
       chart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -258,6 +264,13 @@
     });
 
     (async () => {
+      // If Chart.js fails to load (CDN blocked/slow), show a friendly message instead of endless blank space.
+      if (typeof window.Chart === 'undefined') {
+        const up = document.getElementById('updated');
+        if (up) up.textContent = '图表组件加载失败（CDN 不可用），请稍后刷新或更换网络。';
+        return;
+      }
+
       const first = document.querySelector('.range[data-bar="1H"]') || document.querySelector('.range');
       if (first) setActiveRange(first);
       await refreshAll('1H', 168);
