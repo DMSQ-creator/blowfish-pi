@@ -21,6 +21,10 @@
         #mobile-menu.open { transform: translateX(0); }
         .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* 首页资讯卡片（复用 blog.html 的卡片样式，便于自动同步） */
+        .blog-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 2.5rem; transition: all 0.3s; cursor: pointer; }
+        .blog-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
     </style>
 </head>
 <body class="hero-bg min-h-screen">
@@ -124,6 +128,26 @@
         </div>
     </section>
 
+    <!-- 最新资讯（自动从 blog.html 取最新 6 条） -->
+    <section class="py-28 px-6 bg-black/30 border-t border-white/5">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex items-end justify-between gap-6 mb-12">
+                <div>
+                    <div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47] mb-3">Latest</div>
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tighter">最新资讯</h2>
+                    <p class="text-gray-400 mt-3">首页自动展示资讯中心最新文章，文章更新后这里也会自动更新。</p>
+                </div>
+                <a href="blog.html" class="hidden sm:inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">查看全部 →</a>
+            </div>
+
+            <div id="home-blog-grid" class="grid gap-8"></div>
+
+            <div class="mt-10 sm:hidden">
+                <a href="blog.html" class="inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs shadow-xl">查看全部 →</a>
+            </div>
+        </div>
+    </section>
+
     <footer class="py-24 bg-[#0f021a] text-center border-t border-white/5">
         <img src="https://minepi.com/wp-content/uploads/2022/06/cropped-pi1-32x32.png" class="w-12 h-12 mb-8 mx-auto grayscale brightness-200">
         <p class="text-[10px] font-bold tracking-[0.6em] text-gray-600 uppercase mb-8">© 2026 PI NETWORK 官方中文社区门户网 · 推荐邀请码: nbjh</p>
@@ -142,6 +166,41 @@
         const menu = document.getElementById('mobile-menu');
         btn.onclick = () => menu.classList.add('open');
         close.onclick = () => menu.classList.remove('open');
+
+        // 首页自动展示资讯中心最新文章（从 blog.html 解析前 6 条）
+        (async () => {
+            try {
+                const res = await fetch('blog.html', { cache: 'no-store' });
+                const html = await res.text();
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                const cards = Array.from(doc.querySelectorAll('#blog-grid > a.blog-card')).slice(0, 6);
+                const grid = document.getElementById('home-blog-grid');
+                if (!grid) return;
+
+                if (cards.length === 0) {
+                    grid.innerHTML = '<div class="text-gray-400">暂无文章，稍后再试。</div>';
+                    return;
+                }
+
+                grid.innerHTML = cards.map(a => {
+                    const href = a.getAttribute('href') || 'blog.html';
+                    const meta = a.querySelector('div')?.outerHTML || '';
+                    const title = a.querySelector('h2')?.outerHTML || '';
+                    const desc = a.querySelector('p')?.outerHTML || '';
+                    return `
+                        <a href="${href}" class="blog-card block">
+                            ${meta}
+                            ${title}
+                            ${desc}
+                        </a>
+                    `;
+                }).join('');
+            } catch (e) {
+                const grid = document.getElementById('home-blog-grid');
+                if (grid) grid.innerHTML = '<div class="text-gray-400">加载文章列表失败，请点击进入资讯中心查看。</div>';
+                console.error(e);
+            }
+        })();
     </script>
 </body>
 </html>
