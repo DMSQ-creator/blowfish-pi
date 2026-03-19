@@ -67,6 +67,91 @@
                 <p class="text-gray-500 mb-6 text-sm">总结过去一年的主网迁移成就、生态爆发与本地商务普及。</p>
             </a>
         </div>
+
+        <!-- Pagination (client-side, 6 posts per page) -->
+        <div id="pager" class="flex items-center justify-center gap-3 mt-14"></div>
     </main>
+
+    <script>
+        // Client-side pagination for static blog list
+        (() => {
+            const PAGE_SIZE = 6;
+            const grid = document.getElementById('blog-grid');
+            const pager = document.getElementById('pager');
+            if (!grid || !pager) return;
+
+            const cards = Array.from(grid.querySelectorAll('a.blog-card'));
+            const total = cards.length;
+            const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
+            const url = new URL(window.location.href);
+            let page = parseInt(url.searchParams.get('page') || '1', 10);
+            if (!Number.isFinite(page) || page < 1) page = 1;
+            if (page > totalPages) page = totalPages;
+
+            // show slice
+            const start = (page - 1) * PAGE_SIZE;
+            const end = start + PAGE_SIZE;
+            cards.forEach((el, i) => {
+                el.style.display = (i >= start && i < end) ? '' : 'none';
+            });
+
+            function pageLink(p) {
+                const u = new URL(window.location.href);
+                if (p <= 1) u.searchParams.delete('page');
+                else u.searchParams.set('page', String(p));
+                // Keep it relative-ish
+                return u.pathname + (u.search ? u.search : '');
+            }
+
+            function btn(label, href, disabled = false, active = false) {
+                const a = document.createElement('a');
+                a.textContent = label;
+                a.href = href || '#';
+                a.className = [
+                    'px-4 py-2 rounded-full font-black text-xs transition-all border',
+                    active ? 'bg-[#f4af47] text-[#1e0a27] border-[#f4af47]' : 'bg-white/5 text-white border-white/10 hover:border-[#f4af47]/70',
+                    disabled ? 'opacity-40 pointer-events-none' : ''
+                ].join(' ');
+                return a;
+            }
+
+            // Prev
+            pager.appendChild(btn('← 上一页', pageLink(page - 1), page <= 1));
+
+            // Page numbers (compact)
+            const windowSize = 5;
+            let left = Math.max(1, page - Math.floor(windowSize / 2));
+            let right = Math.min(totalPages, left + windowSize - 1);
+            left = Math.max(1, right - windowSize + 1);
+
+            if (left > 1) {
+                pager.appendChild(btn('1', pageLink(1), false, page === 1));
+                if (left > 2) {
+                    const span = document.createElement('span');
+                    span.className = 'text-white/40 text-xs font-black px-1';
+                    span.textContent = '...';
+                    pager.appendChild(span);
+                }
+            }
+
+            for (let p = left; p <= right; p++) {
+                pager.appendChild(btn(String(p), pageLink(p), false, p === page));
+            }
+
+            if (right < totalPages) {
+                if (right < totalPages - 1) {
+                    const span = document.createElement('span');
+                    span.className = 'text-white/40 text-xs font-black px-1';
+                    span.textContent = '...';
+                    pager.appendChild(span);
+                }
+                pager.appendChild(btn(String(totalPages), pageLink(totalPages), false, page === totalPages));
+            }
+
+            // Next
+            pager.appendChild(btn('下一页 →', pageLink(page + 1), page >= totalPages));
+        })();
+    </script>
 </body>
 </html>
