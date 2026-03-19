@@ -78,9 +78,9 @@
     </nav>
   </header>
 
-  <main class="pt-28 pb-20 px-6">
-    <section class="container mx-auto max-w-7xl">
-      <div class="glass rounded-[36px] p-8 md:p-12 shadow-[0_0_120px_rgba(244,175,71,0.12)]">
+  <main class="pt-28 pb-20 px-4">
+    <section class="container mx-auto max-w-[1600px]">
+      <div class="glass rounded-[36px] p-6 md:p-10 shadow-[0_0_120px_rgba(244,175,71,0.12)]">
         <div class="flex flex-col gap-10">
           <div class="w-full">
             <h1 class="text-5xl md:text-6xl font-black tracking-tighter leading-[1.05]">派币 <span class="text-pi-gold italic">实时价格</span></h1>
@@ -177,7 +177,11 @@
       setBox('m-vol', `${Number(d.vol24h).toLocaleString()}`, '');
 
       const up = document.getElementById('updated');
-      if (up) up.textContent = `更新：${new Date().toLocaleString()}`;
+      if (up) {
+        const now = new Date();
+        const pad = n => String(n).padStart(2,'0');
+        up.textContent = `更新：${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      }
     }
 
     let chart;
@@ -192,7 +196,15 @@
         c: Number(row[4])
       })).reverse();
 
-      const labels = data.map(x => x.t);
+      const labels = data.map(x => {
+        const d = x.t;
+        const pad = n => String(n).padStart(2,'0');
+        // short label depending on bar interval
+        if (['1D','1W','1M'].includes(bar)) {
+          return `${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+        }
+        return `${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+      });
       const closes = data.map(x => x.c);
 
       const ctx = document.getElementById('chart');
