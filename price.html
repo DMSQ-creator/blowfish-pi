@@ -418,17 +418,17 @@
           font-weight:700;
           text-shadow: 0 1px 4px rgba(0,0,0,0.7);
           top:${Math.floor(Math.random() * (stage.offsetHeight - 24))}px;
-          right:-400px;
+          left:100%;
           transition: none;
           pointer-events: none;
         `;
         stage.appendChild(el);
 
-        const w = el.offsetWidth + stage.offsetWidth + 20;
-        const duration = 8000 + Math.random() * 6000;
+        const w = el.offsetWidth + stage.offsetWidth;
+        const duration = Math.max(6000, w * 8);
         el.animate([
           { transform: 'translateX(0)' },
-          { transform: `translateX(-${w}px)` }
+          { transform: `translateX(-${w + 50}px)` }
         ], { duration, easing: 'linear', fill: 'forwards' });
 
         setTimeout(() => el.remove(), duration + 200);
