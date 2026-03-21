@@ -1,5 +1,11 @@
 [
   {
+    "id": "pi-launchpad",
+    "date": "March 19, 2026",
+    "title": "Pi Launchpad 已在测试网上线。",
+    "excerpt": "注：本篇博客原为2026年Pi Day公告的一部分，现已新增关于Launchpad设计与界面的高级别视频讲解。"
+  },
+  {
     "id": "migration-kyc-palm-print",
     "date": "January 30, 2026",
     "title": "KYC与主网迁移进展更新：更多先锋解限及全新认证方案探索",
