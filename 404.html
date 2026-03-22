@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 页面不存在 | Pi Network 中文网</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glow-box {
+            background: rgba(244,175,71,0.05);
+            border: 1px solid rgba(244,175,71,0.2);
+            box-shadow: 0 0 80px rgba(244,175,71,0.1);
+        }
+        .star { position: absolute; width: 2px; height: 2px; background: white; border-radius: 50%; opacity: 0.3; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        .float-anim { animation: float 6s ease-in-out infinite; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- 简约顶部导航 -->
+    <nav class="p-6 border-b border-white/5 bg-[#1a1220]/80 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 cursor-pointer">
+                <img src="/static/favicon.png" class="w-10 h-10">
+                <span class="text-xl font-black tracking-tighter uppercase">Pi Network 中文网</span>
+            </a>
+            <a href="index.html" class="text-gray-400 hover:text-white font-bold text-sm">← 返回首页</a>
+        </div>
+    </nav>
+
+    <!-- 404 内容 -->
+    <main class="flex-1 flex items-center justify-center px-6 relative overflow-hidden">
+        <!-- 背景星星装饰 -->
+        <div class="star" style="top:10%;left:15%;"></div>
+        <div class="star" style="top:20%;left:70%;"></div>
+        <div class="star" style="top:60%;left:80%;"></div>
+        <div class="star" style="top:80%;left:25%;"></div>
+        <div class="star" style="top:40%;left:90%;"></div>
+
+        <div class="text-center relative z-10">
+            <!-- 大数字 404 -->
+            <div class="float-anim mb-8">
+                <span class="text-[12rem] md:text-[16rem] font-black leading-none tracking-tighter text-transparent" style="-webkit-text-stroke: 2px rgba(244,175,71,0.3);">404</span>
+            </div>
+
+            <div class="glow-box rounded-3xl p-10 max-w-xl mx-auto mb-10">
+                <h1 class="text-3xl font-black mb-4 text-white">页面不存在</h1>
+                <p class="text-gray-400 text-lg leading-relaxed mb-2">
+                    抱歉，你访问的页面已经不存在了。<br>
+                    可能是因为内容迁移、链接变更或页面已被删除。
+                </p>
+                <p class="text-[#f4af47] text-sm font-bold mt-4">
+                    推荐码 <span class="underline underline-offset-4">nbjh</span> · 派币中文网
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html" class="bg-[#f4af47] text-[#1e0a27] px-10 py-4 rounded-2xl font-black text-lg hover:scale-105 transition-all shadow-2xl inline-block">
+                    ← 返回首页
+                </a>
+                <a href="reg.html" class="bg-white/10 border border-white/20 text-white px-10 py-4 rounded-2xl font-black text-lg hover:bg-white/20 transition-all inline-block">
+                    注册教程
+                </a>
+            </div>
+
+            <!-- 快捷导航 -->
+            <div class="mt-16 flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-500">
+                <a href="price.html" class="hover:text-[#f4af47] transition-colors">派币价格</a>
+                <span class="text-white/10">|</span>
+                <a href="nodes.html" class="hover:text-[#f4af47] transition-colors">Pi 节点</a>
+                <span class="text-white/10">|</span>
+                <a href="kyc.html" class="hover:text-[#f4af47] transition-colors">KYC 认证</a>
+                <span class="text-white/10">|</span>
+                <a href="faq.html" class="hover:text-[#f4af47] transition-colors">常见问题</a>
+                <span class="text-white/10">|</span>
+                <a href="about.html" class="hover:text-[#f4af47] transition-colors">关于我们</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-[#1a1220] text-center border-t border-white/5">
+        <p class="text-sm font-bold text-gray-600">
+            © 2026 PI NETWORK 中文网 · 邀请码 <span class="text-[#f4af47]">nbjh</span>
+        </p>
+    </footer>
+
+</body>
+</html>
