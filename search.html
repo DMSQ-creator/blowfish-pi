@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索 | Pi Network 中文网</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <meta name="description" content="在 Pi Network 中文网站内搜索内容：派币价格、节点运行、KYC、注册教程等。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .result-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; transition: all 0.3s; cursor: pointer; }
+        .result-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); transform: translateY(-2px); }
+        .search-highlight { background: rgba(244,175,71,0.3); border-radius: 4px; padding: 0 2px; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- 导航 -->
+    <nav class="p-6 border-b border-white/5 bg-[#1a1220]/80 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="/static/favicon.png" class="w-10 h-10" alt="Pi Network Logo">
+                <span class="text-xl font-black tracking-tighter uppercase">Pi Network 中文网</span>
+            </a>
+            <a href="index.html" class="text-gray-400 hover:text-white font-bold">← 返回首页</a>
+        </div>
+    </nav>
+
+    <!-- 搜索区域 -->
+    <main class="max-w-3xl mx-auto px-6 py-16">
+        <h1 class="text-4xl font-black mb-8 text-center">站内搜索</h1>
+
+        <div class="relative mb-10">
+            <input
+                id="search-input"
+                type="text"
+                placeholder="输入关键词，如：注册、KYC、节点..."
+                class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#f4af47] transition-colors"
+                autofocus
+            >
+            <svg class="absolute right-6 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+        </div>
+
+        <div id="results" class="space-y-4">
+            <p id="no-results" class="text-center text-gray-500 hidden">未找到相关结果</p>
+        </div>
+    </main>
+
+    <script>
+    const pages = [
+        { title: "首页", url: "index.html", desc: "Pi Network 中文网首页，了解项目介绍、挖矿优势和注册指引", tags: ["首页", "home", "介绍", "about"] },
+        { title: "派币实时价格", url: "price.html", desc: "Pi 币当前市场价格、24小时涨跌、成交量及历史走势", tags: ["价格", "price", "行情", "market", "走势"] },
+        { title: "注册下载教程", url: "reg.html", desc: "保姆级 Pi Network 注册下载教程，使用邀请码 nbjh", tags: ["注册", "下载", "教程", "download", "注册教程", "邀请码", "nbjh"] },
+        { title: "Pi 节点运行", url: "nodes.html", desc: "如何在电脑或手机上运行 Pi Node 节点，获得更多挖矿奖励", tags: ["节点", "node", "挖矿", "mining", "运行"] },
+        { title: "KYC 身份认证", url: "kyc.html", desc: "Pi Network KYC 身份认证流程指南，解释为什么要 KYC", tags: ["kyc", "身份认证", "验证", "认证", "实名"] },
+        { title: "常见问题 FAQ", url: "faq.html", desc: "关于挖矿、注册、KYC、节点及生态应用的常见疑问解答", tags: ["faq", "问题", "问答", "常见问题", "help"] },
+        { title: "关于我们", url: "about.html", desc: "了解 Pi Network 项目背景、团队成员及核心价值观", tags: ["关于", "about", "团队", "团队成员"] },
+        { title: "Pi 区块链浏览器", url: "blockchain.html", desc: "查看 Pi 主网区块同步状态和数据", tags: ["区块链", "blockchain", "浏览器", "区块"] },
+        { title: "开发者中心", url: "developers.html", desc: "基于 Pi SDK 构建 Web3 应用，加入开发者社区", tags: ["开发", "developer", "sdk", "web3", "构建", "dapp"] },
+        { title: "项目路线图", url: "roadmap.html", desc: "Pi Network 从 Testnet 到 Mainnet 的完整发展历程", tags: ["路线图", "roadmap", "发展", "历程", "阶段"] },
+        { title: "官方新闻动态", url: "blog.html", desc: "Pi Network 官方公告、博客更新和生态系统最新进展", tags: ["新闻", "blog", "博客", "公告", "动态", "资讯"] },
+        { title: "技术白皮书", url: "technical-whitepaper.html", desc: "Pi 区块链技术架构、共识机制与代币经济学详解", tags: ["技术", "白皮书", "whitepaper", "技术白皮书", "架构", "共识"] },
+    ];
+
+    const fuse = new Fuse(pages, {
+        keys: ['title', 'desc', 'tags'],
+        threshold: 0.4,
+        includeMatches: true,
+    });
+
+    const input = document.getElementById('search-input');
+    const results = document.getElementById('results');
+    const noResults = document.getElementById('no-results');
+
+    function render(results_list) {
+        if (results_list.length === 0) {
+            results.innerHTML = '';
+            noResults.classList.remove('hidden');
+            return;
+        }
+        noResults.classList.add('hidden');
+        results.innerHTML = results_list.map(r => {
+            const item = r.item;
+            const highlighted = item.title;
+            return `
+            <a href="${item.url}" class="result-card block">
+                <h3 class="text-xl font-black mb-2 text-white hover:text-[#f4af47] transition-colors">${highlighted}</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">${item.desc}</p>
+                <div class="mt-3 flex flex-wrap gap-2">
+                    ${item.tags.slice(0,4).map(t => `<span class="text-xs px-2 py-1 bg-white/5 rounded-full text-gray-500">${t}</span>`).join('')}
+                </div>
+            </a>
+            `;
+        }).join('');
+    }
+
+    input.addEventListener('input', (e) => {
+        const q = e.target.value.trim();
+        if (q.length === 0) {
+            results.innerHTML = '<p class="text-center text-gray-600">输入关键词开始搜索...</p>';
+            noResults.classList.add('hidden');
+            return;
+        }
+        const res = fuse.search(q);
+        render(res);
+    });
+
+    // Initial state
+    results.innerHTML = '<p class="text-center text-gray-600">输入关键词开始搜索...</p>';
+    </script>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-[#1a1220] text-center border-t border-white/5 mt-20">
+        <p class="text-sm font-bold text-gray-600 mb-4">© 2026 PI NETWORK 中文网 · 邀请码 <span class="text-[#f4af47]">nbjh</span></p>
+        <div class="flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-600">
+            <a href="about.html" class="hover:text-white transition-colors">关于我们</a>
+            <a href="reg.html" class="hover:text-[#f4af47] transition-colors">下载注册</a>
+            <a href="nodes.html" class="hover:text-white transition-colors">节点运行</a>
+            <a href="faq.html" class="hover:text-white transition-colors">常见问题</a>
+        </div>
+    </footer>
+
+</body>
+</html>
