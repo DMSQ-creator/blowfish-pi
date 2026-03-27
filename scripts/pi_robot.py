@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from curl_cffi import requests as crequests
+from deep_translator import GoogleTranslator
 import json
 import os
 import time
@@ -9,7 +10,7 @@ import re
 # ==========================================
 # Pi Network 全自动同步机器人 (scripts/pi_robot.py)
 # - 抓取 minepi.com 官方博客
-# - 自动翻译为中文（使用公网 API）
+# - 自动翻译为中文（Google Translate）
 # - 生成静态 HTML 博文页面
 # - 自动更新 blog.html 列表页
 # - 通过 Telegram 通知 Andy
@@ -21,11 +22,6 @@ BLOG_DIR = "blog"
 BLOG_LIST_PAGE = "blog.html"
 TG_BOT_TOKEN = "8744995411:AAHRiUzEGJuDFQvbJfTh0kMU_o1o60Wttl0"
 TG_CHAT_ID = "8190223294"
-
-# 公网翻译 API（DeepSeek via UCloud，GitHub Actions 可访问）
-TRANSLATE_API_URL = "https://api.modelverse.cn/v1/chat/completions"
-TRANSLATE_API_KEY = "L5c05RSdm4mgZyr3CaC81884-8049-4b7c-a214-Fa0a7059"
-TRANSLATE_MODEL = "deepseek-ai/DeepSeek-V3.2"
 
 # ==========================================
 # HTML 博文模板
@@ -92,43 +88,21 @@ def send_tg_notification(title, slug):
 
 
 def translate_text(text, max_retries=2):
-    """使用公网 DeepSeek API 翻译英文为中文"""
-    prompt = (
-        "你是专业的区块链/加密货币中英翻译专家。请将以下 Pi Network 官方博客内容翻译为流畅的简体中文。\n"
-        "要求：\n"
-        "- 保持专业术语准确（Pioneer=先锋, Mainnet=主网, Open Network=开放网络, KYC=KYC, Node=节点, DApp=DApp, DEX=DEX, AMM=AMM）\n"
-        "- 翻译要自然流畅，不要机翻感\n"
-        "- 不要输出任何 HTML 标签，只输出纯中文文本\n"
-        "- 只输出翻译结果，不要加任何解释或前缀\n\n"
-        f"原文：\n{text}"
-    )
+    """使用 Google Translate 翻译英文为简体中文"""
+    if not text or len(text.strip()) < 3:
+        return text
     for attempt in range(max_retries + 1):
         try:
-            resp = requests.post(
-                TRANSLATE_API_URL,
-                headers={"Authorization": f"Bearer {TRANSLATE_API_KEY}", "Content-Type": "application/json"},
-                json={
-                    "model": TRANSLATE_MODEL,
-                    "messages": [{"role": "user", "content": prompt}],
-                    "temperature": 0.3,
-                    "max_tokens": 8192,
-                },
-                timeout=120,
-            )
-            if resp.status_code == 200:
-                result = resp.json()["choices"][0]["message"]["content"].strip()
+            translator = GoogleTranslator(source='en', target='zh-CN')
+            result = translator.translate(text.strip())
+            if result:
                 return result
-            elif resp.status_code == 429:
-                wait = 10 * (attempt + 1)
-                print(f"[!] API 限速，等待 {wait}s 后重试...")
-                time.sleep(wait)
-            else:
-                print(f"[!] 翻译 API 返回 {resp.status_code}: {resp.text[:200]}")
-                return None
+            print(f"[!] Google Translate 返回空结果")
+            return None
         except Exception as e:
             print(f"[!] 翻译失败 (尝试 {attempt+1}): {e}")
             if attempt < max_retries:
-                time.sleep(5)
+                time.sleep(3)
     return None
 
 
