@@ -13,6 +13,9 @@
         .prose h3 { font-size: 1.6rem; font-weight: 700; margin: 3rem 0 1.5rem; color: #e2e8f0; }
         .prose blockquote { border-left: 4px solid #f4af47; padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: #f4af47; font-weight: bold; }
         .prose img { border-radius: 1.5rem; margin: 2rem 0; }
+        .prose iframe { border-radius: 1.5rem; margin: 2rem 0; width: 100%; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 1.5rem; margin: 2rem 0; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -33,6 +36,7 @@
             <p>在为 KYC 验证做出贡献时，先锋可以从 KYC 验证者奖励的未来分配和其他去中心化工作机会中受益。例如，第一轮分发的每次验证价格是当前基本挖矿率的 22 倍。</p>
             <p>Pi 目前正在致力于改进第二轮分发的验证器性能算法。</p>
             <p>观看此视频演练以了解有关奖励计算的更多信息。</p>
+            <div class="video-container"><iframe src="https://www.youtube.com/embed/VPlCEwQJ6Yw" title="Pi KYC Validator Rewards 奖励计算演示" allowfullscreen></iframe></div>
             <p>奖励已转移至验证者的主网 Pi 钱包。要接收付款，KYC 验证者必须拥有主网 Pi 钱包，可以通过完成主网清单并迁移到主网来获得。或者，符合条件的先锋可以直接在钱包应用程序中设置支持主网的钱包（例如Fast Track Wallet），并在主网清单中确认钱包。</p>
             <p>注：以下摘录最初为 2026 年 Pi Day 公告的一部分。请继续阅读，了解有关奖励计算、基本原理以及对 Pi 大型分布式劳动力的人工智能影响的见解的完整详细信息。</p>
             <p>作为多年前推出 KYC 应用程序时验证者奖励计算的原始设计的提醒，每个迁移到主网的先锋都会向奖励池中支付 1 Pi，以分发给 KYC 人类验证者。 KYC验证者的工作，只要他们对申请处理的准确性做出了贡献，无论申请的最终KYC结果是通过还是拒绝，都应该由这个池支付，因为他们的工作通过正确拒绝不合格的申请为网络做出了贡献。然而，那些 KYC 申请被拒绝的人不会迁移到主网，因此他们无法支付 1 Pi。</p>
