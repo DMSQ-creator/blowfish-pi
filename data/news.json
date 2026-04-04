@@ -1,5 +1,11 @@
 [
   {
+    "id": "kyc-validator-rewards",
+    "date": "April 3, 2026",
+    "title": "Pi KYC 验证者奖励：第一轮分配完成",
+    "excerpt": "KYC验证人奖励首次发放已完成！第一轮于 2026 年 Pi Day 开始，所有拥有主网钱包的 KYC 验证者现已在主网区块链上收到奖励。"
+  },
+  {
     "id": "second-migrations",
     "date": "March 26, 2026",
     "title": "第二次迁移和推荐奖励迁移",
