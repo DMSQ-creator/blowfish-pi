@@ -1,5 +1,11 @@
 [
   {
+    "id": "rpc-server",
+    "date": "April 8, 2026",
+    "title": "Pi Testnet RPC 服务器发布：实现可扩展的智能合约开发",
+    "excerpt": "Pi Network 在测试网上发布了远程过程调用（RPC）服务器！"
+  },
+  {
     "id": "kyc-validator-rewards",
     "date": "April 3, 2026",
     "title": "Pi KYC 验证者奖励：第一轮分配完成",
