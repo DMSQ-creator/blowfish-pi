@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在测试网上引入订阅智能合约功能 | Pi Network 中文网</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f021a; color: white; line-height: 1.8; font-family: sans-serif; }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .prose p { margin-bottom: 1.8rem; font-size: 1.15rem; color: #cbd5e1; text-align: justify; }
+        .prose h2 { font-size: 2.2rem; font-weight: 900; margin: 4rem 0 2rem; color: #f4af47; }
+        .prose h3 { font-size: 1.6rem; font-weight: 700; margin: 3rem 0 1.5rem; color: #e2e8f0; }
+        .prose blockquote { border-left: 4px solid #f4af47; padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: #f4af47; font-weight: bold; }
+        .prose img { border-radius: 1.5rem; margin: 2rem 0; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="../blog.html" class="text-gray-400 hover:text-white font-bold">← 返回社区资讯</a>
+            <span class="text-[#f4af47] font-black uppercase">Official Announcement</span>
+        </div>
+    </nav>
+    <main class="max-w-3xl mx-auto py-20 px-6">
+        <div class="mb-12 rounded-[40px] overflow-hidden"><img src="https://minepi.com/wp-content/uploads/2026/04/Celebrating-the-Pioneer-Community-2.jpg" class="w-full" alt="在测试网上引入订阅智能合约功能"></div>
+        <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter leading-tight">在测试网上引入订阅智能合约功能</h1>
+        <p class="text-gray-500 mb-10">April 17, 2026</p>
+        <div class="prose max-w-none">
+            <p>Pi Network 正在 Pi 测试网上推出其首个智能合约功能：订阅支持！</p>
+            <p>订阅是现代社会服务中最常见的商业模式之一，但在区块链系统上很难实现。通过使用 Pi 的智能合约功能将订阅引入生态系统，Pi 正在培育直接映射到实际产品的用例以及基于区块链构建的电子商务、流媒体、在线工具等重复性实用驱动服务。</p>
+            <p>这是建立在最近的节点和协议升级的基础上的，这些升级为区块链的智能合约功能做好了准备，同时 Pi Testnet RPC 服务器版本为开发人员提供了一种与区块链数据交互和测试应用程序流的实用方法。</p>
+            <p>为了开放订阅智能合约的技术审核和社区反馈，Pi 发布了第二个 Pi 征求意见稿（PiRC2）。</p>
+            <p>PiRC2 为开发人员和其他审阅者提供了仔细检查设计、识别错误或边缘情况（如果有）并提出改进建议的机会。它还为生态系统提供了一种在推出主网之前评估合约的方法。</p>
+            <p>智能合约本身也正在接受外部审计服务的审查。</p>
+            <h2>订阅智能合约如何运作</h2>
+            <p>订阅智能合约为开发者和企业提供了一种在应用程序或其本地商务中构建重复服务模型的方法，同时通过区块链处理支付并保留订阅者对资金的控制。</p>
+            <p>设计的一个关键部分是订阅者可以批准合同使用的明确预算，而无需重新签署每个计费事件。该批准还可以限制在规定的计费范围内，例如最多一年的月费。同时，批准的资金仍保留在钱包中，直到实际处理费用为止。只要在费用到期时钱包有足够的余额，订阅就仍然有效，而不需要提前锁定全部预算。</p>
+            <p>这使得合约能够支持定期付款，而无需放弃区块链系统旨在保留的钱包级别控制或将总预算发送给合约。</p>
+            <h2>技术创新</h2>
+            <p>订阅在区块链中并不是一个新想法，但它们通常涉及区块链上的权衡。例如，其他区块链*已经提出了定期支付的标准，但这些方法通常需要权衡，例如链下协调、重复授权或添加账户基础设施。</p>
+            <p>Pi 的模型采用了不同的方法。它的设计目的是让订阅工作无需为每个计费事件提供新的签名，同时仍将批准的资金保留在订阅者的钱包中，直到真正发生计费为止。这是 Web3 中一个有意义的设计选择，在 Web3 中，如果不增加摩擦、预先融资或额外的基础设施，经常性支付通常更难干净地实施。</p>
+            <h2>开发者：测试订阅并审核 PiRC2</h2>
+            <p>订阅功能提供了如何开发和测试 Pi 上的智能合约的早期视角。此阶段的重点是技术审查、错误识别以及命令行和后端级别的实验。</p>
+            <p>随着PiRC2现已发布，鼓励开发人员审查订阅合同设计、表面错误或边缘情况，并提出改进建议。</p>
+            <p>*其他区块链生态系统中已经探索过定期订阅，但通常会增加复杂性。例如，在以太坊上，EIP-1337 提出了“区块链上的订阅”，使用链下存储的签名订阅数据，然后提交执行。 ERC-4337 账户抽象明确依赖于更高层的智能账户基础设施。</p>
+        </div>
+    </main>
+</body>
+</html>
