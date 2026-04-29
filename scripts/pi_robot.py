@@ -20,8 +20,8 @@ BLOG_URL = "https://minepi.com/blog/"
 NEWS_FILE = "data/news.json"
 BLOG_DIR = "blog"
 BLOG_LIST_PAGE = "blog.html"
-TG_BOT_TOKEN = "8744995411:AAHRiUzEGJuDFQvbJfTh0kMU_o1o60Wttl0"
-TG_CHAT_ID = "8190223294"
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
+TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "8190223294")
 IMGBB_API_KEY = "0e0e8b6212d394dd3a99aac94e107c7c"  # imgbb 图床 API Key
 
 # ==========================================
