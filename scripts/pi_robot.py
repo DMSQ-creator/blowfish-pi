@@ -22,6 +22,7 @@ BLOG_DIR = "blog"
 BLOG_LIST_PAGE = "blog.html"
 TG_BOT_TOKEN = "8744995411:AAHRiUzEGJuDFQvbJfTh0kMU_o1o60Wttl0"
 TG_CHAT_ID = "8190223294"
+IMGBB_API_KEY = "0e0e8b6212d394dd3a99aac94e107c7c"  # imgbb 图床 API Key
 
 # ==========================================
 # HTML 博文模板
@@ -165,6 +166,26 @@ def build_chinese_html(paragraphs_cn, images, hero_img):
             img_idx += 1
 
     return "\n            ".join(html_parts)
+
+
+def upload_to_imgbb(image_url):
+    """将图片上传到 imgbb 图床，返回永久链接；失败则返回原 URL"""
+    try:
+        resp = requests.post(
+            "https://api.imgbb.com/1/upload",
+            data={"key": IMGBB_API_KEY, "image": image_url},
+            timeout=30,
+        )
+        if resp.status_code == 200:
+            data = resp.json()
+            if data.get("success"):
+                new_url = data["data"]["url"]
+                print(f"[✓] 图床上传成功: {image_url[:60]}... -> {new_url}")
+                return new_url
+        print(f"[!] imgbb 上传失败 (HTTP {resp.status_code}): {image_url[:60]}")
+    except Exception as e:
+        print(f"[!] imgbb 上传异常: {e}")
+    return image_url  # 失败时回退到原始链接
 
 
 def fetch_article_content(url):
@@ -378,17 +399,22 @@ def run_sync():
 
             time.sleep(1)  # 防止限速
 
-        # 4. 构建干净的中文 HTML
+        # 4. 上传图片到图床（hero + 内容图片）
+        print(f"[*] 正在上传 {len(images)+1} 张图片到 imgbb 图床...")
+        hero_img = upload_to_imgbb(hero_img) if hero_img else hero_img
+        images = [upload_to_imgbb(img) for img in images]
+
+        # 5. 构建干净的中文 HTML
         content_html = build_chinese_html(translated_paragraphs, images, hero_img)
 
-        # 5. 生成摘要
+        # 6. 生成摘要
         first_p = next((p["text"] for p in translated_paragraphs if p["type"] == "p"), "")
         excerpt_cn = first_p[:100] + "..." if len(first_p) > 100 else first_p
 
-        # 6. 生成 HTML 文件
+        # 7. 生成 HTML 文件
         generate_blog_html(title_cn, date_str or time.strftime("%Y-%m-%d"), content_html, hero_img, post["url_slug"])
 
-        # 7. 更新 news.json
+        # 8. 更新 news.json
         new_entry = {
             "id": post["url_slug"],
             "date": date_str or time.strftime("%Y-%m-%d"),
@@ -397,10 +423,10 @@ def run_sync():
         }
         old_data.insert(0, new_entry)
 
-        # 8. 更新 blog.html 列表页
+        # 9. 更新 blog.html 列表页
         update_blog_list_page(new_entry)
 
-        # 9. 发送通知
+        # 10. 发送通知
         send_tg_notification(title_cn, post["url_slug"])
 
         new_count += 1
