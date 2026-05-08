@@ -22,6 +22,10 @@ BLOG_DIR = "blog"
 BLOG_LIST_PAGE = "blog.html"
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "8190223294")
+
+# 检查 token 是否配置
+if not TG_BOT_TOKEN:
+    print("[!] 警告：TG_BOT_TOKEN 环境变量未设置，Telegram 通知已禁用")
 IMGBB_API_KEY = "0e0e8b6212d394dd3a99aac94e107c7c"  # imgbb 图床 API Key
 
 # ==========================================
@@ -74,6 +78,10 @@ BLOG_CARD_TEMPLATE = """
 
 def send_tg_notification(title, slug):
     """发送 Telegram 通知"""
+    if not TG_BOT_TOKEN:
+        print("[!] TG_BOT_TOKEN 为空，跳过通知")
+        return
+    
     msg = (
         f"🔔 *Pi 币中文网 - 自动发布成功!*\n\n"
         f"📝 *标题*: {title}\n"
@@ -82,8 +90,11 @@ def send_tg_notification(title, slug):
     )
     api_url = f"https://api.telegram.org/bot{TG_BOT_TOKEN}/sendMessage"
     try:
-        requests.post(api_url, data={"chat_id": TG_CHAT_ID, "text": msg, "parse_mode": "Markdown"}, timeout=10)
-        print("[*] Telegram 通知已发送。")
+        resp = requests.post(api_url, data={"chat_id": TG_CHAT_ID, "text": msg, "parse_mode": "Markdown"}, timeout=10)
+        if resp.status_code == 200:
+            print("[✓] Telegram 通知已发送。")
+        else:
+            print(f"[!] Telegram 通知失败: HTTP {resp.status_code} - {resp.text[:100]}")
     except Exception as e:
         print(f"[!] Telegram 通知发送失败: {e}")
 
