@@ -22,7 +22,7 @@ BLOG_LIST_PAGE = "blog.html"
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "8190223294")
 
-DEEPSEEK_API_KEY = "L5c05RSdm4mgZyr3CaC81884-8049-4b7c-a214-Fa0a7059"
+DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
 DEEPSEEK_API_URL = "https://api.modelverse.cn/v1/chat/completions"
 DEEPSEEK_MODEL = "deepseek-v4-flash"
 
