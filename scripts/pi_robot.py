@@ -122,19 +122,39 @@ def clean_html_content(raw_html):
     """清理从 minepi.com 抓取的 HTML，提取纯文本段落"""
     soup = BeautifulSoup(raw_html, "html.parser")
 
-    # 移除不需要的标签
-    for tag in soup.find_all(["script", "style", "nav", "iframe", "noscript"]):
+    # 移除不需要的标签（保留 iframe 用于视频嵌入）
+    for tag in soup.find_all(["script", "style", "nav", "noscript"]):
         tag.decompose()
 
     # 提取结构化内容
     paragraphs = []
     images = []
+    videos = []  # 保存视频嵌入（YouTube iframe 等）
 
-    for elem in soup.find_all(["h2", "h3", "p", "img", "blockquote"]):
-        if elem.name == "img":
-            src = elem.get("src", "") or elem.get("data-src", "") or elem.get("nitro-lazy-src", "")
-            if src and src.startswith("http"):
+    for elem in soup.find_all(["h2", "h3", "p", "img", "blockquote", "ul", "ol", "iframe", "figure"]):
+        if elem.name == "iframe":
+            src = elem.get("src", "") or elem.get("data-src", "")
+            # 只保留 YouTube/视频 iframe
+            if src and ("youtube" in src or "youtu.be" in src or "vimeo" in src):
+                # 确保是 embed 格式
+                if "youtube.com/watch" in src:
+                    video_id = src.split("v=")[-1].split("&")[0]
+                    src = f"https://www.youtube.com/embed/{video_id}"
+                videos.append(src)
+                paragraphs.append({"type": "video", "text": src})
+        elif elem.name == "figure":
+            # figure 可能包含图片或视频
+            img = elem.find("img")
+            if img:
+                src = img.get("src", "") or img.get("data-src", "") or img.get("nitro-lazy-src", "") or img.get("data-lazy-src", "")
+                if src and src.startswith("http"):
+                    images.append(src)
+                    paragraphs.append({"type": "img", "text": src})
+        elif elem.name == "img":
+            src = elem.get("src", "") or elem.get("data-src", "") or elem.get("nitro-lazy-src", "") or elem.get("data-lazy-src", "") or elem.get("data-original", "")
+            if src and src.startswith("http") and src not in images:
                 images.append(src)
+                paragraphs.append({"type": "img", "text": src})
         elif elem.name in ("h2", "h3"):
             text = elem.get_text(strip=True)
             if text and len(text) > 2:
@@ -143,6 +163,10 @@ def clean_html_content(raw_html):
             text = elem.get_text(strip=True)
             if text:
                 paragraphs.append({"type": "blockquote", "text": text})
+        elif elem.name in ("ul", "ol"):
+            items = [li.get_text(strip=True) for li in elem.find_all("li") if li.get_text(strip=True)]
+            if items:
+                paragraphs.append({"type": "list", "text": "\n".join(f"• {item}" for item in items)})
         elif elem.name == "p":
             text = elem.get_text(strip=True)
             if text and len(text) > 10:  # 过滤太短的段落
@@ -154,7 +178,6 @@ def clean_html_content(raw_html):
 def build_chinese_html(paragraphs_cn, images, hero_img):
     """将翻译后的段落重建为干净的 HTML"""
     html_parts = []
-    img_idx = 0
 
     for para in paragraphs_cn:
         ptype = para.get("type", "p")
@@ -168,13 +191,21 @@ def build_chinese_html(paragraphs_cn, images, hero_img):
             html_parts.append(f"<h3>{text}</h3>")
         elif ptype == "blockquote":
             html_parts.append(f"<blockquote>{text}</blockquote>")
+        elif ptype == "list":
+            items = text.split("\n")
+            li_items = "".join(f"<li>{item.lstrip('• ').strip()}</li>" for item in items if item.strip())
+            html_parts.append(f"<ul class='list-disc pl-6 my-4 text-gray-300 space-y-2'>{li_items}</ul>")
+        elif ptype == "img":
+            html_parts.append(f'<img src="{text}" class="w-full rounded-2xl my-8" />')
+        elif ptype == "video":
+            html_parts.append(
+                f'<div class="my-8 rounded-2xl overflow-hidden aspect-video">'
+                f'<iframe src="{text}" class="w-full h-full" frameborder="0" '
+                f'allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">'
+                f'</iframe></div>'
+            )
         else:
             html_parts.append(f"<p>{text}</p>")
-
-        # 在某些段落后插入图片
-        if img_idx < len(images) and ptype in ("h2", "h3"):
-            html_parts.append(f'<img src="{images[img_idx]}" class="w-full rounded-2xl my-8" />')
-            img_idx += 1
 
     return "\n            ".join(html_parts)
 
@@ -372,48 +403,54 @@ def run_sync():
         title_cn = title_cn.strip("\"'`\n")
         print(f"[*] 中文标题: {title_cn}")
 
-        # 3. 分批翻译段落（每批合并5段以减少API调用）
+        # 3. 分批翻译段落（每批合并5段以减少API调用，img/video 类型跳过翻译）
         print("[*] 正在翻译正文...")
         translated_paragraphs = []
+        # 先把不需要翻译的段落分离出来
+        text_paragraphs = [(i, p) for i, p in enumerate(paragraphs) if p["type"] not in ("img", "video")]
+        
         batch_size = 5
-        for i in range(0, len(paragraphs), batch_size):
-            batch = paragraphs[i:i+batch_size]
-            # 拼接为带标记的文本
+        translated_text = {}
+        for batch_start in range(0, len(text_paragraphs), batch_size):
+            batch = text_paragraphs[batch_start:batch_start+batch_size]
             batch_text = ""
-            for j, para in enumerate(batch):
+            for j, (orig_idx, para) in enumerate(batch):
                 marker = f"[{para['type'].upper()}]"
                 batch_text += f"{marker} {para['text']}\n\n"
 
             translated = translate_text(batch_text)
             if translated:
-                # 解析翻译结果，按标记拆分
                 lines = [l.strip() for l in translated.split("\n") if l.strip()]
                 para_idx = 0
                 for line in lines:
                     if para_idx >= len(batch):
                         break
-                    # 去掉可能的标记前缀
-                    clean_line = re.sub(r'^\[(H2|H3|P|BLOCKQUOTE)\]\s*', '', line)
+                    clean_line = re.sub(r'^\[(H2|H3|P|BLOCKQUOTE|LIST)\]\s*', '', line)
                     if clean_line:
-                        translated_paragraphs.append({
-                            "type": batch[para_idx]["type"],
-                            "text": clean_line
-                        })
+                        orig_idx = batch[para_idx][0]
+                        translated_text[orig_idx] = clean_line
                         para_idx += 1
-                # 如果解析的段落少于原文，补全
-                while para_idx < len(batch):
-                    translated_paragraphs.append(batch[para_idx])
-                    para_idx += 1
             else:
-                print(f"[!] 第 {i//batch_size+1} 批翻译失败，使用原文")
-                translated_paragraphs.extend(batch)
+                print(f"[!] 第 {batch_start//batch_size+1} 批翻译失败，使用原文")
 
             time.sleep(1)  # 防止限速
 
+        # 按原顺序重组（img/video 保留原文，其他用翻译）
+        for i, para in enumerate(paragraphs):
+            if para["type"] in ("img", "video"):
+                translated_paragraphs.append(para)
+            else:
+                text = translated_text.get(i, para["text"])  # 翻译失败则用原文
+                translated_paragraphs.append({"type": para["type"], "text": text})
+
         # 4. 上传图片到图床（hero + 内容图片）
-        print(f"[*] 正在上传 {len(images)+1} 张图片到 imgbb 图床...")
+        all_imgs = [p["text"] for p in translated_paragraphs if p["type"] == "img"]
+        print(f"[*] 正在上传 {len(all_imgs)+1} 张图片到 imgbb 图床...")
         hero_img = upload_to_imgbb(hero_img) if hero_img else hero_img
-        images = [upload_to_imgbb(img) for img in images]
+        # 替换 paragraphs 里的图片 URL
+        for p in translated_paragraphs:
+            if p["type"] == "img":
+                p["text"] = upload_to_imgbb(p["text"])
 
         # 5. 构建干净的中文 HTML
         content_html = build_chinese_html(translated_paragraphs, images, hero_img)
