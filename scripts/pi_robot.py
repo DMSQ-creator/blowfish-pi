@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 from curl_cffi import requests as crequests
-from deep_translator import GoogleTranslator
 import json
 import os
 import time
@@ -22,6 +21,10 @@ BLOG_DIR = "blog"
 BLOG_LIST_PAGE = "blog.html"
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "8190223294")
+
+DEEPSEEK_API_KEY = "L5c05RSdm4mgZyr3CaC81884-8049-4b7c-a214-Fa0a7059"
+DEEPSEEK_API_URL = "https://api.modelverse.cn/v1/chat/completions"
+DEEPSEEK_MODEL = "deepseek-v3"
 
 # 检查 token 是否配置
 if not TG_BOT_TOKEN:
@@ -99,20 +102,105 @@ def send_tg_notification(title, slug):
         print(f"[!] Telegram 通知发送失败: {e}")
 
 
+def translate_article(paragraphs, title_en, max_retries=2):
+    """使用 DeepSeek 一次性翻译整篇文章，保留结构"""
+    # 构建结构化输入，img/video 直接标记跳过
+    lines = []
+    for i, p in enumerate(paragraphs):
+        if p["type"] in ("img", "video"):
+            lines.append(f"[{i}][{p['type'].upper()}] __SKIP__")
+        else:
+            lines.append(f"[{i}][{p['type'].upper()}] {p['text']}")
+    article_text = "\n".join(lines)
+
+    prompt = f"""你是一个专业的中文翻译山。请将以下 Pi Network 官方文章全文翻译为简体中文。
+
+要求：
+1. 保留每行开头的 [N][TYPE] 标记不变
+2. __SKIP__ 的行不要翻译，直接输出 __SKIP__
+3. 翻译要自然流畅，符合中文表达习惯
+4. 保持原文的所有内容，不要删除或消略任何信息
+5. 回复格式必须和输入一致，每行对应一行
+
+标题：{title_en}
+
+内容：
+{article_text}
+
+直接输出翻译结果，不要加任何解释或前言。"""
+
+    for attempt in range(max_retries + 1):
+        try:
+            resp = requests.post(
+                DEEPSEEK_API_URL,
+                headers={"Authorization": f"Bearer {DEEPSEEK_API_KEY}", "Content-Type": "application/json"},
+                json={
+                    "model": DEEPSEEK_MODEL,
+                    "messages": [{"role": "user", "content": prompt}],
+                    "temperature": 0.3,
+                    "max_tokens": 8000,
+                },
+                timeout=120,
+            )
+            if resp.status_code == 200:
+                result = resp.json()["choices"][0]["message"]["content"].strip()
+                # 解析结果，按行对应回去 paragraphs
+                translated = []
+                result_lines = {}
+                for line in result.split("\n"):
+                    line = line.strip()
+                    if not line:
+                        continue
+                    m = re.match(r'^\[(\d+)\]\[\w+\]\s*(.*)', line)
+                    if m:
+                        idx = int(m.group(1))
+                        text = m.group(2).strip()
+                        result_lines[idx] = text
+
+                for i, p in enumerate(paragraphs):
+                    if p["type"] in ("img", "video"):
+                        translated.append(p)
+                    else:
+                        text = result_lines.get(i, p["text"])  # 找不到则用原文
+                        if text == "__SKIP__":
+                            text = p["text"]
+                        translated.append({"type": p["type"], "text": text})
+
+                print(f"[\u2713] DeepSeek 翻译完成，共 {len(translated)} 个段落")
+                return translated
+            else:
+                print(f"[!] DeepSeek API 错误: HTTP {resp.status_code} - {resp.text[:100]}")
+        except Exception as e:
+            print(f"[!] 翻译失败 (尝试 {attempt+1}): {e}")
+            if attempt < max_retries:
+                time.sleep(5)
+
+    print("[!] DeepSeek 翻译全部失败，使用原文")
+    return paragraphs  # 全部失败则返回原文
+
+
 def translate_text(text, max_retries=2):
-    """使用 Google Translate 翻译英文为简体中文"""
+    """单段文本翻译（用于标题）"""
     if not text or len(text.strip()) < 3:
         return text
     for attempt in range(max_retries + 1):
         try:
-            translator = GoogleTranslator(source='en', target='zh-CN')
-            result = translator.translate(text.strip())
-            if result:
-                return result
-            print(f"[!] Google Translate 返回空结果")
-            return None
+            resp = requests.post(
+                DEEPSEEK_API_URL,
+                headers={"Authorization": f"Bearer {DEEPSEEK_API_KEY}", "Content-Type": "application/json"},
+                json={
+                    "model": DEEPSEEK_MODEL,
+                    "messages": [{"role": "user", "content": f"将以下英文翻译为简体中文，只输出翻译结果，不要加任何解释：\n{text}"}],
+                    "temperature": 0.3,
+                    "max_tokens": 500,
+                },
+                timeout=30,
+            )
+            if resp.status_code == 200:
+                return resp.json()["choices"][0]["message"]["content"].strip()
+            print(f"[!] 标题翻译失败: HTTP {resp.status_code}")
         except Exception as e:
-            print(f"[!] 翻译失败 (尝试 {attempt+1}): {e}")
+            print(f"[!] 标题翻译失败 (尝试 {attempt+1}): {e}")
             if attempt < max_retries:
                 time.sleep(3)
     return None
@@ -403,45 +491,9 @@ def run_sync():
         title_cn = title_cn.strip("\"'`\n")
         print(f"[*] 中文标题: {title_cn}")
 
-        # 3. 分批翻译段落（每批合并5段以减少API调用，img/video 类型跳过翻译）
-        print("[*] 正在翻译正文...")
-        translated_paragraphs = []
-        # 先把不需要翻译的段落分离出来
-        text_paragraphs = [(i, p) for i, p in enumerate(paragraphs) if p["type"] not in ("img", "video")]
-        
-        batch_size = 5
-        translated_text = {}
-        for batch_start in range(0, len(text_paragraphs), batch_size):
-            batch = text_paragraphs[batch_start:batch_start+batch_size]
-            batch_text = ""
-            for j, (orig_idx, para) in enumerate(batch):
-                marker = f"[{para['type'].upper()}]"
-                batch_text += f"{marker} {para['text']}\n\n"
-
-            translated = translate_text(batch_text)
-            if translated:
-                lines = [l.strip() for l in translated.split("\n") if l.strip()]
-                para_idx = 0
-                for line in lines:
-                    if para_idx >= len(batch):
-                        break
-                    clean_line = re.sub(r'^\[(H2|H3|P|BLOCKQUOTE|LIST)\]\s*', '', line)
-                    if clean_line:
-                        orig_idx = batch[para_idx][0]
-                        translated_text[orig_idx] = clean_line
-                        para_idx += 1
-            else:
-                print(f"[!] 第 {batch_start//batch_size+1} 批翻译失败，使用原文")
-
-            time.sleep(1)  # 防止限速
-
-        # 按原顺序重组（img/video 保留原文，其他用翻译）
-        for i, para in enumerate(paragraphs):
-            if para["type"] in ("img", "video"):
-                translated_paragraphs.append(para)
-            else:
-                text = translated_text.get(i, para["text"])  # 翻译失败则用原文
-                translated_paragraphs.append({"type": para["type"], "text": text})
+        # 3. 一次性翻译整篇文章（DeepSeek，保留结构）
+        print("[*] 正在用 DeepSeek 翻译全文...")
+        translated_paragraphs = translate_article(paragraphs, title_en)
 
         # 4. 上传图片到图床（hero + 内容图片）
         all_imgs = [p["text"] for p in translated_paragraphs if p["type"] == "img"]
