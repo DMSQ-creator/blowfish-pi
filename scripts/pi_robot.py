@@ -103,23 +103,28 @@ def send_tg_notification(title, slug):
 
 
 def translate_article(paragraphs, title_en, max_retries=2):
-    """使用 DeepSeek 一次性翻译整篇文章，保留结构"""
+    """使用 DeepSeek 一次性翻译整篇文章，保留结构；翻译失败返回 None"""
     # 构建结构化输入，img/video 直接标记跳过
     lines = []
     for i, p in enumerate(paragraphs):
         if p["type"] in ("img", "video"):
             lines.append(f"[{i}][{p['type'].upper()}] __SKIP__")
         else:
-            lines.append(f"[{i}][{p['type'].upper()}] {p['text']}")
+            text = p["text"]
+            # HTML 段落提取纯文本再翻译，避免标签干扰
+            if text.startswith("<"):
+                soup = BeautifulSoup(text, "html.parser")
+                text = soup.get_text(separator=" ", strip=True)
+            lines.append(f"[{i}][{p['type'].upper()}] {text}")
     article_text = "\n".join(lines)
 
-    prompt = f"""你是一个专业的中文翻译山。请将以下 Pi Network 官方文章全文翻译为简体中文。
+    prompt = f"""你是一个专业的中文翻译。请将以下 Pi Network 官方文章全文翻译为简体中文。
 
 要求：
 1. 保留每行开头的 [N][TYPE] 标记不变
 2. __SKIP__ 的行不要翻译，直接输出 __SKIP__
 3. 翻译要自然流畅，符合中文表达习惯
-4. 保持原文的所有内容，不要删除或消略任何信息
+4. 保持原文的所有内容，不要删除或省略任何信息
 5. 回复格式必须和输入一致，每行对应一行
 
 标题：{title_en}
@@ -166,7 +171,20 @@ def translate_article(paragraphs, title_en, max_retries=2):
                             text = p["text"]
                         translated.append({"type": p["type"], "text": text})
 
-                print(f"[\u2713] DeepSeek 翻译完成，共 {len(translated)} 个段落")
+                # 中文检测：段落中少于 5% 字符为中文则判定翻译失败
+                chinese_count = sum(
+                    sum(1 for c in tp["text"] if '\u4e00' <= c <= '\u9fff')
+                    for tp in translated if tp["type"] not in ("img", "video")
+                )
+                total_chars = sum(
+                    len(tp["text"])
+                    for tp in translated if tp["type"] not in ("img", "video")
+                )
+                chinese_ratio = chinese_count / total_chars if total_chars > 0 else 0
+                print(f"[✓] DeepSeek 翻译完成，共 {len(translated)} 个段落，中文率 {chinese_ratio:.1%}")
+                if chinese_ratio < 0.05:
+                    print(f"[!] 翻译结果中文比例过低 ({chinese_count}/{total_chars})，判定为 API 失败，跳过本文")
+                    return None
                 return translated
             else:
                 print(f"[!] DeepSeek API 错误: HTTP {resp.status_code} - {resp.text[:100]}")
@@ -175,8 +193,8 @@ def translate_article(paragraphs, title_en, max_retries=2):
             if attempt < max_retries:
                 time.sleep(5)
 
-    print("[!] DeepSeek 翻译全部失败，使用原文")
-    return paragraphs  # 全部失败则返回原文
+    print("[!] DeepSeek 翻译全部失败，跳过本文")
+    return None  # 全部失败返回 None，调用方跳过本文
 
 
 def translate_text(text, max_retries=2):
@@ -206,36 +224,76 @@ def translate_text(text, max_retries=2):
     return None
 
 
+def _extract_video_url(iframe):
+    """从 iframe 中提取视频 URL，支持多种属性"""
+    # 优先用 src（标准 embed 格式）
+    src = iframe.get("src", "") or iframe.get("data-src", "")
+    if src and ("youtube" in src or "youtu.be" in src or "vimeo" in src):
+        if "youtube.com/watch" in src:
+            video_id = src.split("v=")[-1].split("&")[0]
+            src = f"https://www.youtube.com/embed/{video_id}"
+        return src
+    # 降级检查 nitro-og-src（WPB Video Widget 等懒加载 iframe）
+    nitro = iframe.get("nitro-og-src", "")
+    if nitro and ("youtube" in nitro or "youtu.be" in nitro or "vimeo" in nitro):
+        # nitro-og-src 可能是完整 embed URL 或 watch URL
+        if "youtube.com/watch" in nitro:
+            video_id = nitro.split("v=")[-1].split("&")[0]
+            return f"https://www.youtube.com/embed/{video_id}"
+        return nitro
+    return None
+
+
+def _convert_internal_link(href):
+    """将 minepi.com 内链转换为 pibizh.com 对应地址"""
+    if not href:
+        return href
+    # blog 文章链接
+    m = re.match(r"https://minepi\.com/blog/([\w-]+)/?", href)
+    if m:
+        return f"https://pibizh.com/blog/{m.group(1)}.html"
+    # 固定页面链接
+    if href.startswith("https://minepi.com/pi-browser"):
+        return "https://pibizh.com/pi-browser"
+    if href.startswith("https://minepi.com/pi-node"):
+        return "https://pibizh.com/pi-node"
+    if href.startswith("https://minepi.com/"):
+        return href.replace("https://minepi.com", "https://pibizh.com")
+    return href
+
+
 def clean_html_content(raw_html):
-    """清理从 minepi.com 抓取的 HTML，提取纯文本段落"""
+    """清理从 minepi.com 抓取的 HTML，提取纯文本段落，内链转 pibizh.com"""
     soup = BeautifulSoup(raw_html, "html.parser")
 
-    # 移除不需要的标签（保留 iframe 用于视频嵌入）
+    # 移除不需要的标签
     for tag in soup.find_all(["script", "style", "nav", "noscript"]):
         tag.decompose()
 
-    # 提取结构化内容
     paragraphs = []
     images = []
-    videos = []  # 保存视频嵌入（YouTube iframe 等）
+    seen_video_urls = set()  # 避免重复添加同一视频
 
+    # 1. 先处理 WPB Video Widget（内含 iframe 的视频容器）
+    for wpb in soup.find_all("div", class_="wpb_video_wrapper"):
+        iframe = wpb.find("iframe")
+        if iframe:
+            video_url = _extract_video_url(iframe)
+            if video_url and video_url not in seen_video_urls:
+                seen_video_urls.add(video_url)
+                paragraphs.append({"type": "video", "text": video_url})
+
+    # 2. 遍历所有目标元素
     for elem in soup.find_all(["h2", "h3", "p", "img", "blockquote", "ul", "ol", "iframe", "figure"]):
+        # 跳过已处理的 wpb_video_wrapper 内的元素
         if elem.name == "iframe":
-            src = elem.get("src", "") or elem.get("data-src", "")
-            # 只保留 YouTube/视频 iframe
-            if src and ("youtube" in src or "youtu.be" in src or "vimeo" in src):
-                # 确保是 embed 格式
-                if "youtube.com/watch" in src:
-                    video_id = src.split("v=")[-1].split("&")[0]
-                    src = f"https://www.youtube.com/embed/{video_id}"
-                videos.append(src)
-                paragraphs.append({"type": "video", "text": src})
+            # 已在上面处理
+            continue
         elif elem.name == "figure":
-            # figure 可能包含图片或视频
             img = elem.find("img")
             if img:
                 src = img.get("src", "") or img.get("data-src", "") or img.get("nitro-lazy-src", "") or img.get("data-lazy-src", "")
-                if src and src.startswith("http"):
+                if src and src.startswith("http") and src not in images:
                     images.append(src)
                     paragraphs.append({"type": "img", "text": src})
         elif elem.name == "img":
@@ -244,8 +302,16 @@ def clean_html_content(raw_html):
                 images.append(src)
                 paragraphs.append({"type": "img", "text": src})
         elif elem.name in ("h2", "h3"):
+            # 提取纯文本并转换内链
             text = elem.get_text(strip=True)
             if text and len(text) > 2:
+                # 转换段落中的内链
+                for a in elem.find_all("a"):
+                    old_href = a.get("href", "")
+                    if old_href:
+                        new_href = _convert_internal_link(old_href)
+                        a["href"] = new_href
+                text = str(elem)  # 保留带链接的 HTML
                 paragraphs.append({"type": elem.name, "text": text})
         elif elem.name == "blockquote":
             text = elem.get_text(strip=True)
@@ -256,9 +322,15 @@ def clean_html_content(raw_html):
             if items:
                 paragraphs.append({"type": "list", "text": "\n".join(f"• {item}" for item in items)})
         elif elem.name == "p":
+            # 转换段落中的内链
+            for a in elem.find_all("a"):
+                old_href = a.get("href", "")
+                if old_href:
+                    new_href = _convert_internal_link(old_href)
+                    a["href"] = new_href
             text = elem.get_text(strip=True)
-            if text and len(text) > 10:  # 过滤太短的段落
-                paragraphs.append({"type": "p", "text": text})
+            if text and len(text) > 10:
+                paragraphs.append({"type": "p", "text": str(elem)})  # 保留带链接的 HTML
 
     return paragraphs, images
 
@@ -292,8 +364,12 @@ def build_chinese_html(paragraphs_cn, images, hero_img):
                 f'allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">'
                 f'</iframe></div>'
             )
-        else:
-            html_parts.append(f"<p>{text}</p>")
+        elif ptype == "p":
+            # 如果文本已是 HTML（包含内链转换后的标签），直接使用；否则包装
+            if text.startswith("<"):
+                html_parts.append(text)
+            else:
+                html_parts.append(f"<p>{text}</p>")
 
     return "\n            ".join(html_parts)
 
@@ -494,6 +570,20 @@ def run_sync():
         # 3. 一次性翻译整篇文章（DeepSeek，保留结构）
         print("[*] 正在用 DeepSeek 翻译全文...")
         translated_paragraphs = translate_article(paragraphs, title_en)
+        if translated_paragraphs is None:
+            print(f"[!] 文章翻译失败（API 无效或中文率不足），跳过: {title_en}")
+            # 发送 Telegram 警告（使用 requests 库）
+            if TG_BOT_TOKEN:
+                msg = f"⚠️ *翻译失败警告*\n\n文章: {post['title']}\nSlug: {post['url_slug']}\nURL: {post['full_url']}\n\nAPI Key 可能已失效，请在 GitHub Secrets 更新 DEEPSEEK_API_KEY。"
+                try:
+                    requests.post(
+                        f"https://api.telegram.org/bot{TG_BOT_TOKEN}/sendMessage",
+                        data={"chat_id": TG_CHAT_ID, "text": msg, "parse_mode": "Markdown"},
+                        timeout=10
+                    )
+                except Exception as warn_err:
+                    print(f"[!] 翻译失败警告通知失败: {warn_err}")
+            continue  # 不覆盖已有 HTML，不更新 news.json
 
         # 4. 上传图片到图床（hero + 内容图片）
         all_imgs = [p["text"] for p in translated_paragraphs if p["type"] == "img"]
