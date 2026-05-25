@@ -22,9 +22,9 @@ BLOG_LIST_PAGE = "blog.html"
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "8190223294")
 
-DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
-DEEPSEEK_API_URL = "https://api.modelverse.cn/v1/chat/completions"
-DEEPSEEK_MODEL = "deepseek-v4-flash"
+LLM_API_KEY = os.environ.get("LLM_API_KEY", "")
+LLM_API_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
+LLM_MODEL = "qwen/qwen3.5-397b-a17b"
 
 # 检查 token 是否配置
 if not TG_BOT_TOKEN:
@@ -103,7 +103,7 @@ def send_tg_notification(title, slug):
 
 
 def translate_article(paragraphs, title_en, max_retries=2):
-    """使用 DeepSeek 一次性翻译整篇文章，保留结构；翻译失败返回 None"""
+    """使用 NVIDIA Qwen3.5 一次性翻译整篇文章，保留结构；翻译失败返回 None"""
     # 构建结构化输入，img/video 直接标记跳过
     lines = []
     for i, p in enumerate(paragraphs):
@@ -137,10 +137,10 @@ def translate_article(paragraphs, title_en, max_retries=2):
     for attempt in range(max_retries + 1):
         try:
             resp = requests.post(
-                DEEPSEEK_API_URL,
-                headers={"Authorization": f"Bearer {DEEPSEEK_API_KEY}", "Content-Type": "application/json"},
+                LLM_API_URL,
+                headers={"Authorization": f"Bearer {LLM_API_KEY}", "Content-Type": "application/json"},
                 json={
-                    "model": DEEPSEEK_MODEL,
+                    "model": LLM_MODEL,
                     "messages": [{"role": "user", "content": prompt}],
                     "temperature": 0.3,
                     "max_tokens": 8000,
@@ -181,19 +181,19 @@ def translate_article(paragraphs, title_en, max_retries=2):
                     for tp in translated if tp["type"] not in ("img", "video")
                 )
                 chinese_ratio = chinese_count / total_chars if total_chars > 0 else 0
-                print(f"[✓] DeepSeek 翻译完成，共 {len(translated)} 个段落，中文率 {chinese_ratio:.1%}")
+                print(f"[✓] LLM 翻译完成，共 {len(translated)} 个段落，中文率 {chinese_ratio:.1%}")
                 if chinese_ratio < 0.05:
                     print(f"[!] 翻译结果中文比例过低 ({chinese_count}/{total_chars})，判定为 API 失败，跳过本文")
                     return None
                 return translated
             else:
-                print(f"[!] DeepSeek API 错误: HTTP {resp.status_code} - {resp.text[:100]}")
+                print(f"[!] LLM API 错误: HTTP {resp.status_code} - {resp.text[:100]}")
         except Exception as e:
             print(f"[!] 翻译失败 (尝试 {attempt+1}): {e}")
             if attempt < max_retries:
                 time.sleep(5)
 
-    print("[!] DeepSeek 翻译全部失败，跳过本文")
+    print("[!] LLM 翻译全部失败，跳过本文")
     return None  # 全部失败返回 None，调用方跳过本文
 
 
@@ -204,10 +204,10 @@ def translate_text(text, max_retries=2):
     for attempt in range(max_retries + 1):
         try:
             resp = requests.post(
-                DEEPSEEK_API_URL,
-                headers={"Authorization": f"Bearer {DEEPSEEK_API_KEY}", "Content-Type": "application/json"},
+                LLM_API_URL,
+                headers={"Authorization": f"Bearer {LLM_API_KEY}", "Content-Type": "application/json"},
                 json={
-                    "model": DEEPSEEK_MODEL,
+                    "model": LLM_MODEL,
                     "messages": [{"role": "user", "content": f"将以下英文翻译为简体中文，只输出翻译结果，不要加任何解释：\n{text}"}],
                     "temperature": 0.3,
                     "max_tokens": 500,
@@ -567,14 +567,14 @@ def run_sync():
         title_cn = title_cn.strip("\"'`\n")
         print(f"[*] 中文标题: {title_cn}")
 
-        # 3. 一次性翻译整篇文章（DeepSeek，保留结构）
-        print("[*] 正在用 DeepSeek 翻译全文...")
+        # 3. 一次性翻译整篇文章（NVIDIA Qwen3.5，保留结构）
+        print("[*] 正在用 NVIDIA Qwen3.5 翻译全文...")
         translated_paragraphs = translate_article(paragraphs, title_en)
         if translated_paragraphs is None:
             print(f"[!] 文章翻译失败（API 无效或中文率不足），跳过: {title_en}")
             # 发送 Telegram 警告（使用 requests 库）
             if TG_BOT_TOKEN:
-                msg = f"⚠️ *翻译失败警告*\n\n文章: {post['title']}\nSlug: {post['url_slug']}\nURL: {post['full_url']}\n\nAPI Key 可能已失效，请在 GitHub Secrets 更新 DEEPSEEK_API_KEY。"
+                msg = f"⚠️ *翻译失败警告*\n\n文章: {post['title']}\nSlug: {post['url_slug']}\nURL: {post['full_url']}\n\nAPI Key 可能已失效，请在 GitHub Variables 更新 LLM_API_KEY。"
                 try:
                     requests.post(
                         f"https://api.telegram.org/bot{TG_BOT_TOKEN}/sendMessage",

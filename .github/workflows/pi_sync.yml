@@ -30,7 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
-          DEEPSEEK_API_KEY: ${{ vars.DEEPSEEK_API_KEY }}
+          LLM_API_KEY: ${{ vars.LLM_API_KEY }}
         run: python scripts/pi_robot.py
 
       - name: Commit and Push Changes
