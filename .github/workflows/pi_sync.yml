@@ -39,3 +39,14 @@ jobs:
           git config --global user.email "bot@pibizh.com"
           git add .
           git diff --quiet && git diff --staged --quiet || (git commit -m "Robot: 同步 MinePi.com 最新博文全文" && git push origin main)
+
+      - name: Deploy to VPS
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -avz --delete --exclude='.git' --exclude='.github' --exclude='scripts' --exclude='data' --exclude='.user.ini'
+          path: ./
+          remote_path: ${{ secrets.VPS_PATH }}/
+          remote_host: ${{ secrets.VPS_HOST }}
+          remote_user: ${{ secrets.VPS_USER }}
+          remote_port: ${{ secrets.VPS_PORT }}
+          remote_key: ${{ secrets.VPS_DEPLOY_KEY }}
