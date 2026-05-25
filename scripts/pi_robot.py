@@ -38,6 +38,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title} | Pi Network 中文网</title>
     <script src="https://cdn.tailwindcss.com"></script>
