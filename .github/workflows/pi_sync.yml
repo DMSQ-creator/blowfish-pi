@@ -43,7 +43,7 @@ jobs:
       - name: Deploy to VPS
         uses: burnett01/rsync-deployments@6.0.0
         with:
-          switches: -avz --delete --exclude='.git' --exclude='.github' --exclude='scripts' --exclude='data' --exclude='.user.ini'
+          switches: -avz --delete --exclude='.git' --exclude='.github' --exclude='scripts' --exclude='.user.ini'
           path: ./
           remote_path: ${{ secrets.VPS_PATH }}/
           remote_host: ${{ secrets.VPS_HOST }}
