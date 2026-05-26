@@ -14,7 +14,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         body { background-color: #0f021a; color: white; line-height: 2; font-family: 'Inter', sans-serif; text-align: justify; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .avatar-placeholder { width: 100%; aspect-ratio: 1/1; background: linear-gradient(135deg, #2d1b3d 0%, #0f021a 100%); border: 2px solid rgba(244, 175, 71, 0.3); border-radius: 50px; display: flex; items-center; justify-center; font-size: 4rem; font-weight: 900; color: #f4af47; box-shadow: 0 0 40px rgba(244, 175, 71, 0.1); }
+        .founder-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 2px solid rgba(244, 175, 71, 0.3); border-radius: 50px; box-shadow: 0 0 40px rgba(244, 175, 71, 0.1); }
         .stat-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
         h2 { font-size: 2.2rem; font-weight: 900; margin: 5rem 0 2rem; color: #f4af47; border-bottom: 2px solid rgba(244,175,71,0.1); padding-bottom: 1rem; }
     </style>
@@ -39,7 +39,7 @@
             <h2>核心创始人</h2>
             <div class="space-y-24 mt-16">
                 <div class="grid md:grid-cols-3 gap-12 items-center">
-                    <div class="col-span-1"><div class="avatar-placeholder">N</div></div>
+                    <div class="col-span-1"><img src="/static/nicolas-kokkalis.jpg" alt="Dr. Nicolas Kokkalis" class="founder-img"></div>
                     <div class="md:col-span-2">
                         <h3 class="text-4xl font-black mb-4">Nicolas Kokkalis</h3>
                         <p class="text-pi-gold font-bold text-sm uppercase mb-4 tracking-widest">技术负责人</p>
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-12 items-center">
-                    <div class="col-span-1 md:order-2"><div class="avatar-placeholder">C</div></div>
+                    <div class="col-span-1 md:order-2"><img src="/static/chengdiao-fan.jpg" alt="Dr. Chengdiao Fan" class="founder-img"></div>
                     <div class="md:col-span-2 md:order-1">
                         <h3 class="text-4xl font-black mb-4 text-right md:text-left">Chengdiao Fan</h3>
                         <p class="text-pi-gold font-bold text-sm uppercase mb-4 tracking-widest text-right md:text-left">产品负责人</p>
