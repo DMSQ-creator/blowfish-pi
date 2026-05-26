@@ -2,21 +2,58 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>区块浏览器 | Pi Network 中文网</title>
     <meta name="description" content="Pi 区块链浏览器与同步状态。查看 Pi 主网区块同步进度、区块高度及链上数据。">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu { background: #2d1b3d; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
+    </style>
 </head>
-<body class="bg-[#1a1220] text-white flex items-center justify-center min-h-screen">
-    <div class="text-center p-10">
-        <h1 class="text-5xl font-black mb-6">区块浏览器同步中</h1>
-        <p class="text-xl text-gray-400 mb-10">我们正在建立与 Pi Mainnet 区块链的实时数据映射链路。</p>
-        <a href="index.html" class="bg-[#f4af47] text-[#0f021a] px-8 py-3 rounded-full font-bold">先回首页看看</a>
-    </div>
+<body class="flex flex-col min-h-screen">
 
+    <!-- 导航栏 -->
+    <nav class="nav-blur sticky top-0 z-50 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-black text-pi-gold">π Pi Network</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-bold">
+                <a href="price.html" class="hover:text-[#f4af47] transition">派币价格</a>
+                <div class="dropdown relative">
+                    <a href="blockchain.html" class="hover:text-[#f4af47] transition">Pi 区块链 ▾</a>
+                    <div class="dropdown-menu absolute top-full left-0 mt-2 min-w-[200px] hidden">
+                        <a href="blockchain.html">区块浏览器</a>
+                        <a href="nodes.html">节点运行</a>
+                        <a href="technical-whitepaper.html">技术白皮书</a>
+                    </div>
+                </div>
+                <a href="blog.html" class="hover:text-[#f4af47] transition">最新资讯</a>
+                <a href="faq.html" class="hover:text-[#f4af47] transition">常见问题</a>
+                <a href="reg.html" class="bg-[#f4af47] text-[#0f021a] px-5 py-2 rounded-full hover:bg-[#f9c56a] transition">下载注册</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="flex-1 flex items-center justify-center">
+        <div class="text-center p-10">
+            <h1 class="text-5xl font-black mb-6">区块浏览器同步中</h1>
+            <p class="text-xl text-gray-400 mb-10">我们正在建立与 Pi Mainnet 区块链的实时数据映射链路。</p>
+            <a href="index.html" class="bg-[#f4af47] text-[#0f021a] px-8 py-3 rounded-full font-bold hover:bg-[#f9c56a] transition">先回首页看看</a>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
     <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
         <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200">
         <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
@@ -28,5 +65,6 @@
             <a href="faq.html" class="hover:text-white">常见问题</a>
         </div>
     </footer>
+
 </body>
 </html>
