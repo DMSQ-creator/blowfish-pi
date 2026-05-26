@@ -43,7 +43,7 @@
         async function loadArticle() {
             const response = await fetch('data/news.json');
             const news = await response.json();
-            const article = news.find(a => a.id === id);
+            const article = news.find(a => a.url_slug === id);
 
             if (article) {
                 document.title = article.title + " | Pi 派币中文网";
