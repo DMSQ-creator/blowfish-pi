@@ -15,7 +15,7 @@ jobs:
       - name: Deploy to VPS via rsync
         uses: burnett01/rsync-deployments@6.0.0
         with:
-          switches: -avz --delete --exclude='.git' --exclude='.github' --exclude='scripts' --exclude='data' --exclude='.user.ini'
+          switches: -avz --delete --exclude='.git' --exclude='.github' --exclude='scripts' --exclude='.user.ini' --exclude='clean_content.txt' --exclude='raw_content.txt' --exclude='raw_full_content.txt' --exclude='ready.txt' --exclude='download_img.py' --exclude='full_clone.py' --exclude='super_sync.py' --exclude='sync_full.py' --exclude='publish.sh'
           path: ./
           remote_path: ${{ secrets.VPS_PATH }}/
           remote_host: ${{ secrets.VPS_HOST }}
