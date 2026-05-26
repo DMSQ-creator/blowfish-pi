@@ -1,0 +1,24 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to VPS via rsync
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -avz --delete --exclude='.git' --exclude='.github' --exclude='scripts' --exclude='data' --exclude='.user.ini'
+          path: ./
+          remote_path: ${{ secrets.VPS_PATH }}/
+          remote_host: ${{ secrets.VPS_HOST }}
+          remote_user: ${{ secrets.VPS_USER }}
+          remote_port: ${{ secrets.VPS_PORT }}
+          remote_key: ${{ secrets.VPS_DEPLOY_KEY }}
