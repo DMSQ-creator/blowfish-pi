@@ -19,21 +19,17 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Pi浏览器下载","description":"Pi浏览器下载与安装教程","url":"https://pibizh.com/browser.html"}</script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #FFFFFF; color: #1a1a2e; line-height: 1.8; font-family: sans-serif; }
-        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        
         .app-card { background: #f8f9fa; border: 1px solid #e5e7eb; border-radius: 16px; padding: 2.5rem; transition: all 0.3s; }
         .app-card:hover { border-color: #f4af47; background: #FFFFFF; }
     </style>
+<link rel="stylesheet" href="site.css">
 </head>
 <body class="min-h-screen flex flex-col">
-    <nav class="p-6 border-b border-white/10 backdrop-blur-xl sticky top-0 bg-[#593B8B] text-white/80 z-50">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-white hover:text-white font-bold tracking-tighter uppercase">← 返回首页</a>
-            <span class="text-[#f4af47] font-black uppercase">Ecosystem Apps</span>
-        </div>
-    </nav>
+    <div id="site-nav"></div>
 
-    <main class="max-w-6xl mx-auto py-24 px-6">
+    <main class="flex-1 max-w-6xl mx-auto py-24 px-6">
         <header class="text-center mb-24">
             <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 italic">Pi 浏览器</h1>
             <p class="text-2xl text-white max-w-2xl mx-auto">这是通往 Pi 生态系统和 Web3 体验的门户。</p>
@@ -63,16 +59,7 @@
         </div>
     </main>
 
-        <footer class="py-12 bg-[#252525] text-center border-t border-white/5">
-        <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200">
-        <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
-        <div class="flex flex-wrap justify-center gap-8 text-sm font-bold text-gray-600">
-            <a href="about.html" class="hover:text-white">关于我们</a>
-            <a href="technical-whitepaper.html" class="hover:text-white">技术文档</a>
-            <a href="reg.html" class="hover:text-[#f4af47]">下载注册</a>
-            <a href="nodes.html" class="hover:text-white">节点运行</a>
-            <a href="faq.html" class="hover:text-white">常见问题</a>
-        </div>
-    </footer>
+        <div id="site-footer"></div>
+<script src="inject-components.js"></script>
 </body>
 </html>

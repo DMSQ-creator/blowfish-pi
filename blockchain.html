@@ -19,19 +19,15 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Pi区块链浏览器","description":"Pi区块链浏览器，实时查看主网区块高度、交易数据","url":"https://pibizh.com/blockchain.html"}</script>
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="site.css">
 </head>
 <body class="bg-[#FFFFFF] text-[#1a1a2e] min-h-screen flex flex-col">
 
     <!-- 导航栏（Style B：极简返回导航） -->
-    <nav class="p-6 border-b border-white/10 bg-[#593B8B] text-white/80 backdrop-blur-xl sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-white hover:text-white font-bold uppercase tracking-tighter">← 返回首页</a>
-            <span class="text-[#f4af47] font-black uppercase">区块浏览器</span>
-        </div>
-    </nav>
+    <div id="site-nav"></div>
 
     <!-- 主内容 -->
-    <main class="flex-1 flex items-center justify-center">
+    <main class="flex-1 flex-1 flex items-center justify-center">
         <div class="text-center p-10">
             <h1 class="text-5xl font-black mb-6 text-[#1a1a2e]">区块浏览器同步中</h1>
             <p class="text-xl text-[#374151] mb-10">我们正在建立与 Pi Mainnet 区块链的实时数据映射链路。</p>
@@ -40,17 +36,8 @@
     </main>
 
     <!-- 页脚 -->
-    <footer class="py-12 bg-[#252525] text-center border-t border-white/5">
-        <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200">
-        <p class="text-sm font-bold text-gray-600 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
-        <div class="flex flex-wrap justify-center gap-8 text-sm font-bold text-gray-600">
-            <a href="about.html" class="hover:text-white">关于我们</a>
-            <a href="technical-whitepaper.html" class="hover:text-white">技术文档</a>
-            <a href="reg.html" class="hover:text-[#f4af47]">下载注册</a>
-            <a href="nodes.html" class="hover:text-white">节点运行</a>
-            <a href="faq.html" class="hover:text-white">常见问题</a>
-        </div>
-    </footer>
+    <div id="site-footer"></div>
 
+<script src="inject-components.js"></script>
 </body>
 </html>

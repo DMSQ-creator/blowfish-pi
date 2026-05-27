@@ -9,19 +9,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body{background-color: #FFFFFF;color: #1a1a2e;font-family:'Inter',sans-serif;margin:0;overflow-x:hidden}
-        .hero-bg{background:linear-gradient(135deg,#1e0a27 0%,#423f88 100%)}
-        .text-pi-gold{background:linear-gradient(90deg,#f4af47 0%,#fab44b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .nav-blur{background:rgba(89, 59, 139, 0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-        .dropdown:hover .dropdown-menu{display:block}
-        .dropdown-menu{background:#2d1b3d;border:1px solid rgba(255,255,255,0.2);border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,0.6)}
-        .dropdown-menu a{display:block;padding:12px 24px;font-size:14px;color:#ffffff!important;font-weight:600;transition:all 0.2s;border-bottom:1px solid rgba(255,255,255,0.05)}
-        .dropdown-menu a:last-child{border-bottom:none}
-        .dropdown-menu a:hover{background:rgba(244,175,71,0.15);color:#f4af47!important}
-        #mobile-menu{transition:transform 0.4s ease-in-out;transform:translateX(100%)}
-        #mobile-menu.open{transform:translateX(0)}
-        .fixed-cta{position:fixed;bottom:2rem;right:2rem;z-index:100;animation:bounce 2s infinite}
-        @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        
+        
+        
+        
+        .dropdown:hover 
+        
+        
+        
+        
+        
+        
+        
+        }
         .step-card{background: #f8f9fa;border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:2rem;transition:all 0.3s}
         .step-card:hover{border-color:#f4af47;background:rgba(244,175,71,0.05);transform:translateY(-4px)}
         .faq-item{border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;transition:all 0.3s}
@@ -32,59 +32,14 @@
         .faq-arrow{transition:transform 0.3s}
     </style>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Pi挖矿完整教程","description":"手机零成本挖Pi币的完整步骤指南","step":[{"@type":"HowToStep","name":"下载Pi App","text":"从官方渠道下载Pi Network应用"},{"@type":"HowToStep","name":"手机号注册","text":"使用手机号注册Pi账号"},{"@type":"HowToStep","name":"填写邀请码","text":"填写邀请码nbjh完成注册"},{"@type":"HowToStep","name":"点击闪电开始挖矿","text":"点击App中的闪电图标开始挖矿"},{"@type":"HowToStep","name":"每24小时续期","text":"每24小时点击一次闪电续期挖矿"}]}</script>
+<link rel="stylesheet" href="site.css">
 </head>
 <body class="hero-bg min-h-screen">
-    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]"><span class="text-xl">🔥</span><div class="text-[10px] font-black leading-none uppercase">注册教程</div></a>
+    
 
-    <header class="fixed w-full z-[100] nav-blur border-b border-white/10">
-        <nav class="text-white container mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
-                <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10">
-                <span class="text-xl font-black tracking-tighter uppercase whitespace-nowrap">Pi Network 中文网</span>
-            </div>
-            <div class="hidden lg:flex items-center gap-8">
-                <a href="price.html" class="text-[11px] font-black tracking-widest text-white uppercase hover:text-[#f4af47]">派币价格</a>
-                <div class="dropdown relative group"><div class="text-[11px] font-black tracking-widest text-white uppercase cursor-pointer hover:text-[#f4af47] flex items-center gap-1">Pi 区块链 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div><div class="dropdown-menu absolute hidden pt-4 w-48 left-0"><a href="nodes.html">Pi 节点 (Node)</a><a href="blockchain.html">区块浏览器</a><a href="technical-whitepaper.html">技术白皮书</a><a href="roadmap.html">项目路线图</a></div></div>
-                <div class="dropdown relative group"><div class="text-[11px] font-black tracking-widest text-white uppercase cursor-pointer hover:text-[#f4af47] flex items-center gap-1">生态系统 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div><div class="dropdown-menu absolute hidden pt-4 w-56 left-0"><a href="developers.html">开发者中心</a><a href="browser.html">Pi 浏览器下载</a><a href="kyc.html">KYC 身份认证</a></div></div>
-                <a href="mining-tutorial.html" class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase">挖矿教程</a>
-                <a href="about.html" class="text-[11px] font-black tracking-widest text-white uppercase hover:text-[#f4af47]">关于我们</a>
-                <div class="dropdown relative group"><div class="text-[11px] font-black tracking-widest text-white uppercase cursor-pointer hover:text-[#f4af47] flex items-center gap-1">社区资讯 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div><div class="dropdown-menu absolute hidden pt-4 w-52 left-0"><a href="blog.html">官方新闻动态</a><a href="reg.html">保姆级注册教程</a><a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer">Telegram 交流群</a></div></div>
-            </div>
-            <div class="flex items-center gap-4">
-                <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-[#5865F2] items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
-                <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-blue-500 items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.06.06 0 0 0-.02-.12c-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg></a>
-                <a href="reg.html" class="hidden sm:block bg-[#f4af47] text-[#1e0a27] px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">Code: nbjh</a>
-                <button id="m-btn" class="lg:hidden p-1.5 text-[#f4af47] border border-[#f4af47]/20 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
-            </div>
-        </nav>
-    </header>
+    <div id="site-nav"></div><main class="flex-1 flex-1">
 
-    <div id="mobile-menu" class="fixed inset-0 z-[1000] bg-white lg:hidden flex flex-col p-10 overflow-y-auto">
-        <button id="m-close" class="absolute top-6 right-6 p-2 text-[#f4af47] font-black">CLOSE</button>
-        <div class="flex flex-col gap-6 mt-16 text-3xl font-black uppercase text-white">
-            <a href="index.html">首页</a><div class="h-px bg-[#f8f9fa] w-full"></div>
-            <a href="price.html">派币实时价格</a>
-            <a href="mining-tutorial.html" class="text-[#f4af47]">挖矿教程</a>
-            <a href="technical-whitepaper.html">技术白皮书</a>
-            <a href="nodes.html">Pi 节点运行</a>
-            <a href="roadmap.html">发展路线图</a>
-            <a href="kyc.html">身份认证 (KYC)</a>
-            <a href="blog.html">官方最新动态</a>
-            <a href="faq.html">常见问题 (FAQ)</a>
-            <a href="about.html">关于我们</a>
-            <a href="reg.html" class="text-orange-400 underline underline-offset-8">注册下载教程</a>
-        </div>
-        <p class="text-center text-white text-xs uppercase tracking-widest font-bold mt-auto">推荐邀请码: nbjh</p>
-    </div>
-
-    <!-- Hero -->
-    <section class="min-h-[60vh] flex items-center pt-32 pb-16 px-6">
-        <div class="container mx-auto text-center max-w-4xl">
-            <div class="inline-block px-4 py-1 rounded-full bg-orange-500/10 border border-[#f4af47]/20 text-[#f4af47] text-[10px] font-black uppercase mb-8 tracking-widest">零成本 · 零门槛 · 零风险</div>
-            <h1 class="text-5xl md:text-7xl font-black mb-8 leading-[1] tracking-tighter text-white">Pi 挖矿<span class="text-pi-gold italic">完整教程</span></h1>
-            <p class="text-xl md:text-2xl text-white max-w-2xl mx-auto leading-relaxed font-medium">零成本、零门槛，每天点击一次闪电即可赚取数字资产</p>
-            <div class="mt-10"><a href="reg.html" class="inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-10 py-5 rounded-2xl font-black text-lg hover:scale-105 transition-all shadow-2xl">⚡ 立即开始挖矿</a></div>
-        </div>
+    
     </section>
 
     <!-- 第一部分：什么是Pi挖矿 -->
@@ -223,18 +178,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-[#252525] text-center border-t border-[#e5e7eb]">
-        <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200">
-        <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
-        <div class="flex flex-wrap justify-center gap-8 text-sm font-bold text-gray-600">
-            <a href="about.html" class="hover:text-white">关于我们</a>
-            <a href="technical-whitepaper.html" class="hover:text-white">技术文档</a>
-            <a href="reg.html" class="hover:text-[#f4af47]">下载注册</a>
-            <a href="nodes.html" class="hover:text-white">节点运行</a>
-            <a href="mining-tutorial.html" class="hover:text-white">挖矿教程</a>
-            <a href="faq.html" class="hover:text-white">常见问题</a>
-        </div>
-    </footer>
+    </main><div id="site-footer"></div>
 
     <!-- 移动端底部固定悬浮栏 -->
     <div class="fixed bottom-0 left-0 right-0 bg-[#f5f0ff]/95 backdrop-blur-xl border-t border-[#e5e7eb] p-4 z-50 lg:hidden">
@@ -252,5 +196,6 @@
         btn.onclick = () => menu.classList.add('open');
         close.onclick = () => menu.classList.remove('open');
     </script>
+<script src="inject-components.js"></script>
 </body>
 </html>

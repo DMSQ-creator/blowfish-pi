@@ -20,19 +20,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { background-color: #FFFFFF; color: #1a1a2e; line-height: 2; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        
         .sidebar-link { display: block; border-left: 2px solid #e5e7eb; padding: 0.5rem 1.5rem; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.3s; color: #6b7280; font-size: 0.85rem; font-weight: bold; }
         .sidebar-link:hover { border-left-color: #f4af47; color: #1a1a2e; }
         section { padding-top: 100px; margin-top: -60px; margin-bottom: 5rem; }
         h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem; color: #f4af47; }
         p { color: #374151; margin-bottom: 2rem; font-size: 1.15rem; text-align: justify; }
     </style>
+<link rel="stylesheet" href="site.css">
 </head>
 <body class="min-h-screen flex flex-col">
-    <nav class="p-6 border-b border-white/10 bg-[#593B8B] text-white/90 backdrop-blur-xl sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex justify-between items-center"><a href="index.html" class="text-white font-bold">← 返回首页</a><span class="text-[#f4af47] font-black uppercase">Technical Whitepaper</span></div>
-    </nav>
+    <div id="site-nav"></div>
     <div class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-4 gap-16">
         <aside class="hidden lg:block sticky top-36 h-fit">
             <h4 class="text-[10px] font-black tracking-widest text-gray-500 uppercase mb-8">目录 / CONTENTS</h4>
@@ -42,7 +41,7 @@
             <a href="#mining" class="sidebar-link">04. Pi 采矿经济模型</a>
             <a href="#roadmap" class="sidebar-link">05. 项目路线图详情</a>
         </aside>
-        <main class="lg:col-span-3">
+        <main class="flex-1 lg:col-span-3">
             <h1 class="text-6xl md:text-9xl font-black mb-20 tracking-tighter text-pi-gold">WHITEPAPER</h1>
 
             <section id="intro">
@@ -84,17 +83,7 @@
                 </div>
             </section>
 
-                <footer class="py-12 bg-[#252525] text-center border-t border-white/5">
-        <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200">
-        <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
-        <div class="flex flex-wrap justify-center gap-8 text-sm font-bold text-gray-600">
-            <a href="about.html" class="hover:text-white">关于我们</a>
-            <a href="technical-whitepaper.html" class="hover:text-white">技术文档</a>
-            <a href="reg.html" class="hover:text-[#f4af47]">下载注册</a>
-            <a href="nodes.html" class="hover:text-white">节点运行</a>
-            <a href="faq.html" class="hover:text-white">常见问题</a>
-        </div>
-    </footer>
+                <div id="site-footer"></div>
         </main>
     </div>
 
@@ -111,5 +100,6 @@
         </div>
     </div>
 
+<script src="inject-components.js"></script>
 </body>
 </html>

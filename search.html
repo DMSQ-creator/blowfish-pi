@@ -13,11 +13,12 @@
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { background-color: #FFFFFF; color: #1a1a2e; font-family: 'Inter', sans-serif; }
-        .nav-blur { background: rgba(89, 59, 139, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        
+        
         .result-card { background: #f8f9fa; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem; transition: all 0.3s; cursor: pointer; }
         .result-card:hover { border-color: #f4af47; background: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
     </style>
+<link rel="stylesheet" href="site.css">
 </head>
 <body class="min-h-screen flex flex-col">
 
@@ -33,7 +34,7 @@
     </nav>
 
     <!-- 搜索区域 -->
-    <main class="max-w-3xl mx-auto px-6 py-16">
+    <main class="flex-1 max-w-3xl mx-auto px-6 py-16">
         <h1 class="text-4xl font-black mb-8 text-center text-[#1a1a2e]">站内搜索</h1>
 
         <div class="relative mb-10">
@@ -118,15 +119,7 @@
     </script>
 
     <!-- 统一 Footer -->
-    <footer class="py-10 bg-[#252525] text-center border-t border-white/5 mt-20">
-        <p class="text-sm font-bold text-gray-500 mb-4">© 2026 PI NETWORK 中文网 · 邀请码 <span class="text-[#f4af47]">nbjh</span></p>
-        <div class="flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-500">
-            <a href="about.html" class="hover:text-white transition-colors">关于我们</a>
-            <a href="reg.html" class="hover:text-[#f4af47] transition-colors">下载注册</a>
-            <a href="nodes.html" class="hover:text-white transition-colors">节点运行</a>
-            <a href="faq.html" class="hover:text-white transition-colors">常见问题</a>
-        </div>
-    </footer>
+    <div id="site-footer"></div>
 
     <!-- 移动端底部固定悬浮栏 -->
     <div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
@@ -141,5 +134,6 @@
         </div>
     </div>
 
+<script src="inject-components.js"></script>
 </body>
 </html>

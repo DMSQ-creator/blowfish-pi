@@ -1,0 +1,147 @@
+/* ============================================
+   pibizh.com 全站统一样式
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+:root {
+  --pi-gold: #f4af47;
+  --pi-gold-light: #fab44b;
+  --pi-gold-hover: #f9c56a;
+  --bg-dark: #1e0a27;
+  --bg-purple: #423f88;
+  --bg-nav: #593B8B;
+  --bg-dropdown: #2d1b3d;
+  --bg-footer: #252525;
+  --text-primary: #1a1a2e;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+  --border-light: #e5e7eb;
+  --bg-card: #f8f9fa;
+  --bg-section: #f5f0ff;
+  --discord: #5865F2;
+  --font-main: 'Inter', sans-serif;
+}
+
+/* === Base === */
+body {
+  background-color: #FFFFFF;
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  margin: 0;
+  overflow-x: hidden;
+  line-height: 1.8;
+}
+
+/* === Pi Gold Gradient Text === */
+.text-pi-gold {
+  background: linear-gradient(90deg, var(--pi-gold) 0%, var(--pi-gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* === Navigation === */
+.nav-blur {
+  background: rgba(89, 59, 139, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.nav-active {
+  color: var(--pi-gold) !important;
+}
+
+/* === Dropdowns === */
+.dropdown:hover .dropdown-menu,
+.dropdown.group:hover .dropdown-menu {
+  display: block;
+}
+.dropdown-menu {
+  background: var(--bg-dropdown);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+.dropdown-menu a {
+  display: block;
+  padding: 12px 24px;
+  font-size: 14px;
+  color: #ffffff !important;
+  font-weight: 600;
+  transition: all 0.2s;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+.dropdown-menu a:hover {
+  background: rgba(244,175,71,0.15);
+  color: var(--pi-gold) !important;
+}
+
+/* === Mobile Menu === */
+#mobile-menu {
+  transition: transform 0.4s ease-in-out;
+  transform: translateX(100%);
+}
+#mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* === Fixed CTA === */
+.fixed-cta {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* === Blog / News Cards === */
+.blog-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 2.5rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.blog-card:hover {
+  border-color: var(--pi-gold);
+  box-shadow: 0 8px 30px rgba(244,175,71,0.15);
+}
+
+/* === Hero Background === */
+.hero-bg {
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-purple) 100%);
+}
+
+/* === Footer Social Icons === */
+.footer-social {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+.footer-social:hover {
+  background: var(--discord);
+}
+.footer-social.tg:hover {
+  background: #0088cc;
+}
+
+/* === Smooth page transition (nav inject) === */
+#site-nav, #site-footer {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+#site-nav.loaded, #site-footer.loaded {
+  opacity: 1;
+}
