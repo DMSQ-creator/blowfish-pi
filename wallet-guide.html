@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi钱包与交易指南 | Pi怎么卖怎么转 | Pi Network 派币中文网</title>
+    <meta name="description" content="Pi钱包怎么用？Pi怎么卖、能换钱吗？Pi转账操作、交易指南、变现途径一网打尽。从钱包创建到主网交易，安全须知全解析。">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu { background: #2d1b3d; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
+        #mobile-menu { transition: transform 0.4s ease-in-out; transform: translateX(100%); }
+        #mobile-menu.open { transform: translateX(0); }
+        .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+        .step-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 2rem; }
+        .info-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 2rem; }
+        .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; }
+    </style>
+</head>
+<body class="hero-bg min-h-screen">
+    <!-- 全局悬浮 -->
+    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
+        <span class="text-xl">🔥</span>
+        <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
+    </a>
+
+    <!-- 导航栏 -->
+    <header class="fixed w-full z-[100] nav-blur border-b border-white/5">
+        <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
+                <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10">
+                <span class="text-xl font-black tracking-tighter uppercase whitespace-nowrap">Pi Network 中文网</span>
+            </div>
+            <!-- 桌面菜单 -->
+            <div class="hidden lg:flex items-center gap-8">
+                <a href="price.html" class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase hover:opacity-90">派币价格</a>
+                <div class="dropdown relative group">
+                    <div class="text-[11px] font-black tracking-widest text-gray-400 uppercase cursor-pointer hover:text-[#f4af47] flex items-center gap-1">Pi 区块链 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+                    <div class="dropdown-menu absolute hidden pt-4 w-48 left-0">
+                        <a href="nodes.html">Pi 节点 (Node)</a>
+                        <a href="blockchain.html">区块浏览器</a>
+                        <a href="technical-whitepaper.html">技术白皮书</a>
+                        <a href="roadmap.html">项目路线图</a>
+                    </div>
+                </div>
+                <div class="dropdown relative group">
+                    <div class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase cursor-pointer flex items-center gap-1">生态系统 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+                    <div class="dropdown-menu absolute hidden pt-4 w-56 left-0">
+                        <a href="developers.html">开发者中心</a>
+                        <a href="browser.html">Pi 浏览器下载</a>
+                        <a href="kyc.html">KYC 身份认证</a>
+                        <a href="wallet-guide.html" class="!text-[#f4af47]">钱包交易 ✦</a>
+                    </div>
+                </div>
+                <a href="about.html" class="text-[11px] font-black tracking-widest text-gray-400 uppercase hover:text-[#f4af47]">关于我们</a>
+                <div class="dropdown relative group">
+                    <div class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase cursor-pointer flex items-center gap-1">社区资讯 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
+                    <div class="dropdown-menu absolute hidden pt-4 w-52 left-0">
+                        <a href="blog.html">官方新闻动态</a>
+                        <a href="reg.html">保姆级注册教程</a>
+                        <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer">Telegram 交流群</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-[#5865F2] items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
+                <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-blue-500 items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg></a>
+                <a href="reg.html" class="hidden sm:block bg-[#f4af47] text-[#1e0a27] px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">Code: nbjh</a>
+                <button id="m-btn" class="lg:hidden p-1.5 text-[#f4af47] border border-[#f4af47]/20 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 手机侧边栏 -->
+    <div id="mobile-menu" class="fixed inset-0 z-[1000] bg-[#1e0a27] lg:hidden flex flex-col p-10 overflow-y-auto">
+        <button id="m-close" class="absolute top-6 right-6 p-2 text-[#f4af47] font-black">CLOSE</button>
+        <div class="flex flex-col gap-6 mt-16 text-3xl font-black uppercase text-white">
+            <a href="index.html" class="text-[#f4af47]">首页</a>
+            <div class="h-px bg-white/5 w-full"></div>
+            <a href="price.html">派币实时价格</a>
+            <a href="technical-whitepaper.html">技术白皮书</a>
+            <a href="nodes.html">Pi 节点运行</a>
+            <a href="roadmap.html">发展路线图</a>
+            <a href="kyc.html">身份认证 (KYC)</a>
+            <a href="wallet-guide.html" class="text-[#f4af47]">钱包交易指南 ✦</a>
+            <a href="blog.html">官方最新动态</a>
+            <a href="search.html" class="text-[11px] font-black tracking-widest text-gray-400 uppercase hover:text-[#f4af47]">🔍 搜索</a>
+            <a href="faq.html">常见问题 (FAQ)</a>
+            <a href="about.html">关于我们</a>
+            <a href="reg.html" class="text-orange-400 underline underline-offset-8">注册下载教程</a>
+        </div>
+        <p class="text-center text-gray-500 text-xs uppercase tracking-widest font-bold mt-auto">推荐邀请码: nbjh</p>
+    </div>
+
+    <!-- Hero 区 -->
+    <section class="min-h-[70vh] flex items-center pt-32 pb-16 px-6">
+        <div class="container mx-auto max-w-4xl text-center">
+            <div class="inline-block px-4 py-1 rounded-full bg-[#f4af47]/10 border border-[#f4af47]/20 text-[#f4af47] text-[10px] font-black uppercase mb-8 tracking-widest">钱包 · 转账 · 交易</div>
+            <h1 class="text-5xl md:text-7xl font-black mb-8 leading-[1.05] tracking-tighter text-white">
+                Pi 钱包与<span class="text-pi-gold italic">交易指南</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-medium">
+                从钱包创建到主网交易，一文讲透 Pi 资产管理
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 mt-10">
+                <a href="#wallet" class="bg-white/5 border border-white/10 text-white px-6 py-3 rounded-full font-bold text-sm hover:border-[#f4af47] transition-all">💳 Pi 钱包</a>
+                <a href="#transfer" class="bg-white/5 border border-white/10 text-white px-6 py-3 rounded-full font-bold text-sm hover:border-[#f4af47] transition-all">🔄 Pi 转账</a>
+                <a href="#sell" class="bg-white/5 border border-white/10 text-white px-6 py-3 rounded-full font-bold text-sm hover:border-[#f4af47] transition-all">💰 Pi 变现</a>
+                <a href="#safety" class="bg-white/5 border border-white/10 text-white px-6 py-3 rounded-full font-bold text-sm hover:border-red-400 transition-all">⚠️ 安全须知</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 第一部分：Pi钱包是什么 -->
+    <section id="wallet" class="py-20 px-6 bg-black/30 border-y border-white/5">
+        <div class="container mx-auto max-w-5xl">
+            <div class="flex items-center gap-4 mb-4">
+                <span class="text-4xl">💳</span>
+                <div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47]">Wallet</div>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-6">Pi 钱包是什么</h2>
+            <p class="text-gray-400 text-lg max-w-3xl mb-12 leading-relaxed">
+                Pi Wallet 是 Pi Network 的官方数字钱包，所有先锋用户均可通过 Pi Browser 访问。它基于 Pi 区块链构建，属于<strong class="text-white">非托管钱包</strong>——这意味着你对资产拥有完全控制权，任何人（包括 Pi 核心团队）都无法动用你的 Pi。
+            </p>
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="step-card text-center">
+                    <div class="text-4xl mb-4">🌐</div>
+                    <h3 class="text-lg font-black mb-2 text-white">Pi Browser 访问</h3>
+                    <p class="text-gray-400 text-sm">钱包集成在 Pi Browser 中，打开即可使用，无需额外下载独立 App</p>
+                </div>
+                <div class="step-card text-center">
+                    <div class="text-4xl mb-4">⛓️</div>
+                    <h3 class="text-lg font-black mb-2 text-white">基于区块链</h3>
+                    <p class="text-gray-400 text-sm">所有交易记录上链，公开透明、不可篡改，安全可靠</p>
+                </div>
+                <div class="step-card text-center">
+                    <div class="text-4xl mb-4">🔐</div>
+                    <h3 class="text-lg font-black mb-2 text-white">非托管钱包</h3>
+                    <p class="text-gray-400 text-sm">私钥由你自己掌握，只有你能操作资产，真正去中心化</p>
+                </div>
+            </div>
+            <h3 class="text-2xl font-black mb-8 text-white">钱包创建步骤</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="step-card relative">
+                    <div class="absolute -top-3 -left-3 w-10 h-10 bg-[#f4af47] text-[#1e0a27] rounded-full flex items-center justify-center font-black text-lg">1</div>
+                    <h4 class="text-lg font-black mb-3 text-white mt-2">打开 Pi Browser</h4>
+                    <p class="text-gray-400 text-sm">下载并打开 Pi Browser 应用，使用你的 Pi 账号登录</p>
+                </div>
+                <div class="step-card relative">
+                    <div class="absolute -top-3 -left-3 w-10 h-10 bg-[#f4af47] text-[#1e0a27] rounded-full flex items-center justify-center font-black text-lg">2</div>
+                    <h4 class="text-lg font-black mb-3 text-white mt-2">创建钱包</h4>
+                    <p class="text-gray-400 text-sm">在 Pi Browser 首页点击「Pi Wallet」，按提示创建你的钱包</p>
+                </div>
+                <div class="step-card relative border-red-500/30 bg-red-500/5">
+                    <div class="absolute -top-3 -left-3 w-10 h-10 bg-red-500 text-white rounded-full flex items-center justify-center font-black text-lg">3</div>
+                    <h4 class="text-lg font-black mb-3 text-white mt-2">备份助记词 ⚠️</h4>
+                    <p class="text-gray-400 text-sm">系统会生成一组助记词，<strong class="text-red-400">务必手抄保管，切勿截图或在线存储！</strong>丢失助记词 = 永远丢失你的 Pi！</p>
+                </div>
+            </div>
+            <div class="warning-box mt-8">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🚨</span>
+                    <div>
+                        <h4 class="font-black text-red-400 mb-2">助记词是最重要的安全凭证</h4>
+                        <p class="text-gray-400 text-sm">助记词是恢复钱包的唯一方式。如果你丢失了助记词，没有人（包括 Pi 核心团队）能帮你找回资产。建议将助记词手写在纸上，存放在安全的物理位置，不要拍照、不要截图、不要存在手机或电脑上。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 第二部分：Pi当前交易状态 -->
+    <section class="py-20 px-6">
+        <div class="container mx-auto max-w-5xl">
+            <div class="flex items-center gap-4 mb-4">
+                <span class="text-4xl">📊</span>
+                <div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47]">Trading Status</div>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-6">Pi 当前交易状态</h2>
+            <p class="text-gray-400 text-lg max-w-3xl mb-12 leading-relaxed">
+                Pi Network 已于 2025 年 2 月正式进入<strong class="text-white">开放网络（Open Network）</strong>阶段，主网交易全面开放，先锋们可以自由进行链上转账和交易。
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="section-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">✅</span>
+                        <h3 class="text-xl font-black text-white">开放网络已启动</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start gap-2"><span class="text-[#f4af47] mt-1">●</span>主网交易已全面开放，Pi 可在链上自由流转</li>
+                        <li class="flex items-start gap-2"><span class="text-[#f4af47] mt-1">●</span>封闭主网期间的限制已逐步解除</li>
+                        <li class="flex items-start gap-2"><span class="text-[#f4af47] mt-1">●</span>已通过 KYC 的先锋可将 Pi 迁移至主网钱包</li>
+                        <li class="flex items-start gap-2"><span class="text-[#f4af47] mt-1">●</span>Pi 已可在 OKX 等主流交易所查看和交易</li>
+                    </ul>
+                </div>
+                <div class="section-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">📈</span>
+                        <h3 class="text-xl font-black text-white">查看实时价格</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">Pi 的实时价格会随市场波动变化，查看最新行情请访问价格页面：</p>
+                    <a href="price.html" class="inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-8 py-3 rounded-full font-black text-sm hover:scale-105 transition-all shadow-xl">查看 Pi 实时价格 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 第三部分：Pi转账操作 -->
+    <section id="transfer" class="py-20 px-6 bg-black/30 border-y border-white/5">
+        <div class="container mx-auto max-w-5xl">
+            <div class="flex items-center gap-4 mb-4">
+                <span class="text-4xl">🔄</span>
+                <div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47]">Transfer</div>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-6">Pi 转账操作</h2>
+            <p class="text-gray-400 text-lg max-w-3xl mb-12 leading-relaxed">
+                主网开放后，Pi 链内转账已完全可用。以下是详细的转账操作指南。
+            </p>
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="section-card">
+                    <h3 class="text-xl font-black mb-6 text-white flex items-center gap-2"><span class="text-2xl">📤</span> 链内转账步骤</h3>
+                    <ol class="space-y-4 text-gray-400">
+                        <li class="flex items-start gap-3"><span class="bg-[#f4af47] text-[#1e0a27] w-7 h-7 rounded-full flex items-center justify-center font-black text-sm shrink-0">1</span><span>打开 Pi Browser，进入 Pi Wallet</span></li>
+                        <li class="flex items-start gap-3"><span class="bg-[#f4af47] text-[#1e0a27] w-7 h-7 rounded-full flex items-center justify-center font-black text-sm shrink-0">2</span><span>点击「Send / 发送」按钮</span></li>
+                        <li class="flex items-start gap-3"><span class="bg-[#f4af47] text-[#1e0a27] w-7 h-7 rounded-full flex items-center justify-center font-black text-sm shrink-0">3</span><span>输入收款方的 Pi 钱包地址</span></li>
+                        <li class="flex items-start gap-3"><span class="bg-[#f4af47] text-[#1e0a27] w-7 h-7 rounded-full flex items-center justify-center font-black text-sm shrink-0">4</span><span>输入转账金额，确认交易详情</span></li>
+                        <li class="flex items-start gap-3"><span class="bg-[#f4af47] text-[#1e0a27] w-7 h-7 rounded-full flex items-center justify-center font-black text-sm shrink-0">5</span><span>输入钱包密码确认，提交交易</span></li>
+                    </ol>
+                </div>
+                <div class="section-card">
+                    <h3 class="text-xl font-black mb-6 text-white flex items-center gap-2"><span class="text-2xl">📱</span> 扫码转账</h3>
+                    <ol class="space-y-4 text-gray-400">
+                        <li class="flex items-start gap-3"><span class="bg-[#f4af47] text-[#1e0a27] w-7 h-7 rounded-full flex items-center justify-center font-black text-sm shrink-0">1</span><span>请收款方展示其钱包二维码</span></li>
+                        <li class="flex items-start gap-3"><span class="bg-[#f4af47] text-[#1e0a27] w-7 h-7 rounded-full flex items-center justify-center font-black text-sm shrink-0">2</span><span>在 Pi Wallet 中点击扫码图标</span></li>
+                        <li class="flex items-start gap-3"><span class="bg-[#f4af47] text-[#1e0a27] w-7 h-7 rounded-full flex items-center justify-center font-black text-sm shrink-0">3</span><span>扫描对方二维码，自动填入地址</span></li>
+                        <li class="flex items-start gap-3"><span class="bg-[#f4af47] text-[#1e0a27] w-7 h-7 rounded-full flex items-center justify-center font-black text-sm shrink-0">4</span><span>输入金额，确认并提交转账</span></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="info-box">
+                    <h4 class="font-black text-blue-400 mb-3 flex items-center gap-2">💡 转账注意事项</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>• 转账前<strong class="text-white">务必核实收款地址</strong>，Pi 链上交易不可逆</li>
+                        <li>• 大额转账前建议<strong class="text-white">先小额测试</strong>，确认地址无误后再转全款</li>
+                        <li>• 确认收款方已完成 KYC，否则可能无法到账</li>
+                        <li>• 转账后可在区块浏览器查询交易状态</li>
+                    </ul>
+                </div>
+                <div class="step-card">
+                    <h4 class="font-black text-[#f4af47] mb-3 flex items-center gap-2">💸 转账费用说明</h4>
+                    <p class="text-gray-400 text-sm mb-3">目前 Pi 链内转账<strong class="text-white">手续费为零</strong>，这是 Pi Network 的重大优势之一。Pi 核心团队采用了不同于以太坊 Gas 费的共识机制，让先锋们可以零成本转账。</p>
+                    <p class="text-gray-400 text-sm">未来如果调整费率，核心团队将提前公告。请以官方最新通知为准。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 第四部分：Pi变现途径 -->
+    <section id="sell" class="py-20 px-6">
+        <div class="container mx-auto max-w-5xl">
+            <div class="flex items-center gap-4 mb-4">
+                <span class="text-4xl">💰</span>
+                <div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47]">Cash Out</div>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-6">Pi 变现途径</h2>
+            <p class="text-gray-400 text-lg max-w-3xl mb-12 leading-relaxed">
+                随着开放网络的启动，Pi 的变现渠道正在逐步扩展。以下是目前主要的 Pi 变现方式。
+            </p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="section-card relative">
+                    <div class="absolute top-4 right-4 px-3 py-1 bg-[#f4af47]/10 border border-[#f4af47]/30 rounded-full text-[#f4af47] text-[10px] font-black uppercase tracking-wider">推荐</div>
+                    <div class="text-4xl mb-6">🏦</div>
+                    <h3 class="text-xl font-black mb-4 text-white">交易所交易</h3>
+                    <p class="text-gray-400 text-sm mb-4">Pi 已上线 OKX 等主流加密货币交易所，你可以在交易所中挂单买卖 Pi，将 Pi 兑换为 USDT、BTC 等其他资产，再提现为法币。</p>
+                    <a href="price.html" class="inline-flex items-center gap-1 text-[#f4af47] font-bold text-sm hover:underline">查看实时价格 →</a>
+                </div>
+                <div class="section-card">
+                    <div class="text-4xl mb-6">🛒</div>
+                    <h3 class="text-xl font-black mb-4 text-white">Pi 生态内购物</h3>
+                    <p class="text-gray-400 text-sm mb-4">Pi Network 生态中已有越来越多的商家接受 Pi 支付。你可以在 Pi Browser 的各类应用中使用 Pi 直接购买商品和服务，这是 Pi 作为货币的核心使用场景。</p>
+                    <p class="text-gray-400 text-sm">随着生态发展，Pi 支付场景将持续扩展。</p>
+                </div>
+                <div class="section-card border-orange-500/20">
+                    <div class="text-4xl mb-6">⚠️</div>
+                    <h3 class="text-xl font-black mb-4 text-white">P2P 交易</h3>
+                    <p class="text-gray-400 text-sm mb-4">部分先锋会选择个人间（P2P）交易 Pi，但这种方式<strong class="text-orange-400">风险较高</strong>，容易遇到诈骗或价格纠纷。</p>
+                    <ul class="space-y-1 text-gray-400 text-xs">
+                        <li>• 仅与信誉良好的熟人交易</li>
+                        <li
