@@ -101,10 +101,10 @@
         <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.06.06 0 0 0-.02-.12c-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
       </a>
     </div>
-    <p class="text-sm font-bold text-gray-600 mb-6">
+    <p class="text-sm font-bold text-gray-400 mb-6">
       © 2026 Pi Network 中文网 · 邀请码 <span class="text-[#f4af47]">nbjh</span>
     </p>
-    <div class="flex flex-wrap justify-center gap-8 text-sm font-bold text-gray-600">
+    <div class="flex flex-wrap justify-center gap-8 text-sm font-bold text-gray-400">
       <a href="${BASE}/about.html" class="hover:text-white transition-colors">关于我们</a>
       <a href="${BASE}/technical-whitepaper.html" class="hover:text-white transition-colors">技术文档</a>
       <a href="${BASE}/reg.html" class="hover:text-[#f4af47] transition-colors">下载注册</a>

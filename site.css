@@ -1,44 +1,38 @@
 /* ============================================
-   pibizh.com 全站统一设计系统
-   v2 — 强制配色规范，避免 text-white 在浅色背景冲突
+   pibizh.com 全站统一设计系统 v3
+   强制高对比度 — 解决文字看不清问题
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
 
 /* ===========================
-   设计 Token（全站变量）
+   设计 Token
    =========================== */
 :root {
-  /* 品牌色 */
   --pi-gold: #f4af47;
   --pi-gold-light: #fab44b;
   --pi-gold-hover: #f9c56a;
-
-  /* 深色系（导航栏/hero/footer） */
   --bg-dark: #1e0a27;
   --bg-purple: #423f88;
   --bg-nav: rgba(89, 59, 139, 0.95);
   --bg-dropdown: #2d1b3d;
-  --bg-footer: #252525;
-
-  /* 浅色系（内容区） */
+  --bg-footer: #181818;
   --bg-page: #ffffff;
   --bg-section-alt: #f5f0ff;
-  --bg-card: #f8f9fa;
+  --bg-card: #f3f4f6;
   --border-light: #e5e7eb;
-
-  /* 文字 */
-  --text-heading: #1a1a2e;
-  --text-body: #374151;
+  --text-heading: #111827;
+  --text-body: #1f2937;
+  --text-secondary: #4b5563;
   --text-muted: #6b7280;
-
-  /* 其他 */
+  --text-footer: #d1d5db;
+  --text-footer-muted: #9ca3af;
   --discord: #5865F2;
   --font-main: 'Inter', sans-serif;
 }
 
 /* ===========================
-   全局基础
+   全局基础 — 强制深色文字
    =========================== */
 body {
   background-color: var(--bg-page);
@@ -60,8 +54,23 @@ p {
 }
 
 /* ===========================
-   深色区域覆盖（hero / footer / nav）
-   在 hero-bg / bg-dark 容器内，文字强制白色
+   强制覆盖 Tailwind 灰色类
+   解决 gray-500/600 在浅色背景看不清
+   =========================== */
+.text-gray-500 { color: var(--text-secondary) !important; }
+.text-gray-600 { color: var(--text-body) !important; }
+.text-gray-800 { color: var(--text-heading) !important; }
+.text-gray-900 { color: var(--text-heading) !important; }
+
+/* ===========================
+   强制覆盖 text-[#6b7280] / text-[#374151]
+   这些在旧代码中大量出现
+   =========================== */
+.text-\[\#6b7280\] { color: var(--text-secondary) !important; }
+.text-\[\#374151\] { color: var(--text-body) !important; }
+
+/* ===========================
+   深色区域自动切换白色文字
    =========================== */
 .hero-bg {
   background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-purple) 100%);
@@ -73,6 +82,12 @@ p {
 }
 .hero-bg p {
   color: rgba(255,255,255,0.9);
+}
+/* hero-bg 内覆盖灰色类 */
+.hero-bg .text-gray-500,
+.hero-bg .text-gray-600,
+.hero-bg .text-gray-800 {
+  color: rgba(255,255,255,0.85) !important;
 }
 
 /* ===========================
@@ -153,7 +168,7 @@ p {
 }
 
 /* ===========================
-   卡片
+   卡片 — 强制深色文字
    =========================== */
 .blog-card {
   background: var(--bg-card);
@@ -170,6 +185,37 @@ p {
 }
 .blog-card h2, .blog-card h3 {
   color: var(--text-heading);
+}
+
+/* step-card / section-card also force dark text */
+.step-card {
+  color: var(--text-body);
+}
+.step-card h3, .step-card h4 {
+  color: var(--text-heading) !important;
+}
+.section-card {
+  color: var(--text-body);
+}
+.section-card h3, .section-card h4 {
+  color: var(--text-heading);
+}
+
+/* ===========================
+   页脚 — 高对比度
+   =========================== */
+footer {
+  color: var(--text-footer) !important;
+}
+footer p {
+  color: var(--text-footer-muted) !important;
+}
+footer a {
+  color: var(--text-footer) !important;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: #ffffff !important;
 }
 
 /* ===========================

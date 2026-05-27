@@ -42,7 +42,7 @@
         </div>
 
         <div id="results" class="space-y-4">
-            <p id="no-results" class="text-center text-[#6b7280] hidden">未找到相关结果</p>
+            <p id="no-results" class="text-center text-[#4b5563] hidden">未找到相关结果</p>
         </div>
     </main>
 
@@ -85,7 +85,7 @@
             return `
             <a href="${item.url}" class="result-card block">
                 <h3 class="text-xl font-black mb-2 text-[#1a1a2e] hover:text-[#7c3aed] transition-colors">${highlighted}</h3>
-                <p class="text-[#6b7280] text-sm leading-relaxed">${item.desc}</p>
+                <p class="text-[#4b5563] text-sm leading-relaxed">${item.desc}</p>
                 <div class="mt-3 flex flex-wrap gap-2">
                     ${item.tags.slice(0,4).map(t => `<span class="text-xs px-2 py-1 bg-[#f5f0ff] rounded-full text-[#7c3aed]">${t}</span>`).join('')}
                 </div>
@@ -97,7 +97,7 @@
     input.addEventListener('input', (e) => {
         const q = e.target.value.trim();
         if (q.length === 0) {
-            results.innerHTML = '<p class="text-center text-[#6b7280]">输入关键词开始搜索...</p>';
+            results.innerHTML = '<p class="text-center text-[#4b5563]">输入关键词开始搜索...</p>';
             noResults.classList.add('hidden');
             return;
         }
@@ -106,7 +106,7 @@
     });
 
     // Initial state
-    results.innerHTML = '<p class="text-center text-[#6b7280]">输入关键词开始搜索...</p>';
+    results.innerHTML = '<p class="text-center text-[#4b5563]">输入关键词开始搜索...</p>';
     </script>
 
     <!-- 统一 Footer -->
