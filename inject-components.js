@@ -63,26 +63,29 @@
   </header>
 
   <!-- 手机侧边栏 -->
-  <div id="mobile-menu" class="fixed inset-0 z-[1000] bg-white lg:hidden flex flex-col p-10 overflow-y-auto">
-    <button id="m-close" class="absolute top-6 right-6 p-2 text-[#f4af47] font-black">CLOSE</button>
-    <div class="flex flex-col gap-6 mt-16 text-3xl font-black uppercase text-white">
-      <a href="${BASE}/index.html">首页</a>
-      <div class="h-px bg-white/5 w-full"></div>
-      <a href="${BASE}/price.html">派币实时价格</a>
-      <a href="${BASE}/technical-whitepaper.html">技术白皮书</a>
-      <a href="${BASE}/nodes.html">Pi 节点运行</a>
-      <a href="${BASE}/roadmap.html">发展路线图</a>
-      <a href="${BASE}/kyc.html">身份认证 (KYC)</a>
-      <a href="${BASE}/blog.html">官方最新动态</a>
-      <a href="${BASE}/pi-news.html">Pi 最新动态</a>
-      <a href="${BASE}/search.html">🔍 搜索</a>
-      <a href="${BASE}/faq.html">常见问题 (FAQ)</a>
-      <a href="${BASE}/about.html">关于我们</a>
-      <a href="${BASE}/mining-tutorial.html">挖矿教程</a>
-      <a href="${BASE}/wallet-guide.html">钱包交易</a>
-      <a href="${BASE}/reg.html" class="text-orange-400 underline underline-offset-8">注册下载教程</a>
+  <div id="mobile-menu" class="fixed inset-0 z-[1000] bg-gradient-to-b from-[#1e0a27] to-[#423f88] lg:hidden flex flex-col p-10 overflow-y-auto">
+    <button id="m-close" class="absolute top-6 right-6 p-2 text-[#f4af47] font-black text-lg">✕ CLOSE</button>
+    <div class="flex flex-col gap-5 mt-16 text-2xl font-black uppercase text-white">
+      <a href="${BASE}/index.html" class="text-[#f4af47]">首页</a>
+      <div class="h-px bg-white/10 w-full"></div>
+      <a href="${BASE}/price.html" class="hover:text-[#f4af47] transition-colors">派币实时价格</a>
+      <a href="${BASE}/mining-tutorial.html" class="hover:text-[#f4af47] transition-colors">挖矿教程</a>
+      <a href="${BASE}/wallet-guide.html" class="hover:text-[#f4af47] transition-colors">钱包交易</a>
+      <div class="h-px bg-white/10 w-full"></div>
+      <a href="${BASE}/technical-whitepaper.html" class="hover:text-[#f4af47] transition-colors">技术白皮书</a>
+      <a href="${BASE}/nodes.html" class="hover:text-[#f4af47] transition-colors">Pi 节点运行</a>
+      <a href="${BASE}/roadmap.html" class="hover:text-[#f4af47] transition-colors">发展路线图</a>
+      <a href="${BASE}/kyc.html" class="hover:text-[#f4af47] transition-colors">身份认证 (KYC)</a>
+      <div class="h-px bg-white/10 w-full"></div>
+      <a href="${BASE}/blog.html" class="hover:text-[#f4af47] transition-colors">官方最新动态</a>
+      <a href="${BASE}/pi-news.html" class="hover:text-[#f4af47] transition-colors">Pi 最新动态</a>
+      <a href="${BASE}/faq.html" class="hover:text-[#f4af47] transition-colors">常见问题 (FAQ)</a>
+      <a href="${BASE}/about.html" class="hover:text-[#f4af47] transition-colors">关于我们</a>
+      <a href="${BASE}/search.html" class="hover:text-[#f4af47] transition-colors">🔍 搜索</a>
+      <div class="h-px bg-white/10 w-full"></div>
+      <a href="${BASE}/reg.html" class="text-[#f4af47] underline underline-offset-8 text-xl">🔥 注册下载教程</a>
     </div>
-    <p class="text-center text-white text-xs uppercase tracking-widest font-bold mt-auto">推荐邀请码: nbjh</p>
+    <p class="text-center text-white/60 text-xs uppercase tracking-widest font-bold mt-auto">推荐邀请码: nbjh</p>
   </div>
   `;
 
