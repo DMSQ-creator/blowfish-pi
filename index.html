@@ -41,7 +41,7 @@
     
 
     <!-- 首屏 (PC+手机响应式布局) -->
-    <section class="min-h-screen flex items-center pt-32 lg:pt-0 px-6 container mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <section class="hero-bg min-h-screen flex items-center pt-32 lg:pt-0 px-6 container mx-auto grid lg:grid-cols-2 gap-16 items-center">
         <div class="text-center lg:text-left">
             <div class="inline-block px-4 py-1 rounded-full bg-orange-500/10 border border-[#f4af47]/20 text-[#f4af47] text-[10px] font-black uppercase mb-10 tracking-widest">Stanford Ph.D 团队打造</div>
             <h1 class="text-6xl md:text-[6.5rem] font-black mb-10 leading-[1] tracking-tighter text-white">首个手机<br /><span class="text-pi-gold italic">区块链网络</span></h1>
@@ -116,14 +116,9 @@
     </main><div id="site-footer"></div>
 
     <script>
-        const btn = document.getElementById('m-btn');
-        const close = document.getElementById('m-close');
-        const menu = document.getElementById('mobile-menu');
-        btn.onclick = () => menu.classList.add('open');
-        close.onclick = () => menu.classList.remove('open');
-
         // 首页自动展示资讯中心最新文章（从 blog.html 解析前 6 条）
-        (async () => {
+        // 必须在 DOMContentLoaded 后运行，避免 inject-components 还未就绪时出错
+        async function loadBlogPosts() {
             try {
                 const res = await fetch('blog.html', { cache: 'no-store' });
                 const html = await res.text();
@@ -133,7 +128,7 @@
                 if (!grid) return;
 
                 if (cards.length === 0) {
-                    grid.innerHTML = '<div class="text-gray-600">暂无文章，稍后再试。</div>';
+                    grid.innerHTML = '<div class="text-[#374151]">暂无文章，稍后再试。</div>';
                     return;
                 }
 
@@ -152,10 +147,16 @@
                 }).join('');
             } catch (e) {
                 const grid = document.getElementById('home-blog-grid');
-                if (grid) grid.innerHTML = '<div class="text-gray-600">加载文章列表失败，请点击进入资讯中心查看。</div>';
+                if (grid) grid.innerHTML = '<div class="text-[#374151]">加载文章列表失败，请点击进入资讯中心查看。</div>';
                 console.error(e);
             }
-        })();
+        }
+        // 等 inject-components.js 注入完导航后再运行
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadBlogPosts);
+        } else {
+            loadBlogPosts();
+        }
     </script>
 
     <!-- 移动端底部固定悬浮栏 -->
