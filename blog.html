@@ -184,7 +184,7 @@
                 a.href = href || '#';
                 a.className = [
                     'px-4 py-2 rounded-full font-black text-xs transition-all border',
-                    active ? 'bg-[#f4af47] text-[#1e0a27] border-[#f4af47]' : 'bg-[#f8f9fa] text-white border-[#e5e7eb] hover:border-[#f4af47]/70',
+                    active ? 'bg-[#f4af47] text-[#1e0a27] border-[#f4af47]' : 'bg-[#f8f9fa] text-[#374151] border-[#e5e7eb] hover:border-[#f4af47]/70',
                     disabled ? 'opacity-40 pointer-events-none' : ''
                 ].join(' ');
                 return a;
@@ -203,7 +203,7 @@
                 pager.appendChild(btn('1', pageLink(1), false, page === 1));
                 if (left > 2) {
                     const span = document.createElement('span');
-                    span.className = 'text-white/40 text-xs font-black px-1';
+                    span.className = 'text-[#6b7280] text-xs font-black px-1';
                     span.textContent = '...';
                     pager.appendChild(span);
                 }
@@ -216,7 +216,7 @@
             if (right < totalPages) {
                 if (right < totalPages - 1) {
                     const span = document.createElement('span');
-                    span.className = 'text-white/40 text-xs font-black px-1';
+                    span.className = 'text-[#6b7280] text-xs font-black px-1';
                     span.textContent = '...';
                     pager.appendChild(span);
                 }
