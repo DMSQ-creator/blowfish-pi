@@ -72,16 +72,25 @@ body .text-\[\#374151\] { color: #1f2937 !important; }
   background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-purple) 100%);
   color: #ffffff;
 }
+.hero-bg *,
 .hero-bg h1, .hero-bg h2, .hero-bg h3,
-.hero-bg h4, .hero-bg h5, .hero-bg h6 { color: #ffffff; }
-.hero-bg p { color: rgba(255,255,255,0.9); }
+.hero-bg h4, .hero-bg h5, .hero-bg h6,
+.hero-bg p, .hero-bg span, .hero-bg li,
+.hero-bg td, .hero-bg th, .hero-bg div {
+  color: #ffffff;
+}
+/* hero-bg 内恢复灰色 Tailwind 类为白色 */
 .hero-bg .text-gray-500,
 .hero-bg .text-gray-600,
 .hero-bg .text-gray-700,
 .hero-bg .text-gray-800,
-.hero-bg .text-gray-900 { color: rgba(255,255,255,0.85) !important; }
+.hero-bg .text-gray-900 { color: #ffffff !important; }
 .hero-bg .text-\[\#6b7280\],
-.hero-bg .text-\[\#374151\] { color: rgba(255,255,255,0.85) !important; }
+.hero-bg .text-\[\#374151\],
+.hero-bg .text-\[\#1a1a2e\] { color: #ffffff !important; }
+/* 保留 Pi Gold 的颜色 */
+.hero-bg .text-pi-gold,
+.hero-bg .text-\[\#f4af47\] { color: var(--pi-gold) !important; -webkit-text-fill-color: var(--pi-gold); }
 
 /* ===========================
    Pi Gold 渐变文字
@@ -99,6 +108,17 @@ body .text-\[\#374151\] { color: #1f2937 !important; }
   background: var(--bg-nav);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+}
+/* 导航栏文字加粗加白 */
+.nav-blur nav a,
+.nav-blur nav div,
+.nav-blur nav span {
+  font-weight: 700;
+  color: #ffffff;
+}
+.nav-blur nav a:hover,
+.nav-blur nav div:hover {
+  color: var(--pi-gold);
 }
 .nav-active { color: var(--pi-gold) !important; }
 
