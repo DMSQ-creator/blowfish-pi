@@ -11,7 +11,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        body { background-color: #FFFFFF; color: #1a1a2e; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
         .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
@@ -24,11 +24,11 @@
         #mobile-menu.open { transform: translateX(0); }
         .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+        .step-card { background: #f8f9fa; border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
         .step-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
         .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 2rem; }
         .info-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 2rem; }
-        .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; }
+        .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2.5rem; }
     </style>
 </head>
 <body class="hero-bg min-h-screen">
@@ -39,7 +39,7 @@
     </a>
 
     <!-- 导航栏 -->
-    <header class="fixed w-full z-[100] nav-blur border-b border-white/5">
+    <header class="fixed w-full z-[100] nav-blur border-b border-[#e5e7eb]">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
                 <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10">
@@ -89,7 +89,7 @@
         <button id="m-close" class="absolute top-6 right-6 p-2 text-[#f4af47] font-black">CLOSE</button>
         <div class="flex flex-col gap-6 mt-16 text-3xl font-black uppercase text-white">
             <a href="index.html" class="text-[#f4af47]">首页</a>
-            <div class="h-px bg-white/5 w-full"></div>
+            <div class="h-px bg-[#f8f9fa] w-full"></div>
             <a href="price.html">派币实时价格</a>
             <a href="technical-whitepaper.html">技术白皮书</a>
             <a href="nodes.html">Pi 节点运行</a>
@@ -110,16 +110,16 @@
             <h1 class="text-5xl md:text-7xl font-black mb-8 leading-[1.05] tracking-tighter text-white">Pi 钱包与<span class="text-pi-gold italic">交易指南</span></h1>
             <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-medium">从钱包创建到主网交易，一文讲透 Pi 资产管理</p>
             <div class="flex flex-wrap justify-center gap-4 mt-10">
-                <a href="#wallet" class="bg-white/5 border border-white/10 text-white px-6 py-3 rounded-full font-bold text-sm hover:border-[#f4af47] transition-all">💳 Pi 钱包</a>
-                <a href="#transfer" class="bg-white/5 border border-white/10 text-white px-6 py-3 rounded-full font-bold text-sm hover:border-[#f4af47] transition-all">🔄 Pi 转账</a>
-                <a href="#sell" class="bg-white/5 border border-white/10 text-white px-6 py-3 rounded-full font-bold text-sm hover:border-[#f4af47] transition-all">💰 Pi 变现</a>
-                <a href="#safety" class="bg-white/5 border border-white/10 text-white px-6 py-3 rounded-full font-bold text-sm hover:border-red-400 transition-all">⚠️ 安全须知</a>
+                <a href="#wallet" class="bg-[#f8f9fa] border border-[#e5e7eb] text-white px-6 py-3 rounded-full font-bold text-sm hover:border-[#f4af47] transition-all">💳 Pi 钱包</a>
+                <a href="#transfer" class="bg-[#f8f9fa] border border-[#e5e7eb] text-white px-6 py-3 rounded-full font-bold text-sm hover:border-[#f4af47] transition-all">🔄 Pi 转账</a>
+                <a href="#sell" class="bg-[#f8f9fa] border border-[#e5e7eb] text-white px-6 py-3 rounded-full font-bold text-sm hover:border-[#f4af47] transition-all">💰 Pi 变现</a>
+                <a href="#safety" class="bg-[#f8f9fa] border border-[#e5e7eb] text-white px-6 py-3 rounded-full font-bold text-sm hover:border-red-400 transition-all">⚠️ 安全须知</a>
             </div>
         </div>
     </section>
 
     <!-- 第一部分：Pi钱包是什么 -->
-    <section id="wallet" class="py-20 px-6 bg-black/30 border-y border-white/5">
+    <section id="wallet" class="py-20 px-6 bg-white border-y border-[#e5e7eb]">
         <div class="container mx-auto max-w-5xl">
             <div class="flex items-center gap-4 mb-4"><span class="text-4xl">💳</span><div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47]">Wallet</div></div>
             <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-6">Pi 钱包是什么</h2>
@@ -154,7 +154,7 @@
         </div>
     </section>
     <!-- 第三部分：Pi转账操作 -->
-    <section id="transfer" class="py-20 px-6 bg-black/30 border-y border-white/5">
+    <section id="transfer" class="py-20 px-6 bg-white border-y border-[#e5e7eb]">
         <div class="container mx-auto max-w-5xl">
             <div class="flex items-center gap-4 mb-4"><span class="text-4xl">🔄</span><div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47]">Transfer</div></div>
             <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-6">Pi 转账操作</h2>
@@ -234,7 +234,7 @@
         </div>
     </section>
     <!-- 第五部分：安全须知 -->
-    <section id="safety" class="py-20 px-6 bg-black/30 border-y border-white/5">
+    <section id="safety" class="py-20 px-6 bg-white border-y border-[#e5e7eb]">
         <div class="container mx-auto max-w-5xl">
             <div class="flex items-center gap-4 mb-4"><span class="text-4xl">⚠️</span><div class="text-[10px] font-black tracking-widest uppercase text-red-400">Safety</div></div>
             <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-6">安全须知</h2>
@@ -301,7 +301,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+    <footer class="py-12 bg-[#1a1220] text-center border-t border-[#e5e7eb]">
         <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200">
         <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
         <div class="flex flex-wrap justify-center gap-8 text-sm font-bold text-gray-600">
@@ -316,7 +316,7 @@
     </footer>
 
     <!-- 移动端底部固定悬浮栏 -->
-    <div class="fixed bottom-0 left-0 right-0 bg-[#1a1220]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
+    <div class="fixed bottom-0 left-0 right-0 bg-[#f5f0ff]/95 backdrop-blur-xl border-t border-[#e5e7eb] p-4 z-50 lg:hidden">
         <div class="flex gap-3">
             <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#1e0a27] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
             <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">

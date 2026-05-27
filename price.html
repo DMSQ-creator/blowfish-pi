@@ -22,7 +22,7 @@
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-    body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+    body { background-color: #FFFFFF; color: #1a1a2e; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
     .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
     .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
@@ -33,7 +33,7 @@
     .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
 
     .glass { background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
-    .metric { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+    .metric { background: #f8f9fa; border: 1px solid rgba(255,255,255,0.08); }
     #mobile-menu { transition: transform 0.4s ease-in-out; transform: translateX(100%); }
     #mobile-menu.open { transform: translateX(0); }
     .skeleton { background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.12), rgba(255,255,255,0.05)); background-size: 200% 100%; animation: shimmer 1.2s infinite; }
@@ -43,7 +43,7 @@
 <body class="hero-bg min-h-screen">
 
   <!-- 顶部导航（与首页一致的结构） -->
-  <header class="fixed w-full z-[100] nav-blur border-b border-white/5">
+  <header class="fixed w-full z-[100] nav-blur border-b border-[#e5e7eb]">
     <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
         <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10" />
@@ -93,11 +93,11 @@
   </header>
 
   <!-- 手机侧边栏 -->
-  <div id="mobile-menu" class="fixed inset-0 z-[1000] bg-[#1e0a27] lg:hidden flex flex-col p-10 overflow-y-auto">
+  <div id="mobile-menu" class="fixed inset-0 z-[1000] bg-[#FFFFFF] lg:hidden flex flex-col p-10 overflow-y-auto">
     <button id="m-close" class="absolute top-6 right-6 p-2 text-[#f4af47] font-black">CLOSE</button>
     <div class="flex flex-col gap-6 mt-16 text-3xl font-black uppercase text-white">
       <a href="index.html">首页</a>
-      <div class="h-px bg-white/5 w-full"></div>
+      <div class="h-px bg-[#f8f9fa] w-full"></div>
       <a href="price.html" class="text-[#f4af47]">派币实时价格</a>
       <a href="technical-whitepaper.html">技术白皮书</a>
       <a href="nodes.html">Pi 节点运行</a>
@@ -141,10 +141,10 @@
             </div>
 
             <div class="mt-10 flex flex-wrap items-center gap-3">
-              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="5m" data-limit="120">5分钟</button>
-              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="1H" data-limit="168">1小时</button>
-              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="4H" data-limit="180">4小时</button>
-              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="1D" data-limit="200">日线</button>
+              <button class="range px-5 py-3 rounded-full bg-[#f8f9fa] border border-[#e5e7eb] font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="5m" data-limit="120">5分钟</button>
+              <button class="range px-5 py-3 rounded-full bg-[#f8f9fa] border border-[#e5e7eb] font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="1H" data-limit="168">1小时</button>
+              <button class="range px-5 py-3 rounded-full bg-[#f8f9fa] border border-[#e5e7eb] font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="4H" data-limit="180">4小时</button>
+              <button class="range px-5 py-3 rounded-full bg-[#f8f9fa] border border-[#e5e7eb] font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="1D" data-limit="200">日线</button>
               <span id="updated" class="text-xs text-white/50 font-bold ml-2 whitespace-nowrap"></span>
             </div>
           </div>
@@ -166,7 +166,7 @@
               <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
                 <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">💬 实时弹幕 · 说说你对 PI 的看法</div>
                 <div class="flex items-center gap-2">
-                  <button id="dm-toggle" class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-black hover:border-[#f4af47]/60 transition-all">弹幕 ON</button>
+                  <button id="dm-toggle" class="px-4 py-2 rounded-full bg-[#f8f9fa] border border-[#e5e7eb] text-xs font-black hover:border-[#f4af47]/60 transition-all">弹幕 ON</button>
                 </div>
               </div>
 
@@ -175,7 +175,7 @@
 
               <!-- 发送栏 -->
               <div class="flex items-center gap-3 mt-4">
-                <input id="dm-input" type="text" maxlength="30" placeholder="发一条弹幕（最多30字）" class="flex-1 bg-white/5 border border-white/10 rounded-full px-5 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-[#f4af47]/60 transition-all" />
+                <input id="dm-input" type="text" maxlength="30" placeholder="发一条弹幕（最多30字）" class="flex-1 bg-[#f8f9fa] border border-[#e5e7eb] rounded-full px-5 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-[#f4af47]/60 transition-all" />
                 <button id="dm-send" class="bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl whitespace-nowrap">发送</button>
               </div>
               <div id="dm-cooldown" class="text-[10px] text-white/30 mt-2 hidden">冷却中…请稍后再发</div>
@@ -522,7 +522,7 @@
 
     
     <!-- 统一 Footer -->
-    <footer class="py-10 bg-[#1a1220] text-center border-t border-white/5 mt-20">
+    <footer class="py-10 bg-[#1a1220] text-center border-t border-[#e5e7eb] mt-20">
         <div class="flex justify-center gap-6 mb-6">
             <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#5865F2] transition-colors">
                 <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
@@ -546,7 +546,7 @@
 
 
     <!-- 移动端底部固定悬浮栏 -->
-    <div class="fixed bottom-0 left-0 right-0 bg-[#1a1220]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
+    <div class="fixed bottom-0 left-0 right-0 bg-[#f5f0ff]/95 backdrop-blur-xl border-t border-[#e5e7eb] p-4 z-50 lg:hidden">
         <div class="flex gap-3">
             <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#1e0a27] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
             <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">

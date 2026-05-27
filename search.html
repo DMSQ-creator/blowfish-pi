@@ -13,45 +13,44 @@
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; }
-        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .result-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; transition: all 0.3s; cursor: pointer; }
-        .result-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); transform: translateY(-2px); }
-        .search-highlight { background: rgba(244,175,71,0.3); border-radius: 4px; padding: 0 2px; }
+        body { background-color: #FFFFFF; color: #1a1a2e; font-family: 'Inter', sans-serif; }
+        .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .result-card { background: #f8f9fa; border: 1px solid #e5e7eb; border-radius: 16px; padding: 1.5rem; transition: all 0.3s; cursor: pointer; }
+        .result-card:hover { border-color: #f4af47; background: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
     <!-- 导航 -->
-    <nav class="p-6 border-b border-white/5 bg-[#1a1220]/80 backdrop-blur-xl sticky top-0 z-50">
+    <nav class="p-6 border-b border-white/5 nav-blur sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-3">
                 <img src="/static/favicon.png" class="w-10 h-10" alt="Pi Network Logo">
-                <span class="text-xl font-black tracking-tighter uppercase">Pi Network 中文网</span>
+                <span class="text-xl font-black tracking-tighter uppercase text-white">Pi Network 中文网</span>
             </a>
-            <a href="index.html" class="text-gray-400 hover:text-white font-bold">← 返回首页</a>
+            <a href="index.html" class="text-gray-400 hover:text-[#f4af47] font-bold">← 返回首页</a>
         </div>
     </nav>
 
     <!-- 搜索区域 -->
     <main class="max-w-3xl mx-auto px-6 py-16">
-        <h1 class="text-4xl font-black mb-8 text-center">站内搜索</h1>
+        <h1 class="text-4xl font-black mb-8 text-center text-[#1a1a2e]">站内搜索</h1>
 
         <div class="relative mb-10">
             <input
                 id="search-input"
                 type="text"
                 placeholder="输入关键词，如：注册、KYC、节点..."
-                class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#f4af47] transition-colors"
+                class="w-full bg-white border border-[#e5e7eb] rounded-2xl px-6 py-5 text-lg text-[#1a1a2e] placeholder-gray-400 focus:outline-none focus:border-[#7c3aed] focus:ring-2 focus:ring-[#7c3aed]/20 transition-colors shadow-sm"
                 autofocus
             >
-            <svg class="absolute right-6 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="absolute right-6 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
             </svg>
         </div>
 
         <div id="results" class="space-y-4">
-            <p id="no-results" class="text-center text-gray-500 hidden">未找到相关结果</p>
+            <p id="no-results" class="text-center text-[#6b7280] hidden">未找到相关结果</p>
         </div>
     </main>
 
@@ -93,10 +92,10 @@
             const highlighted = item.title;
             return `
             <a href="${item.url}" class="result-card block">
-                <h3 class="text-xl font-black mb-2 text-white hover:text-[#f4af47] transition-colors">${highlighted}</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">${item.desc}</p>
+                <h3 class="text-xl font-black mb-2 text-[#1a1a2e] hover:text-[#7c3aed] transition-colors">${highlighted}</h3>
+                <p class="text-[#6b7280] text-sm leading-relaxed">${item.desc}</p>
                 <div class="mt-3 flex flex-wrap gap-2">
-                    ${item.tags.slice(0,4).map(t => `<span class="text-xs px-2 py-1 bg-white/5 rounded-full text-gray-500">${t}</span>`).join('')}
+                    ${item.tags.slice(0,4).map(t => `<span class="text-xs px-2 py-1 bg-[#f5f0ff] rounded-full text-[#7c3aed]">${t}</span>`).join('')}
                 </div>
             </a>
             `;
@@ -106,7 +105,7 @@
     input.addEventListener('input', (e) => {
         const q = e.target.value.trim();
         if (q.length === 0) {
-            results.innerHTML = '<p class="text-center text-gray-600">输入关键词开始搜索...</p>';
+            results.innerHTML = '<p class="text-center text-[#6b7280]">输入关键词开始搜索...</p>';
             noResults.classList.add('hidden');
             return;
         }
@@ -115,19 +114,32 @@
     });
 
     // Initial state
-    results.innerHTML = '<p class="text-center text-gray-600">输入关键词开始搜索...</p>';
+    results.innerHTML = '<p class="text-center text-[#6b7280]">输入关键词开始搜索...</p>';
     </script>
 
-    <!-- Footer -->
-    <footer class="py-10 bg-[#1a1220] text-center border-t border-white/5 mt-20">
-        <p class="text-sm font-bold text-gray-600 mb-4">© 2026 PI NETWORK 中文网 · 邀请码 <span class="text-[#f4af47]">nbjh</span></p>
-        <div class="flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-600">
+    <!-- 统一 Footer -->
+    <footer class="py-10 bg-[#1e0a27] text-center border-t border-white/5 mt-20">
+        <p class="text-sm font-bold text-gray-500 mb-4">© 2026 PI NETWORK 中文网 · 邀请码 <span class="text-[#f4af47]">nbjh</span></p>
+        <div class="flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-500">
             <a href="about.html" class="hover:text-white transition-colors">关于我们</a>
             <a href="reg.html" class="hover:text-[#f4af47] transition-colors">下载注册</a>
             <a href="nodes.html" class="hover:text-white transition-colors">节点运行</a>
             <a href="faq.html" class="hover:text-white transition-colors">常见问题</a>
         </div>
     </footer>
+
+    <!-- 移动端底部固定悬浮栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-[#1e0a27]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
+        <div class="flex gap-3">
+            <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#1e0a27] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
+            <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 6.48 2 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.06.06 0 0 0-.02-.12c-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
+            </a>
+            <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            </a>
+        </div>
+    </div>
 
 </body>
 </html>

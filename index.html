@@ -23,7 +23,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        body { background-color: #FFFFFF; color: #374151; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
         .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
@@ -38,11 +38,11 @@
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
         /* 首页资讯卡片（复用 blog.html 的卡片样式，便于自动同步） */
-        .blog-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 2.5rem; transition: all 0.3s; cursor: pointer; }
-        .blog-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .blog-card { background: #f8f9fa; border: 1px solid #e5e7eb; border-radius: 16px; padding: 2.5rem; transition: all 0.3s; cursor: pointer; }
+        .blog-card:hover { border-color: #f4af47; box-shadow: 0 8px 30px rgba(244,175,71,0.15); }
     </style>
 </head>
-<body class="hero-bg min-h-screen">
+<body class="min-h-screen">
     <!-- 全局悬浮 -->
     <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47]" text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
         <span class="text-xl">🔥</span>
@@ -148,7 +148,7 @@
     </section>
 
     <!-- 数据统计横条 -->
-    <section class="py-16 px-6 bg-[#150820] border-y border-white/5">
+    <section class="py-16 px-6 bg-[#1e0a27] border-y border-[#1e0a27]/10">
         <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             <div>
                 <div class="text-pi-gold text-4xl md:text-5xl font-black mb-2">5500万+</div>
@@ -170,22 +170,22 @@
     </section>
 
     <!-- 丰富的内容区块 (复刻官网深度) -->
-    <section class="py-32 px-6 bg-black/40 border-y border-white/5 backdrop-blur-sm">
+    <section class="py-32 px-6 bg-[#f5f0ff]">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-20 text-center">
-            <div class="group"><div class="text-6xl mb-8">🛡️</div><h3 class="text-2xl font-black mb-6 uppercase tracking-tighter text-white">去中心化</h3><p class="text-gray-400 font-medium">安全、不可篡改的加密货币，保护全球用户的资产。</p></div>
-            <div class="group"><div class="text-6xl mb-8">📱</div><h3 class="text-2xl font-black mb-6 uppercase tracking-tighter text-white">移动优先</h3><p class="text-gray-400 font-medium">首创手机共识挖掘，无需矿机，手机即是节点。</p></div>
-            <div class="group"><div class="text-6xl mb-8">🌍</div><h3 class="text-2xl font-black mb-6 uppercase tracking-tighter text-white">全球共识</h3><p class="text-gray-400 font-medium">超 5500 万先锋共同构建，全球覆盖最广的 Web3 生态。</p></div>
+            <div class="group"><div class="text-6xl mb-8">🛡️</div><h3 class="text-2xl font-black mb-6 uppercase tracking-tighter text-[#1a1a2e]">去中心化</h3><p class="text-[#374151] font-medium">安全、不可篡改的加密货币，保护全球用户的资产。</p></div>
+            <div class="group"><div class="text-6xl mb-8">📱</div><h3 class="text-2xl font-black mb-6 uppercase tracking-tighter text-[#1a1a2e]">移动优先</h3><p class="text-[#374151] font-medium">首创手机共识挖掘，无需矿机，手机即是节点。</p></div>
+            <div class="group"><div class="text-6xl mb-8">🌍</div><h3 class="text-2xl font-black mb-6 uppercase tracking-tighter text-[#1a1a2e]">全球共识</h3><p class="text-[#374151] font-medium">超 5500 万先锋共同构建，全球覆盖最广的 Web3 生态。</p></div>
         </div>
     </section>
 
     <!-- 最新资讯（自动从 blog.html 取最新 6 条） -->
-    <section class="py-28 px-6 bg-black/30 border-t border-white/5">
+    <section class="py-28 px-6 bg-white">
         <div class="container mx-auto max-w-6xl">
             <div class="flex items-end justify-between gap-6 mb-12">
                 <div>
                     <div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47] mb-3">Latest</div>
-                    <h2 class="text-4xl md:text-5xl font-black tracking-tighter">最新资讯</h2>
-                    <p class="text-gray-400 mt-3">展示资讯中心最新文章，点击查看详情。</p>
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tighter text-[#1a1a2e]">最新资讯</h2>
+                    <p class="text-[#6b7280] mt-3">展示资讯中心最新文章，点击查看详情。</p>
                 </div>
                 <a href="blog.html" class="hidden sm:inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">查看全部 →</a>
             </div>
@@ -198,7 +198,7 @@
         </div>
     </section>
 
-    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+    <footer class="py-12 bg-[#1e0a27] text-center border-t border-[#1e0a27]/10">
         <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200">
         <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
         <div class="flex flex-wrap justify-center gap-8 text-sm font-bold text-gray-600">
@@ -257,7 +257,7 @@
     </script>
 
     <!-- 移动端底部固定悬浮栏 -->
-    <div class="fixed bottom-0 left-0 right-0 bg-[#1a1220]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
+    <div class="fixed bottom-0 left-0 right-0 bg-[#1e0a27]/95 backdrop-blur-xl border-t border-[#1e0a27]/20 p-4 z-50 lg:hidden">
         <div class="flex gap-3">
             <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#1e0a27] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
             <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">

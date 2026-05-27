@@ -20,7 +20,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        body { background-color: #FFFFFF; color: #1a1a2e; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
         .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
@@ -33,15 +33,15 @@
         #mobile-menu.open { transform: translateX(0); }
         .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .blog-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 2.5rem; transition: all 0.3s; cursor: pointer; }
-        .blog-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .blog-card { background: #f8f9fa; border: 1px solid #e5e7eb; border-radius: 16px; padding: 2.5rem; transition: all 0.3s; cursor: pointer; }
+        .blog-card:hover { border-color: #f4af47; background: #FFFFFF; }
         .timeline { position: relative; padding-left: 3rem; }
         .timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #f4af47, rgba(244,175,71,0.1)); }
         .timeline-item { position: relative; padding-bottom: 2.5rem; }
         .timeline-item:last-child { padding-bottom: 0; }
         .timeline-dot { position: absolute; left: -3rem; top: 4px; width: 12px; height: 12px; background: #f4af47; border-radius: 50%; border: 3px solid #1e0a27; box-shadow: 0 0 0 2px #f4af47; }
         .timeline-item.highlight .timeline-dot { width: 16px; height: 16px; top: 2px; left: -3.1rem; box-shadow: 0 0 20px rgba(244,175,71,0.6); }
-        .cat-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); transition: all 0.3s; font-weight: 700; color: white; text-decoration: none; }
+        .cat-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.1); background: #f8f9fa; transition: all 0.3s; font-weight: 700; color: white; text-decoration: none; }
         .cat-btn:hover { border-color: #f4af47; background: rgba(244,175,71,0.1); color: #f4af47; transform: translateY(-2px); }
     </style>
 </head>
@@ -53,7 +53,7 @@
     </a>
 
     <!-- 导航栏 -->
-    <header class="fixed w-full z-[100] nav-blur border-b border-white/5">
+    <header class="fixed w-full z-[100] nav-blur border-b border-[#e5e7eb]">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
                 <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10">
@@ -105,7 +105,7 @@
         <button id="m-close" class="absolute top-6 right-6 p-2 text-[#f4af47] font-black">CLOSE</button>
         <div class="flex flex-col gap-6 mt-16 text-3xl font-black uppercase text-white">
             <a href="index.html">首页</a>
-            <div class="h-px bg-white/5 w-full"></div>
+            <div class="h-px bg-[#f8f9fa] w-full"></div>
             <a href="price.html">派币实时价格</a>
             <a href="technical-whitepaper.html">技术白皮书</a>
             <a href="nodes.html">Pi 节点运行</a>
@@ -131,7 +131,7 @@
     </section>
 
     <!-- 第一部分：重大里程碑时间线 -->
-    <section class="py-20 px-6 bg-black/40 border-y border-white/5 backdrop-blur-sm">
+    <section class="py-20 px-6 bg-[#f5f0ff] border-y border-[#e5e7eb] backdrop-blur-sm">
         <div class="container mx-auto max-w-4xl">
             <div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47] mb-3">Milestones</div>
             <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-16">重大里程碑</h2>
@@ -183,7 +183,7 @@
     </section>
 
     <!-- 第二部分：最新动态卡片网格 -->
-    <section class="py-28 px-6 bg-black/30 border-t border-white/5">
+    <section class="py-28 px-6 bg-white border-t border-[#e5e7eb]">
         <div class="container mx-auto max-w-6xl">
             <div class="flex items-end justify-between gap-6 mb-12">
                 <div>
@@ -201,7 +201,7 @@
     </section>
 
     <!-- 第三部分：分类导航 -->
-    <section class="py-28 px-6 bg-black/40 border-y border-white/5 backdrop-blur-sm">
+    <section class="py-28 px-6 bg-[#f5f0ff] border-y border-[#e5e7eb] backdrop-blur-sm">
         <div class="container mx-auto max-w-5xl text-center">
             <div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47] mb-3">Explore</div>
             <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-6">分类导航</h2>
@@ -254,7 +254,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+    <footer class="py-12 bg-[#1a1220] text-center border-t border-[#e5e7eb]">
         <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200">
         <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
         <div class="flex flex-wrap justify-center gap-8 text-sm font-bold text-gray-600">
@@ -306,7 +306,7 @@
     </script>
 
     <!-- 移动端底部固定悬浮栏 -->
-    <div class="fixed bottom-0 left-0 right-0 bg-[#1a1220]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
+    <div class="fixed bottom-0 left-0 right-0 bg-[#f5f0ff]/95 backdrop-blur-xl border-t border-[#e5e7eb] p-4 z-50 lg:hidden">
         <div class="flex gap-3">
             <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#1e0a27] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
             <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">

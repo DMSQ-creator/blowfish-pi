@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body{background-color:#1e0a27;color:white;font-family:'Inter',sans-serif;margin:0;overflow-x:hidden}
+        body{background-color: #FFFFFF;color: #1a1a2e;font-family:'Inter',sans-serif;margin:0;overflow-x:hidden}
         .hero-bg{background:linear-gradient(135deg,#1e0a27 0%,#423f88 100%)}
         .text-pi-gold{background:linear-gradient(90deg,#f4af47 0%,#fab44b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
         .nav-blur{background:rgba(30,10,39,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
@@ -22,7 +22,7 @@
         #mobile-menu.open{transform:translateX(0)}
         .fixed-cta{position:fixed;bottom:2rem;right:2rem;z-index:100;animation:bounce 2s infinite}
         @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-        .step-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:2rem;transition:all 0.3s}
+        .step-card{background: #f8f9fa;border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:2rem;transition:all 0.3s}
         .step-card:hover{border-color:#f4af47;background:rgba(244,175,71,0.05);transform:translateY(-4px)}
         .faq-item{border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;transition:all 0.3s}
         .faq-item:hover{border-color:rgba(244,175,71,0.3)}
@@ -36,7 +36,7 @@
 <body class="hero-bg min-h-screen">
     <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]"><span class="text-xl">🔥</span><div class="text-[10px] font-black leading-none uppercase">注册教程</div></a>
 
-    <header class="fixed w-full z-[100] nav-blur border-b border-white/5">
+    <header class="fixed w-full z-[100] nav-blur border-b border-[#e5e7eb]">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
                 <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10">
@@ -62,7 +62,7 @@
     <div id="mobile-menu" class="fixed inset-0 z-[1000] bg-[#1e0a27] lg:hidden flex flex-col p-10 overflow-y-auto">
         <button id="m-close" class="absolute top-6 right-6 p-2 text-[#f4af47] font-black">CLOSE</button>
         <div class="flex flex-col gap-6 mt-16 text-3xl font-black uppercase text-white">
-            <a href="index.html">首页</a><div class="h-px bg-white/5 w-full"></div>
+            <a href="index.html">首页</a><div class="h-px bg-[#f8f9fa] w-full"></div>
             <a href="price.html">派币实时价格</a>
             <a href="mining-tutorial.html" class="text-[#f4af47]">挖矿教程</a>
             <a href="technical-whitepaper.html">技术白皮书</a>
@@ -88,27 +88,27 @@
     </section>
 
     <!-- 第一部分：什么是Pi挖矿 -->
-    <section class="py-20 px-6 bg-black/40 border-y border-white/5 backdrop-blur-sm">
+    <section class="py-20 px-6 bg-[#f5f0ff] border-y border-[#e5e7eb] backdrop-blur-sm">
         <div class="container mx-auto max-w-5xl">
             <div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47] mb-3">What is Pi Mining</div>
             <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-8">什么是 Pi 挖矿？</h2>
             <p class="text-gray-400 text-lg leading-relaxed mb-10 max-w-3xl">Pi Network 采用<strong class="text-white">恒星共识协议（Stellar Consensus Protocol, SCP）</strong>，与传统比特币挖矿完全不同。你不需要昂贵的矿机，不需要消耗电力，甚至不需要一直开着手机——<strong class="text-[#f4af47]">每天只需点击一次闪电按钮</strong>，就能参与共识并获得 Pi 币奖励。</p>
             <div class="overflow-x-auto">
                 <table class="w-full border-collapse">
-                    <thead><tr class="border-b border-white/10"><th class="text-left py-4 px-6 text-[#f4af47] font-black text-sm uppercase tracking-widest">对比维度</th><th class="text-center py-4 px-6 text-white font-black text-sm uppercase tracking-widest">Pi Network</th><th class="text-center py-4 px-6 text-gray-500 font-black text-sm uppercase tracking-widest">比特币 (BTC)</th></tr></thead>
+                    <thead><tr class="border-b border-[#e5e7eb]"><th class="text-left py-4 px-6 text-[#f4af47] font-black text-sm uppercase tracking-widest">对比维度</th><th class="text-center py-4 px-6 text-white font-black text-sm uppercase tracking-widest">Pi Network</th><th class="text-center py-4 px-6 text-gray-500 font-black text-sm uppercase tracking-widest">比特币 (BTC)</th></tr></thead>
                     <tbody>
-                        <tr class="border-b border-white/5"><td class="py-4 px-6 text-gray-400 font-medium">设备要求</td><td class="py-4 px-6 text-center text-white font-bold">📱 普通手机即可</td><td class="py-4 px-6 text-center text-gray-500 font-medium">🖥️ 专业矿机 (ASIC)</td></tr>
-                        <tr class="border-b border-white/5"><td class="py-4 px-6 text-gray-400 font-medium">耗电量</td><td class="py-4 px-6 text-center text-white font-bold">🔋 几乎为零</td><td class="py-4 px-6 text-center text-gray-500 font-medium">⚡ 极高</td></tr>
-                        <tr class="border-b border-white/5"><td class="py-4 px-6 text-gray-400 font-medium">参与成本</td><td class="py-4 px-6 text-center text-white font-bold">💰 零成本</td><td class="py-4 px-6 text-center text-gray-500 font-medium">💰💰💰 数万元起步</td></tr>
-                        <tr class="border-b border-white/5"><td class="py-4 px-6 text-gray-400 font-medium">参与门槛</td><td class="py-4 px-6 text-center text-white font-bold">✅ 人人可参与</td><td class="py-4 px-6 text-center text-gray-500 font-medium">❌ 矿企垄断</td></tr>
+                        <tr class="border-b border-[#e5e7eb]"><td class="py-4 px-6 text-gray-400 font-medium">设备要求</td><td class="py-4 px-6 text-center text-white font-bold">📱 普通手机即可</td><td class="py-4 px-6 text-center text-gray-500 font-medium">🖥️ 专业矿机 (ASIC)</td></tr>
+                        <tr class="border-b border-[#e5e7eb]"><td class="py-4 px-6 text-gray-400 font-medium">耗电量</td><td class="py-4 px-6 text-center text-white font-bold">🔋 几乎为零</td><td class="py-4 px-6 text-center text-gray-500 font-medium">⚡ 极高</td></tr>
+                        <tr class="border-b border-[#e5e7eb]"><td class="py-4 px-6 text-gray-400 font-medium">参与成本</td><td class="py-4 px-6 text-center text-white font-bold">💰 零成本</td><td class="py-4 px-6 text-center text-gray-500 font-medium">💰💰💰 数万元起步</td></tr>
+                        <tr class="border-b border-[#e5e7eb]"><td class="py-4 px-6 text-gray-400 font-medium">参与门槛</td><td class="py-4 px-6 text-center text-white font-bold">✅ 人人可参与</td><td class="py-4 px-6 text-center text-gray-500 font-medium">❌ 矿企垄断</td></tr>
                         <tr><td class="py-4 px-6 text-gray-400 font-medium">操作难度</td><td class="py-4 px-6 text-center text-white font-bold">👆 每天点一下</td><td class="py-4 px-6 text-center text-gray-500 font-medium">🔧 需专业运维</td></tr>
                     </tbody>
                 </table>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                <div class="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5"><div class="text-4xl mb-4">🔋</div><h3 class="text-white font-black text-lg mb-2">不耗电</h3><p class="text-gray-500 text-sm">App 不在后台运行挖矿，不消耗任何额外电量</p></div>
-                <div class="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5"><div class="text-4xl mb-4">📶</div><h3 class="text-white font-black text-lg mb-2">不费流量</h3><p class="text-gray-500 text-sm">每日仅需一次网络连接确认，几乎零流量消耗</p></div>
-                <div class="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5"><div class="text-4xl mb-4">📱</div><h3 class="text-white font-black text-lg mb-2">不伤手机</h3><p class="text-gray-500 text-sm">无需GPU运算，手机不会发热发烫</p></div>
+                <div class="text-center p-6 rounded-2xl bg-white/[0.02] border border-[#e5e7eb]"><div class="text-4xl mb-4">🔋</div><h3 class="text-white font-black text-lg mb-2">不耗电</h3><p class="text-gray-500 text-sm">App 不在后台运行挖矿，不消耗任何额外电量</p></div>
+                <div class="text-center p-6 rounded-2xl bg-white/[0.02] border border-[#e5e7eb]"><div class="text-4xl mb-4">📶</div><h3 class="text-white font-black text-lg mb-2">不费流量</h3><p class="text-gray-500 text-sm">每日仅需一次网络连接确认，几乎零流量消耗</p></div>
+                <div class="text-center p-6 rounded-2xl bg-white/[0.02] border border-[#e5e7eb]"><div class="text-4xl mb-4">📱</div><h3 class="text-white font-black text-lg mb-2">不伤手机</h3><p class="text-gray-500 text-sm">无需GPU运算，手机不会发热发烫</p></div>
             </div>
         </div>
     </section>
@@ -135,25 +135,25 @@
     </section>
 
     <!-- 第三部分：挖矿速率提升 -->
-    <section class="py-20 px-6 bg-black/40 border-y border-white/5 backdrop-blur-sm">
+    <section class="py-20 px-6 bg-[#f5f0ff] border-y border-[#e5e7eb] backdrop-blur-sm">
         <div class="container mx-auto max-w-5xl">
             <div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47] mb-3">Boost Your Rate</div>
             <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-4">挖矿速率提升技巧</h2>
             <p class="text-gray-400 text-lg mb-14">掌握这三种方法，让你的 Pi 产出翻倍</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-[#f4af47]/30 transition-all"><div class="text-5xl mb-6">🛡️</div><h3 class="text-white font-black text-xl mb-3">安全圈加成</h3><div class="inline-block px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-black mb-4">+25% 速率</div><p class="text-gray-400 text-sm leading-relaxed">添加至少 <strong class="text-white">3 个互信好友</strong> 到安全圈，即可获得 25% 的挖矿速率加成。安全圈是 Pi 共识机制的核心，帮助网络验证可信交易。</p></div>
-                <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-[#f4af47]/30 transition-all"><div class="text-5xl mb-6">👥</div><h3 class="text-white font-black text-xl mb-3">邀请好友加成</h3><div class="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-black mb-4">每人 +25%</div><p class="text-gray-400 text-sm leading-relaxed">每成功邀请一位好友加入，你的挖矿速率 <strong class="text-white">增加 25%</strong>。邀请越多好友，加成越高，上不封顶！</p></div>
-                <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-[#f4af47]/30 transition-all"><div class="text-5xl mb-6">🖥️</div><h3 class="text-white font-black text-xl mb-3">运行节点加成</h3><div class="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-black mb-4">额外加成</div><p class="text-gray-400 text-sm leading-relaxed">在电脑上运行 Pi 节点软件，为网络提供共识服务，可获得额外挖矿速率加成。<a href="nodes.html" class="text-[#f4af47] underline">查看节点教程 →</a></p></div>
+                <div class="p-8 rounded-3xl bg-white/[0.02] border border-[#e5e7eb] hover:border-[#f4af47]/30 transition-all"><div class="text-5xl mb-6">🛡️</div><h3 class="text-white font-black text-xl mb-3">安全圈加成</h3><div class="inline-block px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-black mb-4">+25% 速率</div><p class="text-gray-400 text-sm leading-relaxed">添加至少 <strong class="text-white">3 个互信好友</strong> 到安全圈，即可获得 25% 的挖矿速率加成。安全圈是 Pi 共识机制的核心，帮助网络验证可信交易。</p></div>
+                <div class="p-8 rounded-3xl bg-white/[0.02] border border-[#e5e7eb] hover:border-[#f4af47]/30 transition-all"><div class="text-5xl mb-6">👥</div><h3 class="text-white font-black text-xl mb-3">邀请好友加成</h3><div class="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-black mb-4">每人 +25%</div><p class="text-gray-400 text-sm leading-relaxed">每成功邀请一位好友加入，你的挖矿速率 <strong class="text-white">增加 25%</strong>。邀请越多好友，加成越高，上不封顶！</p></div>
+                <div class="p-8 rounded-3xl bg-white/[0.02] border border-[#e5e7eb] hover:border-[#f4af47]/30 transition-all"><div class="text-5xl mb-6">🖥️</div><h3 class="text-white font-black text-xl mb-3">运行节点加成</h3><div class="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-black mb-4">额外加成</div><p class="text-gray-400 text-sm leading-relaxed">在电脑上运行 Pi 节点软件，为网络提供共识服务，可获得额外挖矿速率加成。<a href="nodes.html" class="text-[#f4af47] underline">查看节点教程 →</a></p></div>
             </div>
-            <div class="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
+            <div class="p-8 rounded-3xl bg-white/[0.02] border border-[#e5e7eb]">
                 <h3 class="text-white font-black text-xl mb-6">📊 速率计算示例</h3>
                 <div class="overflow-x-auto">
                     <table class="w-full border-collapse text-sm">
-                        <thead><tr class="border-b border-white/10"><th class="text-left py-3 px-4 text-gray-400 font-bold">场景</th><th class="text-center py-3 px-4 text-gray-400 font-bold">基础速率</th><th class="text-center py-3 px-4 text-gray-400 font-bold">安全圈</th><th class="text-center py-3 px-4 text-gray-400 font-bold">邀请好友</th><th class="text-center py-3 px-4 text-[#f4af47] font-bold">实际速率</th></tr></thead>
+                        <thead><tr class="border-b border-[#e5e7eb]"><th class="text-left py-3 px-4 text-gray-400 font-bold">场景</th><th class="text-center py-3 px-4 text-gray-400 font-bold">基础速率</th><th class="text-center py-3 px-4 text-gray-400 font-bold">安全圈</th><th class="text-center py-3 px-4 text-gray-400 font-bold">邀请好友</th><th class="text-center py-3 px-4 text-[#f4af47] font-bold">实际速率</th></tr></thead>
                         <tbody>
-                            <tr class="border-b border-white/5"><td class="py-3 px-4 text-white font-medium">仅点击挖矿</td><td class="py-3 px-4 text-center text-gray-300">0.0029 π/h</td><td class="py-3 px-4 text-center text-gray-500">—</td><td class="py-3 px-4 text-center text-gray-500">—</td><td class="py-3 px-4 text-center text-[#f4af47] font-black">0.0029 π/h</td></tr>
-                            <tr class="border-b border-white/5"><td class="py-3 px-4 text-white font-medium">+ 安全圈（3人）</td><td class="py-3 px-4 text-center text-gray-300">0.0029 π/h</td><td class="py-3 px-4 text-center text-green-400">+25%</td><td class="py-3 px-4 text-center text-gray-500">—</td><td class="py-3 px-4 text-center text-[#f4af47] font-black">0.0036 π/h</td></tr>
-                            <tr class="border-b border-white/5"><td class="py-3 px-4 text-white font-medium">+ 安全圈 + 2位好友</td><td class="py-3 px-4 text-center text-gray-300">0.0029 π/h</td><td class="py-3 px-4 text-center text-green-400">+25%</td><td class="py-3 px-4 text-center text-blue-400">+50%</td><td class="py-3 px-4 text-center text-[#f4af47] font-black">0.0051 π/h</td></tr>
+                            <tr class="border-b border-[#e5e7eb]"><td class="py-3 px-4 text-white font-medium">仅点击挖矿</td><td class="py-3 px-4 text-center text-gray-300">0.0029 π/h</td><td class="py-3 px-4 text-center text-gray-500">—</td><td class="py-3 px-4 text-center text-gray-500">—</td><td class="py-3 px-4 text-center text-[#f4af47] font-black">0.0029 π/h</td></tr>
+                            <tr class="border-b border-[#e5e7eb]"><td class="py-3 px-4 text-white font-medium">+ 安全圈（3人）</td><td class="py-3 px-4 text-center text-gray-300">0.0029 π/h</td><td class="py-3 px-4 text-center text-green-400">+25%</td><td class="py-3 px-4 text-center text-gray-500">—</td><td class="py-3 px-4 text-center text-[#f4af47] font-black">0.0036 π/h</td></tr>
+                            <tr class="border-b border-[#e5e7eb]"><td class="py-3 px-4 text-white font-medium">+ 安全圈 + 2位好友</td><td class="py-3 px-4 text-center text-gray-300">0.0029 π/h</td><td class="py-3 px-4 text-center text-green-400">+25%</td><td class="py-3 px-4 text-center text-blue-400">+50%</td><td class="py-3 px-4 text-center text-[#f4af47] font-black">0.0051 π/h</td></tr>
                             <tr><td class="py-3 px-4 text-white font-medium">+ 安全圈 + 5位好友</td><td class="py-3 px-4 text-center text-gray-300">0.0029 π/h</td><td class="py-3 px-4 text-center text-green-400">+25%</td><td class="py-3 px-4 text-center text-blue-400">+125%</td><td class="py-3 px-4 text-center text-[#f4af47] font-black">0.0073 π/h</td></tr>
                         </tbody>
                     </table>
@@ -223,7 +223,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+    <footer class="py-12 bg-[#1a1220] text-center border-t border-[#e5e7eb]">
         <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200">
         <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
         <div class="flex flex-wrap justify-center gap-8 text-sm font-bold text-gray-600">
@@ -237,7 +237,7 @@
     </footer>
 
     <!-- 移动端底部固定悬浮栏 -->
-    <div class="fixed bottom-0 left-0 right-0 bg-[#1a1220]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
+    <div class="fixed bottom-0 left-0 right-0 bg-[#f5f0ff]/95 backdrop-blur-xl border-t border-[#e5e7eb] p-4 z-50 lg:hidden">
         <div class="flex gap-3">
             <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#1e0a27] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
             <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.06.06 0 0 0-.02-.12c-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg></a>
