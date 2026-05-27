@@ -20,29 +20,33 @@
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        
-        
-        .dev-card { background: #f8f9fa; border: 1px solid #e5e7eb; border-radius: 16px; padding: 3rem; transition: all 0.3s; }
-        .dev-card:hover { border-color: #f4af47; background: #FFFFFF; }
+        body { background-color: #1e0a27; color: white; line-height: 1.8; font-family: sans-serif; }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .dev-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 3rem; transition: all 0.3s; }
+        .dev-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
         h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem; color: #f4af47; }
-        p { color: #374151; margin-bottom: 1.5rem; font-size: 1.1rem; }
+        p { color: #cbd5e1; margin-bottom: 1.5rem; font-size: 1.1rem; }
     </style>
-<link rel="stylesheet" href="site.css">
 </head>
-<body class="min-h-screen flex flex-col">
-    <div id="site-nav"></div>
+<body class="min-h-screen">
+    <nav class="p-6 border-b border-white/5 bg-[#1a1220]/80 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-gray-400 hover:text-white font-bold uppercase tracking-tighter">← 返回首页</a>
+            <span class="text-[#f4af47] font-black uppercase text-sm">Developer Portal</span>
+        </div>
+    </nav>
 
-    <main class="flex-1 max-w-5xl mx-auto py-24 px-6">
+    <main class="max-w-5xl mx-auto py-24 px-6">
         <header class="mb-24">
             <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-tight mb-10">在 Pi 上构建<br><span class="text-pi-gold italic">Web3 的未来</span></h1>
-            <p class="text-2xl text-[#374151] font-medium">加入全球最大的身份验证用户社区，利用 Pi SDK 构建具有真实价值的去中心化应用。</p>
+            <p class="text-2xl text-gray-400 font-medium">加入全球最大的身份验证用户社区，利用 Pi SDK 构建具有真实价值的去中心化应用。</p>
         </header>
 
         <section class="space-y-16">
             <div class="dev-card">
                 <h2>为什么要选择 Pi 平台？</h2>
                 <p>Pi Network 为开发者提供了一个独特的生态系统。不同于其他区块链需要开发者自己去寻找用户，Pi 拥有超过 5500 万已经完成身份验证且极度活跃的先锋。通过我们的生态系统，您的应用可以瞬间触达全球数千万潜在用户。</p>
-                <ul class="list-disc ml-8 space-y-4 text-[#374151]">
+                <ul class="list-disc ml-8 space-y-4 text-gray-400">
                     <li><strong>即时用户群：</strong> 无需昂贵的获客成本。</li>
                     <li><strong>完善的支付系统：</strong> 一键集成 Pi 币支付接口。</li>
                     <li><strong>身份验证支持：</strong> 利用 Pi KYC 确保您的用户是真实人类。</li>
@@ -50,13 +54,13 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="p-10 rounded-4xl bg-[#f8f9fa] border border-[#e5e7eb] hover:border-[#f4af47] transition-all">
-                    <h3 class="text-2xl font-bold mb-4 text-[#1a1a2e]">Pi SDK</h3>
-                    <p class="text-sm text-[#374151]">我们的 JavaScript SDK 允许您在几分钟内将现有的 HTML/JS 应用连接到 Pi 区块链，实现认证与支付功能。</p>
+                <div class="p-10 rounded-3xl bg-white/5 border border-white/10">
+                    <h3 class="text-2xl font-bold mb-4">Pi SDK</h3>
+                    <p class="text-sm text-gray-400">我们的 JavaScript SDK 允许您在几分钟内将现有的 HTML/JS 应用连接到 Pi 区块链，实现认证与支付功能。</p>
                 </div>
-                <div class="p-10 rounded-4xl bg-[#f8f9fa] border border-[#e5e7eb] hover:border-[#f4af47] transition-all">
-                    <h3 class="text-2xl font-bold mb-4 text-[#1a1a2e]">开发者测试网</h3>
-                    <p class="text-sm text-[#374151]">在真实的沙盒环境中测试您的 dApp，并在我们的 Pi 浏览器“生态系统”列表中获得展示位。</p>
+                <div class="p-10 rounded-3xl bg-white/5 border border-white/10">
+                    <h3 class="text-2xl font-bold mb-4">开发者测试网</h3>
+                    <p class="text-sm text-gray-400">在真实的沙盒环境中测试您的 dApp，并在我们的 Pi 浏览器“生态系统”列表中获得展示位。</p>
                 </div>
             </div>
 
@@ -64,21 +68,21 @@
             <ol class="space-y-10">
                 <li class="border-l-4 border-[#f4af47] pl-8">
                     <h4 class="text-xl font-bold">1. 下载 Pi 浏览器</h4>
-                    <p class="text-[#4b5563]">通过 Pi 浏览器进入 "develop.pi" 应用，创建您的开发者账户。</p>
+                    <p class="text-gray-500">通过 Pi 浏览器进入 "develop.pi" 应用，创建您的开发者账户。</p>
                 </li>
                 <li class="border-l-4 border-white/10 pl-8">
                     <h4 class="text-xl font-bold">2. 注册并配置应用</h4>
-                    <p class="text-[#4b5563]">在开发者控制台登记您的项目，获取专属的 App ID 和 API 密钥。</p>
+                    <p class="text-gray-500">在开发者控制台登记您的项目，获取专属的 App ID 和 API 密钥。</p>
                 </li>
                 <li class="border-l-4 border-white/10 pl-8">
                     <h4 class="text-xl font-bold">3. 集成与测试</h4>
-                    <p class="text-[#4b5563]">在测试网进行压力测试，确保支付逻辑和用户体验完美无缺。</p>
+                    <p class="text-gray-500">在测试网进行压力测试，确保支付逻辑和用户体验完美无缺。</p>
                 </li>
             </ol>
         </section>
 
         <div class="mt-32 p-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-[50px] text-center shadow-3xl">
-            <h2 class="text-3xl font-black mb-6 text-gray-900">寻求合作伙伴？</h2>
+            <h2 class="text-3xl font-black mb-6 text-white">寻求合作伙伴？</h2>
             <p class="text-blue-100 mb-10 font-bold">如果您有大型商业项目或跨链合作意向，请加入我们的电报群与技术团队直接沟通。</p>
             <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer; noopener noreferrer" class="bg-[#5865F2] text-white px-12 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all inline-block">加入 Discord</a>
             <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer; noopener noreferrer" class="bg-white text-blue-600 px-12 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all inline-block">
@@ -89,11 +93,30 @@
 
         
     <!-- 统一 Footer -->
-    <div id="site-footer"></div>
+    <footer class="py-10 bg-[#1a1220] text-center border-t border-white/5 mt-20">
+        <div class="flex justify-center gap-6 mb-6">
+            <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#5865F2] transition-colors">
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            </a>
+            <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-500 transition-colors">
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.06.06 0 0 0-.02-.12c-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
+            </a>
+        </div>
+        <p class="text-sm font-bold text-gray-600 mb-4">
+            © 2026 PI NETWORK 中文网 · 邀请码 <span class="text-[#f4af47]">nbjh</span>
+        </p>
+        <div class="flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-600">
+            <a href="about.html" class="hover:text-white transition-colors">关于我们</a>
+            <a href="technical-whitepaper.html" class="hover:text-white transition-colors">技术文档</a>
+            <a href="reg.html" class="hover:text-[#f4af47] transition-colors">下载注册</a>
+            <a href="nodes.html" class="hover:text-white transition-colors">节点运行</a>
+            <a href="faq.html" class="hover:text-white transition-colors">常见问题</a>
+        </div>
+    </footer>
 
 
     <!-- 移动端底部固定悬浮栏 -->
-    <div class="fixed bottom-0 left-0 right-0 bg-[#593B8B]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
+    <div class="fixed bottom-0 left-0 right-0 bg-[#1a1220]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
         <div class="flex gap-3">
             <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#1e0a27] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
             <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
@@ -105,6 +128,5 @@
         </div>
     </div>
 
-<script src="inject-components.js"></script>
 </body>
 </html>

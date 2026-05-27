@@ -21,17 +21,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        
-        
+        body { background-color: #1e0a27; color: white; line-height: 2; font-family: 'Inter', sans-serif; text-align: justify; }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .founder-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 2px solid rgba(244, 175, 71, 0.3); border-radius: 50px; box-shadow: 0 0 40px rgba(244, 175, 71, 0.1); }
-        .stat-card { background: #f8f9fa; border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+        .stat-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
         h2 { font-size: 2.2rem; font-weight: 900; margin: 5rem 0 2rem; color: #f4af47; border-bottom: 2px solid rgba(244,175,71,0.1); padding-bottom: 1rem; }
     </style>
-<link rel="stylesheet" href="site.css">
 </head>
-<body class="min-h-screen flex flex-col">
-    <div id="site-nav"></div>
-    <main class="flex-1 max-w-4xl mx-auto py-24 px-6">
+<body class="min-h-screen">
+    <nav class="p-6 border-b border-white/5 bg-[#1a1220]/80 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center"><a href="index.html" class="font-bold">← 返回首页</a><span class="text-[#f4af47] font-black uppercase">Official About</span></div>
+    </nav>
+    <main class="max-w-4xl mx-auto py-24 px-6">
         <header class="text-center mb-32">
             <h1 class="text-6xl md:text-8xl font-black mb-10 tracking-tighter leading-tight uppercase">About <span class="text-pi-gold italic">Pi Network</span></h1>
         </header>
@@ -51,7 +52,7 @@
                     <div class="md:col-span-2">
                         <h3 class="text-4xl font-black mb-4">Nicolas Kokkalis</h3>
                         <p class="text-pi-gold font-bold text-sm uppercase mb-4 tracking-widest">技术负责人</p>
-                        <p class="text-gray-600">斯坦福大学博士。他是 2018 年斯坦福大学历史上首个去中心化应用课程 CS359B 的主讲师。Nicolas 坚信加密货币能够超越目前的技术限制，致力于将区块链的力量带给每个人。</p>
+                        <p class="text-gray-400">斯坦福大学博士。他是 2018 年斯坦福大学历史上首个去中心化应用课程 CS359B 的主讲师。Nicolas 坚信加密货币能够超越目前的技术限制，致力于将区块链的力量带给每个人。</p>
                     </div>
                 </div>
 
@@ -60,7 +61,7 @@
                     <div class="md:col-span-2 md:order-1">
                         <h3 class="text-4xl font-black mb-4 text-right md:text-left">Chengdiao Fan</h3>
                         <p class="text-pi-gold font-bold text-sm uppercase mb-4 tracking-widest text-right md:text-left">产品负责人</p>
-                        <p class="text-gray-600 text-right md:text-left">斯坦福大学人类学博士。她专注于利用社交计算在在全球范围内释放人类的协作潜力。通过构思 Web3 时代的社交经济生活，她正在动员全球数千万先锋参与并获得回报。</p>
+                        <p class="text-gray-400 text-right md:text-left">斯坦福大学人类学博士。她专注于利用社交计算在在全球范围内释放人类的协作潜力。通过构思 Web3 时代的社交经济生活，她正在动员全球数千万先锋参与并获得回报。</p>
                     </div>
                 </div>
             </div>
@@ -68,13 +69,13 @@
         <section id="mission" class="mt-32">
             <h2>使命与愿景</h2>
             <div class="space-y-8 mt-12">
-                <div class="p-10 rounded-3xl bg-[#f8f9fa] border border-[#e5e7eb]">
+                <div class="p-10 rounded-3xl bg-white/5 border border-white/10">
                     <h3 class="text-2xl font-black text-[#f4af47] mb-4">🌍 使命</h3>
-                    <p class="text-gray-600 text-lg">构建全球最具包容性的点对点生态系统，让全世界每一个人都能平等地参与数字经济。Pi Network 的使命不仅仅是创造一种新的加密货币，更是要打破传统金融体系的壁垒，让那些被现有体系排除在外的人群也能获得经济自由。</p>
+                    <p class="text-gray-400 text-lg">构建全球最具包容性的点对点生态系统，让全世界每一个人都能平等地参与数字经济。Pi Network 的使命不仅仅是创造一种新的加密货币，更是要打破传统金融体系的壁垒，让那些被现有体系排除在外的人群也能获得经济自由。</p>
                 </div>
-                <div class="p-10 rounded-3xl bg-[#f8f9fa] border border-[#e5e7eb]">
+                <div class="p-10 rounded-3xl bg-white/5 border border-white/10">
                     <h3 class="text-2xl font-black text-[#f4af47] mb-4">🔭 愿景</h3>
-                    <p class="text-gray-600 text-lg">成为世界上使用最广泛、最具实用价值的加密货币平台。我们相信，真正的加密货币革命不在于投机交易，而在于日常使用——当数以千万计的人用 Pi 购买商品、支付服务、参与社区治理时，这个网络才真正拥有了不可替代的价值。</p>
+                    <p class="text-gray-400 text-lg">成为世界上使用最广泛、最具实用价值的加密货币平台。我们相信，真正的加密货币革命不在于投机交易，而在于日常使用——当数以千万计的人用 Pi 购买商品、支付服务、参与社区治理时，这个网络才真正拥有了不可替代的价值。</p>
                 </div>
             </div>
         </section>
@@ -88,10 +89,10 @@
                 <div class="space-y-16">
                     <div class="flex flex-col md:flex-row items-center gap-8">
                         <div class="md:w-1/2 md:text-right md:pr-12">
-                            <div class="p-8 rounded-3xl bg-[#f8f9fa] border border-[#f4af47]/30">
+                            <div class="p-8 rounded-3xl bg-white/5 border border-[#f4af47]/30">
                                 <span class="text-[#f4af47] font-black text-3xl">2019</span>
                                 <h3 class="text-xl font-bold mt-2 mb-3">Pi Network 创立</h3>
-                                <p class="text-gray-600">斯坦福大学博士 Nicolas Kokkalis 和 Chengdiao Fan 联合创立 Pi Network，推出手机挖矿概念，吸引全球首批先锋加入。</p>
+                                <p class="text-gray-400">斯坦福大学博士 Nicolas Kokkalis 和 Chengdiao Fan 联合创立 Pi Network，推出手机挖矿概念，吸引全球首批先锋加入。</p>
                             </div>
                         </div>
                         <div class="w-4 h-4 rounded-full bg-[#f4af47] shadow-lg shadow-[#f4af47]/50 hidden md:block flex-shrink-0"></div>
@@ -102,20 +103,20 @@
                         <div class="md:w-1/2"></div>
                         <div class="w-4 h-4 rounded-full bg-[#f4af47] shadow-lg shadow-[#f4af47]/50 hidden md:block flex-shrink-0"></div>
                         <div class="md:w-1/2 md:pl-12">
-                            <div class="p-8 rounded-3xl bg-[#f8f9fa] border border-[#f4af47]/30">
+                            <div class="p-8 rounded-3xl bg-white/5 border border-[#f4af47]/30">
                                 <span class="text-[#f4af47] font-black text-3xl">2020</span>
                                 <h3 class="text-xl font-bold mt-2 mb-3">测试网上线</h3>
-                                <p class="text-gray-600">Pi 测试网络正式上线，节点系统开始运行，先锋们首次体验 Pi 钱包和测试交易功能，社区规模突破 1000 万。</p>
+                                <p class="text-gray-400">Pi 测试网络正式上线，节点系统开始运行，先锋们首次体验 Pi 钱包和测试交易功能，社区规模突破 1000 万。</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex flex-col md:flex-row items-center gap-8">
                         <div class="md:w-1/2 md:text-right md:pr-12">
-                            <div class="p-8 rounded-3xl bg-[#f8f9fa] border border-[#f4af47]/30">
+                            <div class="p-8 rounded-3xl bg-white/5 border border-[#f4af47]/30">
                                 <span class="text-[#f4af47] font-black text-3xl">2021</span>
                                 <h3 class="text-xl font-bold mt-2 mb-3">封闭主网启动</h3>
-                                <p class="text-gray-600">Pi 进入封闭主网阶段，区块链独立运行，KYC 大规模推进，生态应用逐步上线。全球先锋突破 3500 万。</p>
+                                <p class="text-gray-400">Pi 进入封闭主网阶段，区块链独立运行，KYC 大规模推进，生态应用逐步上线。全球先锋突破 3500 万。</p>
                             </div>
                         </div>
                         <div class="w-4 h-4 rounded-full bg-[#f4af47] shadow-lg shadow-[#f4af47]/50 hidden md:block flex-shrink-0"></div>
@@ -126,10 +127,10 @@
                         <div class="md:w-1/2"></div>
                         <div class="w-4 h-4 rounded-full bg-[#f4af47] shadow-lg shadow-[#f4af47]/50 hidden md:block flex-shrink-0"></div>
                         <div class="md:w-1/2 md:pl-12">
-                            <div class="p-8 rounded-3xl bg-[#f8f9fa] border border-[#f4af47]/30">
+                            <div class="p-8 rounded-3xl bg-white/5 border border-[#f4af47]/30">
                                 <span class="text-[#f4af47] font-black text-3xl">2025</span>
                                 <h3 class="text-xl font-bold mt-2 mb-3">开放网络</h3>
-                                <p class="text-gray-600">Pi 正式进入开放网络阶段，防火墙移除，Pi 可与外部世界自由交互。这是 Pi 历史上最重要的里程碑，标志着 Pi 从封闭生态走向全球数字经济。</p>
+                                <p class="text-gray-400">Pi 正式进入开放网络阶段，防火墙移除，Pi 可与外部世界自由交互。这是 Pi 历史上最重要的里程碑，标志着 Pi 从封闭生态走向全球数字经济。</p>
                             </div>
                         </div>
                     </div>
@@ -139,7 +140,7 @@
                             <div class="p-8 rounded-3xl bg-gradient-to-br from-[#f4af47]/20 to-transparent border border-[#f4af47]/50">
                                 <span class="text-[#f4af47] font-black text-3xl">2026</span>
                                 <h3 class="text-xl font-bold mt-2 mb-3">Consensus 大会</h3>
-                                <p class="text-gray-600">Pi Network 将在 Consensus 2026 大会上亮相，与全球顶级区块链项目同台展示。这是 Pi 走向主流认可的关键一步，预计将带来更多生态合作与商业落地。</p>
+                                <p class="text-gray-400">Pi Network 将在 Consensus 2026 大会上亮相，与全球顶级区块链项目同台展示。这是 Pi 走向主流认可的关键一步，预计将带来更多生态合作与商业落地。</p>
                             </div>
                         </div>
                         <div class="w-4 h-4 rounded-full bg-[#f4af47] shadow-lg shadow-[#f4af47]/50 hidden md:block flex-shrink-0"></div>
@@ -152,11 +153,30 @@
 
     
     <!-- 统一 Footer -->
-    <div id="site-footer"></div>
+    <footer class="py-10 bg-[#1a1220] text-center border-t border-white/5 mt-20">
+        <div class="flex justify-center gap-6 mb-6">
+            <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#5865F2] transition-colors">
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            </a>
+            <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-500 transition-colors">
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.06.06 0 0 0-.02-.12c-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
+            </a>
+        </div>
+        <p class="text-sm font-bold text-gray-600 mb-4">
+            © 2026 PI NETWORK 中文网 · 邀请码 <span class="text-[#f4af47]">nbjh</span>
+        </p>
+        <div class="flex flex-wrap justify-center gap-6 text-sm font-bold text-gray-600">
+            <a href="about.html" class="hover:text-white transition-colors">关于我们</a>
+            <a href="technical-whitepaper.html" class="hover:text-white transition-colors">技术文档</a>
+            <a href="reg.html" class="hover:text-[#f4af47] transition-colors">下载注册</a>
+            <a href="nodes.html" class="hover:text-white transition-colors">节点运行</a>
+            <a href="faq.html" class="hover:text-white transition-colors">常见问题</a>
+        </div>
+    </footer>
 
 
     <!-- 移动端底部固定悬浮栏 -->
-    <div class="fixed bottom-0 left-0 right-0 bg-[#f5f0ff]/95 backdrop-blur-xl border-t border-[#e5e7eb] p-4 z-50 lg:hidden">
+    <div class="fixed bottom-0 left-0 right-0 bg-[#1a1220]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
         <div class="flex gap-3">
             <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#1e0a27] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
             <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
@@ -168,6 +188,5 @@
         </div>
     </div>
 
-<script src="inject-components.js"></script>
 </body>
 </html>

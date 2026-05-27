@@ -7,31 +7,32 @@
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pi技术白皮书 | 共识机制与代币经济 | 派币中文网</title>
-    <meta name="description" content="Pi技术白皮书详解,深入解析恒星共识机制、代币经济模型与技术架构。了解Pi区块链的共识算法、代币分配及经济模型设计。">
+    <meta name="description" content="Pi技术白皮书详解，深入解析恒星共识机制、代币经济模型与技术架构。了解Pi区块链的共识算法、代币分配及经济模型设计。">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://pibizh.com/technical-whitepaper.html">
     <meta property="og:title" content="Pi技术白皮书 | 共识机制与代币经济 | 派币中文网">
-    <meta property="og:description" content="Pi技术白皮书详解,深入解析恒星共识机制、代币经济模型。">
+    <meta property="og:description" content="Pi技术白皮书详解，深入解析恒星共识机制、代币经济模型。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pibizh.com/technical-whitepaper.html">
     <meta property="og:image" content="/static/favicon.png">
     <meta property="og:locale" content="zh_CN">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Pi技术白皮书","description":"Pi技术白皮书详解,恒星共识机制与代币经济模型","url":"https://pibizh.com/technical-whitepaper.html"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Pi技术白皮书","description":"Pi技术白皮书详解，恒星共识机制与代币经济模型","url":"https://pibizh.com/technical-whitepaper.html"}</script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        
-        
-        .sidebar-link { display: block; border-left: 2px solid #e5e7eb; padding: 0.5rem 1.5rem; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.3s; color: #6b7280; font-size: 0.85rem; font-weight: bold; }
-        .sidebar-link:hover { border-left-color: #f4af47; color: #1a1a2e; }
+        body { background-color: #1e0a27; color: white; line-height: 2; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .sidebar-link { display: block; border-left: 2px solid rgba(255,255,255,0.1); padding: 0.5rem 1.5rem; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.3s; color: #94a3b8; font-size: 0.85rem; font-weight: bold; }
+        .sidebar-link:hover { border-left-color: #f4af47; color: white; }
         section { padding-top: 100px; margin-top: -60px; margin-bottom: 5rem; }
         h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem; color: #f4af47; }
-        p { color: #374151; margin-bottom: 2rem; font-size: 1.15rem; text-align: justify; }
+        p { color: #cbd5e1; margin-bottom: 2rem; font-size: 1.15rem; text-align: justify; }
     </style>
-<link rel="stylesheet" href="site.css">
 </head>
 <body class="min-h-screen flex flex-col">
-    <div id="site-nav"></div>
+    <nav class="p-6 border-b border-white/5 bg-[#1a1220]/90 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center"><a href="index.html" class="font-bold">← 返回首页</a><span class="text-[#f4af47] font-black uppercase">Technical Whitepaper</span></div>
+    </nav>
     <div class="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-4 gap-16">
         <aside class="hidden lg:block sticky top-36 h-fit">
             <h4 class="text-[10px] font-black tracking-widest text-gray-500 uppercase mb-8">目录 / CONTENTS</h4>
@@ -41,54 +42,64 @@
             <a href="#mining" class="sidebar-link">04. Pi 采矿经济模型</a>
             <a href="#roadmap" class="sidebar-link">05. 项目路线图详情</a>
         </aside>
-        <main class="flex-1 lg:col-span-3">
+        <main class="lg:col-span-3">
             <h1 class="text-6xl md:text-9xl font-black mb-20 tracking-tighter text-pi-gold">WHITEPAPER</h1>
-
+            
             <section id="intro">
                 <h2>01. 项目背景与使命</h2>
-                <p>随着互联网从 Web2 向 Web3 的转型,数字货币已成为全球金融演进的必然。然而,第一代加密货币(如比特币)在实际运行中创造了巨大的社会经济障碍。算力高度集中、能效低下、对普通人极高的准入门槛,让 99% 的人被排斥在区块链的所有权之外。</p>
-                <p>Pi Network 的初衷是建立全球最包容、最公平的 P2P 经济体。我们致力于让每一个拥有手机的人,都能平等地参与到货币的铸造与治理中。通过利用社交信任图谱,我们旨在打破算力霸权,实现真正的去中心化愿景。</p>
+                <p>随着互联网从 Web2 向 Web3 的转型，数字货币已成为全球金融演进的必然。然而，第一代加密货币（如比特币）在实际运行中创造了巨大的社会经济障碍。算力高度集中、能效低下、对普通人极高的准入门槛，让 99% 的人被排斥在区块链的所有权之外。</p>
+                <p>Pi Network 的初衷是建立全球最包容、最公平的 P2P 经济体。我们致力于让每一个拥有手机的人，都能平等地参与到货币的铸造与治理中。通过利用社交信任图谱，我们旨在打破算力霸权，实现真正的去中心化愿景。</p>
             </section>
 
             <section id="problem">
-                <h2>02. 第一代区块链的问题:工作量证明的局限</h2>
-                <p>比特币引入的'工作量证明 (PoW)'在早期是划时代的。但在今天,它已演变成一场算力军备竞赛。ASIC 矿机的普及使得普通用户的 CPU 毫无竞争力,记账权被极少数拥有低价电力的矿场主垄断。</p>
-                <p>此外,PoW 的能源消耗已达到国家级水平。在 2026 年强调绿色能源的背景下,这种高能耗机制正面临严峻挑战。Pi 通过不基于算力竞赛的共识逻辑,实现了几乎零能耗的运行,彻底解决了能源与权力集中的双重痛点。</p>
+                <h2>02. 第一代区块链的问题：工作量证明的局限</h2>
+                <p>比特币引入的‘工作量证明 (PoW)’在早期是划时代的。但在今天，它已演变成一场算力军备竞赛。ASIC 矿机的普及使得普通用户的 CPU 毫无竞争力，记账权被极少数拥有低价电力的矿场主垄断。</p>
+                <p>此外，PoW 的能源消耗已达到国家级水平。在 2026 年强调绿色能源的背景下，这种高能耗机制正面临严峻挑战。Pi 通过不基于算力竞赛的共识逻辑，实现了几乎零能耗的运行，彻底解决了能源与权力集中的双重痛点。</p>
             </section>
             <section id="scp">
-                <h2>03. 核心突破:恒星共识协议 (SCP) 的 Pi 实现</h2>
-                <p>Pi 并没有使用比特币的竞速模式,而是采用了基于'恒星共识协议'的联邦拜占庭协议 (FBA)。其核心创新在于'法定人数切片 (Quorum Slices)'。</p>
-                <p>在 Pi 网络中,节点不需要全网广播算力。通过'安全圈'提供的社交信任数据,网络自发地形成了一张全球信任图。这使得 Pi 能够实现秒级的交易确认,且对手机 CPU 的占用几乎为零,这就是 Pi 能够在手机上运行的底层技术保障。</p>
+                <h2>03. 核心突破：恒星共识协议 (SCP) 的 Pi 实现</h2>
+                <p>Pi 并没有使用比特币的竞速模式，而是采用了基于‘恒星共识协议’的联邦拜占庭协议 (FBA)。其核心创新在于‘法定人数切片 (Quorum Slices)’。</p>
+                <p>在 Pi 网络中，节点不需要全网广播算力。通过‘安全圈’提供的社交信任数据，网络自发地形成了一张全球信任图。这使得 Pi 能够实现秒级的交易确认，且对手机 CPU 的占用几乎为零，这就是 Pi 能够在手机上运行的底层技术保障。</p>
             </section>
 
             <section id="mining">
-                <h2>04. 代币经济学:基于人类贡献的采矿模型</h2>
-                <p>Pi 的分发模型旨在平衡先发优势与长期网络扩张。我们的挖掘速率公式由四个维度组成:</p>
-                <div class="p-8 bg-[#f8f9fa] border border-[#e5e7eb] rounded-3xl mb-8 font-mono text-[#f4af47] hover:border-[#f4af47] transition-all">
+                <h2>04. 代币经济学：基于人类贡献的采矿模型</h2>
+                <p>Pi 的分发模型旨在平衡先发优势与长期网络扩张。我们的挖掘速率公式由四个维度组成：</p>
+                <div class="p-8 bg-white/5 border border-[#f4af47]/20 rounded-3xl mb-8 font-mono text-[#f4af47]">
                     M = I(基础) + S(安全圈) + R(邀请) + E(生态贡献)
                 </div>
-                <p><strong>减半逻辑:</strong> 当用户数每跨越一个 10 倍量级,挖掘速率即减半。这种设计借鉴了黄金的边际开采成本增加原理。同时,所有余额映射到主网前必须通过 KYC,确保了每一枚代币的背后都是一个真实的人类,彻底剔除了机器人生成的虚假资产。</p>
+                <p><strong>减半逻辑：</strong> 当用户数每跨越一个 10 倍量级，挖掘速率即减半。这种设计借鉴了黄金的边际开采成本增加原理。同时，所有余额映射到主网前必须通过 KYC，确保了每一枚代币的背后都是一个真实的人类，彻底剔除了机器人生成的虚假资产。</p>
             </section>
             <section id="roadmap">
-                <h2>05. 项目路线图:迈向开放主网的战略演进</h2>
-                <p>Pi 的发展分为三个主要时期,每一个阶段都有明确的退出标准和进入条件。</p>
-                <h3>当前:封闭主网阶段 (Closed Mainnet)</h3>
-                <p>主网已运行,但受限于防火墙,禁止外部连接。这一时期的设立旨在:1. 全员通过 KYC 身份认证;2. 将手机余额映射到主网;3. 在无投机干扰下,培育真实的商业实用性。我们要让 Pi 在开放交易前,就已经在现实世界中'有用'。</p>
-                <h3>未来:开放主网阶段 (Open Mainnet)</h3>
-                <p>满足 KYC 覆盖率和生态繁荣目标后,我们将撤销防火墙。届时,Pi 将连接全球交易所、外部钱包,正式成为全球数字货币海洋的一员。共识将在此刻化为真正的全球价值。</p>
-
-                <div class="mt-20 p-12 bg-[#f5f0ff] border-2 border-[#7c3aed]/20 rounded-[50px] text-center">
-                    <h3 class="text-2xl font-black mb-4 text-[#1a1a2e]">结语：去中心化的终极使命</h3>
-                    <p class="text-sm text-[#4b5563] italic leading-relaxed">Pi Network 不仅仅是一场技术实验。它是一场关于人类社会如何重新定义'价值'与'信任'的社会协作工程。感谢每一位先锋的坚守，我们正一步步接近那个'权力归于大众'的未来。</p>
+                <h2>05. 项目路线图：迈向开放主网的战略演进</h2>
+                <p>Pi 的发展分为三个主要时期，每一个阶段都有明确的退出标准和进入条件。</p>
+                <h3>当前：封闭主网阶段 (Closed Mainnet)</h3>
+                <p>主网已运行，但受限于防火墙，禁止外部连接。这一时期的设立旨在：1. 全员通过 KYC 身份认证；2. 将手机余额映射到主网；3. 在无投机干扰下，培育真实的商业实用性。我们要让 Pi 在开放交易前，就已经在现实世界中‘有用’。</p>
+                <h3>未来：开放主网阶段 (Open Mainnet)</h3>
+                <p>满足 KYC 覆盖率和生态繁荣目标后，我们将撤销防火墙。届时，Pi 将连接全球交易所、外部钱包，正式成为全球数字货币海洋的一员。共识将在此刻化为真正的全球价值。</p>
+                
+                <div class="mt-20 p-12 bg-blue-600/10 border-2 border-blue-500/30 rounded-[50px] text-center">
+                    <h3 class="text-2xl font-black mb-4">结语：去中心化的终极使命</h3>
+                    <p class="text-sm text-blue-100/60 italic leading-relaxed">Pi Network 不仅仅是一场技术实验。它是一场关于人类社会如何重新定义‘价值’与‘信任’的社会协作工程。感谢每一位先锋的坚守，我们正一步步接近那个‘权力归于大众’的未来。</p>
                 </div>
             </section>
 
-                </main>
-<div id="site-footer"></div>
+                <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+        <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200">
+        <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
+        <div class="flex flex-wrap justify-center gap-8 text-sm font-bold text-gray-600">
+            <a href="about.html" class="hover:text-white">关于我们</a>
+            <a href="technical-whitepaper.html" class="hover:text-white">技术文档</a>
+            <a href="reg.html" class="hover:text-[#f4af47]">下载注册</a>
+            <a href="nodes.html" class="hover:text-white">节点运行</a>
+            <a href="faq.html" class="hover:text-white">常见问题</a>
+        </div>
+    </footer>
+        </main>
     </div>
 
     <!-- 移动端底部固定悬浮栏 -->
-    <div class="fixed bottom-0 left-0 right-0 bg-[#593B8B]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
+    <div class="fixed bottom-0 left-0 right-0 bg-[#1a1220]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
         <div class="flex gap-3">
             <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#1e0a27] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
             <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
@@ -100,6 +111,5 @@
         </div>
     </div>
 
-<script src="inject-components.js"></script>
 </body>
 </html>
