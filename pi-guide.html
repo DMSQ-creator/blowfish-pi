@@ -6,27 +6,52 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>搜索 | Pi Network 中文网</title>
+    <title>Pi百科全书 | Pi币知识库/教程/问答 | Pi Network 中文网</title>
+    <meta name="description" content="Pi Network百科全书：Pi币怎么卖、安全吗、和比特币区别等知识文章汇总。一站式了解Pi所有常见问题。">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pibizh.com/pi-guide.html">
+    <meta property="og:title" content="Pi挖矿 | Pi Network 派币中文网 | 手机零成本挖矿">
+    <meta property="og:description" content="Pi Network 中文网 - 手机零成本Pi挖矿，填写邀请码nbjh即可开始。5500万先锋已加入。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pibizh.com/">
+    <meta property="og:image" content="/static/favicon.png">
+    <meta property="og:locale" content="zh_CN">
+    
+    
+    
     <link rel="icon" type="image/png" href="/static/favicon.png">
-    <meta name="description" content="在 Pi Network 中文网站内搜索内容：派币价格、节点运行、KYC、注册教程等。">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; }
+        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .result-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; transition: all 0.3s; cursor: pointer; }
-        .result-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); transform: translateY(-2px); }
-        .search-highlight { background: rgba(244,175,71,0.3); border-radius: 4px; padding: 0 2px; }
+        .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu { background: #2d1b3d; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
+        
+        #mobile-menu { display: none; }
+
+        
+        .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* 首页资讯卡片（复用 blog.html 的卡片样式，便于自动同步） */
+        .blog-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 2.5rem; transition: all 0.3s; cursor: pointer; }
+        .blog-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
     </style>
 
-    <link rel="canonical" href="https://pibizh.com/search.html">
-    <meta property="og:title" content="站内搜索 | Pi Network 派币中文网">
-    <meta property="og:description" content="搜索Pi Network中文网内容，查找挖矿教程、钱包指南、价格行情等。">
-    <meta property="og:image" content="/static/favicon.png">
-    <meta property="og:type" content="website">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Pi百科全书","description":"Pi Network知识文章汇总","url":"https://pibizh.com/pi-guide.html"}</script>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="hero-bg min-h-screen">
+    <!-- 全局悬浮 -->
+    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47]" text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
+        <span class="text-xl">🔥</span>
+        <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
+    </a>
     <!-- 导航栏 (1:1 官网结构复刻) -->
     <header class="fixed w-full z-[100] nav-blur border-b border-white/5">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -224,97 +249,37 @@
             </div>
         </div>
     </div>
+
+    <!-- 首屏 (PC+手机响应式布局) -->
+    
     <div class="pt-24"></div>
+    <div class="container mx-auto px-6 py-3"><nav class="text-sm text-gray-500"><a href="index.html" class="hover:text-[#f4af47]">首页</a><span class="mx-2">›</span><span class="text-gray-400">Pi百科</span></nav></div>
 
-    <!-- 导航 -->
-
-    <!-- 搜索区域 -->
-    <main class="max-w-3xl mx-auto px-6 py-16">
-        <h1 class="text-4xl font-black mb-8 text-center">站内搜索</h1>
-
-        <div class="relative mb-10">
-            <input
-                id="search-input"
-                type="text"
-                placeholder="输入关键词，如：注册、KYC、节点..."
-                class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#f4af47] transition-colors"
-                autofocus
-            >
-            <svg class="absolute right-6 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-            </svg>
+    <section class="py-16 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex items-center gap-4 mb-4"><span class="text-4xl">📚</span><div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47]">PI ENCYCLOPEDIA</div></div>
+            <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-6">Pi 百科全书</h1>
+            <p class="text-gray-400 text-lg max-w-3xl mb-12 leading-relaxed">关于 Pi Network 你想知道的一切。从入门到进阶，精选知识文章帮你全面了解 Pi 币。</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <a href="pi-sell.html" class="group step-card hover:border-[#f4af47] block"><div class="text-3xl mb-4">💸</div><h3 class="text-lg font-black mb-2 text-white group-hover:text-[#f4af47]">Pi币怎么卖？</h3><p class="text-gray-400 text-sm mb-3">交易所卖出、USDT提现、防骗指南——2026最全Pi变现攻略</p><span class="text-[#f4af47] text-xs font-bold">变现教程 →</span></a>
+                <a href="wallet-guide.html" class="group step-card hover:border-[#f4af47] block"><div class="text-3xl mb-4">💳</div><h3 class="text-lg font-black mb-2 text-white group-hover:text-[#f4af47]">Pi钱包使用指南</h3><p class="text-gray-400 text-sm mb-3">钱包创建、助记词备份、转账操作全流程教程</p><span class="text-[#f4af47] text-xs font-bold">钱包教程 →</span></a>
+                <a href="mining-tutorial.html" class="group step-card hover:border-[#f4af47] block"><div class="text-3xl mb-4">⛏️</div><h3 class="text-lg font-black mb-2 text-white group-hover:text-[#f4af47]">手机挖矿教程</h3><p class="text-gray-400 text-sm mb-3">每天1分钟免费挖Pi，安全圈加成、速率提升技巧</p><span class="text-[#f4af47] text-xs font-bold">挖矿教程 →</span></a>
+                <a href="pi-legit.html" class="group step-card hover:border-[#f4af47] block"><div class="text-3xl mb-4">🛡️</div><h3 class="text-lg font-black mb-2 text-white group-hover:text-[#f4af47]">Pi Network是真的吗？</h3><p class="text-gray-400 text-sm mb-3">团队背景、技术原理、与骗局对比——深度分析Pi安全性</p><span class="text-[#f4af47] text-xs font-bold">安全分析 →</span></a>
+                <a href="kyc.html" class="group step-card hover:border-[#f4af47] block"><div class="text-3xl mb-4">✅</div><h3 class="text-lg font-black mb-2 text-white group-hover:text-[#f4af47]">KYC身份认证教程</h3><p class="text-gray-400 text-sm mb-3">申请流程、证件要求、审核时间详解</p><span class="text-[#f4af47] text-xs font-bold">KYC教程 →</span></a>
+                <a href="reg.html" class="group step-card hover:border-[#f4af47] block"><div class="text-3xl mb-4">📱</div><h3 class="text-lg font-black mb-2 text-white group-hover:text-[#f4af47]">注册下载保姆级教程</h3><p class="text-gray-400 text-sm mb-3">手把手教你下载Pi App、注册账号、填写邀请码</p><span class="text-[#f4af47] text-xs font-bold">注册教程 →</span></a>
+                <a href="pi-vs-bitcoin.html" class="group step-card hover:border-[#f4af47] block"><div class="text-3xl mb-4">⚔️</div><h3 class="text-lg font-black mb-2 text-white group-hover:text-[#f4af47]">Pi和比特币有什么区别？</h3><p class="text-gray-400 text-sm mb-3">8维度全面对比Pi vs BTC，了解核心差异</p><span class="text-[#f4af47] text-xs font-bold">对比分析 →</span></a>
+                <a href="pi-mainnet.html" class="group step-card hover:border-[#f4af47] block"><div class="text-3xl mb-4">🚀</div><h3 class="text-lg font-black mb-2 text-white group-hover:text-[#f4af47]">Pi主网最新进展</h3><p class="text-gray-400 text-sm mb-3">主网时间线、迁移条件、开放网络状态全解析</p><span class="text-[#f4af47] text-xs font-bold">主网动态 →</span></a>
+                <a href="price.html" class="group step-card hover:border-[#f4af47] block"><div class="text-3xl mb-4">💰</div><h3 class="text-lg font-black mb-2 text-white group-hover:text-[#f4af47]">Pi实时价格行情</h3><p class="text-gray-400 text-sm mb-3">PI/USDT实时汇率、走势图、24h涨跌数据</p><span class="text-[#f4af47] text-xs font-bold">查看价格 →</span></a>
+                <a href="faq.html" class="group step-card hover:border-[#f4af47] block"><div class="text-3xl mb-4">❓</div><h3 class="text-lg font-black mb-2 text-white group-hover:text-[#f4af47]">常见问题大全</h3><p class="text-gray-400 text-sm mb-3">注册、挖矿、KYC、变现 60+问答</p><span class="text-[#f4af47] text-xs font-bold">查看FAQ →</span></a>
+                <a href="nodes.html" class="group step-card hover:border-[#f4af47] block"><div class="text-3xl mb-4">🖥️</div><h3 class="text-lg font-black mb-2 text-white group-hover:text-[#f4af47]">Pi节点运行教程</h3><p class="text-gray-400 text-sm mb-3">节点安装、配置、运行维护完整指南</p><span class="text-[#f4af47] text-xs font-bold">节点教程 →</span></a>
+                <a href="roadmap.html" class="group step-card hover:border-[#f4af47] block"><div class="text-3xl mb-4">🗺️</div><h3 class="text-lg font-black mb-2 text-white group-hover:text-[#f4af47]">Pi项目路线图</h3><p class="text-gray-400 text-sm mb-3">从封闭网络到开放网络，Pi发展里程碑</p><span class="text-[#f4af47] text-xs font-bold">路线图 →</span></a>
+            </div>
+            <div class="mt-16 text-center">
+                <p class="text-gray-500 text-sm mb-4">持续更新中 · 更多知识文章即将上线</p>
+                <a href="reg.html" class="bg-[#f4af47] text-[#1e0a27] px-8 py-3 rounded-xl font-black text-sm hover:scale-105 transition-all shadow-xl">还没注册？填写邀请码 nbjh 开始挖矿</a>
+            </div>
         </div>
-
-        <div id="results" class="space-y-4">
-            <p id="no-results" class="text-center text-gray-500 hidden">未找到相关结果</p>
-        </div>
-    </main>
-
-    <script>
-    const pages = [
-        { title: "首页", url: "index.html", desc: "Pi Network 中文网首页，了解项目介绍、挖矿优势和注册指引", tags: ["首页", "home", "介绍", "about"] },
-        { title: "派币实时价格", url: "price.html", desc: "Pi 币当前市场价格、24小时涨跌、成交量及历史走势", tags: ["价格", "price", "行情", "market", "走势"] },
-        { title: "注册下载教程", url: "reg.html", desc: "保姆级 Pi Network 注册下载教程，使用邀请码 nbjh", tags: ["注册", "下载", "教程", "download", "注册教程", "邀请码", "nbjh"] },
-        { title: "Pi 节点运行", url: "nodes.html", desc: "如何在电脑或手机上运行 Pi Node 节点，获得更多挖矿奖励", tags: ["节点", "node", "挖矿", "mining", "运行"] },
-        { title: "KYC 身份认证", url: "kyc.html", desc: "Pi Network KYC 身份认证流程指南，解释为什么要 KYC", tags: ["kyc", "身份认证", "验证", "认证", "实名"] },
-        { title: "常见问题 FAQ", url: "faq.html", desc: "关于挖矿、注册、KYC、节点及生态应用的常见疑问解答", tags: ["faq", "问题", "问答", "常见问题", "help"] },
-        { title: "关于我们", url: "about.html", desc: "了解 Pi Network 项目背景、团队成员及核心价值观", tags: ["关于", "about", "团队", "团队成员"] },
-        { title: "Pi 区块链浏览器", url: "blockchain.html", desc: "查看 Pi 主网区块同步状态和数据", tags: ["区块链", "blockchain", "浏览器", "区块"] },
-        { title: "开发者中心", url: "developers.html", desc: "基于 Pi SDK 构建 Web3 应用，加入开发者社区", tags: ["开发", "developer", "sdk", "web3", "构建", "dapp"] },
-        { title: "项目路线图", url: "roadmap.html", desc: "Pi Network 从 Testnet 到 Mainnet 的完整发展历程", tags: ["路线图", "roadmap", "发展", "历程", "阶段"] },
-        { title: "官方新闻动态", url: "blog.html", desc: "Pi Network 官方公告、博客更新和生态系统最新进展", tags: ["新闻", "blog", "博客", "公告", "动态", "资讯"] },
-        { title: "技术白皮书", url: "technical-whitepaper.html", desc: "Pi 区块链技术架构、共识机制与代币经济学详解", tags: ["技术", "白皮书", "whitepaper", "技术白皮书", "架构", "共识"] },
-    ];
-
-    const fuse = new Fuse(pages, {
-        keys: ['title', 'desc', 'tags'],
-        threshold: 0.4,
-        includeMatches: true,
-    });
-
-    const input = document.getElementById('search-input');
-    const results = document.getElementById('results');
-    const noResults = document.getElementById('no-results');
-
-    function render(results_list) {
-        if (results_list.length === 0) {
-            results.innerHTML = '';
-            noResults.classList.remove('hidden');
-            return;
-        }
-        noResults.classList.add('hidden');
-        results.innerHTML = results_list.map(r => {
-            const item = r.item;
-            const highlighted = item.title;
-            return `
-            <a href="${item.url}" class="result-card block">
-                <h3 class="text-xl font-black mb-2 text-white hover:text-[#f4af47] transition-colors">${highlighted}</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">${item.desc}</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                    ${item.tags.slice(0,4).map(t => `<span class="text-xs px-2 py-1 bg-white/5 rounded-full text-gray-500">${t}</span>`).join('')}
-                </div>
-            </a>
-            `;
-        }).join('');
-    }
-
-    input.addEventListener('input', (e) => {
-        const q = e.target.value.trim();
-        if (q.length === 0) {
-            results.innerHTML = '<p class="text-center text-gray-600">输入关键词开始搜索...</p>';
-            noResults.classList.add('hidden');
-            return;
-        }
-        const res = fuse.search(q);
-        render(res);
-    });
-
-    // Initial state
-    results.innerHTML = '<p class="text-center text-gray-600">输入关键词开始搜索...</p>';
-    </script>
-
-    <!-- Footer -->
-
+    </section>
 
 <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200">
@@ -331,6 +296,56 @@
         <a href="about.html" class="hover:text-white">关于我们</a>
     </div>
 </footer>
+
+    <script>
+        // 首页自动展示资讯中心最新文章（从 blog.html 解析前 6 条）
+        (async () => {
+            try {
+                const res = await fetch('blog.html', { cache: 'no-store' });
+                const html = await res.text();
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                const cards = Array.from(doc.querySelectorAll('#blog-grid > a.blog-card')).slice(0, 6);
+                const grid = document.getElementById('home-blog-grid');
+                if (!grid) return;
+
+                if (cards.length === 0) {
+                    grid.innerHTML = '<div class="text-gray-400">暂无文章，稍后再试。</div>';
+                    return;
+                }
+
+                grid.innerHTML = cards.map(a => {
+                    const href = a.getAttribute('href') || 'blog.html';
+                    const meta = a.querySelector('div')?.outerHTML || '';
+                    const title = a.querySelector('h2')?.outerHTML || '';
+                    const desc = a.querySelector('p')?.outerHTML || '';
+                    return `
+                        <a href="${href}" class="blog-card block">
+                            ${meta}
+                            ${title}
+                            ${desc}
+                        </a>
+                    `;
+                }).join('');
+            } catch (e) {
+                const grid = document.getElementById('home-blog-grid');
+                if (grid) grid.innerHTML = '<div class="text-gray-400">加载文章列表失败，请点击进入资讯中心查看。</div>';
+                console.error(e);
+            }
+        })();
+    </script>
+
+    <!-- 移动端底部固定悬浮栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-[#1a1220]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
+        <div class="flex gap-3">
+            <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#1e0a27] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
+            <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.06.06 0 0 0-.02-.12c-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
+            </a>
+            <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            </a>
+        </div>
+    </div>
 
 
 <script>
