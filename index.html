@@ -315,12 +315,6 @@
     </footer>
 
     <script>
-        const btn = document.getElementById('m-btn');
-        const close = document.getElementById('m-close');
-        const menu = document.getElementById('mobile-menu');
-        btn.onclick = () => menu.classList.add('open');
-        close.onclick = () => menu.classList.remove('open');
-
         // 首页自动展示资讯中心最新文章（从 blog.html 解析前 6 条）
         (async () => {
             try {
@@ -370,5 +364,21 @@
         </div>
     </div>
 
+
+<script>
+(function(){
+    var mm=document.getElementById('mobile-menu'),
+        mp=document.getElementById('m-panel'),
+        mo=document.getElementById('m-overlay'),
+        mb=document.getElementById('m-btn'),
+        mc=document.getElementById('m-close');
+    if(!mm||!mp||!mb||!mc) return;
+    function open(){mm.style.display='flex';requestAnimationFrame(function(){mp.style.transform='translateX(0)';});}
+    function close(){mp.style.transform='translateX(100%)';setTimeout(function(){mm.style.display='none';},350);}
+    mb.onclick=open;
+    mc.onclick=close;
+    if(mo) mo.onclick=close;
+})();
+</script>
 </body>
 </html>

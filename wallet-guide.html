@@ -422,11 +422,6 @@
     </div>
 
     <script>
-        const btn = document.getElementById('m-btn');
-        const close = document.getElementById('m-close');
-        const menu = document.getElementById('mobile-menu');
-        btn.onclick = () => menu.classList.add('open');
-        close.onclick = () => menu.classList.remove('open');
     </script>
 
 <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
@@ -443,5 +438,21 @@
                 <a href="faq.html" class="hover:text-white">常见问题</a>
         </div>
     </footer>
+
+<script>
+(function(){
+    var mm=document.getElementById('mobile-menu'),
+        mp=document.getElementById('m-panel'),
+        mo=document.getElementById('m-overlay'),
+        mb=document.getElementById('m-btn'),
+        mc=document.getElementById('m-close');
+    if(!mm||!mp||!mb||!mc) return;
+    function open(){mm.style.display='flex';requestAnimationFrame(function(){mp.style.transform='translateX(0)';});}
+    function close(){mp.style.transform='translateX(100%)';setTimeout(function(){mm.style.display='none';},350);}
+    mb.onclick=open;
+    mc.onclick=close;
+    if(mo) mo.onclick=close;
+})();
+</script>
 </body>
 </html>
