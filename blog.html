@@ -21,6 +21,14 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Pi Network资讯中心","description":"Pi Network最新消息与官方公告动态","url":"https://pibizh.com/blog.html","publisher":{"@type":"Organization","name":"派币中文网"}}</script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu { background: #2d1b3d; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
+        #mobile-menu { display: none; }
+
         body { background-color: #1e0a27; color: white; line-height: 1.8; font-family: sans-serif; }
         .blog-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 2.5rem; transition: all 0.3s; cursor: pointer; }
         .blog-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }

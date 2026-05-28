@@ -19,6 +19,14 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Pi浏览器下载","description":"Pi浏览器下载与安装教程","url":"https://pibizh.com/browser.html"}</script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu { background: #2d1b3d; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
+        #mobile-menu { display: none; }
+
         body { background-color: #1e0a27; color: white; line-height: 1.8; font-family: sans-serif; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .app-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 2.5rem; transition: all 0.3s; }
@@ -226,7 +234,13 @@
     <div class="pt-24"></div>
 
     <main class="max-w-6xl mx-auto py-24 px-6">
-        <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-12">Pi Browser 浏览器</h1>
+        <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-8">Pi Browser 浏览器</h1>
+        <p class="text-gray-400 text-lg mb-8">Pi Browser 是 Pi Network 官方浏览器，集成钱包、KYC、聊天等核心功能。下载安装后即可使用所有 Pi 生态应用。</p>
+        <div class="flex flex-col sm:flex-row gap-4 mb-12">
+            <a href="https://url37.ctfile.com/d/29771337-41022096-ba3187?p=5597" target="_blank" rel="noopener noreferrer" class="bg-[#f4af47] text-[#1e0a27] px-8 py-4 rounded-2xl font-black text-center text-lg hover:scale-105 transition-all shadow-xl shadow-orange-500/20">📱 安卓 APK 极速下载</a>
+            <a href="https://apps.apple.com/app/pi-network/id1445296185" target="_blank" rel="noopener noreferrer" class="border-2 border-white/20 text-white px-8 py-4 rounded-2xl font-black text-center text-lg hover:bg-white/5 transition-all">🍎 App Store 下载</a>
+        </div>
+        <p class="text-xs text-gray-600 mb-8">安卓APK密码: 5597 | 苹果用户需使用非中国区 Apple ID 下载</p>
         <div class="grid md:grid-cols-2 gap-10">
             <div class="app-card">
                 <div class="text-4xl mb-6">👛</div>
