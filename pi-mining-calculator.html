@@ -271,7 +271,152 @@
 </div>
 
 <div class="section-card">
-    <h2 class="text-2xl font-black mb-6">❓ 常见问题</h2>
+    
+    <!-- 挖矿速率组成 -->
+    <section class="py-8 px-6"><div class="container mx-auto max-w-4xl">
+        <h2 class="text-2xl font-black mb-4">⚡ 挖矿速率组成</h2>
+        <p class="text-gray-400 text-sm mb-4">你的实际挖矿速率由三部分叠加而成：</p>
+        <div class="grid md:grid-cols-3 gap-4 mb-4">
+            <div class="step-card border-[#f4af47]/30">
+                <div class="text-3xl mb-3">⛏️</div>
+                <p class="font-bold text-[#f4af47] mb-2">基础速率</p>
+                <p class="text-gray-400 text-sm">每天点击闪电启动挖矿的基础产量。所有先锋的基础速率相同，会随全网用户增长而递减。</p>
+            </div>
+            <div class="step-card border-[#f4af47]/30">
+                <div class="text-3xl mb-3">🔒</div>
+                <p class="font-bold text-[#f4af47] mb-2">安全圈加成</p>
+                <p class="text-gray-400 text-sm">加满5个可信好友到安全圈，挖矿速率翻倍（+100%）。这是最容易获得的加成，务必加满。</p>
+            </div>
+            <div class="step-card border-[#f4af47]/30">
+                <div class="text-3xl mb-3">🔐</div>
+                <p class="font-bold text-[#f4af47] mb-2">锁仓加成</p>
+                <p class="text-gray-400 text-sm">选择锁仓可获得额外加成，锁仓比例越高、时间越长，加成越大。最高可获+200%以上加成。</p>
+            </div>
+        </div>
+        <div class="info-box">
+            <p class="text-gray-300 text-sm"><strong class="text-blue-400">💡 计算公式：</strong>实际速率 = 基础速率 × (1 + 安全圈加成 + 锁仓加成 + 节点加成 + 推荐人加成)</p>
+        </div>
+    </div></section>
+
+    <!-- 各角色速率对比 -->
+    <section class="py-8 px-6"><div class="container mx-auto max-w-4xl">
+        <h2 class="text-2xl font-black mb-4">📊 各角色挖矿速率对比</h2>
+        <p class="text-gray-400 text-sm mb-4">不同参与度和角色的先锋，挖矿效率差异很大：</p>
+        <div class="space-y-3">
+            <div class="step-card flex items-center justify-between">
+                <div><p class="font-bold text-white text-sm">👤 只点闪电</p><p class="text-gray-400 text-xs">最低参与度</p></div>
+                <span class="text-gray-500 font-bold">1x 基础速率</span>
+            </div>
+            <div class="step-card flex items-center justify-between border-[#f4af47]/20">
+                <div><p class="font-bold text-white text-sm">👥 +安全圈5人</p><p class="text-gray-400 text-xs">加满安全圈</p></div>
+                <span class="text-[#f4af47] font-bold">2x 速率翻倍</span>
+            </div>
+            <div class="step-card flex items-center justify-between border-[#f4af47]/30">
+                <div><p class="font-bold text-white text-sm">🔐 +锁仓90% / 3年</p><p class="text-gray-400 text-xs">高比例锁仓</p></div>
+                <span class="text-[#f4af47] font-bold">~4-5x</span>
+            </div>
+            <div class="step-card flex items-center justify-between border-[#f4af47]/40">
+                <div><p class="font-bold text-white text-sm">🖥️ +运行节点</p><p class="text-gray-400 text-xs">电脑运行Pi Node</p></div>
+                <span class="text-[#f4af47] font-bold">额外+节点加成</span>
+            </div>
+        </div>
+    </div></section>
+
+    <!-- 收益模拟 -->
+    <section class="py-8 px-6"><div class="container mx-auto max-w-4xl">
+        <h2 class="text-2xl font-black mb-4">🧮 收益模拟计算示例</h2>
+        <p class="text-gray-400 text-sm mb-4">假设基础速率为 0.1 π/小时（实际会随全网调整）：</p>
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="step-card">
+                <p class="font-bold text-white mb-2">👤 普通先锋（无加成）</p>
+                <ul class="text-sm text-gray-400 space-y-1">
+                    <li>• 每小时：0.1 π</li>
+                    <li>• 每天：2.4 π</li>
+                    <li>• 每月：~72 π</li>
+                    <li>• 每年：~876 π</li>
+                </ul>
+            </div>
+            <div class="step-card border-[#f4af47]/30">
+                <p class="font-bold text-[#f4af47] mb-2">👥 活跃先锋（安全圈+锁仓）</p>
+                <ul class="text-sm text-gray-400 space-y-1">
+                    <li>• 每小时：0.1 × 4 = 0.4 π</li>
+                    <li>• 每天：9.6 π</li>
+                    <li>• 每月：~288 π</li>
+                    <li>• 每年：~3,504 π</li>
+                </ul>
+            </div>
+        </div>
+        <div class="warning-box mt-4">
+            <p class="text-red-400 text-sm font-bold">⚠️ 以上数字仅为示意。实际基础速率会随全网用户增长不断递减，早期先锋的收益远高于后来者。尽早加入、每天坚持点击很重要！</p>
+        </div>
+    </div></section>
+
+    
+    <!-- 挖矿产出衰减 -->
+    <section class="py-8 px-6"><div class="container mx-auto max-w-4xl">
+        <h2 class="text-2xl font-black mb-4">📉 挖矿产出衰减规律</h2>
+        <p class="text-gray-400 text-sm mb-4">Pi的挖矿产量不是固定的，会随全网用户增长而逐步衰减：</p>
+        <div class="step-card mb-4">
+            <p class="font-bold text-white mb-2">🔄 衰减机制</p>
+            <ul class="text-sm text-gray-400 space-y-1">
+                <li>• 每当全网活跃用户达到一定里程碑时，基础挖矿速率减半</li>
+                <li>• 从1K→10K→100K→1M→10M→100M用户，每次减半</li>
+                <li>• 目前全球5500万+用户，基础速率已远低于早期</li>
+                <li>• 衰减只影响基础速率，加成比例不变</li>
+            </ul>
+        </div>
+        <div class="warning-box">
+            <p class="text-red-400 text-sm font-bold">⚠️ 这意味着：越早加入、每天坚持挖矿的人，积累的Pi越多。现在不挖，将来基础速率会更低。每天点击一次闪电，零成本，不挖白不挖。</p>
+        </div>
+    </div></section>
+
+    <!-- 长期收益预估 -->
+    <section class="py-8 px-6"><div class="container mx-auto max-w-4xl">
+        <h2 class="text-2xl font-black mb-4">🔮 长期收益预估</h2>
+        <p class="text-gray-400 text-sm mb-4">Pi的最终价值取决于生态发展，以下从不同角度看长期潜力：</p>
+        <div class="grid md:grid-cols-3 gap-4">
+            <div class="step-card">
+                <p class="font-bold text-white mb-2">🐻 保守估计</p>
+                <p class="text-gray-400 text-sm">如果Pi生态发展缓慢，价格可能在$1-$10之间。按每天2.4π计算，一年收益约$876-$8,760。</p>
+            </div>
+            <div class="step-card border-[#f4af47]/20">
+                <p class="font-bold text-[#f4af47] mb-2">🐂 中性估计</p>
+                <p class="text-gray-400 text-sm">如果生态稳步发展，价格可能到$30-$100。活跃用户（4x速率）年收益可达$42,000-$140,000。</p>
+            </div>
+            <div class="step-card">
+                <p class="font-bold text-white mb-2">🚀 乐观估计</p>
+                <p class="text-gray-400 text-sm">如果Pi成为主流加密货币，价格可能更高。但这需要生态大规模采用，时间以年计。</p>
+            </div>
+        </div>
+        <div class="info-box mt-4">
+            <p class="text-gray-300 text-sm"><strong class="text-blue-400">💡 核心逻辑：</strong>Pi目前零成本参与，唯一的投入是每天点一次闪电的时间。即使价格不如预期，你也什么都没亏。但如果Pi成功了，早期参与者回报巨大。这就是为什么5500万人每天都在挖。</p>
+        </div>
+    </div></section>
+
+    <!-- 如何提升速率 -->
+    <section class="py-8 px-6"><div class="container mx-auto max-w-4xl">
+        <h2 class="text-2xl font-black mb-4">🚀 如何提升挖矿速率</h2>
+        <div class="space-y-3">
+            <div class="step-card flex gap-4 items-start">
+                <div class="text-2xl">1️⃣</div>
+                <div><p class="font-bold text-white text-sm">加满安全圈5人</p><p class="text-gray-400 text-xs">最简单最直接的翻倍方法，邀请5个信任的Pi用户加入你的安全圈</p></div>
+            </div>
+            <div class="step-card flex gap-4 items-start">
+                <div class="text-2xl">2️⃣</div>
+                <div><p class="font-bold text-white text-sm">选择合适的锁仓方案</p><p class="text-gray-400 text-xs">锁仓比例和时间越高加成越大，但要根据自己的持币计划平衡。详见<a href="pi-lockup.html" class="text-[#f4af47]">锁仓教程</a></p></div>
+            </div>
+            <div class="step-card flex gap-4 items-start">
+                <div class="text-2xl">3️⃣</div>
+                <div><p class="font-bold text-white text-sm">运行Pi节点</p><p class="text-gray-400 text-xs">在电脑上运行Pi Node可获得额外加成，需要保持在线。详见<a href="nodes.html" class="text-[#f4af47]">节点教程</a></p></div>
+            </div>
+            <div class="step-card flex gap-4 items-start">
+                <div class="text-2xl">4️⃣</div>
+                <div><p class="font-bold text-white text-sm">每天坚持点击闪电</p><p class="text-gray-400 text-xs">24小时一次，设闹钟提醒。漏点一天就少一天的产量，无法补回</p></div>
+            </div>
+        </div>
+    </div></section>
+
+<h2 class="text-2xl font-black mb-6">❓ 常见问题</h2>
     <div class="space-y-4">
         <details class="step-card"><summary class="font-bold cursor-pointer">Pi币每天能挖多少？</summary><p class="mt-3 text-gray-300">基础速率约0.01π/h，每天0.24π。加满安全圈翻倍到0.48π/天。加锁仓和节点可到1π+/天。</p></details>
         <details class="step-card"><summary class="font-bold cursor-pointer">挖矿速率为什么会下降？</summary><p class="mt-3 text-gray-300">Pi每增加一定数量用户就会减半基础速率，类似比特币减半。越早参与速率越高。</p></details>
