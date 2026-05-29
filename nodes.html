@@ -330,7 +330,40 @@
         </section>
 
         <section class="content-section">
-            <h2>常见问题 (FAQ)</h2>
+            <h2>
+                <section class="mb-12 max-w-4xl mx-auto">
+                    <h2 class="text-2xl font-black mb-6">🖥️ Pi节点安装步骤</h2>
+                    <p class="text-gray-400 text-sm mb-4">运行Pi节点需要在电脑上安装Pi Node软件。以下是详细步骤：</p>
+                    <div class="step-card mb-3">
+                        <div class="flex gap-4 items-start"><div class="bg-[#f4af47] text-[#1e0a27] w-7 h-7 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0">1</div><div><p class="font-bold text-white text-sm">下载Pi Node软件</p><p class="text-gray-400 text-xs">从<a href="pi-download.html" class="text-[#f4af47]">下载页面</a>获取Pi Node安装包，支持Windows和Mac</p></div></div>
+                    </div>
+                    <div class="step-card mb-3">
+                        <div class="flex gap-4 items-start"><div class="bg-[#f4af47] text-[#1e0a27] w-7 h-7 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0">2</div><div><p class="font-bold text-white text-sm">安装并登录Pi账号</p><p class="text-gray-400 text-xs">运行安装程序，用你的Pi账号登录，App中会收到确认提示</p></div></div>
+                    </div>
+                    <div class="step-card mb-3">
+                        <div class="flex gap-4 items-start"><div class="bg-[#f4af47] text-[#1e0a27] w-7 h-7 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0">3</div><div><p class="font-bold text-white text-sm">完成Docker配置</p><p class="text-gray-400 text-xs">Pi Node依赖Docker运行，软件会引导你安装Docker Desktop。按提示完成配置</p></div></div>
+                    </div>
+                    <div class="step-card mb-3">
+                        <div class="flex gap-4 items-start"><div class="bg-[#f4af47] text-[#1e0a27] w-7 h-7 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0">4</div><div><p class="font-bold text-white text-sm">等待节点审核通过</p><p class="text-gray-400 text-xs">节点上线后需保持稳定运行，Pi核心团队会定期选拔新节点。保持在线时间越长越容易被选中</p></div></div>
+                    </div>
+                    <div class="info-box mt-4">
+                        <p class="text-gray-300 text-sm"><strong class="text-blue-400">💡 提示：</strong>节点需要24/7在线运行，建议使用稳定网络和不间断电源。节点运行期间你的挖矿速率会获得额外加成。</p>
+                    </div>
+                </section>
+
+                <section class="mb-12 max-w-4xl mx-auto">
+                    <h2 class="text-2xl font-black mb-6">⚠️ 节点运行注意事项</h2>
+                    <div class="warning-box">
+                        <ul class="text-sm text-gray-300 space-y-2">
+                            <li class="flex items-start gap-2"><span class="text-red-400">❌</span> 不要在不可靠的网络上运行节点（频繁断网会被移除）</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400">❌</span> 不要在云服务器上运行（Pi要求本地设备，云服务器会被拒绝）</li>
+                            <li class="flex items-start gap-2"><span class="text-green-400">✅</span> 保持电脑开机和网络稳定</li>
+                            <li class="flex items-start gap-2"><span class="text-green-400">✅</span> 定期检查Docker和Pi Node更新</li>
+                            <li class="flex items-start gap-2"><span class="text-green-400">✅</span> 确保硬盘有足够空间（至少50GB可用）</li>
+                        </ul>
+                    </div>
+                </section>
+常见问题 (FAQ)</h2>
             <div class="faq-item">
                 <h3 class="text-[#f4af47]">运行节点对设备有损耗吗？</h3>
                 <p class="mb-0 text-sm">如果您不开启 Node 功能，仅作为电脑版 App 使用，几乎不消耗资源。开启节点功能后，会占用一定的 CPU、内存和网络带宽。在测试期间，我们会持续优化性能消耗。</p>
