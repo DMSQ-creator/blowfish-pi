@@ -2,26 +2,52 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi区块链浏览器 | 主网区块数据查询 | 派币中文网</title>
-    <meta name="description" content="Pi区块链浏览器，实时查看主网区块高度、交易数据及链上同步状态。主网区块数据查询、交易记录追踪一站式服务。">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pibizh.com/blockchain.html">
-    <meta property="og:title" content="Pi区块链浏览器 | 主网区块数据查询 | 派币中文网">
-    <meta property="og:description" content="Pi区块链浏览器，实时查看主网区块高度、交易数据及链上同步状态。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pibizh.com/blockchain.html">
-    <meta property="og:image" content="/static/favicon.png">
-    <meta property="og:locale" content="zh_CN">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Pi区块链浏览器","description":"Pi区块链浏览器，实时查看主网区块高度、交易数据","url":"https://pibizh.com/blockchain.html"}</script>
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu { background: #2d1b3d; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
+        #mobile-menu { display: none; }
+        .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+        .step-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 2rem; }
+        .info-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 2rem; }
+        .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; }
+        .breadcrumb { font-size: 13px; color: #999; }
+        .breadcrumb a { color: #f4af47; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
+    </style>
+    <title>Pi币怎么提现？提币到交易所完整教程2026 | Pi Network 中文网</title>
+    <meta name="description" content="Pi币提现完整教程2026：从Pi钱包提币到OKX/Bitget等交易所，P2P变现注意事项，提现安全须知，手把手教你Pi币变现。">
+    <link rel="canonical" href="https://pibizh.com/pi-withdraw.html">
+    <meta property="og:title" content="Pi币怎么提现？">
+    <meta property="og:description" content="Pi币提现完整教程2026：从Pi钱包提币到OKX/Bitget等交易所，P2P变现注意事项，提现安全须知，手把手教你Pi币变现。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://pibizh.com/pi-withdraw.html">
+    <meta property="og:image" content="/static/favicon.png">
+    <meta property="og:locale" content="zh_CN">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Pi币提现到交易所教程","description":"从Pi钱包提币到OKX等交易所的完整步骤","step":[{"@type":"HowToStep","name":"完成KYC和主网迁移","text":"确保已完成KYC认证并通过主网迁移，钱包中有可转移的Pi余额"},{"@type":"HowToStep","name":"在交易所注册并获取充值地址","text":"在OKX等交易所注册账号，获取Pi充值地址"},{"@type":"HowToStep","name":"从Pi钱包发起转账","text":"打开Pi钱包，输入交易所充值地址和转账金额，确认转账"}]}</script>
 </head>
-<body class="bg-[#1e0a27] text-white min-h-screen flex flex-col">
-    <!-- 导航栏 (1:1 官网结构复刻) -->
+<body class="hero-bg min-h-screen pt-24">
+    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
+        <span class="text-xl">🔥</span>
+        <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
+    </a>
+        <!-- 导航栏 (1:1 官网结构复刻) -->
     <header class="fixed w-full z-[100] nav-blur border-b border-white/5">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
@@ -92,8 +118,8 @@
                 <button id="m-btn" class="lg:hidden p-1.5 text-[#f4af47] border border-[#f4af47]/20 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
             </div>
         </nav>
-    </header>
-    <!-- 手机侧边栏 (重新设计) -->
+
+        <!-- 手机侧边栏 (重新设计) -->
     <div id="mobile-menu" class="fixed inset-0 z-[1000] lg:hidden" style="display:none;">
         <div id="m-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
         <div id="m-panel" class="absolute top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#1e0a27] border-l border-white/10 overflow-y-auto" style="transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);">
@@ -219,32 +245,113 @@
                     <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#5865F2]/10 border border-[#5865F2]/20 text-[#5865F2] font-bold text-xs hover:bg-[#5865F2]/20 transition-colors">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
                         Discord
-                    </a>
-                    <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 font-bold text-xs hover:bg-blue-500/20 transition-colors">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.06.06 0 0 0-.02-.12c-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
-                        Telegram
-                    </a>
-                </div>
-            </div>
+
+    
+    <div class="container mx-auto px-6 py-3"><nav class="breadcrumb"><a href="index.html" class="hover:text-[#f4af47]">首页</a><span class="mx-2">›</span><a href="pi-guide.html" class="hover:text-[#f4af47]">📚 Pi百科</a><span class="mx-2">›</span><span class="text-gray-400">Pi币提现</span></nav></div>
+
+    <section class="py-12 px-6">
+        <div class="container mx-auto max-w-4xl">
+            
+<h1 class="text-3xl md:text-5xl font-black tracking-tighter mb-6">Pi币怎么<span class="text-pi-gold">提现</span>？</h1>
+<p class="text-gray-400 text-lg mb-8 leading-relaxed">2026年最新教程：从Pi钱包提币到交易所的完整步骤，OKX/Bitget提现实操指南。</p>
+
+<div class="section-card mb-8">
+    <h2 class="text-2xl font-black mb-4">✅ 提现前提条件</h2>
+    <div class="space-y-3 text-gray-300">
+        <div class="flex items-center gap-3"><span class="text-green-400 text-xl">✓</span><span>已完成 <a href="kyc.html" class="text-[#f4af47] hover:underline">KYC身份认证</a></span></div>
+        <div class="flex items-center gap-3"><span class="text-green-400 text-xl">✓</span><span>已通过主网迁移（钱包中显示可转移余额）</span></div>
+        <div class="flex items-center gap-3"><span class="text-green-400 text-xl">✓</span><span>钱包余额大于最低转账额度</span></div>
+        <div class="flex items-center gap-3"><span class="text-green-400 text-xl">✓</span><span>锁仓期内的Pi无法转出</span></div>
+    </div>
+    <div class="info-box mt-4">
+        <p class="font-bold text-blue-400 mb-2">💡 如何确认能否提现？</p>
+        <p class="text-sm text-gray-300">打开Pi钱包App，查看"可转移余额"（Transferable Balance）。如果显示0，说明还需要等待主网迁移或锁仓期结束。</p>
+    </div>
+</div>
+
+<div class="section-card mb-8">
+    <h2 class="text-2xl font-black mb-4">🏦 Pi币提现到OKX交易所</h2>
+    <div class="space-y-4">
+        <div class="step-card flex gap-4"><div class="bg-[#f4af47] text-[#1e0a27] w-8 h-8 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0">1</div><div><p class="font-bold mb-1">注册OKX交易所</p><p class="text-gray-400 text-sm">访问 okx.com 注册账号，完成身份验证（KYC）</p></div></div>
+        <div class="step-card flex gap-4"><div class="bg-[#f4af47] text-[#1e0a27] w-8 h-8 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0">2</div><div><p class="font-bold mb-1">获取Pi充值地址</p><p class="text-gray-400 text-sm">在OKX中进入"资产→充值"，搜索"PI"，复制充值地址</p></div></div>
+        <div class="step-card flex gap-4"><div class="bg-[#f4af47] text-[#1e0a27] w-8 h-8 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0">3</div><div><p class="font-bold mb-1">打开Pi钱包发起转账</p><p class="text-gray-400 text-sm">在Pi Browser中打开Pi钱包，点击"Send/Transfer"</p></div></div>
+        <div class="step-card flex gap-4"><div class="bg-[#f4af47] text-[#1e0a27] w-8 h-8 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0">4</div><div><p class="font-bold mb-1">输入充值地址和金额</p><p class="text-gray-400 text-sm">粘贴OKX充值地址，输入转账金额，仔细核对地址</p></div></div>
+        <div class="step-card flex gap-4"><div class="bg-[#f4af47] text-[#1e0a27] w-8 h-8 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0">5</div><div><p class="font-bold mb-1">确认转账</p><p class="text-gray-400 text-sm">确认地址和金额无误后提交转账，等待区块链确认</p></div></div>
+        <div class="step-card flex gap-4"><div class="bg-[#f4af47] text-[#1e0a27] w-8 h-8 rounded-full flex items-center justify-center font-black text-sm flex-shrink-0">6</div><div><p class="font-bold mb-1">在OKX卖出提现</p><p class="text-gray-400 text-sm">Pi到账后，在OKX交易页面卖出PI/USDT，再通过C2C将USDT兑换为人民币</p></div></div>
+    </div>
+</div>
+
+<div class="section-card mb-8">
+    <h2 class="text-2xl font-black mb-4">🔄 其他支持Pi的交易所</h2>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+            <thead><tr class="border-b border-white/10"><th class="text-left py-3 px-4 text-[#f4af47] font-bold">交易所</th><th class="text-left py-3 px-4 font-bold">交易对</th><th class="text-left py-3 px-4 font-bold">特点</th></tr></thead>
+            <tbody class="text-gray-300">
+                <tr class="border-b border-white/5"><td class="py-3 px-4 font-bold">OKX</td><td class="py-3 px-4">PI/USDT</td><td class="py-3 px-4">流动性好，支持C2C</td></tr>
+                <tr class="border-b border-white/5"><td class="py-3 px-4 font-bold">Bitget</td><td class="py-3 px-4">PI/USDT</td><td class="py-3 px-4">手续费较低</td></tr>
+                <tr class="border-b border-white/5"><td class="py-3 px-4 font-bold">HTX (火币)</td><td class="py-3 px-4">PI/USDT</td><td class="py-3 px-4">老牌交易所</td></tr>
+                <tr><td class="py-3 px-4 font-bold">Gate.io</td><td class="py-3 px-4">PI/USDT</td><td class="py-3 px-4">币种丰富</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="section-card mb-8">
+    <h2 class="text-2xl font-black mb-4">🤝 P2P私下交易</h2>
+    <div class="space-y-3 text-gray-300">
+        <p>部分用户选择P2P（个人对个人）交易Pi币，但这存在较大风险：</p>
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="step-card"><p class="font-bold text-red-400 mb-2">🚫 主要风险</p><ul class="text-sm space-y-1"><li>• 对方收币不付款</li><li>• 交易纠纷无法维权</li><li>• 可能遇到诈骗</li><li>• 价格不透明</li></ul></div>
+            <div class="step-card"><p class="font-bold text-yellow-400 mb-2">⚠️ 如必须P2P</p><ul class="text-sm space-y-1"><li>• 只与信任的人交易</li><li>• 先收款再转币</li><li>• 保留交易记录</li><li>• 小额试水再加大</li></ul></div>
         </div>
     </div>
-    <div class="pt-24"></div>
+</div>
 
-    <!-- 导航栏（Style B：极简返回导航） -->
+<div class="warning-box mb-8">
+    <h3 class="font-black text-red-400 mb-3">🛡️ 提现安全须知</h3>
+    <ul class="space-y-2 text-gray-300">
+        <li>1. <strong class="text-white">绝不泄露助记词！</strong>任何索要助记词的都是骗子</li>
+        <li>2. 转账前<strong class="text-white">反复核对地址</strong>，地址输错币就丢了</li>
+        <li>3. 首次转账建议<strong class="text-white">先转小额测试</strong>，确认到账后再转大额</li>
+        <li>4. 只使用知名交易所，远离不知名小平台</li>
+        <li>5. 提现后及时将法币提至银行卡，不要长期放在交易所</li>
+    </ul>
+</div>
 
-    <!-- 主内容 -->
-    <main class="flex-1 flex items-center justify-center">
-        <div class="text-center p-10">
-            <h1 class="text-5xl font-black mb-6">区块浏览器同步中</h1>
-            <p class="text-xl text-gray-400 mb-10">我们正在建立与 Pi Mainnet 区块链的实时数据映射链路。</p>
-            <a href="index.html" class="bg-[#f4af47] text-[#0f021a] px-8 py-3 rounded-full font-bold hover:bg-[#f9c56a] transition">先回首页看看</a>
+<div class="section-card">
+    <h2 class="text-2xl font-black mb-6">❓ 提现常见问题</h2>
+    <div class="space-y-4">
+        <details class="step-card"><summary class="font-bold cursor-pointer">Pi币提现要多久？</summary><p class="mt-3 text-gray-300">Pi链上转账通常需要几分钟到几小时不等，取决于网络拥堵程度。交易所到账后还需要若干确认才能交易。</p></details>
+        <details class="step-card"><summary class="font-bold cursor-pointer">提现手续费多少？</summary><p class="mt-3 text-gray-300">Pi链上转账手续费极低（通常0.01 Pi以下）。交易所充值免费，卖出时有交易手续费（约0.1%）。</p></details>
+        <details class="step-card"><summary class="font-bold cursor-pointer">为什么可转移余额是0？</summary><p class="mt-3 text-gray-300">可能原因：1）尚未完成KYC；2）尚未完成主网迁移；3）Pi处于锁仓期内；4）已转出。请检查钱包状态。</p></details>
+        <details class="step-card"><summary class="font-bold cursor-pointer">转账到交易所没到账怎么办？</summary><p class="mt-3 text-gray-300">1）在Pi区块链浏览器(blockchain.html)查看交易状态；2）确认充值地址正确；3）等待交易所要求的确认数；4）如长时间未到账，联系交易所客服。</p></details>
+        <details class="step-card"><summary class="font-bold cursor-pointer">Pi币提现最低金额是多少？</summary><p class="mt-3 text-gray-300">Pi钱包最低转账额度会根据网络状况调整，通常为0.1 Pi起。各交易所也有最低充值额度，请查看交易所规定。</p></details>
+        <details class="step-card"><summary class="font-bold cursor-pointer">提现到银行卡要多久？</summary><p class="mt-3 text-gray-300">Pi→交易所→卖出USDT→C2C提现→银行卡，整个过程通常1-2小时完成（不含链上转账时间）。C2C提现到银行卡一般10-30分钟。</p></details>
+    </div>
+</div>
+
         </div>
-    </main>
+    </section>
 
-    <!-- 页脚 -->
-
-
-<footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+    <section class="py-12 px-6">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-2xl font-black mb-6">📖 相关文章</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4"><a href="pi-sell.html" class="step-card block hover:border-[#f4af47]">
+                <span class="text-2xl mb-2 block">💸</span>
+                <span class="font-bold text-sm">Pi怎么卖</span>
+            </a><a href="wallet-guide.html" class="step-card block hover:border-[#f4af47]">
+                <span class="text-2xl mb-2 block">💳</span>
+                <span class="font-bold text-sm">钱包指南</span>
+            </a><a href="kyc.html" class="step-card block hover:border-[#f4af47]">
+                <span class="text-2xl mb-2 block">✅</span>
+                <span class="font-bold text-sm">KYC认证</span>
+            </a><a href="pi-guide.html" class="step-card block hover:border-[#f4af47]">
+                <span class="text-2xl mb-2 block">📚</span>
+                <span class="font-bold text-sm">Pi百科</span>
+            </a></div>
+            </div>
+        </section>
+    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200">
     <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
     <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
@@ -259,8 +366,6 @@
         <a href="about.html" class="hover:text-white">关于我们</a>
     </div>
 </footer>
-
-
 <script>
 (function(){
     var mm=document.getElementById('mobile-menu'),
@@ -276,5 +381,8 @@
     if(mo) mo.onclick=close;
 })();
 </script>
+</body>
+</html>
+
 </body>
 </html>

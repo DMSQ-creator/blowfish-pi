@@ -2,26 +2,52 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi区块链浏览器 | 主网区块数据查询 | 派币中文网</title>
-    <meta name="description" content="Pi区块链浏览器，实时查看主网区块高度、交易数据及链上同步状态。主网区块数据查询、交易记录追踪一站式服务。">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pibizh.com/blockchain.html">
-    <meta property="og:title" content="Pi区块链浏览器 | 主网区块数据查询 | 派币中文网">
-    <meta property="og:description" content="Pi区块链浏览器，实时查看主网区块高度、交易数据及链上同步状态。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pibizh.com/blockchain.html">
-    <meta property="og:image" content="/static/favicon.png">
-    <meta property="og:locale" content="zh_CN">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Pi区块链浏览器","description":"Pi区块链浏览器，实时查看主网区块高度、交易数据","url":"https://pibizh.com/blockchain.html"}</script>
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu { background: #2d1b3d; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
+        #mobile-menu { display: none; }
+        .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+        .step-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 2rem; }
+        .info-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 2rem; }
+        .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; }
+        .breadcrumb { font-size: 13px; color: #999; }
+        .breadcrumb a { color: #f4af47; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
+    </style>
+    <title>Pi币锁仓教程｜怎么锁仓最划算？锁仓收益率计算2026 | Pi Network 中文网</title>
+    <meta name="description" content="Pi币锁仓教程2026：锁仓百分比怎么选、时间怎么搭配、收益率怎么算、最优策略推荐。50%+3年还是100%+5年？看完就懂！">
+    <link rel="canonical" href="https://pibizh.com/pi-lockup.html">
+    <meta property="og:title" content="Pi币锁仓教程">
+    <meta property="og:description" content="Pi币锁仓教程2026：锁仓百分比怎么选、时间怎么搭配、收益率怎么算、最优策略推荐。50%+3年还是100%+5年？看完就懂！">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://pibizh.com/pi-lockup.html">
+    <meta property="og:image" content="/static/favicon.png">
+    <meta property="og:locale" content="zh_CN">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Pi币锁仓是什么？","acceptedAnswer":{"@type":"Answer","text":"锁仓（Lockup）是Pi主网迁移时的设置，决定你有多少比例的Pi币在多长时间内不能转出。锁仓百分比越高、时间越长，获得的挖矿奖励加成越大。"}},{"@type":"Question","name":"Pi币锁仓百分比怎么选？","acceptedAnswer":{"@type":"Answer","text":"根据你的情况选择：如果看好Pi长期价值，选90%或100%；如果想保留流动性，选25%或50%。首次迁移建议选50%作为折中方案。"}},{"@type":"Question","name":"锁仓后能改吗？","acceptedAnswer":{"@type":"Answer","text":"每次主网迁移时都可以重新设置锁仓配置。但已经锁仓的部分无法提前解锁，必须等到锁仓期结束才能转出。"}},{"@type":"Question","name":"锁仓有什么好处？","acceptedAnswer":{"@type":"Answer","text":"1）获得挖矿速率加成，最高可达2倍；2）表明对网络的长期信心；3）减少市场抛压有助于币价稳定。"}},{"@type":"Question","name":"锁仓的Pi还能挖矿吗？","acceptedAnswer":{"@type":"Answer","text":"锁仓的Pi仍然会产生挖矿奖励加成，而且锁仓比例越高加成越大。但锁仓期间这部分Pi无法转出或交易。"}},{"@type":"Question","name":"锁仓到期后怎么办？","acceptedAnswer":{"@type":"Answer","text":"锁仓到期后，对应的Pi自动变为可转移余额，你可以自由转出、交易或继续持有。无需手动操作。"}}]}</script>
 </head>
-<body class="bg-[#1e0a27] text-white min-h-screen flex flex-col">
-    <!-- 导航栏 (1:1 官网结构复刻) -->
+<body class="hero-bg min-h-screen pt-24">
+    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
+        <span class="text-xl">🔥</span>
+        <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
+    </a>
+        <!-- 导航栏 (1:1 官网结构复刻) -->
     <header class="fixed w-full z-[100] nav-blur border-b border-white/5">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
@@ -92,8 +118,8 @@
                 <button id="m-btn" class="lg:hidden p-1.5 text-[#f4af47] border border-[#f4af47]/20 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
             </div>
         </nav>
-    </header>
-    <!-- 手机侧边栏 (重新设计) -->
+
+        <!-- 手机侧边栏 (重新设计) -->
     <div id="mobile-menu" class="fixed inset-0 z-[1000] lg:hidden" style="display:none;">
         <div id="m-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
         <div id="m-panel" class="absolute top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#1e0a27] border-l border-white/10 overflow-y-auto" style="transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);">
@@ -219,32 +245,149 @@
                     <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#5865F2]/10 border border-[#5865F2]/20 text-[#5865F2] font-bold text-xs hover:bg-[#5865F2]/20 transition-colors">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
                         Discord
-                    </a>
-                    <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 font-bold text-xs hover:bg-blue-500/20 transition-colors">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.06.06 0 0 0-.02-.12c-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
-                        Telegram
-                    </a>
-                </div>
-            </div>
+
+    
+    <div class="container mx-auto px-6 py-3"><nav class="breadcrumb"><a href="index.html" class="hover:text-[#f4af47]">首页</a><span class="mx-2">›</span><a href="pi-guide.html" class="hover:text-[#f4af47]">📚 Pi百科</a><span class="mx-2">›</span><span class="text-gray-400">Pi币锁仓</span></nav></div>
+
+    <section class="py-12 px-6">
+        <div class="container mx-auto max-w-4xl">
+            
+<h1 class="text-3xl md:text-5xl font-black tracking-tighter mb-6">Pi币<span class="text-pi-gold">锁仓</span>教程</h1>
+<p class="text-gray-400 text-lg mb-8 leading-relaxed">锁仓比例怎么选最划算？百分比和时间怎么搭配？看完这篇你就懂了。</p>
+
+<div class="section-card mb-8">
+    <h2 class="text-2xl font-black mb-4">🔐 什么是锁仓？</h2>
+    <div class="space-y-4 text-gray-300 leading-relaxed">
+        <p>锁仓（Lockup）是Pi Network主网迁移时的一个重要设置。它决定你的Pi币中有多少比例、在多长时间内<strong class="text-white">不能转出</strong>。</p>
+        <p>简单理解：你自愿承诺一段时间内不动用部分Pi币，作为回报，你的挖矿速率会获得加成。</p>
+        <div class="grid md:grid-cols-3 gap-4 mt-4">
+            <div class="step-card text-center"><p class="text-3xl mb-2">📊</p><p class="font-bold mb-1">锁仓百分比</p><p class="text-sm text-gray-400">0% / 25% / 50% / 90% / 100%</p></div>
+            <div class="step-card text-center"><p class="text-3xl mb-2">⏰</p><p class="font-bold mb-1">锁仓时间</p><p class="text-sm text-gray-400">1年 / 2年 / 3年 / 5年</p></div>
+            <div class="step-card text-center"><p class="text-3xl mb-2">🚀</p><p class="font-bold mb-1">挖矿加成</p><p class="text-sm text-gray-400">锁得越多，加成越大</p></div>
         </div>
     </div>
-    <div class="pt-24"></div>
+</div>
 
-    <!-- 导航栏（Style B：极简返回导航） -->
+<div class="section-card mb-8">
+    <h2 class="text-2xl font-black mb-4">📊 锁仓百分比怎么选？</h2>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+            <thead><tr class="border-b border-white/10"><th class="text-left py-3 px-4 text-[#f4af47] font-bold">百分比</th><th class="text-left py-3 px-4 text-[#f4af47] font-bold">可转出</th><th class="text-left py-3 px-4 text-[#f4af47] font-bold">挖矿加成</th><th class="text-left py-3 px-4 text-[#f4af47] font-bold">适合人群</th></tr></thead>
+            <tbody class="text-gray-300">
+                <tr class="border-b border-white/5"><td class="py-3 px-4 font-bold">0%</td><td class="py-3 px-4">全部可转</td><td class="py-3 px-4">无加成</td><td class="py-3 px-4">随时需要变现</td></tr>
+                <tr class="border-b border-white/5"><td class="py-3 px-4 font-bold">25%</td><td class="py-3 px-4">75%可转</td><td class="py-3 px-4">小幅加成</td><td class="py-3 px-4">保守型用户</td></tr>
+                <tr class="border-b border-white/5 bg-[#f4af47]/5"><td class="py-3 px-4 font-bold text-[#f4af47]">50% ⭐</td><td class="py-3 px-4 font-bold text-[#f4af47]">50%可转</td><td class="py-3 px-4 font-bold text-[#f4af47]">中等加成</td><td class="py-3 px-4 font-bold text-[#f4af47]">折中推荐</td></tr>
+                <tr class="border-b border-white/5"><td class="py-3 px-4 font-bold">90%</td><td class="py-3 px-4">10%可转</td><td class="py-3 px-4">大幅加成</td><td class="py-3 px-4">长期看好Pi</td></tr>
+                <tr><td class="py-3 px-4 font-bold">100%</td><td class="py-3 px-4">锁仓期不可转</td><td class="py-3 px-4">最大加成</td><td class="py-3 px-4">铁杆信仰者</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-    <!-- 主内容 -->
-    <main class="flex-1 flex items-center justify-center">
-        <div class="text-center p-10">
-            <h1 class="text-5xl font-black mb-6">区块浏览器同步中</h1>
-            <p class="text-xl text-gray-400 mb-10">我们正在建立与 Pi Mainnet 区块链的实时数据映射链路。</p>
-            <a href="index.html" class="bg-[#f4af47] text-[#0f021a] px-8 py-3 rounded-full font-bold hover:bg-[#f9c56a] transition">先回首页看看</a>
+<div class="section-card mb-8">
+    <h2 class="text-2xl font-black mb-4">⏳ 锁仓时间怎么选？</h2>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+            <thead><tr class="border-b border-white/10"><th class="text-left py-3 px-4 text-[#f4af47] font-bold">锁仓时间</th><th class="text-left py-3 px-4 text-[#f4af47] font-bold">加成系数</th><th class="text-left py-3 px-4 text-[#f4af47] font-bold">到期时间</th><th class="text-left py-3 px-4 text-[#f4af47] font-bold">适合场景</th></tr></thead>
+            <tbody class="text-gray-300">
+                <tr class="border-b border-white/5"><td class="py-3 px-4 font-bold">1年</td><td class="py-3 px-4">1× 基础</td><td class="py-3 px-4">2027年</td><td class="py-3 px-4">短期观望</td></tr>
+                <tr class="border-b border-white/5"><td class="py-3 px-4 font-bold">2年</td><td class="py-3 px-4">1.5× 基础</td><td class="py-3 px-4">2028年</td><td class="py-3 px-4">中等信心</td></tr>
+                <tr class="border-b border-white/5 bg-[#f4af47]/5"><td class="py-3 px-4 font-bold text-[#f4af47]">3年 ⭐</td><td class="py-3 px-4 font-bold text-[#f4af47]">2× 基础</td><td class="py-3 px-4 font-bold text-[#f4af47]">2029年</td><td class="py-3 px-4 font-bold text-[#f4af47]">最佳性价比</td></tr>
+                <tr><td class="py-3 px-4 font-bold">5年</td><td class="py-3 px-4">3× 基础</td><td class="py-3 px-4">2031年</td><td class="py-3 px-4">极致锁仓</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="section-card mb-8">
+    <h2 class="text-2xl font-black mb-4">🎯 最优锁仓策略推荐</h2>
+    <div class="space-y-4">
+        <div class="step-card">
+            <div class="flex items-center gap-2 mb-3"><span class="text-xl">🆕</span><span class="font-black text-[#f4af47]">新手/小户（Pi &lt; 1000）</span></div>
+            <p class="text-gray-300 mb-2">推荐：<strong class="text-white">50%锁仓 + 3年</strong></p>
+            <ul class="text-sm text-gray-400 space-y-1"><li>• 保留一半流动性应对急需</li><li>• 3年锁仓获得2倍加成</li><li>• 锁仓期结束币价大概率更好</li></ul>
         </div>
-    </main>
+        <div class="step-card">
+            <div class="flex items-center gap-2 mb-3"><span class="text-xl">💼</span><span class="font-black text-[#f4af47]">中等用户（Pi 1000-5000）</span></div>
+            <p class="text-gray-300 mb-2">推荐：<strong class="text-white">90%锁仓 + 3年</strong></p>
+            <ul class="text-sm text-gray-400 space-y-1"><li>• 10%可转出足够应急</li><li>• 大幅加成让后续挖矿收益更高</li><li>• 长期持有等币价上涨</li></ul>
+        </div>
+        <div class="step-card">
+            <div class="flex items-center gap-2 mb-3"><span class="text-xl">🐋</span><span class="font-black text-[#f4af47]">大户/信仰者（Pi &gt; 5000）</span></div>
+            <p class="text-gray-300 mb-2">推荐：<strong class="text-white">100%锁仓 + 3-5年</strong></p>
+            <ul class="text-sm text-gray-400 space-y-1"><li>• 不差流动性，最大化加成</li><li>• 展示对Pi网络的长期信心</li><li>• 5年锁仓获得3倍加成</li></ul>
+        </div>
+    </div>
+</div>
 
-    <!-- 页脚 -->
+<div class="info-box mb-8">
+    <h3 class="font-black text-blue-400 mb-3">💡 锁仓后能改吗？提前解锁吗？</h3>
+    <ul class="space-y-2 text-gray-300">
+        <li>• <strong class="text-white">每次主网迁移</strong>时可以重新设置锁仓配置</li>
+        <li>• <strong class="text-white">已经锁仓的部分无法提前解锁</strong>，必须等锁仓期结束</li>
+        <li>• 后续迁移可以设置不同的锁仓比例，多次迁移的锁仓独立计算</li>
+        <li>• 锁仓到期后Pi自动变为可转移，无需手动操作</li>
+    </ul>
+</div>
 
+<div class="section-card mb-8">
+    <h2 class="text-2xl font-black mb-4">📐 锁仓收益率计算</h2>
+    <div class="space-y-4 text-gray-300">
+        <p>锁仓加成的计算公式：</p>
+        <div class="bg-[#1a1220] rounded-2xl p-6 text-center">
+            <p class="text-lg font-bold text-[#f4af47] mb-2">挖矿加成 = 基础速率 × 锁仓百分比 × 锁仓时间系数</p>
+            <p class="text-sm text-gray-400">Lockup Bonus = Base Rate × Lockup % × Duration Multiplier</p>
+        </div>
+        <p class="mt-4"><strong class="text-white">举例：</strong>假设基础速率0.01 π/h</p>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead><tr class="border-b border-white/10"><th class="text-left py-2 px-3 text-[#f4af47]">锁仓配置</th><th class="text-left py-2 px-3 text-[#f4af47]">加成</th><th class="text-left py-2 px-3 text-[#f4af47]">实际速率</th><th class="text-left py-2 px-3 text-[#f4af47]">日产量</th></tr></thead>
+                <tbody class="text-gray-300">
+                    <tr class="border-b border-white/5"><td class="py-2 px-3">无锁仓</td><td class="py-2 px-3">0</td><td class="py-2 px-3">0.01 π/h</td><td class="py-2 px-3">0.24 π</td></tr>
+                    <tr class="border-b border-white/5"><td class="py-2 px-3">50% + 1年</td><td class="py-2 px-3">+50%</td><td class="py-2 px-3">0.015 π/h</td><td class="py-2 px-3">0.36 π</td></tr>
+                    <tr class="border-b border-white/5 bg-[#f4af47]/5"><td class="py-2 px-3 font-bold text-[#f4af47]">50% + 3年</td><td class="py-2 px-3 font-bold text-[#f4af47]">+100%</td><td class="py-2 px-3 font-bold text-[#f4af47]">0.02 π/h</td><td class="py-2 px-3 font-bold text-[#f4af47]">0.48 π</td></tr>
+                    <tr><td class="py-2 px-3">100% + 5年</td><td class="py-2 px-3">+300%</td><td class="py-2 px-3">0.04 π/h</td><td class="py-2 px-3">0.96 π</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="text-sm text-gray-400">⚠️ 以上为简化计算示例，实际加成还受安全圈、节点等因素影响</p>
+    </div>
+</div>
 
-<footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+<div class="section-card">
+    <h2 class="text-2xl font-black mb-6">❓ 锁仓常见问题</h2>
+    <div class="space-y-4">
+        <details class="step-card"><summary class="font-bold cursor-pointer">Pi币锁仓是什么？</summary><p class="mt-3 text-gray-300">锁仓（Lockup）是Pi主网迁移时的设置，决定你有多少比例的Pi币在多长时间内不能转出。锁仓百分比越高、时间越长，获得的挖矿奖励加成越大。</p></details>
+        <details class="step-card"><summary class="font-bold cursor-pointer">锁仓后能改吗？</summary><p class="mt-3 text-gray-300">每次主网迁移时都可以重新设置锁仓配置。但已经锁仓的部分无法提前解锁，必须等到锁仓期结束才能转出。</p></details>
+        <details class="step-card"><summary class="font-bold cursor-pointer">锁仓到期后怎么办？</summary><p class="mt-3 text-gray-300">锁仓到期后，对应的Pi自动变为可转移余额，你可以自由转出、交易或继续持有。无需手动操作。</p></details>
+        <details class="step-card"><summary class="font-bold cursor-pointer">不锁仓有什么影响？</summary><p class="mt-3 text-gray-300">不锁仓不会损失已有的Pi币，但挖矿速率没有加成，后续挖矿产出会比锁仓用户低。如果Pi未来价值上涨，损失的机会成本可能很大。</p></details>
+        <details class="step-card"><summary class="font-bold cursor-pointer">锁仓的Pi还能挖矿吗？</summary><p class="mt-3 text-gray-300">可以！锁仓的Pi仍然参与挖矿加成计算。实际上锁仓越多，后续挖矿奖励越高——这是一个正循环。</p></details>
+        <details class="step-card"><summary class="font-bold cursor-pointer">多次迁移锁仓怎么算？</summary><p class="mt-3 text-gray-300">每次迁移可以设置不同的锁仓配置，各次锁仓独立计算到期时间和比例。例如第一次锁50%+3年，第二次可以锁90%+5年。</p></details>
+    </div>
+</div>
+
+        </div>
+    </section>
+
+    <section class="py-12 px-6">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-2xl font-black mb-6">📖 相关文章</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4"><a href="pi-mainnet.html" class="step-card block hover:border-[#f4af47]">
+                <span class="text-2xl mb-2 block">🚀</span>
+                <span class="font-bold text-sm">主网进展</span>
+            </a><a href="wallet-guide.html" class="step-card block hover:border-[#f4af47]">
+                <span class="text-2xl mb-2 block">💳</span>
+                <span class="font-bold text-sm">钱包指南</span>
+            </a><a href="pi-sell.html" class="step-card block hover:border-[#f4af47]">
+                <span class="text-2xl mb-2 block">💸</span>
+                <span class="font-bold text-sm">Pi怎么卖</span>
+            </a><a href="pi-guide.html" class="step-card block hover:border-[#f4af47]">
+                <span class="text-2xl mb-2 block">📚</span>
+                <span class="font-bold text-sm">Pi百科</span>
+            </a></div>
+            </div>
+        </section>
+    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200">
     <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
     <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
@@ -259,8 +402,6 @@
         <a href="about.html" class="hover:text-white">关于我们</a>
     </div>
 </footer>
-
-
 <script>
 (function(){
     var mm=document.getElementById('mobile-menu'),
@@ -276,5 +417,8 @@
     if(mo) mo.onclick=close;
 })();
 </script>
+</body>
+</html>
+
 </body>
 </html>
