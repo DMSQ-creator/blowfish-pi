@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <link rel="stylesheet" href="/static/tailwind.css">
     <style>
+        html { scroll-behavior: smooth; }
         body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
         .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -235,6 +236,82 @@
 
 
     <div class="container mx-auto px-6 py-3"><nav class="breadcrumb"><a href="index.html">首页</a> › <a href="pi-guide.html">Pi百科</a> › 技术白皮书</nav></div>
+<!-- Whitepaper Hero -->
+<div class="container mx-auto px-6 mb-8">
+<div class="text-center py-8">
+<h1 class="text-4xl md:text-5xl font-black text-white mb-4">Pi Network <span class="text-[#f4af47]">技术白皮书</span></h1>
+<p class="text-gray-400 text-lg max-w-2xl mx-auto">深入理解 Pi Network 的共识机制、经济模型与安全架构</p>
+</div>
+</div>
+
+<div class="container mx-auto px-6 flex gap-8">
+
+<aside class="hidden lg:block w-64 flex-shrink-0">
+<div class="sticky top-28">
+<div class="bg-white/[0.03] border border-white/10 rounded-2xl p-5">
+<h3 class="text-sm font-black text-[#f4af47] tracking-widest uppercase mb-4">📑 目录导航</h3>
+<nav class="space-y-1">
+<a href="#ch1" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">1.</span>项目背景与使命</a>
+<a href="#ch2" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">2.</span>第一代区块链的问题</a>
+<a href="#ch3" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">3.</span>核心突破：恒星共识协议 (SCP)</a>
+<a href="#ch4" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">4.</span>代币经济学</a>
+<a href="#ch5" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">5.</span>Pi 经济模型</a>
+<a href="#ch6" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">6.</span>Pi 账户与身份验证</a>
+<a href="#ch7" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">7.</span>治理与去中心化</a>
+<a href="#ch8" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">8.</span>安全模型</a>
+<a href="#ch9" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">9.</span>应用生态</a>
+<a href="#ch10" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">10.</span>路线图</a>
+<a href="#ch11" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">11.</span>结论</a>
+</nav>
+</div>
+</div>
+</aside>
+
+<details class="lg:hidden mb-6 w-full">
+<summary class="cursor-pointer bg-white/[0.03] border border-white/10 rounded-2xl p-4 text-[#f4af47] font-bold">
+📑 目录导航（点击展开）
+</summary>
+<div class="bg-white/[0.03] border border-white/10 border-t-0 rounded-b-2xl p-4">
+<nav class="space-y-1">
+<a href="#ch1" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">1.</span>项目背景与使命</a>
+<a href="#ch2" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">2.</span>第一代区块链的问题</a>
+<a href="#ch3" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">3.</span>核心突破：恒星共识协议 (SCP)</a>
+<a href="#ch4" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">4.</span>代币经济学</a>
+<a href="#ch5" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">5.</span>Pi 经济模型</a>
+<a href="#ch6" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">6.</span>Pi 账户与身份验证</a>
+<a href="#ch7" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">7.</span>治理与去中心化</a>
+<a href="#ch8" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">8.</span>安全模型</a>
+<a href="#ch9" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">9.</span>应用生态</a>
+<a href="#ch10" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">10.</span>路线图</a>
+<a href="#ch11" class="toc-item block py-2 px-3 text-sm text-gray-400 hover:text-[#f4af47] hover:bg-white/5 rounded-lg transition-colors">
+<span class="text-[#f4af47] font-mono font-bold mr-2">11.</span>结论</a>
+</nav>
+</div>
+</details>
+
+<main class="flex-1 min-w-0">
+
 
 <section class="container mx-auto px-6 py-12 text-center">
   <h1 class="text-4xl md:text-5xl font-black text-pi-gold mb-4">Pi Network 技术白皮书</h1>
@@ -242,8 +319,8 @@
 </section>
 
 <!-- 第1章 -->
-<div class="section-card">
-<h2 class="text-3xl font-black text-pi-gold mb-6">1. 项目背景与使命 — 为什么需要 Pi</h2>
+<div class="section-card mb-8">
+<h2 class="text-3xl font-black text-pi-gold mb-6" id="ch1">1. 项目背景与使命 — 为什么需要 Pi</h2>
 <p class="text-gray-300 mb-4 leading-relaxed">比特币自 2009 年诞生以来，开创了去中心化数字货币的先河，但在十余年的发展中，第一代加密货币暴露出严重的参与壁垒问题。挖矿逐渐从个人电脑转向专用硬件（ASIC），算力集中到大型矿池，普通用户被完全排除在共识过程之外。加密货币的初衷——让每个人都能参与的去中心化金融体系——反而走向了新的中心化。</p>
 <p class="text-gray-300 mb-4 leading-relaxed">Pi Network 由斯坦福大学团队于 2019 年发起，核心使命是：<strong class="text-white">构建一个真正人人可及的加密货币体系</strong>。这不仅是技术问题，更是社会问题。一个无法让普通人参与的金融体系，无论其去中心化程度如何，都无法实现真正的普惠金融。</p>
 <div class="info-box">
@@ -258,8 +335,8 @@
 </div>
 
 <!-- 第2章 -->
-<div class="section-card">
-<h2 class="text-3xl font-black text-pi-gold mb-6">2. 第一代区块链的问题 — PoW 的局限性</h2>
+<div class="section-card mb-8">
+<h2 class="text-3xl font-black text-pi-gold mb-6" id="ch2">2. 第一代区块链的问题 — PoW 的局限性</h2>
 <h3 class="text-xl font-bold text-white mb-4">2.1 能源浪费</h3>
 <p class="text-gray-300 mb-4 leading-relaxed">比特币的 Proof of Work (PoW) 共识机制要求矿工通过计算无意义的哈希值来竞争出块权。截至 2024 年，比特币网络年耗电量已超过某些中等国家的全年用电量。这种"算力即安全"的设计在早期是合理的，但随着网络增长，能源消耗呈指数级上升，形成了不可持续的恶性循环：更多算力→更高难度→更多能耗→更高准入门槛。</p>
 <h3 class="text-xl font-bold text-white mb-4">2.2 算力中心化</h3>
@@ -282,8 +359,8 @@
 </div>
 
 <!-- 第3章 -->
-<div class="section-card">
-<h2 class="text-3xl font-black text-pi-gold mb-6">3. 核心突破：恒星共识协议 (SCP) — Pi 的共识机制</h2>
+<div class="section-card mb-8">
+<h2 class="text-3xl font-black text-pi-gold mb-6" id="ch3">3. 核心突破：恒星共识协议 (SCP) — Pi 的共识机制</h2>
 <p class="text-gray-300 mb-4 leading-relaxed">Pi Network 的共识机制建立在 Stellar Consensus Protocol (SCP) 之上。SCP 由斯坦福大学教授 David Mazières 于 2015 年设计，是 Stellar 网络的核心共识算法，属于联邦拜占庭协议 (Federated Byzantine Agreement, FBA) 家族。与 PoW 不同，SCP 不依赖算力竞争或经济惩罚，而是通过节点间的信任关系网络达成共识。</p>
 
 <h3 class="text-xl font-bold text-white mb-4">3.1 安全圈 (Security Circles) 机制</h3>
@@ -320,8 +397,8 @@
 </div>
 
 <!-- 第4章 -->
-<div class="section-card">
-<h2 class="text-3xl font-black text-pi-gold mb-6">4. 代币经济学 — 基于人类贡献的挖矿模型</h2>
+<div class="section-card mb-8">
+<h2 class="text-3xl font-black text-pi-gold mb-6" id="ch4">4. 代币经济学 — 基于人类贡献的挖矿模型</h2>
 <p class="text-gray-300 mb-4 leading-relaxed">Pi 的挖矿模型从根本上不同于比特币的"算力即价值"模型。核心理念是：<strong class="text-white">价值来源于人类的真实贡献</strong>。这些贡献包括参与网络的活跃度、构建信任关系、长期承诺以及帮助网络增长。每一个维度都被量化并反映在挖矿速率公式中。</p>
 
 <h3 class="text-xl font-bold text-white mb-4">4.1 挖矿速率公式</h3>
@@ -394,8 +471,8 @@
 </div>
 
 <!-- 第5章 -->
-<div class="section-card">
-<h2 class="text-3xl font-black text-pi-gold mb-6">5. Pi 经济模型</h2>
+<div class="section-card mb-8">
+<h2 class="text-3xl font-black text-pi-gold mb-6" id="ch5">5. Pi 经济模型</h2>
 <h3 class="text-xl font-bold text-white mb-4">5.1 代币供应</h3>
 <p class="text-gray-300 mb-4 leading-relaxed">Pi 采用<strong class="text-white">基于贡献的动态供应模型</strong>：代币总量不是预先固定的数字，而是由网络参与者的集体贡献决定。总供应量是网络增长的函数，但每个人的份额取决于其贡献比例。</p>
 <p class="text-gray-300 mb-4 leading-relaxed">Pi 的供应分配：</p>
@@ -422,8 +499,8 @@
 </div>
 
 <!-- 第6章 -->
-<div class="section-card">
-<h2 class="text-3xl font-black text-pi-gold mb-6">6. Pi 账户与身份验证</h2>
+<div class="section-card mb-8">
+<h2 class="text-3xl font-black text-pi-gold mb-6" id="ch6">6. Pi 账户与身份验证</h2>
 <h3 class="text-xl font-bold text-white mb-4">6.1 KYC 的重要性</h3>
 <p class="text-gray-300 mb-4 leading-relaxed">Know Your Customer (KYC) 验证是 Pi 与其他加密货币项目的关键区别。在比特币等网络中，一个地址就是一个身份——无需验证，完全匿名。但这也意味着一个人可以创建无限个地址，Sybil 攻击成为结构性威胁。Pi 坚持一人一账户原则。</p>
 <p class="text-gray-300 mb-4 leading-relaxed">KYC 验证确保：每个 Pi 账户对应一个真实存在的人类；无法通过多账户获取不公平优势；信任图中的节点代表真实个体；网络可以准确计算真实用户基数。Pi 的 KYC 采用混合验证方案：自动化 AI 文档识别 + 人工交叉验证，形成去中心化的验证网络。</p>
@@ -444,8 +521,8 @@
 </div>
 
 <!-- 第7章 -->
-<div class="section-card">
-<h2 class="text-3xl font-black text-pi-gold mb-6">7. 治理与去中心化</h2>
+<div class="section-card mb-8">
+<h2 class="text-3xl font-black text-pi-gold mb-6" id="ch7">7. 治理与去中心化</h2>
 <h3 class="text-xl font-bold text-white mb-4">7.1 社区治理</h3>
 <p class="text-gray-300 mb-4 leading-relaxed">Pi 的治理模型遵循渐进式去中心化原则。早期阶段核心团队负责关键决策以确保网络稳定，随着网络成熟逐步向社区转移治理权。核心机制包括：社区投票（重大协议变更和生态决策）、Pi Chat 讨论区、节点运营者治理、开发者社区参与技术路线讨论。</p>
 
@@ -462,8 +539,8 @@
 </div>
 
 <!-- 第8章 -->
-<div class="section-card">
-<h2 class="text-3xl font-black text-pi-gold mb-6">8. 安全模型</h2>
+<div class="section-card mb-8">
+<h2 class="text-3xl font-black text-pi-gold mb-6" id="ch8">8. 安全模型</h2>
 <h3 class="text-xl font-bold text-white mb-4">8.1 安全圈防攻击</h3>
 <p class="text-gray-300 mb-4 leading-relaxed">安全圈是 Pi 安全模型的第一道防线。在 FBA 模型中，共识的安全性取决于 quorum slice 的交叉重叠。安全圈的"信任锚定"设计确保：每个 quorum slice 由真实人类的信任关系构成，攻击者无法伪造；安全圈成员间存在真实社交关系，串谋成本极高；安全圈的多样性增加了 quorum 的交叉重叠度；行为异常的节点将被安全圈成员移除，自动丧失共识参与权。</p>
 
@@ -492,8 +569,8 @@
 </div>
 
 <!-- 第9章 -->
-<div class="section-card">
-<h2 class="text-3xl font-black text-pi-gold mb-6">9. 应用生态</h2>
+<div class="section-card mb-8">
+<h2 class="text-3xl font-black text-pi-gold mb-6" id="ch9">9. 应用生态</h2>
 <p class="text-gray-300 mb-4 leading-relaxed">货币的价值不仅取决于其稀缺性和安全性，更取决于其实用性。Pi 构建了完整的应用生态系统，确保 Pi 不仅是"挖出来的代币"，更是"可使用的货币"。</p>
 
 <h3 class="text-xl font-bold text-white mb-4">9.1 Pi Apps</h3>
@@ -525,7 +602,7 @@
 </div>
 
 <div class="section-card mb-8">
-<h2 class="text-3xl font-black text-pi-gold mb-6">10. 路线图 — 迈向开放主网</h2>
+<h2 class="text-3xl font-black text-pi-gold mb-6" id="ch10">10. 路线图 — 迈向开放主网</h2>
 
 <h3 class="text-xl font-bold text-white mb-4">10.1 Phase 1：设计与分发</h3>
 <p class="text-gray-300 mb-4 leading-relaxed">Phase 1 于 2019 年 3 月 14 日（π日）启动，核心目标是通过移动端 App 将 Pi 分发给全球用户，同时构建初始社区。这一阶段的关键特征：</p>
@@ -562,7 +639,7 @@
 </div>
 
 <div class="section-card mb-8">
-<h2 class="text-3xl font-black text-pi-gold mb-6">11. 结论</h2>
+<h2 class="text-3xl font-black text-pi-gold mb-6" id="ch11">11. 结论</h2>
 <p class="text-gray-300 mb-4 leading-relaxed">Pi Network 代表了一种全新的区块链范式——不依赖能源密集型的工作量证明，而是基于人际信任和真实贡献构建去中心化网络。</p>
 <p class="text-gray-300 mb-4 leading-relaxed">通过恒星共识协议 (SCP) 的创新应用、安全圈机制、以及基于人类贡献的挖矿模型，Pi 实现了加密货币的大规模分发，让全球超过 6000 万用户能够以零成本参与数字经济。</p>
 <p class="text-gray-300 mb-4 leading-relaxed">Pi 的愿景不仅仅是创造一种新的加密货币，而是构建一个包容性的数字经济生态系统——在这个系统中，日常用户不仅是消费者，更是建设者和受益者。随着开放主网的启动和生态应用的持续落地，Pi 正在将这一愿景变为现实。</p>
@@ -573,7 +650,10 @@
 <a href="reg.html" class="inline-block bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-xl font-black text-lg hover:scale-105 transition-all">立即注册 Pi Network →</a>
 </div>
 </div>
-    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+    
+</main>
+
+</div><footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
     <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
     <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
