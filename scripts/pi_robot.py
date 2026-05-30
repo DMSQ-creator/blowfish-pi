@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from curl_cffi import requests as crequests
+from deep_translator import GoogleTranslator
 import json
 import os
 import time
@@ -104,15 +105,61 @@ def send_tg_notification(title, slug):
 
 
 def translate_article(paragraphs, title_en, max_retries=2):
-    """使用 NVIDIA Qwen3.5 一次性翻译整篇文章，保留结构；翻译失败返回 None"""
-    # 构建结构化输入，img/video 直接标记跳过
+    """翻译整篇文章，优先逐段 Google Translate，备用 LLM 整体翻译"""
+    # 方法1: 逐段 Google Translate（免费，无需 API key）
+    translated = []
+    all_ok = True
+    for i, p in enumerate(paragraphs):
+        if p["type"] in ("img", "video"):
+            translated.append(p)
+            continue
+        text = p["text"]
+        # HTML 段落提取纯文本再翻译
+        if text.startswith("<"):
+            soup = BeautifulSoup(text, "html.parser")
+            text = soup.get_text(separator=" ", strip=True)
+        if not text or len(text.strip()) < 3:
+            translated.append({"type": p["type"], "text": text})
+            continue
+        try:
+            result = GoogleTranslator(source='en', target='zh-CN').translate(text)
+            if result and len(result.strip()) > 0:
+                translated.append({"type": p["type"], "text": result.strip()})
+            else:
+                translated.append({"type": p["type"], "text": text})
+                all_ok = False
+        except Exception as e:
+            print(f"[!] Google翻译段落 {i} 失败: {e}")
+            translated.append({"type": p["type"], "text": text})
+            all_ok = False
+        time.sleep(0.3)  # 避免请求过快
+
+    # 中文检测
+    chinese_count = sum(
+        sum(1 for c in tp["text"] if '\u4e00' <= c <= '\u9fff')
+        for tp in translated if tp["type"] not in ("img", "video")
+    )
+    total_chars = sum(
+        len(tp["text"])
+        for tp in translated if tp["type"] not in ("img", "video")
+    )
+    chinese_ratio = chinese_count / total_chars if total_chars > 0 else 0
+    print(f"[✓] Google翻译完成，共 {len(translated)} 个段落，中文率 {chinese_ratio:.1%}")
+    if chinese_ratio >= 0.05:
+        return translated
+
+    # 方法2: LLM 整体翻译（备用，需要 API key）
+    if not LLM_API_KEY:
+        print("[!] Google翻译中文率不足且无 LLM API key，跳过")
+        return None
+
+    # 构建 LLM prompt
     lines = []
     for i, p in enumerate(paragraphs):
         if p["type"] in ("img", "video"):
             lines.append(f"[{i}][{p['type'].upper()}] __SKIP__")
         else:
             text = p["text"]
-            # HTML 段落提取纯文本再翻译，避免标签干扰
             if text.startswith("<"):
                 soup = BeautifulSoup(text, "html.parser")
                 text = soup.get_text(separator=" ", strip=True)
@@ -150,7 +197,6 @@ def translate_article(paragraphs, title_en, max_retries=2):
             )
             if resp.status_code == 200:
                 result = resp.json()["choices"][0]["message"]["content"].strip()
-                # 解析结果，按行对应回去 paragraphs
                 translated = []
                 result_lines = {}
                 for line in result.split("\n"):
@@ -167,12 +213,11 @@ def translate_article(paragraphs, title_en, max_retries=2):
                     if p["type"] in ("img", "video"):
                         translated.append(p)
                     else:
-                        text = result_lines.get(i, p["text"])  # 找不到则用原文
+                        text = result_lines.get(i, p["text"])
                         if text == "__SKIP__":
                             text = p["text"]
                         translated.append({"type": p["type"], "text": text})
 
-                # 中文检测：段落中少于 5% 字符为中文则判定翻译失败
                 chinese_count = sum(
                     sum(1 for c in tp["text"] if '\u4e00' <= c <= '\u9fff')
                     for tp in translated if tp["type"] not in ("img", "video")
@@ -184,7 +229,7 @@ def translate_article(paragraphs, title_en, max_retries=2):
                 chinese_ratio = chinese_count / total_chars if total_chars > 0 else 0
                 print(f"[✓] LLM 翻译完成，共 {len(translated)} 个段落，中文率 {chinese_ratio:.1%}")
                 if chinese_ratio < 0.05:
-                    print(f"[!] 翻译结果中文比例过低 ({chinese_count}/{total_chars})，判定为 API 失败，跳过本文")
+                    print(f"[!] 翻译结果中文比例过低，判定为 API 失败，跳过本文")
                     return None
                 return translated
             else:
@@ -194,34 +239,46 @@ def translate_article(paragraphs, title_en, max_retries=2):
             if attempt < max_retries:
                 time.sleep(5)
 
-    print("[!] LLM 翻译全部失败，跳过本文")
-    return None  # 全部失败返回 None，调用方跳过本文
+    print("[!] 全部翻译方法失败，跳过本文")
+    return None
 
 
 def translate_text(text, max_retries=2):
-    """单段文本翻译（用于标题）"""
+    """单段文本翻译（用于标题），优先 Google Translate，备用 LLM"""
     if not text or len(text.strip()) < 3:
         return text
+    # 方法1: Google Translate（免费，无需 API key）
     for attempt in range(max_retries + 1):
         try:
-            resp = requests.post(
-                LLM_API_URL,
-                headers={"Authorization": f"Bearer {LLM_API_KEY}", "Content-Type": "application/json"},
-                json={
-                    "model": LLM_MODEL,
-                    "messages": [{"role": "user", "content": f"将以下英文翻译为简体中文，只输出翻译结果，不要加任何解释：\n{text}"}],
-                    "temperature": 0.3,
-                    "max_tokens": 500,
-                },
-                timeout=30,
-            )
-            if resp.status_code == 200:
-                return resp.json()["choices"][0]["message"]["content"].strip()
-            print(f"[!] 标题翻译失败: HTTP {resp.status_code}")
+            result = GoogleTranslator(source='en', target='zh-CN').translate(text)
+            if result and len(result.strip()) > 0:
+                return result.strip()
         except Exception as e:
-            print(f"[!] 标题翻译失败 (尝试 {attempt+1}): {e}")
+            print(f"[!] Google翻译失败 (尝试 {attempt+1}): {e}")
             if attempt < max_retries:
-                time.sleep(3)
+                time.sleep(2)
+    # 方法2: LLM API（备用，需要 API key）
+    if LLM_API_KEY:
+        for attempt in range(max_retries + 1):
+            try:
+                resp = requests.post(
+                    LLM_API_URL,
+                    headers={"Authorization": f"Bearer {LLM_API_KEY}", "Content-Type": "application/json"},
+                    json={
+                        "model": LLM_MODEL,
+                        "messages": [{"role": "user", "content": f"将以下英文翻译为简体中文，只输出翻译结果，不要加任何解释：\n{text}"}],
+                        "temperature": 0.3,
+                        "max_tokens": 500,
+                    },
+                    timeout=30,
+                )
+                if resp.status_code == 200:
+                    return resp.json()["choices"][0]["message"]["content"].strip()
+                print(f"[!] LLM翻译失败: HTTP {resp.status_code}")
+            except Exception as e:
+                print(f"[!] LLM翻译失败 (尝试 {attempt+1}): {e}")
+                if attempt < max_retries:
+                    time.sleep(3)
     return None
 
 
