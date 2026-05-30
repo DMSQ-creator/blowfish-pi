@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>搜索 | Pi Network 中文网</title>
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <meta name="description" content="在 Pi Network 中文网站内搜索内容：派币价格、节点运行、KYC、注册教程等。">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/tailwind.css">
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
     <style>
         .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
@@ -20,7 +19,6 @@
         .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
         #mobile-menu { display: none; }
 
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .result-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; transition: all 0.3s; cursor: pointer; }
@@ -33,6 +31,7 @@
     <meta property="og:description" content="搜索Pi Network中文网内容，查找挖矿教程、钱包指南、价格行情等。">
     <meta property="og:image" content="/static/favicon.png">
     <meta property="og:type" content="website">
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
 </head>
 <body class="min-h-screen flex flex-col">
     <!-- 导航栏 (1:1 官网结构复刻) -->

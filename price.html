@@ -16,12 +16,11 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Pi派币实时价格行情","description":"Pi派币实时价格行情，PI/USDT汇率","url":"https://pibizh.com/price.html"}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Pi Coin","description":"Pi Network加密货币","brand":{"@type":"Brand","name":"Pi Network"},"offers":{"@type":"Offer","priceCurrency":"USDT","url":"https://pibizh.com/price.html"}}</script>
   <link rel="icon" type="image/png" href="/static/favicon.png" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/static/tailwind.css">
   <!-- Chart.js CDN: use cdnjs (often more stable), with jsDelivr as backup -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha512-vVqJtBQUlO1XkU+PjcsnYv51NV7C7I8K+eJqR5i0J3JtY1xj5Z1mXGx6h0+N6qvPqvH3b4o9wQz3o3xw0Z3o1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
     body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
     .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
     .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -41,6 +40,7 @@
     .skeleton { background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.12), rgba(255,255,255,0.05)); background-size: 200% 100%; animation: shimmer 1.2s infinite; }
     @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
   </style>
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
 </head>
 <body class="hero-bg min-h-screen">
     <!-- 导航栏 (1:1 官网结构复刻) -->

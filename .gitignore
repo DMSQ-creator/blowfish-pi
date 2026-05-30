@@ -40,4 +40,8 @@ ga-pageviews.csv
 .Trashes
 .idea
 .Ulysses-Group.plist
-.Ulysses-Settings.plist
+.Ulysses-Settings.plistnode_modules/
+input.css
+tailwind.config.js
+package.json
+package-lock.json
