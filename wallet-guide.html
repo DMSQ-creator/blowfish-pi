@@ -5,8 +5,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi币怎么卖？派币变现/转账/交易完整指南2026 | Pi Network 中文网</title>
-    <meta name="description" content="派币（Pi）钱包怎么用？Pi怎么卖、能换钱吗？Pi转账操作、交易指南、变现途径一网打尽。从钱包创建到主网交易，安全须知全解析。">
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <link rel="stylesheet" href="/static/tailwind.css">
     <style>
@@ -19,23 +17,19 @@
         .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .dropdown-menu a:last-child { border-bottom: none; }
         .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
-        
         #mobile-menu { display: none; }
-
-        
         .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; overflow: visible; }
+        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
         .step-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
-        @media (max-width: 768px) {
-          .step-card { padding: 1.5rem; padding-top: 1.75rem; }
-          .step-num { position: static !important; display: inline-flex; margin-bottom: 0.75rem; }
-        }
         .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 2rem; }
         .info-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 2rem; }
         .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; }
+        .breadcrumb { font-size: 13px; color: #999; }
+        .breadcrumb a { color: #f4af47; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
     </style>
-
     <link rel="canonical" href="https://pibizh.com/wallet-guide.html">
     <meta property="og:title" content="Pi币怎么卖？派币变现/转账/交易完整指南">
     <meta property="og:description" content="Pi钱包怎么用？Pi怎么卖、能换钱吗？从钱包创建到主网交易，转账变现全解析。邀请码nbjh。">
@@ -47,7 +41,12 @@
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
 </head>
 <body class="hero-bg min-h-screen">
-    <!-- 导航栏 (1:1 官网结构复刻) -->
+
+    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
+        <span class="text-xl">🔥</span>
+        <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
+    </a>
+        <!-- 导航栏 (1:1 官网结构复刻) -->
     <header class="fixed top-0 w-full z-[100] nav-blur border-b border-white/5">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
@@ -262,19 +261,8 @@
             </div>
         </div>
     </div>
-    <div class="pt-24"></div>
-    <!-- 全局悬浮 -->
-    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
-        <span class="text-xl">🔥</span>
-        <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
-    </a>
 
-    <!-- 导航栏 -->
 
-    <!-- 手机侧边栏 -->
-    </section>
-
-    <!-- 第一部分：Pi钱包是什么 -->
     <section id="wallet" class="pt-24 py-20 px-6 bg-black/30 border-y border-white/5">
         <div class="container mx-auto
             <h1 class="text-4xl md:text-5xl font-black tracking-tighter mb-6">Pi 钱包与交易指南</h1> max-w-5xl">
@@ -474,8 +462,7 @@
 
     <script>
     </script>
-
-<footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
     <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
     <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
@@ -490,7 +477,6 @@
         <a href="about.html" class="hover:text-white">关于我们</a>
     </div>
 </footer>
-
 <script>
 (function(){
     var mm=document.getElementById('mobile-menu'),

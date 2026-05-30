@@ -12,10 +12,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Install Python dependencies
+        run: pip install pyyaml
+
+      - name: Build pages from templates
+        run: python3 build.py
+
       - name: Deploy to VPS via rsync
         uses: burnett01/rsync-deployments@6.0.0
         with:
-          switches: -avz --delete --exclude='.git' --exclude='.github' --exclude='scripts' --exclude='.user.ini' --exclude='clean_content.txt' --exclude='raw_content.txt' --exclude='raw_full_content.txt' --exclude='ready.txt' --exclude='download_img.py' --exclude='full_clone.py' --exclude='super_sync.py' --exclude='sync_full.py' --exclude='publish.sh'
+          switches: -avz --delete --exclude='.git' --exclude='.github' --exclude='scripts' --exclude='.user.ini' --exclude='clean_content.txt' --exclude='raw_content.txt' --exclude='raw_full_content.txt' --exclude='ready.txt' --exclude='download_img.py' --exclude='full_clone.py' --exclude='super_sync.py' --exclude='sync_full.py' --exclude='publish.sh' --exclude='_templates' --exclude='_pages' --exclude='_backups' --exclude='build.py' --exclude='node_modules' --exclude='tailwind.config.js' --exclude='input.css' --exclude='package.json' --exclude='package-lock.json'
           path: ./
           remote_path: ${{ secrets.VPS_PATH }}/
           remote_host: ${{ secrets.VPS_HOST }}

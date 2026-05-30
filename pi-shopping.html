@@ -1,28 +1,45 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/png" href="/static/favicon.png"><link rel="stylesheet" href="/static/tailwind.css"><style>
-.hero-bg{background:linear-gradient(135deg,#1e0a27 0%,#423f88 100%)}
-.text-pi-gold{background:linear-gradient(90deg,#f4af47 0%,#fab44b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-blur{background:rgba(30,10,39,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-.dropdown:hover .dropdown-menu{display:block}
-.dropdown-menu{background:#2d1b3d;border:1px solid rgba(255,255,255,0.2);border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,0.6)}
-.dropdown-menu a{display:block;padding:12px 24px;font-size:14px;color:#ffffff!important;font-weight:600;transition:all 0.2s;border-bottom:1px solid rgba(255,255,255,0.05)}
-.dropdown-menu a:last-child{border-bottom:none}
-.dropdown-menu a:hover{background:rgba(244,175,71,0.15);color:#f4af47!important}
-#mobile-menu{display:none}
-.fixed-cta{position:fixed;bottom:2rem;right:2rem;z-index:100;animation:bounce 2s infinite}
-@keyframes bounce{0%,100%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
-}.step-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:2rem;transition:all 0.3s}
-.step-card:hover{border-color:#f4af47;background:rgba(244,175,71,0.05)}
-.warning-box{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.3);border-radius:20px;padding:2rem}
-.info-box{background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.3);border-radius:20px;padding:2rem}
-.section-card{padding:1.5rem}
-.breadcrumb{font-size:13px;color:#999}
-.breadcrumb a{color:#f4af47;text-decoration:none}
-.breadcrumb a:hover{text-decoration:underline}
-@media(max-width:768px){.step-card{padding:1.5rem}
-</style><title>Pi币购物商城｜用Pi买东西/支付/商家汇总2026 | Pi Network 中文网</title><meta name="description" content="Pi币购物商城指南2026：Pi币能买东西吗、哪里可以用Pi购物、Pi生态购物应用、购物步骤、安全提示。"><link rel="canonical" href="https://pibizh.com/pi-shopping.html"><meta property="og:title" content="Pi币购物商城"><meta property="og:description" content="Pi币购物商城指南2026：Pi币能买东西吗、哪里可以用Pi购物、Pi生态购物应用、购物步骤、安全提示。"><meta property="og:type" content="article"><meta property="og:url" content="https://pibizh.com/pi-shopping.html"><meta property="og:image" content="/static/favicon.png"><meta property="og:locale" content="zh_CN"><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Pi币能买东西吗？","acceptedAnswer":{"@type":"Answer","text":"可以！Pi Network生态中已有多家商家接受Pi支付，包括线上商城、实体店铺和服务类商家。Pi Browser中可以浏览支持Pi支付的应用。"}},{"@type":"Question","name":"Pi币购物在哪里？","acceptedAnswer":{"@type":"Answer","text":"主要通过Pi Browser访问Pi生态内的应用。部分第三方平台也支持Pi支付。随着生态发展，接受Pi的商家数量持续增长。"}},{"@type":"Question","name":"用Pi币买东西划算吗？","acceptedAnswer":{"@type":"Answer","text":"取决于Pi的市场价格和商家定价。建议对比同款商品的法币价格，判断Pi支付是否划算。部分商家可能提供Pi支付专属折扣。"}}]}</script><link rel="stylesheet" href="site.css">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/tailwind.css">
+    <style>
+        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu { background: #2d1b3d; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
+        #mobile-menu { display: none; }
+        .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+        .step-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 2rem; }
+        .info-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 2rem; }
+        .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; }
+        .breadcrumb { font-size: 13px; color: #999; }
+        .breadcrumb a { color: #f4af47; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
+    </style>
+    <title>Pi币购物商城｜用Pi买东西/支付/商家汇总2026 | Pi Network 中文网</title><meta name="description" content="Pi币购物商城指南2026：Pi币能买东西吗、哪里可以用Pi购物、Pi生态购物应用、购物步骤、安全提示。"><link rel="canonical" href="https://pibizh.com/pi-shopping.html"><meta property="og:title" content="Pi币购物商城"><meta property="og:description" content="Pi币购物商城指南2026：Pi币能买东西吗、哪里可以用Pi购物、Pi生态购物应用、购物步骤、安全提示。"><meta property="og:type" content="article"><meta property="og:url" content="https://pibizh.com/pi-shopping.html"><meta property="og:image" content="/static/favicon.png"><meta property="og:locale" content="zh_CN"><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Pi币能买东西吗？","acceptedAnswer":{"@type":"Answer","text":"可以！Pi Network生态中已有多家商家接受Pi支付，包括线上商城、实体店铺和服务类商家。Pi Browser中可以浏览支持Pi支付的应用。"}},{"@type":"Question","name":"Pi币购物在哪里？","acceptedAnswer":{"@type":"Answer","text":"主要通过Pi Browser访问Pi生态内的应用。部分第三方平台也支持Pi支付。随着生态发展，接受Pi的商家数量持续增长。"}},{"@type":"Question","name":"用Pi币买东西划算吗？","acceptedAnswer":{"@type":"Answer","text":"取决于Pi的市场价格和商家定价。建议对比同款商品的法币价格，判断Pi支付是否划算。部分商家可能提供Pi支付专属折扣。"}}]}</script><link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
-</head><body class="hero-bg min-h-screen pt-24"><a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]"><span class="text-xl">🔥</span><div class="text-[10px] font-black leading-none uppercase">注册教程</div></a>    <!-- 导航栏 (1:1 官网结构复刻) -->
+</head>
+<body class="hero-bg min-h-screen">
+
+    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
+        <span class="text-xl">🔥</span>
+        <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
+    </a>
+        <!-- 导航栏 (1:1 官网结构复刻) -->
     <header class="fixed top-0 w-full z-[100] nav-blur border-b border-white/5">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
@@ -238,6 +255,7 @@
         </div>
     </div>
 
+
     <div class="container mx-auto px-6 py-3"><nav class="breadcrumb"><a href="index.html" class="hover:text-[#f4af47]">首页</a><span class="mx-2">›</span><a href="pi-guide.html" class="hover:text-[#f4af47]">📚 Pi百科</a><span class="mx-2">›</span><span class="text-gray-400">Pi购物商城</span></nav></div><section class="py-12 px-6"><div class="container mx-auto max-w-4xl">
 <h1 class="text-3xl md:text-5xl font-black tracking-tighter mb-6">Pi币<span class="text-pi-gold">购物</span>商城指南</h1>
 <p class="text-gray-400 text-lg mb-8 leading-relaxed">Pi币能买东西吗？哪里可以用Pi购物？支持Pi支付的商家和应用汇总。</p>
@@ -410,7 +428,8 @@
         <details class="step-card"><summary class="font-bold cursor-pointer">Pi购物的商品质量有保障吗？</summary><p class="mt-3 text-gray-300">取决于具体商家。Pi生态中的应用有自己的评价体系，建议优先选择好评多、交易量大的商家。遇到问题可在应用内投诉。</p></details>
     </div>
 </div>
-</div></section><section class="py-12 px-6"><div class="container mx-auto max-w-4xl"><h2 class="text-2xl font-black mb-6">📖 相关文章</h2><div class="grid grid-cols-2 md:grid-cols-4 gap-4"><a href="pi-sell.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">💸</span><span class="font-bold text-sm">Pi怎么卖</span></a><a href="wallet-guide.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">💳</span><span class="font-bold text-sm">钱包指南</span></a><a href="pi-withdraw.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">🏦</span><span class="font-bold text-sm">Pi提现</span></a><a href="pi-guide.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">📚</span><span class="font-bold text-sm">Pi百科</span></a></div></div></section><footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+</div></section><section class="py-12 px-6"><div class="container mx-auto max-w-4xl"><h2 class="text-2xl font-black mb-6">📖 相关文章</h2><div class="grid grid-cols-2 md:grid-cols-4 gap-4"><a href="pi-sell.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">💸</span><span class="font-bold text-sm">Pi怎么卖</span></a><a href="wallet-guide.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">💳</span><span class="font-bold text-sm">钱包指南</span></a><a href="pi-withdraw.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">🏦</span><span class="font-bold text-sm">Pi提现</span></a><a href="pi-guide.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">📚</span><span class="font-bold text-sm">Pi百科</span></a></div></div></section>
+    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
     <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
     <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
@@ -442,4 +461,3 @@
 </script>
 </body>
 </html>
-</body></html>

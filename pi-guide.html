@@ -2,22 +2,9 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi百科全书 | Pi币知识库/教程/问答 | Pi Network 中文网</title>
-    <meta name="description" content="Pi Network百科全书：Pi币怎么卖、安全吗、和比特币区别等知识文章汇总。一站式了解Pi所有常见问题。">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pibizh.com/pi-guide.html">
-    <meta property="og:title" content="Pi挖矿 | Pi Network 派币中文网 | 手机零成本挖矿">
-    <meta property="og:description" content="Pi Network 中文网 - 手机零成本Pi挖矿，填写邀请码nbjh即可开始。5500万先锋已加入。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pibizh.com/">
-    <meta property="og:image" content="/static/favicon.png">
-    <meta property="og:locale" content="zh_CN">
-    
-    
-    
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <link rel="stylesheet" href="/static/tailwind.css">
     <style>
@@ -30,28 +17,29 @@
         .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .dropdown-menu a:last-child { border-bottom: none; }
         .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
-        
         #mobile-menu { display: none; }
-
-        
         .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-        /* 首页资讯卡片（复用 blog.html 的卡片样式，便于自动同步） */
-        .blog-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 2.5rem; transition: all 0.3s; cursor: pointer; }
-        .blog-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+        .step-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 2rem; }
+        .info-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 2rem; }
+        .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; }
+        .breadcrumb { font-size: 13px; color: #999; }
+        .breadcrumb a { color: #f4af47; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
     </style>
-
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Pi百科全书","description":"Pi Network知识文章汇总","url":"https://pibizh.com/pi-guide.html"}</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
 </head>
 <body class="hero-bg min-h-screen">
-    <!-- 全局悬浮 -->
-    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47]" text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
+
+    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
         <span class="text-xl">🔥</span>
         <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
     </a>
-    <!-- 导航栏 (1:1 官网结构复刻) -->
+        <!-- 导航栏 (1:1 官网结构复刻) -->
     <header class="fixed top-0 w-full z-[100] nav-blur border-b border-white/5">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
@@ -267,9 +255,7 @@
         </div>
     </div>
 
-    <!-- 首屏 (PC+手机响应式布局) -->
-    
-    <div class="pt-24"></div>
+
     <div class="container mx-auto px-6 py-3"><nav class="text-sm text-gray-500"><a href="index.html" class="hover:text-[#f4af47]">首页</a><span class="mx-2">›</span><span class="text-gray-400">Pi百科</span></nav></div>
 
     <section class="py-16 px-6">
@@ -395,24 +381,19 @@
                     </div>
                 </section>
 </section>
-
-<footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
-    <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
-    <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
-    <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
-        <a href="reg.html" class="hover:text-[#f4af47]">Pi注册下载</a>
-        <a href="mining-tutorial.html" class="hover:text-white">手机挖矿教程</a>
-        <a href="wallet-guide.html" class="hover:text-white">钱包使用指南</a>
-        <a href="pi-guide.html" class="hover:text-[#f4af47]">📚 Pi百科</a>
-        <a href="price.html" class="hover:text-[#f4af47]">Pi实时价格</a>
-        <a href="kyc.html" class="hover:text-white">KYC认证教程</a>
-        <a href="pi-news.html" class="hover:text-white">Pi最新动态</a>
-        <a href="faq.html" class="hover:text-white">常见问题</a>
-        <a href="about.html" class="hover:text-white">关于我们</a>
+<!-- 移动端底部固定悬浮栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-[#1a1220]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
+        <div class="flex gap-3">
+            <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#1e0a27] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
+            <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.06.06 0 0 0-.02-.12c-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
+            </a>
+            <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            </a>
+        </div>
     </div>
-</footer>
-
-    <script>
+<script>
         // 首页自动展示资讯中心最新文章（从 blog.html 解析前 6 条）
         (async () => {
             try {
@@ -448,21 +429,21 @@
             }
         })();
     </script>
-
-    <!-- 移动端底部固定悬浮栏 -->
-    <div class="fixed bottom-0 left-0 right-0 bg-[#1a1220]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
-        <div class="flex gap-3">
-            <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#1e0a27] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
-            <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
-                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.06.06 0 0 0-.02-.12c-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
-            </a>
-            <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
-                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-            </a>
-        </div>
+    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+    <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
+    <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
+    <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
+        <a href="reg.html" class="hover:text-[#f4af47]">Pi注册下载</a>
+        <a href="mining-tutorial.html" class="hover:text-white">手机挖矿教程</a>
+        <a href="wallet-guide.html" class="hover:text-white">钱包使用指南</a>
+        <a href="pi-guide.html" class="hover:text-[#f4af47]">📚 Pi百科</a>
+        <a href="price.html" class="hover:text-[#f4af47]">Pi实时价格</a>
+        <a href="kyc.html" class="hover:text-white">KYC认证教程</a>
+        <a href="pi-news.html" class="hover:text-white">Pi最新动态</a>
+        <a href="faq.html" class="hover:text-white">常见问题</a>
+        <a href="about.html" class="hover:text-white">关于我们</a>
     </div>
-
-
+</footer>
 <script>
 (function(){
     var mm=document.getElementById('mobile-menu'),

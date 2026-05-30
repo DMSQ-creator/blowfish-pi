@@ -1,0 +1,32 @@
+    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+    <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
+    <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
+    <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
+        <a href="reg.html" class="hover:text-[#f4af47]">Pi注册下载</a>
+        <a href="mining-tutorial.html" class="hover:text-white">手机挖矿教程</a>
+        <a href="wallet-guide.html" class="hover:text-white">钱包使用指南</a>
+        <a href="pi-guide.html" class="hover:text-[#f4af47]">📚 Pi百科</a>
+        <a href="price.html" class="hover:text-[#f4af47]">Pi实时价格</a>
+        <a href="kyc.html" class="hover:text-white">KYC认证教程</a>
+        <a href="pi-news.html" class="hover:text-white">Pi最新动态</a>
+        <a href="faq.html" class="hover:text-white">常见问题</a>
+        <a href="about.html" class="hover:text-white">关于我们</a>
+    </div>
+</footer>
+<script>
+(function(){
+    var mm=document.getElementById('mobile-menu'),
+        mp=document.getElementById('m-panel'),
+        mo=document.getElementById('m-overlay'),
+        mb=document.getElementById('m-btn'),
+        mc=document.getElementById('m-close');
+    if(!mm||!mp||!mb||!mc) return;
+    function open(){mm.style.display='flex';requestAnimationFrame(function(){mp.style.transform='translateX(0)';});}
+    function close(){mp.style.transform='translateX(100%)';setTimeout(function(){mm.style.display='none';},350);}
+    mb.onclick=open;
+    mc.onclick=close;
+    if(mo) mo.onclick=close;
+})();
+</script>
+</body>
+</html>

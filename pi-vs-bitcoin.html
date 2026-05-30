@@ -5,8 +5,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi币和比特币有什么区别？Pi vs BTC全面对比 | 派币中文网</title>
-    <meta name="description" content="Pi币和比特币有什么不同？从挖矿方式、共识机制、市值、前景等8个维度全面对比Pi和BTC，帮你了解两种加密货币的核心差异。">
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <link rel="stylesheet" href="/static/tailwind.css">
     <style>
@@ -22,16 +20,15 @@
         #mobile-menu { display: none; }
         .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; overflow: visible; }
+        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
         .step-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
-        @media (max-width: 768px) { .step-card { padding: 1.5rem; padding-top: 1.75rem; } .step-num { position: static !important; display: inline-flex; margin-bottom: 0.75rem; } }
         .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 2rem; }
         .info-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 2rem; }
         .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; }
-        .compare-col { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 2rem; }
         .breadcrumb { font-size: 13px; color: #999; }
         .breadcrumb a { color: #f4af47; text-decoration: none; }
         .breadcrumb a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
     </style>
     <link rel="canonical" href="https://pibizh.com/pi-vs-bitcoin.html">
     <meta property="og:title" content="Pi币和比特币有什么区别？Pi vs BTC全面对比">
@@ -41,8 +38,13 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Pi币和比特币的主要区别是什么？","acceptedAnswer":{"@type":"Answer","text":"最核心的区别在于挖矿方式：比特币需要专业矿机（ASIC）消耗大量电力挖矿，而Pi只需要在手机上每日点击一次即可挖矿，能耗极低。此外比特币采用工作量证明（PoW），而Pi采用恒星共识协议（SCP），效率更高。"}},{"@type":"Question","name":"Pi的供应量是多少？","acceptedAnswer":{"@type":"Answer","text":"Pi的总量没有硬性上限，但挖矿速度会随着参与人数增加而递减，类似于黄金开采的边际成本递增逻辑。比特币总量固定为2100万枚，有明确的稀缺性设计。"}},{"@type":"Question","name":"Pi能像比特币一样值钱吗？","acceptedAnswer":{"@type":"Answer","text":"没有人能预测Pi的未来价格。比特币经过15年发展才达到当前市值，Pi于2019年启动，目前仍在生态建设阶段。其价值将取决于用户规模、生态应用、交易深度和市场需求。"}},{"@type":"Question","name":"Pi和比特币的共识机制有什么不同？","acceptedAnswer":{"@type":"Answer","text":"比特币使用工作量证明（PoW），需要矿机计算复杂数学题来竞争记账权，消耗大量电力。Pi使用恒星共识协议（SCP），通过信任网络达成共识，能源效率极高，不需要专业矿机。"}},{"@type":"Question","name":"应该投资Pi还是比特币？","acceptedAnswer":{"@type":"Answer","text":"两者风险等级不同。比特币是经过15年验证的加密货币龙头，流动性好，但价格波动仍然较大。Pi是新兴项目，潜力与风险并存。理性做法是：先用Pi免费挖矿积累代币，同时通过学习了解加密货币知识，再做投资决策。"}}]}</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
 </head>
+<body class="hero-bg min-h-screen">
 
-    <!-- 导航栏 (1:1 官网结构复刻) -->
+    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
+        <span class="text-xl">🔥</span>
+        <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
+    </a>
+        <!-- 导航栏 (1:1 官网结构复刻) -->
     <header class="fixed top-0 w-full z-[100] nav-blur border-b border-white/5">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
@@ -257,7 +259,7 @@
             </div>
         </div>
     </div>
-    <div class="pt-24"></div>
+
 
     <div class="container mx-auto max-w-5xl px-6 pt-6">
         <nav class="breadcrumb mb-6"><a href="index.html">首页</a> › <span class="text-gray-400">Pi vs 比特币</span></nav>
@@ -362,8 +364,7 @@
             </div>
         </div>
     </div>
-
-<footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
     <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
     <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">

@@ -2,35 +2,33 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi币怎么挖？手机免费挖矿教程2026（每日1分钟）| Pi Network 中文网</title>
-    <meta name="description" content="派币（Pi币）挖矿教程：手机零成本挖Pi币，每天点击一次闪电即可。详解Pi挖矿步骤、挖矿速率提升技巧、安全圈加成、挖矿收益计算，邀请码nbjh。">
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <link rel="stylesheet" href="/static/tailwind.css">
     <style>
-        body{background-color:#1e0a27;color:white;font-family:'Inter',sans-serif;margin:0;overflow-x:hidden}
-        .hero-bg{background:linear-gradient(135deg,#1e0a27 0%,#423f88 100%)}
-        .text-pi-gold{background:linear-gradient(90deg,#f4af47 0%,#fab44b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .nav-blur{background:rgba(30,10,39,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-        .dropdown:hover .dropdown-menu{display:block}
-        .dropdown-menu{background:#2d1b3d;border:1px solid rgba(255,255,255,0.2);border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,0.6)}
-        .dropdown-menu a{display:block;padding:12px 24px;font-size:14px;color:#ffffff!important;font-weight:600;transition:all 0.2s;border-bottom:1px solid rgba(255,255,255,0.05)}
-        .dropdown-menu a:last-child{border-bottom:none}
-        .dropdown-menu a:hover{background:rgba(244,175,71,0.15);color:#f4af47!important}
-        
+        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu { background: #2d1b3d; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
         #mobile-menu { display: none; }
-
-        
-        .fixed-cta{position:fixed;bottom:2rem;right:2rem;z-index:100;animation:bounce 2s infinite}
-        @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-        .step-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:2rem;transition:all 0.3s}
-        .step-card:hover{border-color:#f4af47;background:rgba(244,175,71,0.05);transform:translateY(-4px)}
-        .faq-item{border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;transition:all 0.3s}
-        .faq-item:hover{border-color:rgba(244,175,71,0.3)}
-        .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease}
-        .faq-item.open .faq-answer{max-height:300px;padding:0 1.5rem 1.5rem}
-        .faq-item.open .faq-arrow{transform:rotate(180deg)}
-        .faq-arrow{transition:transform 0.3s}
+        .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+        .step-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 2rem; }
+        .info-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 2rem; }
+        .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; }
+        .breadcrumb { font-size: 13px; color: #999; }
+        .breadcrumb a { color: #f4af47; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
     </style>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Pi挖矿完整教程","description":"手机零成本挖Pi币的完整步骤指南","step":[{"@type":"HowToStep","name":"下载Pi App","text":"从官方渠道下载Pi Network应用"},{"@type":"HowToStep","name":"手机号注册","text":"使用手机号注册Pi账号"},{"@type":"HowToStep","name":"填写邀请码","text":"填写邀请码nbjh完成注册"},{"@type":"HowToStep","name":"点击闪电开始挖矿","text":"点击App中的闪电图标开始挖矿"},{"@type":"HowToStep","name":"每24小时续期","text":"每24小时点击一次闪电续期挖矿"}]}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Pi挖矿要花钱吗？","acceptedAnswer":{"@type":"Answer","text":"完全免费。Pi挖矿不需要任何投资，只需每天点击一次闪电图标，不耗电不费流量。"}},{"@type":"Question","name":"Pi挖矿一天能挖多少？","acceptedAnswer":{"@type":"Answer","text":"基础挖矿速率会随时间递减，加入安全圈可提升速率。具体收益取决于当前阶段和个人贡献。"}},{"@type":"Question","name":"安全圈有什么用？","acceptedAnswer":{"@type":"Answer","text":"安全圈是Pi的共识机制核心，添加3-5个信任的先锋可提升挖矿速率最高100%。"}}]}</script>
@@ -43,7 +41,12 @@
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
 </head>
 <body class="hero-bg min-h-screen">
-    <!-- 导航栏 (1:1 官网结构复刻) -->
+
+    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
+        <span class="text-xl">🔥</span>
+        <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
+    </a>
+        <!-- 导航栏 (1:1 官网结构复刻) -->
     <header class="fixed top-0 w-full z-[100] nav-blur border-b border-white/5">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
@@ -258,11 +261,8 @@
             </div>
         </div>
     </div>
-    <div class="pt-24"></div>
-    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]"><span class="text-xl">🔥</span><div class="text-[10px] font-black leading-none uppercase">注册教程</div></a>
-    </section>
 
-    <!-- 第一部分：什么是Pi挖矿 -->
+
     <section class="pt-24 py-20 px-6 bg-black/40 border-y border-white/5 backdrop-blur-sm">
         <div class="container mx-auto
             <h1 class="text-4xl md:text-5xl font-black tracking-tighter mb-8">Pi 挖矿完整教程</h1> max-w-5xl">
@@ -411,8 +411,7 @@
 
     <script>
     </script>
-
-<footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
     <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
     <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
@@ -427,7 +426,6 @@
         <a href="about.html" class="hover:text-white">关于我们</a>
     </div>
 </footer>
-
 <script>
 (function(){
     var mm=document.getElementById('mobile-menu'),

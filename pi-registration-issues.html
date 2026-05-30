@@ -1,28 +1,45 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/png" href="/static/favicon.png"><link rel="stylesheet" href="/static/tailwind.css"><style>
-.hero-bg{background:linear-gradient(135deg,#1e0a27 0%,#423f88 100%)}
-.text-pi-gold{background:linear-gradient(90deg,#f4af47 0%,#fab44b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-blur{background:rgba(30,10,39,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-.dropdown:hover .dropdown-menu{display:block}
-.dropdown-menu{background:#2d1b3d;border:1px solid rgba(255,255,255,0.2);border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,0.6)}
-.dropdown-menu a{display:block;padding:12px 24px;font-size:14px;color:#ffffff!important;font-weight:600;transition:all 0.2s;border-bottom:1px solid rgba(255,255,255,0.05)}
-.dropdown-menu a:last-child{border-bottom:none}
-.dropdown-menu a:hover{background:rgba(244,175,71,0.15);color:#f4af47!important}
-#mobile-menu{display:none}
-.fixed-cta{position:fixed;bottom:2rem;right:2rem;z-index:100;animation:bounce 2s infinite}
-@keyframes bounce{0%,100%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
-}.step-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:2rem;transition:all 0.3s}
-.step-card:hover{border-color:#f4af47;background:rgba(244,175,71,0.05)}
-.warning-box{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.3);border-radius:20px;padding:2rem}
-.info-box{background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.3);border-radius:20px;padding:2rem}
-.section-card{padding:1.5rem}
-.breadcrumb{font-size:13px;color:#999}
-.breadcrumb a{color:#f4af47;text-decoration:none}
-.breadcrumb a:hover{text-decoration:underline}
-@media(max-width:768px){.step-card{padding:1.5rem}
-</style><title>Pi币注册常见问题｜注册不了/没真名/验证码 | Pi Network 中文网</title><meta name="description" content="Pi币注册常见问题解答：注册不了怎么办、没用真名怎么改、收不到验证码、邀请码填错、手机号问题，一篇全解决。"><link rel="canonical" href="https://pibizh.com/pi-registration-issues.html"><meta property="og:title" content="Pi币注册问题"><meta property="og:description" content="Pi币注册常见问题解答：注册不了怎么办、没用真名怎么改、收不到验证码、邀请码填错、手机号问题，一篇全解决。"><meta property="og:type" content="article"><meta property="og:url" content="https://pibizh.com/pi-registration-issues.html"><meta property="og:image" content="/static/favicon.png"><meta property="og:locale" content="zh_CN"><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Pi币注册不了怎么办？","acceptedAnswer":{"@type":"Answer","text":"常见原因：1）手机号已被注册；2）网络问题；3）App版本过旧；4）地区限制。建议更新App、切换网络、使用其他手机号重试。"}},{"@type":"Question","name":"Pi币注册没用真名怎么办？","acceptedAnswer":{"@type":"Answer","text":"在App个人资料中修改姓名为真实姓名即可。Pi允许修改姓名以配合KYC实名认证，但只能修改有限次数。"}},{"@type":"Question","name":"Pi币注册邀请码填错了怎么办？","acceptedAnswer":{"@type":"Answer","text":"邀请码在注册时填写，注册后无法修改。但邀请码不影响你的挖矿和收益，只是邀请人无法获得你的加成奖励。"}}]}</script><link rel="stylesheet" href="site.css">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/tailwind.css">
+    <style>
+        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu { background: #2d1b3d; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
+        #mobile-menu { display: none; }
+        .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+        .step-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 2rem; }
+        .info-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 2rem; }
+        .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; }
+        .breadcrumb { font-size: 13px; color: #999; }
+        .breadcrumb a { color: #f4af47; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
+    </style>
+    <title>Pi币注册常见问题｜注册不了/没真名/验证码 | Pi Network 中文网</title><meta name="description" content="Pi币注册常见问题解答：注册不了怎么办、没用真名怎么改、收不到验证码、邀请码填错、手机号问题，一篇全解决。"><link rel="canonical" href="https://pibizh.com/pi-registration-issues.html"><meta property="og:title" content="Pi币注册问题"><meta property="og:description" content="Pi币注册常见问题解答：注册不了怎么办、没用真名怎么改、收不到验证码、邀请码填错、手机号问题，一篇全解决。"><meta property="og:type" content="article"><meta property="og:url" content="https://pibizh.com/pi-registration-issues.html"><meta property="og:image" content="/static/favicon.png"><meta property="og:locale" content="zh_CN"><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Pi币注册不了怎么办？","acceptedAnswer":{"@type":"Answer","text":"常见原因：1）手机号已被注册；2）网络问题；3）App版本过旧；4）地区限制。建议更新App、切换网络、使用其他手机号重试。"}},{"@type":"Question","name":"Pi币注册没用真名怎么办？","acceptedAnswer":{"@type":"Answer","text":"在App个人资料中修改姓名为真实姓名即可。Pi允许修改姓名以配合KYC实名认证，但只能修改有限次数。"}},{"@type":"Question","name":"Pi币注册邀请码填错了怎么办？","acceptedAnswer":{"@type":"Answer","text":"邀请码在注册时填写，注册后无法修改。但邀请码不影响你的挖矿和收益，只是邀请人无法获得你的加成奖励。"}}]}</script><link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
-</head><body class="hero-bg min-h-screen pt-24"><a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]"><span class="text-xl">🔥</span><div class="text-[10px] font-black leading-none uppercase">注册教程</div></a>    <!-- 导航栏 (1:1 官网结构复刻) -->
+</head>
+<body class="hero-bg min-h-screen">
+
+    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
+        <span class="text-xl">🔥</span>
+        <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
+    </a>
+        <!-- 导航栏 (1:1 官网结构复刻) -->
     <header class="fixed top-0 w-full z-[100] nav-blur border-b border-white/5">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
@@ -238,6 +255,7 @@
         </div>
     </div>
 
+
     <div class="container mx-auto px-6 py-3"><nav class="breadcrumb"><a href="index.html" class="hover:text-[#f4af47]">首页</a><span class="mx-2">›</span><a href="pi-guide.html" class="hover:text-[#f4af47]">📚 Pi百科</a><span class="mx-2">›</span><span class="text-gray-400">注册问题</span></nav></div><section class="py-12 px-6"><div class="container mx-auto max-w-4xl">
 <h1 class="text-3xl md:text-5xl font-black tracking-tighter mb-6">Pi币<span class="text-pi-gold">注册</span>常见问题</h1>
 <p class="text-gray-400 text-lg mb-8 leading-relaxed">注册不了？没用真名？手机号收不到验证码？邀请码填错？所有注册问题一篇搞定。</p>
@@ -375,7 +393,8 @@
         <details class="step-card"><summary class="font-bold cursor-pointer">中国手机号能注册吗？</summary><p class="mt-3 text-gray-300">可以。中国手机号（+86）可以正常注册Pi。如果收不到验证码，尝试切换网络或稍后重试。</p></details>
     </div>
 </div>
-</div></section><section class="py-12 px-6"><div class="container mx-auto max-w-4xl"><h2 class="text-2xl font-black mb-6">📖 相关文章</h2><div class="grid grid-cols-2 md:grid-cols-4 gap-4"><a href="reg.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">📱</span><span class="font-bold text-sm">注册教程</span></a><a href="pi-download.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">📲</span><span class="font-bold text-sm">Pi下载</span></a><a href="pi-account-recovery.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">🔑</span><span class="font-bold text-sm">账号找回</span></a><a href="pi-guide.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">📚</span><span class="font-bold text-sm">Pi百科</span></a></div></div></section><footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+</div></section><section class="py-12 px-6"><div class="container mx-auto max-w-4xl"><h2 class="text-2xl font-black mb-6">📖 相关文章</h2><div class="grid grid-cols-2 md:grid-cols-4 gap-4"><a href="reg.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">📱</span><span class="font-bold text-sm">注册教程</span></a><a href="pi-download.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">📲</span><span class="font-bold text-sm">Pi下载</span></a><a href="pi-account-recovery.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">🔑</span><span class="font-bold text-sm">账号找回</span></a><a href="pi-guide.html" class="step-card block hover:border-[#f4af47]"><span class="text-2xl mb-2 block">📚</span><span class="font-bold text-sm">Pi百科</span></a></div></div></section>
+    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
     <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
     <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
@@ -407,4 +426,3 @@
 </script>
 </body>
 </html>
-</body></html>

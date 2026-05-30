@@ -2,20 +2,10 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="/static/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi最新消息动态 | 今日Pi Network进展 | 派币中文网</title>
-    <meta name="description" content="Pi最新消息、Pi今天新闻、Pi Network最新动态、派币最新进展。实时追踪Pi Network开放主网进展、KYC认证、价格行情、节点更新，一站式获取Pi派币今日资讯。">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pibizh.com/pi-news.html">
-    <meta property="og:title" content="Pi最新消息动态 | 今日Pi Network进展 | 派币中文网">
-    <meta property="og:description" content="Pi最新消息、Pi今天新闻、Pi Network最新动态、派币最新进展。实时追踪Pi Network开放主网进展。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pibizh.com/pi-news.html">
-    <meta property="og:image" content="https://pibizh.com/static/favicon.png">
-    <meta property="og:locale" content="zh_CN">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
     <link rel="stylesheet" href="/static/tailwind.css">
     <style>
         body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
@@ -27,29 +17,29 @@
         .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .dropdown-menu a:last-child { border-bottom: none; }
         .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
-        
         #mobile-menu { display: none; }
-
-        
         .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .blog-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 2.5rem; transition: all 0.3s; cursor: pointer; }
-        .blog-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
-        .timeline { position: relative; padding-left: 3rem; }
-        .timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #f4af47, rgba(244,175,71,0.1)); }
-        .timeline-item { position: relative; padding-bottom: 2.5rem; }
-        .timeline-item:last-child { padding-bottom: 0; }
-        .timeline-dot { position: absolute; left: -3rem; top: 4px; width: 12px; height: 12px; background: #f4af47; border-radius: 50%; border: 3px solid #1e0a27; box-shadow: 0 0 0 2px #f4af47; }
-        .timeline-item.highlight .timeline-dot { width: 16px; height: 16px; top: 2px; left: -3.1rem; box-shadow: 0 0 20px rgba(244,175,71,0.6); }
-        .cat-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; border-radius: 1rem; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); transition: all 0.3s; font-weight: 700; color: white; text-decoration: none; }
-        .cat-btn:hover { border-color: #f4af47; background: rgba(244,175,71,0.1); color: #f4af47; transform: translateY(-2px); }
+        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+        .step-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 2rem; }
+        .info-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 2rem; }
+        .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; }
+        .breadcrumb { font-size: 13px; color: #999; }
+        .breadcrumb a { color: #f4af47; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
     </style>
-
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Pi Network 最新动态","description":"Pi Network最新消息、官方公告、主网进展等动态汇总。","url":"https://pibizh.com/pi-news.html"}</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
 </head>
 <body class="hero-bg min-h-screen">
-    <!-- 导航栏 (1:1 官网结构复刻) -->
+
+    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
+        <span class="text-xl">🔥</span>
+        <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
+    </a>
+        <!-- 导航栏 (1:1 官网结构复刻) -->
     <header class="fixed top-0 w-full z-[100] nav-blur border-b border-white/5">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
@@ -264,20 +254,8 @@
             </div>
         </div>
     </div>
-    <div class="pt-24"></div>
-    <!-- 全局悬浮 -->
-    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
-        <span class="text-xl">🔥</span>
-        <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
-    </a>
 
-    <!-- 导航栏 -->
 
-    <!-- 手机侧边栏 -->
-        </div>
-    </section>
-
-    <!-- 第二部分：最新动态卡片网格 -->
     <section class="pt-24 py-28 px-6 bg-black/30 border-t border-white/5">
         <div class="container mx-auto
             <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-8">Pi Network <span class="text-pi-gold">最新动态</span></h1>
@@ -492,8 +470,7 @@
             </a>
         </div>
     </div>
-
-<footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
     <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
     <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
@@ -508,7 +485,6 @@
         <a href="about.html" class="hover:text-white">关于我们</a>
     </div>
 </footer>
-
 <script>
 (function(){
     var mm=document.getElementById('mobile-menu'),
