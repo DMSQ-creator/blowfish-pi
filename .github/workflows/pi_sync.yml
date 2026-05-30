@@ -33,6 +33,11 @@ jobs:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
         run: python scripts/pi_robot.py
 
+      - name: Build pages from templates
+        run: |
+          pip install pyyaml
+          python3 build.py
+
       - name: Commit and Push Changes
         run: |
           git config --global user.name "Pi Sync Robot"
