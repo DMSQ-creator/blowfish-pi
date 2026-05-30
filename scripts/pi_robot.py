@@ -22,9 +22,9 @@ BLOG_LIST_PAGE = "blog.html"
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "8190223294")
 
-LLM_API_KEY = os.environ.get("LLM_API_KEY", "")
-LLM_API_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
-LLM_MODEL = "qwen/qwen3.5-397b-a17b"
+LLM_API_KEY = os.environ.get("LLM_API_KEY", "L5c05RSdm4mgZyr3CaC8")
+LLM_API_URL = "https://api.modelverse.cn/v1/chat/completions"
+LLM_MODEL = "deepseek-chat"
 
 # 检查 token 是否配置
 if not TG_BOT_TOKEN:
