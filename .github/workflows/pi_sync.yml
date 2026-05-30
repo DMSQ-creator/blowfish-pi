@@ -46,6 +46,7 @@ jobs:
           git diff --quiet && git diff --staged --quiet || (git commit -m "Robot: 同步 MinePi.com 最新博文全文" && git push origin main)
 
       - name: Deploy to VPS
+        continue-on-error: true  # VPS慢时不阻塞整个流程
         uses: burnett01/rsync-deployments@6.0.0
         with:
           switches: -avz --delete --exclude='.git' --exclude='.github' --exclude='scripts' --exclude='.user.ini'
