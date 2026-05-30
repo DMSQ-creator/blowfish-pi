@@ -1,0 +1,147 @@
+# 页面元数据配置
+# build.py 从这里读取 title、description 等信息
+
+index:
+  title: "派币中文网 - Pi Network 中文第一站"
+  description: "Pi Network派币中文网，手机零成本挖矿，邀请码nbjh。Pi币最新价格、注册教程、挖矿教程、KYC认证、主网迁移一站式服务。"
+  body_class: ""  # 首页不需要 pt-24
+
+404:
+  title: "页面未找到 | 派币中文网"
+  description: "页面未找到"
+
+about:
+  title: "关于我们 | 派币中文网"
+  description: "派币中文网 - Pi Network中文社区，致力于为中文用户提供最全面的Pi币资讯、教程和服务。"
+
+blockchain:
+  title: "Pi区块链浏览器 - 查询交易与区块 | 派币中文网"
+  description: "Pi区块链浏览器，查询Pi Network交易记录、区块信息、钱包余额。"
+
+blog:
+  title: "Pi Network 官方新闻动态 | 派币中文网"
+  description: "Pi Network官方新闻动态中文翻译，第一时间了解Pi币最新公告、功能更新和生态进展。"
+
+browser:
+  title: "Pi浏览器下载与使用教程 | 派币中文网"
+  description: "Pi Browser浏览器下载安装教程，Pi生态系统入口，支持Pi App、钱包、KYC等功能。"
+
+developers:
+  title: "Pi开发者中心 - SDK与API文档 | 派币中文网"
+  description: "Pi Network开发者中心，Pi SDK集成文档、Pi App Studio开发工具、开发者社区。"
+
+faq:
+  title: "Pi币常见问题解答FAQ | 派币中文网"
+  description: "Pi Network常见问题汇总，注册、挖矿、KYC、提现、交易等问题解答。"
+
+kyc:
+  title: "Pi币KYC认证教程 - 通过身份验证 | 派币中文网"
+  description: "Pi Network KYC身份认证教程，KYC申请流程、所需材料、常见失败原因及解决方法。"
+
+mining-tutorial:
+  title: "Pi币挖矿教程 - 每天点一点免费挖币 | 派币中文网"
+  description: "Pi币挖矿教程，手机零成本挖Pi币，每天点击闪电按钮即可，挖矿速率提升技巧。"
+
+nodes:
+  title: "Pi节点搭建教程 - 运行Node赚取更多 | 派币中文网"
+  description: "Pi Network节点搭建教程，运行Pi Node赚取更多Pi币，节点配置要求和部署步骤。"
+
+pi-account-recovery:
+  title: "Pi币账号找回教程2026｜忘记密码/丢失助记词恢复方法 | 派币中文网"
+  description: "Pi币账号找回教程，忘记密码、丢失助记词、手机丢失等情况下恢复Pi账号。"
+
+pi-community:
+  title: "Pi币微信群/QQ群/Telegram社群汇总2026｜加入Pi中文社区 | 派币中文网"
+  description: "Pi Network中文社群汇总，微信群、QQ群、Telegram交流群，加入Pi中文社区。"
+
+pi-download:
+  title: "Pi币App下载安装教程｜安卓/iOS最新版2026 | 派币中文网"
+  description: "Pi币App下载安装教程2026，安卓APK直装包下载，iOS安装步骤，常见问题解答。"
+
+pi-guide:
+  title: "Pi百科首页 - 新手入门到精通 | 派币中文网"
+  description: "Pi Network百科全书，从注册到挖矿、KYC、主网迁移，一站式Pi币知识库。"
+
+pi-identity-verify:
+  title: "Pi币KYC身份认证教程2026｜实名验证完整流程 | 派币中文网"
+  description: "Pi币KYC身份认证教程，实名验证完整流程、所需材料、常见失败原因。"
+
+pi-legal:
+  title: "Pi币在中国合法吗？2026最新政策解读 | 派币中文网"
+  description: "Pi币在中国合法吗？全面分析Pi Network在中国的法律地位、挖矿合规性。"
+
+pi-legit:
+  title: "Pi币安全吗？投资风险分析 | 派币中文网"
+  description: "Pi Network安全吗？Pi币是否是骗局？项目真实性分析和风险评估。"
+
+pi-lockup:
+  title: "Pi币锁仓教程｜怎么锁仓最划算？锁仓收益率计算2026 | 派币中文网"
+  description: "Pi币锁仓教程，锁仓百分比选择、锁仓时间策略、收益率计算，怎么锁仓最划算。"
+
+pi-mainnet:
+  title: "Pi主网最新进展与开放网络动态 | 派币中文网"
+  description: "Pi Network主网最新进展，开放网络动态、映射进度、主网功能更新。"
+
+pi-migration:
+  title: "Pi币主网迁移教程2026｜映射到主网完整流程 | 派币中文网"
+  description: "Pi币主网迁移教程，映射到主网完整流程、迁移前提条件、排队机制。"
+
+pi-mining-calculator:
+  title: "Pi币挖矿收益计算器2026｜每日/每月/每年产出估算 | 派币中文网"
+  description: "Pi币挖矿收益计算器，输入挖矿速率自动计算每日每月每年Pi币产出。"
+
+pi-news:
+  title: "Pi币最新动态与资讯汇总 | 派币中文网"
+  description: "Pi Network最新动态汇总，官方公告、功能更新、社区活动、价格走势。"
+
+pi-price-prediction:
+  title: "Pi币价格预测2026-2030｜能涨到多少？ | 派币中文网"
+  description: "Pi币价格预测2026-2030，三种情景分析，Pi币能涨到多少钱。"
+
+pi-registration-issues:
+  title: "Pi币注册常见问题｜注册不了/没真名/验证码 | 派币中文网"
+  description: "Pi Network注册常见问题，注册不了、验证码收不到、姓名填错等解决方法。"
+
+pi-security-circle:
+  title: "Pi币安全圈是什么？怎么加/有什么用｜完整教程2026 | 派币中文网"
+  description: "Pi币安全圈教程，安全圈是什么、怎么添加成员、挖矿速率加成计算。"
+
+pi-sell:
+  title: "Pi币怎么卖？交易与变现指南 | 派币中文网"
+  description: "Pi币怎么卖？Pi币交易变现完整指南，交易所出售、场外交易、商家支付。"
+
+pi-shopping:
+  title: "Pi币购物商城｜用Pi买东西/支付/商家汇总2026 | 派币中文网"
+  description: "Pi币购物商城汇总，用Pi买东西、Pi支付商家、Pi电商平台。"
+
+pi-vs-bitcoin:
+  title: "Pi币 vs 比特币 - 区别与对比分析 | 派币中文网"
+  description: "Pi币和比特币的对比分析，挖矿方式、共识机制、价值前景全方位比较。"
+
+pi-withdraw:
+  title: "Pi币怎么提现？提币到交易所完整教程2026 | 派币中文网"
+  description: "Pi币提现教程，提币到交易所完整流程、手续费、到账时间。"
+
+price:
+  title: "Pi币实时价格行情 - OKX走势图 | 派币中文网"
+  description: "Pi币实时价格行情，OKX PI/USDT走势图，24h涨跌、成交量、历史价格。"
+
+reg:
+  title: "Pi Network 注册教程2026｜保姆级下载安装注册流程 | 派币中文网"
+  description: "Pi Network注册教程2026最新版，保姆级下载安装注册流程，邀请码nbjh。"
+
+roadmap:
+  title: "Pi Network 路线图与发展规划 | 派币中文网"
+  description: "Pi Network路线图，项目发展规划、里程碑进度、未来功能计划。"
+
+search:
+  title: "站内搜索 | 派币中文网"
+  description: "派币中文网站内搜索"
+
+technical-whitepaper:
+  title: "Pi Network 技术白皮书 | 派币中文网"
+  description: "Pi Network技术白皮书中文版，共识算法、安全圈机制、经济模型。"
+
+wallet-guide:
+  title: "Pi钱包使用教程 - 转账与收款指南 | 派币中文网"
+  description: "Pi钱包使用教程，转账收款、钱包安全、助记词备份完整指南。"

@@ -129,13 +129,36 @@ def extract_page_content(html_path):
     return page_content
 
 
-def extract_head_extras(html_path):
-    """Extract page-specific head content (title, meta, ld+json) from an existing HTML file."""
+def extract_head_extras(html_path, page_meta=None):
+    """Extract page-specific head content. Use pages.yml if available, fallback to HTML parsing."""
+    fname = os.path.basename(html_path).replace('.html', '')
+    
+    # If we have metadata from pages.yml, use it
+    if page_meta:
+        title = page_meta.get('title', f'{fname} | 派币中文网')
+        desc = page_meta.get('description', '')
+        body_extra = ''
+        if page_meta.get('body_class') == '':
+            body_extra = ''  # no pt-24
+        else:
+            body_extra = ' pt-24'
+        
+        canonical = f'https://pibizh.com/{fname}.html'
+        head_extra = f'''    <title>{title}</title>
+    <meta name="description" content="{desc}">
+    <link rel="canonical" href="{canonical}">
+    <meta property="og:title" content="{title}">
+    <meta property="og:description" content="{desc}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{canonical}">
+    <meta property="og:image" content="/static/favicon.png">
+    <meta property="og:locale" content="zh_CN">'''
+        return head_extra, body_extra
+    
+    # Fallback: extract from HTML file
     with open(html_path, "r", encoding="utf-8") as f:
         content = f.read()
     
-    # Find everything between </style> and <link rel="stylesheet" href="https://fonts.loli.net
-    # This is the page-specific meta area
     head_start = content.find("</style>")
     if head_start == -1:
         return "", ""
@@ -146,23 +169,21 @@ def extract_head_extras(html_path):
     
     head_extra = content[head_start + len("</style>"):head_end].strip()
     
-    # Also check for body class
     body_match = re.search(r'<body class="([^"]*)"', content)
     body_class = body_match.group(1) if body_match else "hero-bg min-h-screen pt-24"
     
-    # Remove "hero-bg min-h-screen" base classes, keep extras
     base_classes = {"hero-bg", "min-h-screen", "pt-24"}
     extra_classes = [c for c in body_class.split() if c not in base_classes]
     body_extra = (" " + " ".join(extra_classes)) if extra_classes else ""
     if "pt-24" not in body_class:
-        body_extra = ""  # index.html doesn't have pt-24
+        body_extra = ""
     
     return head_extra, body_extra
 
 
-def build_page(page_file, source_html):
+def build_page(page_file, source_html, page_meta=None):
     """Build a single page from source HTML using templates."""
-    head_extra, body_extra = extract_head_extras(source_html)
+    head_extra, body_extra = extract_head_extras(source_html, page_meta)
     page_content = extract_page_content(source_html)
     
     # Assemble the page
@@ -177,6 +198,14 @@ def build_page(page_file, source_html):
 
 
 def main():
+    # Load page metadata from pages.yml
+    pages_yml_path = PAGES_DIR / "pages.yml"
+    page_metas = {}
+    if pages_yml_path.exists():
+        with open(pages_yml_path, "r", encoding="utf-8") as f:
+            page_metas = yaml.safe_load(f) or {}
+        print(f"Loaded {len(page_metas)} page metas from pages.yml")
+    
     # Find all HTML files in root that should be rebuilt
     # Skip: 404.html (special), blog/ (separate handling)
     html_files = sorted(BASE_DIR.glob("*.html"))
@@ -213,7 +242,11 @@ def main():
             shutil.copy2(html_path, backup_dir / name)
         
         # Build the page
-        built_html = build_page(name, str(html_path))
+        # Get page metadata
+        page_key = name.replace('.html', '')
+        meta = page_metas.get(page_key)
+        
+        built_html = build_page(name, str(html_path), meta)
         
         # Write output
         with open(html_path, "w", encoding="utf-8") as f:
