@@ -1,4 +1,53 @@
-    <!-- 导航栏 (1:1 官网结构复刻) -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/tailwind.css">
+    <style>
+        body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
+        .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu { background: #2d1b3d; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover { background: rgba(244,175,71,0.15); color: #f4af47 !important; }
+        #mobile-menu { display: none; }
+        .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+        .step-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 2rem; }
+        .info-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 2rem; }
+        .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; }
+        .breadcrumb { font-size: 13px; color: #999; }
+        .breadcrumb a { color: #f4af47; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
+    </style>
+    <title>Pi币在中国合法吗？2026最新政策解读 | Pi Network 中文网</title>
+    <meta name="description" content="Pi币账号找回教程2026年最新政策解读，中国对加密货币监管态度、Pi币法律定位、挖矿和交易风险分析，帮你全面了解Pi的法律风险。">
+    <link rel="canonical" href="https://pibizh.com/pi-account-recovery.html">
+    <meta property="og:title" content="Pi币账号找回教程">
+    <meta property="og:description" content="Pi币账号找回教程2026年最新政策解读，中国对加密货币监管态度、Pi币法律定位、挖矿和交易风险分析，帮你全面了解Pi的法律风险。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://pibizh.com/pi-legal.html">
+    <meta property="og:image" content="/static/favicon.png">
+    <meta property="og:locale" content="zh_CN">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Pi币账号找回教程","description":"手把手教你找回Pi账号","step":[{"@type":"HowToStep","name":"尝试密码找回","text":"通过Pi App的忘记密码功能重置密码"},{"@type":"HowToStep","name":"使用助记词恢复","text":"用24个助记词在Pi Wallet中恢复钱包"},{"@type":"HowToStep","name":"联系客服","text":"通过Pi官方支持渠道提交账号恢复申请"}]}</script>
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
+</head>
+<body class="hero-bg min-h-screen pt-24">
+    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
+        <span class="text-xl">🔥</span>
+        <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
+    </a>
+        <!-- 导航栏 (1:1 官网结构复刻) -->
     <header class="fixed w-full z-[100] nav-blur border-b border-white/5">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
