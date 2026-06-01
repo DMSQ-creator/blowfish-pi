@@ -30,13 +30,13 @@
         .breadcrumb a:hover { text-decoration: underline; }
         @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
     </style>
-        <title>Pi币实时价格行情 - OKX走势图 | 派币中文网</title>
-    <meta name="description" content="Pi币实时价格行情，OKX PI/USDT走势图，24h涨跌、成交量、历史价格。">
-    <link rel="canonical" href="https://pibizh.com/price.html">
-    <meta property="og:title" content="Pi币实时价格行情 - OKX走势图 | 派币中文网">
-    <meta property="og:description" content="Pi币实时价格行情，OKX PI/USDT走势图，24h涨跌、成交量、历史价格。">
+        <title>Pi币最新动态与资讯汇总 | 派币中文网</title>
+    <meta name="description" content="Pi Network最新动态汇总，官方公告、功能更新、社区活动、价格走势。">
+    <link rel="canonical" href="https://pibizh.com/pi-news.html">
+    <meta property="og:title" content="Pi币最新动态与资讯汇总 | 派币中文网">
+    <meta property="og:description" content="Pi Network最新动态汇总，官方公告、功能更新、社区活动、价格走势。">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://pibizh.com/price.html">
+    <meta property="og:url" content="https://pibizh.com/pi-news.html">
     <meta property="og:image" content="/static/favicon.png">
     <meta property="og:locale" content="zh_CN">
   <!-- Chart.js CDN (for price page charts) -->
@@ -237,479 +237,207 @@
     </div>
 
 
-    <main class="pt-28 pb-20 px-4">
-    <section class="container mx-auto max-w-[1600px]">
-      <div class="glass rounded-[36px] p-6 md:p-10 shadow-[0_0_120px_rgba(244,175,71,0.12)]">
-        <div class="flex flex-col gap-10">
-          <div class="w-full">
-            <h1 class="text-5xl md:text-6xl font-black tracking-tighter leading-[1.05]">派币 <span class="text-pi-gold italic">实时价格</span></h1>
-            <p class="text-gray-300 mt-6 max-w-2xl">自动拉取交易所公开行情（无需翻墙），展示最新价、24H涨跌、成交量，并提供价格曲线。</p>
+    <section class="pt-24 py-28 px-6 bg-black/30 border-t border-white/5">
+        <div class="container mx-auto
+            <h1 class="text-4xl md:text-6xl font-black tracking-tighter mb-8">Pi Network <span class="text-pi-gold">最新动态</span></h1>
+            <div class="max-w-4xl mx-auto mt-8">
+                <p class="text-gray-400 text-lg mb-8">Pi Network最新动态汇总，包括官方公告、主网进展、KYC更新、生态发展等核心资讯。</p>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
-              <!-- 为避免小屏溢出，数值允许换行/截断 -->
-              <div class="metric rounded-2xl p-5">
-                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">最新价 (USDT)</div>
-                <div id="m-last" class="text-2xl font-black mt-2 skeleton rounded-lg h-8"></div>
-              </div>
-              <div class="metric rounded-2xl p-5">
-                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">24H 涨跌</div>
-                <div id="m-change" class="text-2xl font-black mt-2 skeleton rounded-lg h-8"></div>
-              </div>
-              <div class="metric rounded-2xl p-5">
-                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">24H 最高 / 最低</div>
-                <div id="m-hl" class="text-base font-black mt-3 skeleton rounded-lg h-7 break-words"></div>
-              </div>
-              <div class="metric rounded-2xl p-5">
-                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">24H 成交量 (PI)</div>
-                <div id="m-vol" class="text-base font-black mt-3 skeleton rounded-lg h-7 break-words"></div>
-              </div>
-            </div>
-
-            <div class="mt-10 flex flex-wrap items-center gap-3">
-              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="5m" data-limit="120">5分钟</button>
-              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="1H" data-limit="168">1小时</button>
-              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="4H" data-limit="180">4小时</button>
-              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="1D" data-limit="200">日线</button>
-              <span id="updated" class="text-xs text-white/50 font-bold ml-2 whitespace-nowrap"></span>
-            </div>
-          </div>
-
-          <div class="w-full">
-            <div class="metric rounded-[28px] p-6">
-              <div class="flex items-center justify-between gap-4 mb-4">
-                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">PI/USDT</div>
-                <a class="text-[#f4af47] text-xs font-black hover:underline whitespace-nowrap" href="blog.html">去看资讯 →</a>
-              </div>
-              <canvas id="chart" height="520"></canvas>
-              <div class="mt-4 text-[10px] text-white/40 font-bold">声明：行情来自公开接口，仅供参考，不构成投资建议。</div>
-            </div>
-          </div>
-
-          <!-- 弹幕区域 -->
-          <div class="w-full">
-            <div class="metric rounded-[28px] p-6 relative overflow-hidden" style="min-height:220px;">
-              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
-                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">💬 实时弹幕 · 说说你对 PI 的看法</div>
-                <div class="flex items-center gap-2">
-                  <button id="dm-toggle" class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-black hover:border-[#f4af47]/60 transition-all">弹幕 ON</button>
-                </div>
-              </div>
-
-              <!-- 弹幕画布 -->
-              <div id="dm-stage" class="relative w-full overflow-hidden" style="height:160px;"></div>
-
-              <!-- 发送栏 -->
-              <div class="flex items-center gap-3 mt-4">
-                <input id="dm-input" type="text" maxlength="30" placeholder="发一条弹幕（最多30字）" class="flex-1 bg-white/5 border border-white/10 rounded-full px-5 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-[#f4af47]/60 transition-all" />
-                <button id="dm-send" class="bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl whitespace-nowrap">发送</button>
-              </div>
-              <div id="dm-cooldown" class="text-[10px] text-white/30 mt-2 hidden">冷却中…请稍后再发</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-  <script>
-    const OKX = {
-      ticker: (instId) => `https://www.okx.com/api/v5/market/ticker?instId=${encodeURIComponent(instId)}`,
-      candles: (instId, bar, limit) => `https://www.okx.com/api/v5/market/candles?instId=${encodeURIComponent(instId)}&bar=${encodeURIComponent(bar)}&limit=${encodeURIComponent(limit)}`
-    };
-
-    const instId = 'PI-USDT';
-
-    function fmt(n, digits=4){
-      const x = Number(n);
-      if (!Number.isFinite(x)) return '-';
-      return x.toFixed(digits);
-    }
-
-    function pct(n, digits=2){
-      const x = Number(n);
-      if (!Number.isFinite(x)) return '-';
-      const s = (x >= 0 ? '+' : '') + x.toFixed(digits) + '%';
-      return s;
-    }
-
-    function setBox(id, text, cls){
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.classList.remove('skeleton','h-8','h-7','rounded-lg');
-      el.textContent = text;
-      el.className = el.className.replace(/text-\w+-\d+/g,'');
-      if (cls) el.classList.add(...cls.split(' '));
-    }
-
-    async function loadTicker(){
-      const res = await fetch(OKX.ticker(instId), { cache: 'no-store' });
-      const j = await res.json();
-      const d = j?.data?.[0];
-      if (!d) throw new Error('ticker empty');
-
-      const last = Number(d.last);
-      const open = Number(d.open24h);
-      const changePct = open ? ((last - open) / open) * 100 : 0;
-
-      setBox('m-last', fmt(last, 4), '');
-      setBox('m-change', pct(changePct, 2), changePct >= 0 ? 'text-green-400' : 'text-red-400');
-      setBox('m-hl', `${fmt(d.high24h,4)} / ${fmt(d.low24h,4)}`, '');
-      setBox('m-vol', `${Number(d.vol24h).toLocaleString()}`, '');
-
-      const up = document.getElementById('updated');
-      if (up) {
-        const now = new Date();
-        const pad = n => String(n).padStart(2,'0');
-        up.textContent = `更新：${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-      }
-    }
-
-    let chart;
-    async function loadCandles(bar='1H', limit=168){
-      const res = await fetch(OKX.candles(instId, bar, limit), { cache: 'no-store' });
-      const j = await res.json();
-      const data = (j?.data || []).map(row => ({
-        t: new Date(Number(row[0])),
-        o: Number(row[1]),
-        h: Number(row[2]),
-        l: Number(row[3]),
-        c: Number(row[4])
-      })).reverse();
-
-      const labels = data.map(x => {
-        const d = x.t;
-        const pad = n => String(n).padStart(2,'0');
-        // short label depending on bar interval
-        if (['1D','1W','1M'].includes(bar)) {
-          return `${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-        }
-        return `${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
-      });
-      const closes = data.map(x => x.c);
-
-      const ctx = document.getElementById('chart');
-      if (!ctx) return;
-
-      if (chart) chart.destroy();
-      // ensure the container height is stable
-      const parent = ctx.parentElement;
-      if (parent) parent.style.height = '520px';
-
-      chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels,
-          datasets: [{
-            label: 'PI/USDT',
-            data: closes,
-            borderColor: '#f4af47',
-            backgroundColor: 'rgba(244,175,71,0.10)',
-            fill: true,
-            tension: 0.22,
-            pointRadius: 0
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              mode: 'index',
-              intersect: false,
-              callbacks: {
-                label: (ctx) => `  ${ctx.parsed.y?.toFixed(4)}`
-              }
-            }
-          },
-          scales: {
-            x: {
-              ticks: { color: 'rgba(255,255,255,0.55)', maxTicksLimit: 6 },
-              grid: { color: 'rgba(255,255,255,0.06)' }
-            },
-            y: {
-              ticks: { color: 'rgba(255,255,255,0.55)' },
-              grid: { color: 'rgba(255,255,255,0.06)' }
-            }
-          }
-        }
-      });
-    }
-
-    function setActiveRange(btn){
-      document.querySelectorAll('.range').forEach(b => b.classList.remove('border-[#f4af47]','bg-[#f4af47]/15'));
-      btn.classList.add('border-[#f4af47]','bg-[#f4af47]/15');
-    }
-
-    async function refreshAll(bar='1H', limit=168){
-      await Promise.all([loadTicker(), loadCandles(bar, limit)]);
-    }
-
-    // init
-    document.querySelectorAll('.range').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        setActiveRange(btn);
-        await refreshAll(btn.dataset.bar, Number(btn.dataset.limit || 168));
-      });
-    });
-
-    (async () => {
-      // If Chart.js fails to load (CDN blocked/slow), show a friendly message instead of endless blank space.
-      if (typeof window.Chart === 'undefined') {
-        const up = document.getElementById('updated');
-        if (up) up.textContent = '图表组件加载失败（CDN 不可用），请稍后刷新或更换网络。';
-        return;
-      }
-
-      const first = document.querySelector('.range[data-bar="1H"]') || document.querySelector('.range');
-      if (first) setActiveRange(first);
-      await refreshAll('1H', 168);
-      // refresh ticker periodically
-      setInterval(() => loadTicker().catch(()=>{}), 15000);
-    })().catch(err => {
-      console.error(err);
-      const up = document.getElementById('updated');
-      if (up) up.textContent = '加载失败：请稍后刷新。';
-    });
-  </script>
-
-
-
-</div>
-      </div>
-    </section>
-    </div>
-  </main>
-
-    <div class="max-w-4xl mx-auto px-6 pb-8">
-                <section class="mb-12">
-                    <h2 class="text-2xl font-black mb-6 text-pi-gold">📊 Pi价格影响因素</h2>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="step-card">
-                            <div class="text-3xl mb-3">🌍</div>
-                            <h3 class="font-bold text-white mb-2">生态发展</h3>
-                            <p style="margin-bottom:0;font-size:0.95rem;color:#94a3b8;">更多商家接受Pi支付、更多DApp上线 = Pi使用价值增加 = 价格上涨</p>
-                        </div>
-                        <div class="step-card">
-                            <div class="text-3xl mb-3">👥</div>
-                            <h3 class="font-bold text-white mb-2">用户增长</h3>
-                            <p style="margin-bottom:0;font-size:0.95rem;color:#94a3b8;">活跃用户越多，共识越强，Pi的网络效应越明显，对价格形成支撑</p>
-                        </div>
-                        <div class="step-card">
-                            <div class="text-3xl mb-3">🏦</div>
-                            <h3 class="font-bold text-white mb-2">交易所上线</h3>
-                            <p style="margin-bottom:0;font-size:0.95rem;color:#94a3b8;">更多交易所上线Pi交易对，流动性增加，价格发现更充分</p>
-                        </div>
-                        <div class="step-card">
-                            <div class="text-3xl mb-3">🔐</div>
-                            <h3 class="font-bold text-white mb-2">锁仓比例</h3>
-                            <p style="margin-bottom:0;font-size:0.95rem;color:#94a3b8;">高锁仓比例减少流通量，供给减少在需求不变时推高价格</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Pi价格历史 -->
-                <section class="mb-12">
-                    <h2 class="text-2xl font-black mb-6 text-pi-gold">📈 Pi价格历史里程碑</h2>
-                    <div class="space-y-3">
-                        <div class="step-card flex gap-4 items-start">
-                            <div class="bg-[#f4af47] text-[#1e0a27] px-3 py-1 rounded-lg font-bold text-sm flex-shrink-0">2019</div>
-                            <div><p style="margin-bottom:0;font-size:0.95rem;color:#cbd5e1;">Pi Network项目启动，内测阶段无交易价格</p></div>
-                        </div>
-                        <div class="step-card flex gap-4 items-start">
-                            <div class="bg-[#f4af47] text-[#1e0a27] px-3 py-1 rounded-lg font-bold text-sm flex-shrink-0">2022</div>
-                            <div><p style="margin-bottom:0;font-size:0.95rem;color:#cbd5e1;">IOU期货在部分交易所出现，价格曾达$200+（非真实Pi交易）</p></div>
-                        </div>
-                        <div class="step-card flex gap-4 items-start">
-                            <div class="bg-[#f4af47] text-[#1e0a27] px-3 py-1 rounded-lg font-bold text-sm flex-shrink-0">2025.2</div>
-                            <div><p style="margin-bottom:0;font-size:0.95rem;color:#cbd5e1;">开放主网正式启动，Pi开始在OKX等交易所真实交易</p></div>
-                        </div>
-                        <div class="step-card flex gap-4 items-start">
-                            <div class="bg-[#f4af47] text-[#1e0a27] px-3 py-1 rounded-lg font-bold text-sm flex-shrink-0">2026</div>
-                            <div><p style="margin-bottom:0;font-size:0.95rem;color:#cbd5e1;">持续迁移中，价格随市场供需波动。关注上方实时行情</p></div>
-                        </div>
-                    </div>
-                </section>
+                <!-- Pi新闻分类解读 -->
+                
 
                 <!-- 常见问题 -->
                 <section class="mb-8">
                     <h2 class="text-2xl font-black mb-6 text-pi-gold">❓ 常见问题</h2>
                     <div class="space-y-4">
                         <details class="step-card">
-                            <summary class="font-bold text-white cursor-pointer">Pi币现在多少钱一个？</summary>
-                            <p class="mt-3" style="font-size:0.95rem;color:#cbd5e1;">Pi的实时价格请查看上方行情组件，数据来自OKX交易所PI/USDT交易对。价格24小时实时波动。</p>
+                            <summary class="font-bold text-white cursor-pointer">Pi最近有什么重大更新？</summary>
+                            <p class="mt-3 text-gray-300 text-sm">Pi Network已于2025年2月开放主网，目前正在进行分批KYC和迁移。最新进展请关注我们的动态页面或Pi App内公告。</p>
                         </details>
                         <details class="step-card">
-                            <summary class="font-bold text-white cursor-pointer">Pi能涨到100美元吗？</summary>
-                            <p class="mt-3" style="font-size:0.95rem;color:#cbd5e1;">取决于Pi生态发展。如果Pi被大规模使用于支付和商业场景，价格上涨是有可能的。但没有人能准确预测，请理性看待。详见<a href="pi-price-prediction.html" class="text-[#f4af47]">价格预测</a>。</p>
+                            <summary class="font-bold text-white cursor-pointer">怎么辨别Pi假消息？</summary>
+                            <p class="mt-3 text-gray-300 text-sm">只相信Pi App内通知和minepi.com官网的信息。社交媒体上的"内部消息"大多是谣言或骗局。遇到重大消息，先去官方渠道核实。</p>
                         </details>
                     </div>
                 </section>
-    </div>
+            </div>
+ max-w-6xl">
+            <div class="flex items-end justify-between gap-6 mb-12">
+                <div>
+                    <div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47] mb-3">Latest News</div>
+                    
+                <section class="mb-12 max-w-6xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-6">📰 Pi新闻分类解读</h2>
+                    <p class="text-gray-400 text-sm mb-4">Pi Network信息繁杂，不同类型的消息对你的影响完全不同。学会分类解读：</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="step-card">
+                            <div class="text-3xl mb-3">📢</div>
+                            <h3 class="font-bold text-white mb-2">官方公告（必读）</h3>
+                            <p class="text-gray-400 text-sm">Pi核心团队发布的重要更新，包括主网进展、KYC政策调整、新功能上线。这些公告直接影响你的Pi资产和操作，务必第一时间阅读。</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="text-3xl mb-3">✅</div>
+                            <h3 class="font-bold text-white mb-2">KYC与迁移动态</h3>
+                            <p class="text-gray-400 text-sm">KYC审核进度更新、迁移批次开放、审核规则变化。直接决定你什么时候能把Pi转到主网钱包。建议定期查看Pi App中KYC页面状态变化。</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="text-3xl mb-3">🌍</div>
+                            <h3 class="font-bold text-white mb-2">生态发展</h3>
+                            <p class="text-gray-400 text-sm">新DApp上线、商家入驻Pi支付、生态基金动态等。生态越繁荣，Pi使用场景越多，长期价值越大。</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="text-3xl mb-3">💱</div>
+                            <h3 class="font-bold text-white mb-2">市场行情</h3>
+                            <p class="text-gray-400 text-sm">Pi价格波动、新交易所上线、交易量变化等。市场数据帮助你判断变现时机，但不要被短期波动影响。</p>
+                        </div>
+                    </div>
+                </section>
 
-  <!-- 弹幕系统 -->
-  <script>
-    (() => {
-      const stage = document.getElementById('dm-stage');
-      const input = document.getElementById('dm-input');
-      const sendBtn = document.getElementById('dm-send');
-      const toggleBtn = document.getElementById('dm-toggle');
-      const cooldownEl = document.getElementById('dm-cooldown');
-      if (!stage || !input || !sendBtn) return;
+                <section class="mb-12 max-w-6xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-6">🔔 获取Pi最新消息</h2>
+                    <div class="space-y-3 max-w-2xl">
+                        <div class="step-card flex gap-4 items-start">
+                            <div class="text-2xl">1️⃣</div>
+                            <div><p class="font-bold text-white text-sm">Pi App内通知 — 最权威</p><p class="text-gray-400 text-xs">核心团队公告直接推送，无第三方干扰</p></div>
+                        </div>
+                        <div class="step-card flex gap-4 items-start">
+                            <div class="text-2xl">2️⃣</div>
+                            <div><p class="font-bold text-white text-sm">minepi.com官网 — 最及时</p><p class="text-gray-400 text-xs">官方博客和公告页面，重大更新第一时间发布</p></div>
+                        </div>
+                        <div class="step-card flex gap-4 items-start">
+                            <div class="text-2xl">3️⃣</div>
+                            <div><p class="font-bold text-white text-sm">Pi Core Team Telegram — 最活跃</p><p class="text-gray-400 text-xs">t.me/PiCoreTeam — 官方频道</p></div>
+                        </div>
+                        <div class="step-card flex gap-4 items-start">
+                            <div class="text-2xl">4️⃣</div>
+                            <div><p class="font-bold text-white text-sm">本站pibizh.com — 中文解读</p><p class="text-gray-400 text-xs">持续跟踪Pi动态，提供中文解读和实用教程</p></div>
+                        </div>
+                    </div>
+                    <div class="warning-box mt-4 max-w-2xl">
+                        <p class="text-red-400 text-sm font-bold">⚠️ 防假消息：社交媒体上大量Pi"内部消息"是谣言或骗局。凡是涉及转账、收费、索要密码的"公告"一律是假的！</p>
+                    </div>
+                </section>
 
-      let enabled = true;
-      const COOLDOWN = 5000;      // 5秒冷却
-      const MAX_PER_MIN = 6;      // 每分钟最多6条
-      const MAX_LEN = 30;         // 最长30字
-      const STORAGE_KEY = 'pi_danmaku';
-      const TS_KEY = 'pi_dm_ts';
-      const COLORS = ['#f4af47','#4fc3f7','#81c784','#e57373','#ba68c8','#fff176','#ff8a65','#4dd0e1'];
+                <section class="mb-12 max-w-6xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-6">💡 Pi新闻解读技巧</h2>
+                    <p class="text-gray-400 text-sm mb-4">面对海量Pi资讯，学会筛选和解读比追消息更重要：</p>
+                    <div class="space-y-3 max-w-2xl">
+                        <div class="step-card">
+                            <p class="font-bold text-white mb-1">🔍 交叉验证</p>
+                            <p class="text-gray-400 text-sm">看到重大消息，先去Pi App或minepi.com确认是否真实。群里的截图可以伪造，官方渠道不能。</p>
+                        </div>
+                        <div class="step-card">
+                            <p class="font-bold text-white mb-1">🎯 关注实质进展</p>
+                            <p class="text-gray-400 text-sm">比起"Pi要涨到$1000"这种预测，更应该关注"KYC通过人数增加""新DApp上线"等有数据支撑的进展。</p>
+                        </div>
+                        <div class="step-card">
+                            <p class="font-bold text-white mb-1">⏰ 不要FOMO</p>
+                            <p class="text-gray-400 text-sm">看到"要赶紧卖"或"再不买来不及"的消息不要慌，Pi是长期项目，短期波动不影响大局。坚持挖矿最重要。</p>
+                        </div>
+                        <div class="step-card">
+                            <p class="font-bold text-white mb-1">🚫 远离收费群</p>
+                            <p class="text-gray-400 text-sm">任何需要付费才能加入的"Pi内部群""Pi分析师群"都是骗局。Pi信息都是免费的。</p>
+                        </div>
+                    </div>
+                </section>
+<h2 class="text-4xl md:text-5xl font-black tracking-tighter">最新动态</h2>
+                    <p class="text-gray-400 mt-3">来自官方资讯中心的最新 Pi Network 文章</p>
+                </div>
+                <a href="blog.html" class="hidden sm:inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">全部新闻 →</a>
+            </div>
+            <div id="news-blog-grid" class="grid md:grid-cols-2 gap-8"></div>
+            <div class="mt-10 sm:hidden">
+                <a href="blog.html" class="inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs shadow-xl">全部新闻 →</a>
+            </div>
+        </div>
+    </section>
 
-      // 预设弹幕池（无用户弹幕时也有内容滚动）
-      const PRESET = [
-        '🚀 PI to the moon!',
-        '💎 HODL!',
-        '挖矿第三年了！',
-        'Pi Day 快乐！',
-        '等主网迁移完成 🙏',
-        '社区力量 💪',
-        '长期看好 📈',
-        'KYC 通过啦 ✅',
-        '节点运行中 🖥️',
-        '邀请码 nbjh',
-        '派就是未来',
-        '一起见证历史',
-        '坚持就是胜利',
-        '去中心化的力量 🌍',
-        '先锋们加油！',
-      ];
+    <!-- 第三部分：分类导航 -->
+    <section class="py-28 px-6 bg-black/40 border-y border-white/5 backdrop-blur-sm">
+        <div class="container mx-auto max-w-5xl text-center">
+            <div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47] mb-3">Explore</div>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-6">分类导航</h2>
+            <p class="text-gray-400 mb-16 max-w-xl mx-auto">按主题深入了解 Pi Network 各领域进展</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <a href="blockchain.html" class="cat-btn flex-col text-center py-8">
+                    <span class="text-4xl mb-3 block">🏗️</span>
+                    <span class="font-black">主网进展</span>
+                    <span class="text-gray-500 text-xs block mt-1">区块链与主网动态</span>
+                </a>
+                <a href="price.html" class="cat-btn flex-col text-center py-8">
+                    <span class="text-4xl mb-3 block">💰</span>
+                    <span class="font-black">价格行情</span>
+                    <span class="text-gray-500 text-xs block mt-1">PI 实时价格走势</span>
+                </a>
+                <a href="kyc.html" class="cat-btn flex-col text-center py-8">
+                    <span class="text-4xl mb-3 block">🔐</span>
+                    <span class="font-black">KYC认证</span>
+                    <span class="text-gray-500 text-xs block mt-1">身份验证指南</span>
+                </a>
+                <a href="nodes.html" class="cat-btn flex-col text-center py-8">
+                    <span class="text-4xl mb-3 block">💻</span>
+                    <span class="font-black">节点更新</span>
+                    <span class="text-gray-500 text-xs block mt-1">Node 运行与维护</span>
+                </a>
+                <a href="developers.html" class="cat-btn flex-col text-center py-8">
+                    <span class="text-4xl mb-3 block">🛠️</span>
+                    <span class="font-black">开发者</span>
+                    <span class="text-gray-500 text-xs block mt-1">SDK、API 与工具</span>
+                </a>
+                <a href="blog.html" class="cat-btn flex-col text-center py-8">
+                    <span class="text-4xl mb-3 block">📖</span>
+                    <span class="font-black">全部新闻</span>
+                    <span class="text-gray-500 text-xs block mt-1">官方新闻动态</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-      // 从 localStorage 读取用户弹幕
-      function getUserDM() {
-        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').slice(-50); } catch { return []; }
-      }
-      function saveUserDM(list) {
-        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list.slice(-50))); } catch {}
-      }
-      function getTimestamps() {
-        try { return JSON.parse(localStorage.getItem(TS_KEY) || '[]'); } catch { return []; }
-      }
-      function saveTimestamps(ts) {
-        try { localStorage.setItem(TS_KEY, JSON.stringify(ts.slice(-20))); } catch {}
-      }
+    <!-- CTA -->
+    <section class="py-28 px-6">
+        <div class="container mx-auto max-w-3xl text-center">
+            <div class="bg-gradient-to-br from-[#2d1b3d] to-[#1e0a27] border border-[#f4af47]/20 rounded-[40px] p-12 md:p-20">
+                <div class="text-6xl mb-8">🚀</div>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-6 text-white">加入 Pi 获取<span class="text-pi-gold italic">第一手动态</span></h2>
+                <p class="text-gray-400 text-lg mb-10 max-w-xl mx-auto">下载 Pi Network App，填写邀请码 <span class="text-[#f4af47] font-black">nbjh</span>，开启你的零成本挖矿之旅，与全球 6000 万先锋同行。</p>
+                <a href="reg.html" class="bg-[#f4af47] text-[#1e0a27] px-14 py-6 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl inline-block">立即加入 Pi Network</a>
+            </div>
+        </div>
+    </section>
 
-      // XSS 过滤
-      function sanitize(str) {
-        const el = document.createElement('span');
-        el.textContent = str;
-        return el.innerHTML;
-      }
+    <!-- Footer -->
 
-      // 发射一条弹幕
-      function fireDM(text, color) {
-        if (!enabled) return;
-        const el = document.createElement('div');
-        el.textContent = text;
-        el.style.cssText = `
-          position:absolute; white-space:nowrap;
-          color:${color || COLORS[Math.floor(Math.random()*COLORS.length)]};
-          font-size:${12 + Math.floor(Math.random()*4)}px;
-          font-weight:700;
-          text-shadow: 0 1px 4px rgba(0,0,0,0.7);
-          top:${Math.floor(Math.random() * (stage.offsetHeight - 24))}px;
-          left:100%;
-          transition: none;
-          pointer-events: none;
-        `;
-        stage.appendChild(el);
+    <script>
 
-        const w = el.offsetWidth + stage.offsetWidth;
-        const duration = Math.max(6000, w * 8);
-        el.animate([
-          { transform: 'translateX(0)' },
-          { transform: `translateX(-${w + 50}px)` }
-        ], { duration, easing: 'linear', fill: 'forwards' });
+        // 动态从 blog.html 抓取前 12 条资讯卡片
+        (async () => {
+            try {
+                const res = await fetch('blog.html', { cache: 'no-store' });
+                const html = await res.text();
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                const cards = Array.from(doc.querySelectorAll('#blog-grid > a.blog-card')).slice(0, 12);
+                const grid = document.getElementById('news-blog-grid');
+                if (!grid) return;
 
-        setTimeout(() => el.remove(), duration + 200);
-      }
+                if (cards.length === 0) {
+                    grid.innerHTML = '<div class="text-gray-400 md:col-span-2">暂无文章，请稍后再试。</div>';
+                    return;
+                }
 
-      // 频率限制检查
-      function canSend() {
-        const now = Date.now();
-        const ts = getTimestamps().filter(t => now - t < 60000);
-        return ts.length < MAX_PER_MIN;
-      }
-
-      let cooldownTimer = null;
-      function startCooldown() {
-        sendBtn.disabled = true;
-        sendBtn.style.opacity = '0.4';
-        cooldownEl.classList.remove('hidden');
-        cooldownTimer = setTimeout(() => {
-          sendBtn.disabled = false;
-          sendBtn.style.opacity = '1';
-          cooldownEl.classList.add('hidden');
-        }, COOLDOWN);
-      }
-
-      // 发送
-      function handleSend() {
-        const raw = input.value.trim();
-        if (!raw || raw.length > MAX_LEN) return;
-        if (!canSend()) {
-          cooldownEl.textContent = '发送太频繁，请稍后再试';
-          cooldownEl.classList.remove('hidden');
-          setTimeout(() => cooldownEl.classList.add('hidden'), 3000);
-          return;
-        }
-
-        const text = sanitize(raw);
-        fireDM(text, '#f4af47');
-
-        // 保存
-        const list = getUserDM();
-        list.push(text);
-        saveUserDM(list);
-
-        const ts = getTimestamps();
-        ts.push(Date.now());
-        saveTimestamps(ts);
-
-        input.value = '';
-        startCooldown();
-      }
-
-      sendBtn.addEventListener('click', handleSend);
-      input.addEventListener('keydown', e => { if (e.key === 'Enter') handleSend(); });
-
-      // 开关
-      toggleBtn.addEventListener('click', () => {
-        enabled = !enabled;
-        toggleBtn.textContent = enabled ? '弹幕 ON' : '弹幕 OFF';
-        toggleBtn.classList.toggle('border-[#f4af47]', enabled);
-        if (!enabled) stage.innerHTML = '';
-      });
-
-      // 自动播放弹幕（预设 + 用户历史）
-      const pool = [...PRESET, ...getUserDM()];
-      let idx = 0;
-      function autoFire() {
-        if (!enabled || pool.length === 0) return;
-        fireDM(pool[idx % pool.length]);
-        idx++;
-      }
-      // 每 2-4 秒发一条
-      setInterval(autoFire, 2500);
-      // 开始时连发几条填充
-      setTimeout(() => autoFire(), 300);
-      setTimeout(() => autoFire(), 800);
-      setTimeout(() => autoFire(), 1500);
-    })();
-  </script>
-
-    
-    <!-- 统一 Footer -->
-
+                grid.innerHTML = cards.map(a => {
+                    const href = a.getAttribute('href') || 'blog.html';
+                    const meta = a.querySelector('div')?.outerHTML || '';
+                    const title = a.querySelector('h2')?.outerHTML || '';
+                    const desc = a.querySelector('p')?.outerHTML || '';
+                    return `<a href="${href}" class="blog-card block">${meta}${title}${desc}</a>`;
+                }).join('');
+            } catch (e) {
+                const grid = document.getElementById('news-blog-grid');
+                if (grid) grid.innerHTML = '<div class="text-gray-400 md:col-span-2">加载文章列表失败，请点击进入资讯中心查看。</div>';
+                console.error(e);
+            }
+        })();
+    </script>
 
     <!-- 移动端底部固定悬浮栏 -->
     <div class="fixed bottom-0 left-0 right-0 bg-[#1a1220]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
@@ -719,62 +447,10 @@
                 <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.06.06 0 0 0-.02-.12c-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
             </a>
             <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
-                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
             </a>
         </div>
     </div>
-
-
-
-
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="step-card">
-                            <div class="text-3xl mb-3">🌍</div>
-                            <h3 class="font-bold text-white mb-2">生态发展</h3>
-                            <p class="text-gray-400 text-sm">更多商家接受Pi支付、更多DApp上线 = Pi使用价值增加 = 价格上涨</p>
-                        </div>
-                        <div class="step-card">
-                            <div class="text-3xl mb-3">👥</div>
-                            <h3 class="font-bold text-white mb-2">用户增长</h3>
-                            <p class="text-gray-400 text-sm">活跃用户越多，共识越强，Pi的网络效应越明显，对价格形成支撑</p>
-                        </div>
-                        <div class="step-card">
-                            <div class="text-3xl mb-3">🏦</div>
-                            <h3 class="font-bold text-white mb-2">交易所上线</h3>
-                            <p class="text-gray-400 text-sm">更多交易所上线Pi交易对，流动性增加，价格发现更充分</p>
-                        </div>
-                        <div class="step-card">
-                            <div class="text-3xl mb-3">🔐</div>
-                            <h3 class="font-bold text-white mb-2">锁仓比例</h3>
-                            <p class="text-gray-400 text-sm">高锁仓比例减少流通量，供给减少在需求不变时推高价格</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Pi价格历史 -->
-                <section class="mb-12">
-                    <h2 class="text-2xl font-black mb-6 text-pi-gold">📈 Pi价格历史里程碑</h2>
-                    <div class="space-y-3">
-                        <div class="step-card flex gap-4 items-start">
-                            <div class="bg-[#f4af47] text-[#1e0a27] px-3 py-1 rounded-lg font-bold text-sm flex-shrink-0">2019</div>
-                            <div><p class="text-white text-sm">Pi Network项目启动，内测阶段无交易价格</p></div>
-                        </div>
-                        <div class="step-card flex gap-4 items-start">
-                            <div class="bg-[#f4af47] text-[#1e0a27] px-3 py-1 rounded-lg font-bold text-sm flex-shrink-0">2022</div>
-                            <div><p class="text-white text-sm">IOU期货在部分交易所出现，价格曾达$200+（非真实Pi交易）</p></div>
-                        </div>
-                        <div class="step-card flex gap-4 items-start">
-                            <div class="bg-[#f4af47] text-[#1e0a27] px-3 py-1 rounded-lg font-bold text-sm flex-shrink-0">2025.2</div>
-                            <div><p class="text-white text-sm">开放主网正式启动，Pi开始在OKX等交易所真实交易</p></div>
-                        </div>
-                        <div class="step-card flex gap-4 items-start">
-                            <div class="bg-[#f4af47] text-[#1e0a27] px-3 py-1 rounded-lg font-bold text-sm flex-shrink-0">2026</div>
-                            <div><p class="text-white text-sm">持续迁移中，价格随市场供需波动。关注上方实时行情</p></div>
-                        </div>
-                    </div>
-                </section>
-
-
 <script defer src="https://umami.cc.cd/script.js" data-website-id="40c4e4c7-3419-4e2c-aa0b-badadb809af8"></script>
     <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
