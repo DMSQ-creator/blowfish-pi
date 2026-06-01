@@ -41,7 +41,8 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title} | Pi Network 中文网</title>
+    <title>{title} | 派币中文网</title>
+    <meta name="description" content="{title} - Pi Network 官方中文资讯，派币中文网第一时间翻译发布。">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {{ background-color: #0f021a; color: white; line-height: 1.8; font-family: sans-serif; }}
@@ -51,16 +52,35 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
         .prose h3 {{ font-size: 1.6rem; font-weight: 700; margin: 3rem 0 1.5rem; color: #e2e8f0; }}
         .prose blockquote {{ border-left: 4px solid #f4af47; padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: #f4af47; font-weight: bold; }}
         .prose img {{ border-radius: 1.5rem; margin: 2rem 0; }}
+        .nav-blur {{ backdrop-filter: blur(16px); background: rgba(30,10,39,.88); }}
+        .dropdown:hover .dropdown-menu {{ display: block; }}
+        .dropdown-menu a {{ display: block; padding: .5rem 1rem; font-size: .8rem; font-weight: 700; color: #cbd5e1; white-space: nowrap; }}
+        .dropdown-menu a:hover {{ color: #f4af47; }}
     </style>
+    <script defer src="https://umami.cc.cd/script.js" data-website-id="40c4e4c7-3419-4e2c-aa0b-badadb809af8"></script>
 </head>
 <body class="min-h-screen">
-    <nav class="p-6 border-b border-white/5 bg-[#0f021a]/80 backdrop-blur-xl sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <a href="../blog.html" class="text-gray-400 hover:text-white font-bold">← 返回社区资讯</a>
-            <span class="text-[#f4af47] font-black uppercase">Official Announcement</span>
-        </div>
-    </nav>
-    <main class="max-w-3xl mx-auto py-20 px-6">
+    <!-- 统一导航栏 -->
+    <header class="fixed top-0 w-full z-[100] nav-blur border-b border-white/5">
+        <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='/index.html'">
+                <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10" loading="lazy">
+                <span class="text-xl font-black tracking-tighter uppercase whitespace-nowrap">Pi Network 中文网</span>
+            </div>
+            <div class="hidden lg:flex items-center gap-8">
+                <a href="/price.html" class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase hover:opacity-90">派币价格</a>
+                <a href="/blog.html" class="text-[11px] font-black tracking-widest text-gray-400 uppercase hover:text-[#f4af47]">官方新闻</a>
+                <a href="/pi-guide.html" class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase">📚 Pi百科</a>
+                <a href="/kyc.html" class="text-[11px] font-black tracking-widest text-gray-400 uppercase hover:text-[#f4af47]">KYC认证</a>
+                <a href="/about.html" class="text-[11px] font-black tracking-widest text-gray-400 uppercase hover:text-[#f4af47]">关于我们</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="/reg.html" class="hidden sm:block bg-[#f4af47] text-[#1e0a27] px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">Code: nbjh</a>
+                <a href="/blog.html" class="lg:hidden text-[#f4af47] font-bold text-sm">← 返回</a>
+            </div>
+        </nav>
+    </header>
+    <main class="max-w-3xl mx-auto pt-28 pb-20 px-6">
         {hero_image}
         <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter leading-tight">{title}</h1>
         <p class="text-gray-500 mb-10">{date}</p>
@@ -68,6 +88,22 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
             {content}
         </div>
     </main>
+    <!-- 统一页脚 -->
+    <footer class="py-12 bg-[#1a1220] text-center border-t border-white/5">
+        <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
+        <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
+            <a href="/reg.html" class="hover:text-[#f4af47]">Pi注册下载</a>
+            <a href="/mining-tutorial.html" class="hover:text-white">手机挖矿教程</a>
+            <a href="/wallet-guide.html" class="hover:text-white">钱包使用指南</a>
+            <a href="/pi-guide.html" class="hover:text-[#f4af47]">📚 Pi百科</a>
+            <a href="/price.html" class="hover:text-[#f4af47]">Pi实时价格</a>
+            <a href="/kyc.html" class="hover:text-white">KYC认证教程</a>
+            <a href="/pi-news.html" class="hover:text-white">Pi最新动态</a>
+            <a href="/faq.html" class="hover:text-white">常见问题</a>
+            <a href="/about.html" class="hover:text-white">关于我们</a>
+        </div>
+    </footer>
 </body>
 </html>"""
 
