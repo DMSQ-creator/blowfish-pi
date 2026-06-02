@@ -62,13 +62,15 @@ document.addEventListener('DOMContentLoaded',function(){
     var w=document.getElementById('nav-translate-wrap');
     if(panel&&w&&!w.contains(e.target))panel.style.display='none';
   });
-  // Language links: open in Microsoft Translator (国内可用)
+  // Language links: open in Baidu Translate (国内直连)
+  var baiduLangs={'en':'en','es':'spa','id':'id','pt':'pt','ru':'ru','kor':'kor','ja':'jp','vi':'vie','fr':'fra','de':'de','th':'th','ar':'ara'};
   var links=panel?panel.querySelectorAll('a[data-lang]'):[];
   links.forEach(function(a){
     a.addEventListener('click',function(e){
       e.preventDefault();
       var lang=a.getAttribute('data-lang');
-      var url='https://www.translatetheweb.com/?from=zh-CHS&to='+lang+'&dl='+encodeURIComponent(location.href);
+      var bl=baiduLangs[lang]||'en';
+      var url='https://fanyi.baidu.com/transpage?query='+encodeURIComponent(location.href)+'&from=zh&to='+bl+'&source=url';
       window.open(url,'_blank');
       panel.style.display='none';
     });
@@ -79,7 +81,8 @@ document.addEventListener('DOMContentLoaded',function(){
     a.addEventListener('click',function(e){
       e.preventDefault();
       var lang=a.getAttribute('data-lang');
-      var url='https://www.translatetheweb.com/?from=zh-CHS&to='+lang+'&dl='+encodeURIComponent(location.href);
+      var bl=baiduLangs[lang]||'en';
+      var url='https://fanyi.baidu.com/transpage?query='+encodeURIComponent(location.href)+'&from=zh&to='+bl+'&source=url';
       window.open(url,'_blank');
     });
   });

@@ -38,6 +38,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
     <meta property="og:title" content="页面不存在 | 派币中文网">
     <meta property="og:description" content="您访问的页面不存在，请返回首页。">
     <meta property="og:image" content="/static/favicon.png">
@@ -72,6 +73,9 @@
   <!-- Chart.js CDN (for price page charts) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
+  <!-- Chart.js CDN (for price page charts) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
 <script>
 document.addEventListener('DOMContentLoaded',function(){
@@ -87,13 +91,15 @@ document.addEventListener('DOMContentLoaded',function(){
     var w=document.getElementById('nav-translate-wrap');
     if(panel&&w&&!w.contains(e.target))panel.style.display='none';
   });
-  // Language links: open in Microsoft Translator (国内可用)
+  // Language links: open in Baidu Translate (国内直连)
+  var baiduLangs={'en':'en','es':'spa','id':'id','pt':'pt','ru':'ru','kor':'kor','ja':'jp','vi':'vie','fr':'fra','de':'de','th':'th','ar':'ara'};
   var links=panel?panel.querySelectorAll('a[data-lang]'):[];
   links.forEach(function(a){
     a.addEventListener('click',function(e){
       e.preventDefault();
       var lang=a.getAttribute('data-lang');
-      var url='https://www.translatetheweb.com/?from=zh-CHS&to='+lang+'&dl='+encodeURIComponent(location.href);
+      var bl=baiduLangs[lang]||'en';
+      var url='https://fanyi.baidu.com/transpage?query='+encodeURIComponent(location.href)+'&from=zh&to='+bl+'&source=url';
       window.open(url,'_blank');
       panel.style.display='none';
     });
@@ -104,7 +110,8 @@ document.addEventListener('DOMContentLoaded',function(){
     a.addEventListener('click',function(e){
       e.preventDefault();
       var lang=a.getAttribute('data-lang');
-      var url='https://www.translatetheweb.com/?from=zh-CHS&to='+lang+'&dl='+encodeURIComponent(location.href);
+      var bl=baiduLangs[lang]||'en';
+      var url='https://fanyi.baidu.com/transpage?query='+encodeURIComponent(location.href)+'&from=zh&to='+bl+'&source=url';
       window.open(url,'_blank');
     });
   });
