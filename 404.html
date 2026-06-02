@@ -2,7 +2,6 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +29,12 @@
         .breadcrumb a { color: #f4af47; text-decoration: none; }
         .breadcrumb a:hover { text-decoration: underline; }
         @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
+        .goog-te-banner-frame{display:none!important;}
+        body{top:0!important;}
+        .goog-te-gadget{font-size:0!important;}
+        .goog-te-gadget span{display:none!important;}
     </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
     <meta property="og:title" content="页面不存在 | 派币中文网">
     <meta property="og:description" content="您访问的页面不存在，请返回首页。">
     <meta property="og:image" content="/static/favicon.png">
@@ -53,7 +57,39 @@
   <!-- Chart.js CDN (for price page charts) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\\/script>')</script>
+  <!-- Chart.js CDN (for price page charts) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
+<!-- Google Translate -->
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'zh-CN',includedLanguages:'en,es,id,pt,ru,ko,ja,vi,fr,de,th,tl,hi,ar,tr',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'google_translate_element');}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var poll=setInterval(function(){
+    var gt=document.getElementById('google_translate_element');
+    if(gt&&gt.childNodes.length>0){
+      var navPanel=document.getElementById('nav-translate-panel');
+      if(navPanel){navPanel.appendChild(gt);gt.style.display='block';}
+      clearInterval(poll);
+    }
+  },200);
+  document.addEventListener('click',function(e){
+    var p=document.getElementById('nav-translate-panel');
+    var w=document.getElementById('nav-translate-wrap');
+    if(p&&w&&!w.contains(e.target))p.classList.add('hidden');
+  });
+  // Mobile: clone translate gadget into sidebar slot
+  var mpoll=setInterval(function(){
+    var gt2=document.querySelector('#nav-translate-panel .goog-te-gadget');
+    var slot=document.getElementById('mobile-translate-slot');
+    if(gt2&&slot&&!slot.hasChildNodes()){var cl=gt2.cloneNode(true);slot.appendChild(cl);clearInterval(mpoll);}
+  },500);
+});
+</script>
+<div id="google_translate_element" style="display:none;"></div>
 </head>
 <body class="hero-bg min-h-screen">
 
@@ -117,6 +153,12 @@
 
             <div class="flex items-center gap-4">
                 <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer; noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-[#5865F2] items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a><a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer; noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-blue-500 items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg></a>
+                <div class="relative hidden lg:block" id="nav-translate-wrap">
+                  <button onclick="document.getElementById('nav-translate-panel').classList.toggle('hidden')" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#f4af47]/60 transition-all" title="切换语言">
+                    <svg class="w-5 h-5" fill="none" stroke="#f4af47" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>
+                  </button>
+                  <div id="nav-translate-panel" class="hidden absolute right-0 top-12 bg-[#2d1b3d] border border-white/15 rounded-2xl p-3 shadow-2xl z-[200] min-w-[180px]"></div>
+                </div>
                 <a href="reg.html" class="hidden sm:block bg-[#f4af47] text-[#1e0a27] px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">Code: nbjh</a>
                 <button id="m-btn" class="lg:hidden p-1.5 text-[#f4af47] border border-[#f4af47]/20 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
             </div>
@@ -229,6 +271,12 @@
                     <span class="text-lg">ℹ️</span>
                     <span class="font-bold text-white">关于我们</span>
                 </a>
+
+                <!-- 语言切换 -->
+                <div class="mt-4 mb-2 px-4">
+                    <div class="text-[10px] font-black tracking-widest text-gray-500 uppercase">🌐 语言 / Language</div>
+                </div>
+                <div class="px-4" id="mobile-translate-slot"></div>
             </nav>
 
             <!-- 底部社交 -->
@@ -318,6 +366,7 @@
     <footer class="py-12 pb-12 bg-[#1a1220] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
     <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
+    <p class="text-xs text-gray-600 mt-2 mb-4">推荐交易所：<a href="https://www.promoohivex.com/join/7761670" target="_blank" rel="noopener noreferrer" class="text-[#f4af47] hover:underline">OKX 欧易</a></p>
     <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
         <a href="reg.html" class="hover:text-[#f4af47]">Pi注册下载</a>
         <a href="mining-tutorial.html" class="hover:text-white">手机挖矿教程</a>
