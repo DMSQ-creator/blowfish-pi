@@ -49,43 +49,52 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
-<!-- Google Translate -->
+<div id="google_translate_element" style="display:none;"></div>
 <script>
-function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'zh-CN',includedLanguages:'en,es,id,pt,ru,ko,ja,vi,fr,de,th,tl,hi,ar,tr',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'google_translate_element');}
-</script>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script>
+// Lazy-load Google Translate: only load when user clicks translate button
+var _gtLoaded=false;
+function _loadGT(){
+  if(_gtLoaded)return;_gtLoaded=true;
+  window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'zh-CN',includedLanguages:'en,es,id,pt,ru,ko,ja,vi,fr,de,th,tl,hi,ar,tr',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'google_translate_element');};
+  var s=document.createElement('script');s.src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';s.async=true;document.head.appendChild(s);
+}
 document.addEventListener('DOMContentLoaded',function(){
-  // Toggle translate panel
   var btn=document.getElementById('translate-toggle-btn');
   var panel=document.getElementById('nav-translate-panel');
   if(btn&&panel){
     btn.addEventListener('click',function(e){
       e.stopPropagation();
-      panel.style.display=panel.style.display==='none'||panel.style.display===''?'block':'none';
+      if(panel.style.display==='none'||panel.style.display===''){
+        _loadGT();
+        panel.style.display='block';
+      }else{
+        panel.style.display='none';
+      }
     });
   }
   document.addEventListener('click',function(e){
     var w=document.getElementById('nav-translate-wrap');
     if(panel&&w&&!w.contains(e.target))panel.style.display='none';
   });
-  // Move Google Translate widget into nav panel
+  // Move Google Translate widget into nav panel once loaded
   var poll=setInterval(function(){
     var gt=document.getElementById('google_translate_element');
     if(gt&&gt.childNodes.length>0){
       if(panel){panel.appendChild(gt);gt.style.display='block';}
       clearInterval(poll);
     }
-  },200);
-  // Mobile: clone into sidebar
+  },300);
+  // Mobile sidebar: clone translate gadget
   var mpoll=setInterval(function(){
     var gt2=document.querySelector('#nav-translate-panel .goog-te-gadget');
     var slot=document.getElementById('mobile-translate-slot');
     if(gt2&&slot&&!slot.hasChildNodes()){var cl=gt2.cloneNode(true);slot.appendChild(cl);clearInterval(mpoll);}
   },500);
+  // Also load translate on mobile sidebar open
+  var mBtn=document.getElementById('m-btn');
+  if(mBtn){mBtn.addEventListener('click',function(){setTimeout(_loadGT,300);});}
 });
 </script>
-<div id="google_translate_element" style="display:none;"></div>
 </head>
 <body class="hero-bg min-h-screen">
 
