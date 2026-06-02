@@ -35,6 +35,9 @@
         .gt_switcher_wrapper a{color:#cbd5e1!important;font-size:13px!important;font-weight:600!important;padding:8px 14px!important;}
         .gt_switcher_wrapper a:hover{background:rgba(244,175,71,0.15)!important;color:#f4af47!important;}
         .gt_switcher_wrapper a.selected{color:#f4af47!important;}
+        /* Mobile GTranslate in bottom bar */
+        .gtranslate_mobile .gt_switcher_wrapper{position:relative!important;min-width:100%!important;max-height:45vh!important;}
+        .gtranslate_mobile{overflow:hidden;}
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
     {{HEAD_EXTRA}}
@@ -42,8 +45,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
-<!-- GTranslate - 内嵌到导航栏 -->
-<script>window.gtranslateSettings={"default_language":"zh-CN","languages":["en","es","id","pt","ru","ko","ja","vi","fr","de","th","ar"],"wrapper_selector":".gtranslate_nav","alt_flags":{"en":"us","pt":"br","es":"es"}}</script>
+<!-- GTranslate - 桌面导航栏 + 移动端底部栏 -->
+<script>window.gtranslateSettings={"default_language":"zh-CN","languages":["en","es","id","pt","ru","ko","ja","vi","fr","de","th","ar"],"wrapper_selector":".gtranslate_nav,.gtranslate_mobile","alt_flags":{"en":"us","pt":"br","es":"es"}}</script>
 <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
 </head>
 <body class="hero-bg min-h-screen{{BODY_CLASS}}">
