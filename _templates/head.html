@@ -44,21 +44,29 @@ function googleTranslateElementInit(){new google.translate.TranslateElement({pag
 <style>
 .goog-te-banner-frame{display:none!important;}
 body{top:0!important;}
-.translate-btn{position:fixed;bottom:80px;right:16px;z-index:49;background:rgba(30,10,39,0.9);border:1px solid rgba(255,255,255,0.15);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(10px);transition:all .3s;}
-.translate-btn:hover{border-color:#f4af47;transform:scale(1.1);}
-.translate-btn svg{width:20px;height:20px;}
-#google_translate_element{display:none;}
+.goog-te-gadget{font-size:0!important;}
+.goog-te-gadget span{display:none!important;}
+.translate-float{position:fixed;bottom:80px;right:16px;z-index:49;}
+@media(min-width:1024px){.translate-float{bottom:24px;right:24px;}}
+.translate-toggle{background:rgba(30,10,39,0.9);border:1px solid rgba(255,255,255,0.15);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(10px);transition:all .3s;}
+.translate-toggle:hover{border-color:#f4af47;transform:scale(1.1);}
+.translate-toggle svg{width:20px;height:20px;}
+.translate-panel{display:none;position:absolute;bottom:52px;right:0;background:rgba(30,10,39,0.95);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:12px;backdrop-filter:blur(16px);min-width:160px;}
+.translate-panel.open{display:block;}
 </style>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
-  var btn=document.createElement('div');
-  btn.className='translate-btn';
-  btn.title='切换语言 / Change Language';
-  btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="#f4af47" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>';
-  btn.onclick=function(){var el=document.getElementById('google_translate_element');if(el)el.style.display=el.style.display==='block'?'none':'block';};
-  document.body.appendChild(btn);
+  var wrap=document.createElement('div');
+  wrap.className='translate-float';
+  wrap.innerHTML='<div class="translate-toggle" title="切换语言 / Change Language"><svg viewBox="0 0 24 24" fill="none" stroke="#f4af47" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg></div><div class="translate-panel" id="translate-panel"></div>';
+  document.body.appendChild(wrap);
+  var toggle=wrap.querySelector('.translate-toggle');
+  var panel=document.getElementById('translate-panel');
+  toggle.onclick=function(e){e.stopPropagation();panel.classList.toggle('open');};
+  document.addEventListener('click',function(e){if(!wrap.contains(e.target))panel.classList.remove('open');});
+  var poll=setInterval(function(){var gt=document.getElementById('google_translate_element');if(gt&&gt.childNodes.length>0){panel.appendChild(gt);gt.style.display='block';clearInterval(poll);}},200);
 });
 </script>
-<div id="google_translate_element" style="position:fixed;bottom:130px;right:16px;z-index:49;"></div>
+<div id="google_translate_element" style="display:none;"></div>
 </head>
 <body class="hero-bg min-h-screen{{BODY_CLASS}}">
