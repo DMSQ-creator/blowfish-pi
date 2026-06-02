@@ -51,6 +51,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
     <meta property="og:title" content="页面不存在 | 派币中文网">
     <meta property="og:description" content="您访问的页面不存在，请返回首页。">
     <meta property="og:image" content="/static/favicon.png">
@@ -73,6 +74,9 @@
   <!-- Chart.js CDN (for price page charts) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\\/script>')</script>
+  <!-- Chart.js CDN (for price page charts) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
   <!-- Chart.js CDN (for price page charts) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
@@ -316,16 +320,29 @@
     <div class="fixed bottom-0 left-0 right-0 bg-[#221636]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
         <div class="flex gap-3 items-center">
             <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#2a1b3d] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
-            <button onclick="var p=this.parentElement.nextElementSibling;p.classList.toggle('hidden')" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0" title="切换语言">
+            <button onclick="var p=document.getElementById('mlang');p.classList.toggle('hidden')" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0" title="切换语言">
                 <svg class="w-5 h-5" fill="none" stroke="#f4af47" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>
             </button>
             <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
                 <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.06.06 0 0 0-.02-.12c-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
             </a>
         </div>
-        <!-- 移动端语言面板 - 用 GTranslate -->
-        <div class="hidden mt-3">
-            <div class="gtranslate_mobile"></div>
+        <!-- 移动端语言面板 - 直接显示语言列表 -->
+        <div id="mlang" class="hidden mt-3 bg-[#2d1b3d] border border-white/15 rounded-2xl p-3 max-h-[50vh] overflow-y-auto">
+            <div class="grid grid-cols-2 gap-1">
+                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=en';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇺🇸 English</a>
+                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=es';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇪🇸 Español</a>
+                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=id';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇩 Indonesia</a>
+                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=pt';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇧🇷 Português</a>
+                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=ru';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇷🇺 Русский</a>
+                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=ko';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇰🇷 한국어</a>
+                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=ja';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇯🇵 日本語</a>
+                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=vi';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇻🇳 Tiếng Việt</a>
+                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=fr';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇫🇷 Français</a>
+                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=de';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇩🇪 Deutsch</a>
+                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=th';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇹🇭 ไทย</a>
+                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=ar';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇸🇦 العربية</a>
+            </div>
         </div>
     </div>
 
