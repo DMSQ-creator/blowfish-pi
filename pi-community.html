@@ -436,15 +436,29 @@
 </footer>
 
 <!-- 移动端底部注册栏 -->
-<div class="fixed bottom-0 left-0 right-0 bg-[#1a1220]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
+<div class="fixed bottom-0 left-0 right-0 bg-[#221636]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
     <div class="flex gap-3 items-center">
-        <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#1e0a27] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
-        <button onclick="var p=this.parentElement.nextElementSibling;p.classList.toggle('hidden')" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0" title="切换语言">
+        <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#2a1b3d] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
+        <button onclick="var p=document.getElementById('mlang');p.classList.toggle('hidden')" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0" title="切换语言">
             <svg class="w-5 h-5" fill="none" stroke="#f4af47" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>
         </button>
     </div>
-    <div class="hidden mt-3">
-        <div class="gtranslate_mobile"></div>
+    <div id="mlang" class="hidden mt-3 bg-[#2d1b3d] border border-white/15 rounded-2xl p-3 max-h-[50vh] overflow-y-auto">
+        <div class="grid grid-cols-2 gap-1">
+            <a href="#" onclick="window.location.href=window.location.pathname;return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇨🇳 简体中文</a>
+            <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=en';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇺🇸 English</a>
+            <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=es';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇪🇸 Español</a>
+            <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=id';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇩 Indonesia</a>
+            <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=pt';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇧🇷 Português</a>
+            <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=ru';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇷🇺 Русский</a>
+            <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=ko';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇰🇷 한국어</a>
+            <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=ja';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇯🇵 日本語</a>
+            <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=vi';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇻🇳 Tiếng Việt</a>
+            <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=fr';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇫🇷 Français</a>
+            <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=de';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇩🇪 Deutsch</a>
+            <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=th';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇹🇭 ไทย</a>
+            <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=ar';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇸🇦 العربية</a>
+        </div>
     </div>
 </div>
 
