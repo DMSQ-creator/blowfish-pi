@@ -30,10 +30,9 @@
         .breadcrumb a { color: #f4af47; text-decoration: none; }
         .breadcrumb a:hover { text-decoration: underline; }
         @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
-        .goog-te-banner-frame{display:none!important;}
-        body{top:0!important;}
-        .goog-te-gadget{font-size:0!important;}
-        .goog-te-gadget span{display:none!important;}
+        .lang-panel a{display:block;padding:8px 14px;color:#cbd5e1;font-size:13px;font-weight:600;border-radius:8px;transition:all .15s;text-decoration:none;}
+        .lang-panel a:hover{background:rgba(244,175,71,0.15);color:#f4af47;}
+        .lang-panel a .flag{margin-right:6px;}
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
         <title>Pi币在中国合法吗？2026最新政策解读 | 派币中文网</title>
@@ -49,50 +48,41 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
-<div id="google_translate_element" style="display:none;"></div>
 <script>
-// Lazy-load Google Translate: only load when user clicks translate button
-var _gtLoaded=false;
-function _loadGT(){
-  if(_gtLoaded)return;_gtLoaded=true;
-  window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'zh-CN',includedLanguages:'en,es,id,pt,ru,ko,ja,vi,fr,de,th,tl,hi,ar,tr',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'google_translate_element');};
-  var s=document.createElement('script');s.src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';s.async=true;document.head.appendChild(s);
-}
 document.addEventListener('DOMContentLoaded',function(){
   var btn=document.getElementById('translate-toggle-btn');
   var panel=document.getElementById('nav-translate-panel');
   if(btn&&panel){
     btn.addEventListener('click',function(e){
       e.stopPropagation();
-      if(panel.style.display==='none'||panel.style.display===''){
-        _loadGT();
-        panel.style.display='block';
-      }else{
-        panel.style.display='none';
-      }
+      panel.style.display=panel.style.display==='none'||panel.style.display===''?'block':'none';
     });
   }
   document.addEventListener('click',function(e){
     var w=document.getElementById('nav-translate-wrap');
     if(panel&&w&&!w.contains(e.target))panel.style.display='none';
   });
-  // Move Google Translate widget into nav panel once loaded
-  var poll=setInterval(function(){
-    var gt=document.getElementById('google_translate_element');
-    if(gt&&gt.childNodes.length>0){
-      if(panel){panel.appendChild(gt);gt.style.display='block';}
-      clearInterval(poll);
-    }
-  },300);
-  // Mobile sidebar: clone translate gadget
-  var mpoll=setInterval(function(){
-    var gt2=document.querySelector('#nav-translate-panel .goog-te-gadget');
-    var slot=document.getElementById('mobile-translate-slot');
-    if(gt2&&slot&&!slot.hasChildNodes()){var cl=gt2.cloneNode(true);slot.appendChild(cl);clearInterval(mpoll);}
-  },500);
-  // Also load translate on mobile sidebar open
-  var mBtn=document.getElementById('m-btn');
-  if(mBtn){mBtn.addEventListener('click',function(){setTimeout(_loadGT,300);});}
+  // Language links: open in Microsoft Translator (国内可用)
+  var links=panel?panel.querySelectorAll('a[data-lang]'):[];
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var lang=a.getAttribute('data-lang');
+      var url='https://www.translatetheweb.com/?from=zh-CHS&to='+lang+'&dl='+encodeURIComponent(location.href);
+      window.open(url,'_blank');
+      panel.style.display='none';
+    });
+  });
+  // Mobile sidebar language links
+  var mlinks=document.querySelectorAll('#mobile-translate-slot a[data-lang]');
+  mlinks.forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var lang=a.getAttribute('data-lang');
+      var url='https://www.translatetheweb.com/?from=zh-CHS&to='+lang+'&dl='+encodeURIComponent(location.href);
+      window.open(url,'_blank');
+    });
+  });
 });
 </script>
 </head>
@@ -162,7 +152,20 @@ document.addEventListener('DOMContentLoaded',function(){
                   <button id="translate-toggle-btn" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#f4af47]/60 transition-all" title="切换语言">
                     <svg class="w-5 h-5" fill="none" stroke="#f4af47" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>
                   </button>
-                  <div id="nav-translate-panel" style="display:none;position:absolute;right:0;top:48px;background:#2d1b3d;border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:12px;box-shadow:0 20px 40px rgba(0,0,0,0.6);z-index:9999;min-width:180px;"></div>
+                  <div id="nav-translate-panel" class="lang-panel" style="display:none;position:absolute;right:0;top:48px;background:#2d1b3d;border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:10px;box-shadow:0 20px 40px rgba(0,0,0,0.6);z-index:9999;min-width:160px;">
+                    <a href="#" data-lang="en"><span class="flag">🇺🇸</span>English</a>
+                    <a href="#" data-lang="es"><span class="flag">🇪🇸</span>Español</a>
+                    <a href="#" data-lang="id"><span class="flag">🇮🇩</span>Bahasa Indonesia</a>
+                    <a href="#" data-lang="pt"><span class="flag">🇧🇷</span>Português</a>
+                    <a href="#" data-lang="ru"><span class="flag">🇷🇺</span>Русский</a>
+                    <a href="#" data-lang="ko"><span class="flag">🇰🇷</span>한국어</a>
+                    <a href="#" data-lang="ja"><span class="flag">🇯🇵</span>日本語</a>
+                    <a href="#" data-lang="vi"><span class="flag">🇻🇳</span>Tiếng Việt</a>
+                    <a href="#" data-lang="fr"><span class="flag">🇫🇷</span>Français</a>
+                    <a href="#" data-lang="de"><span class="flag">🇩🇪</span>Deutsch</a>
+                    <a href="#" data-lang="th"><span class="flag">🇹🇭</span>ไทย</a>
+                    <a href="#" data-lang="ar"><span class="flag">🇸🇦</span>العربية</a>
+                  </div>
                 </div>
                 <a href="reg.html" class="hidden sm:block bg-[#f4af47] text-[#1e0a27] px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">Code: nbjh</a>
                 <button id="m-btn" class="lg:hidden p-1.5 text-[#f4af47] border border-[#f4af47]/20 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
@@ -281,7 +284,20 @@ document.addEventListener('DOMContentLoaded',function(){
                 <div class="mt-4 mb-2 px-4">
                     <div class="text-[10px] font-black tracking-widest text-gray-500 uppercase">🌐 语言 / Language</div>
                 </div>
-                <div class="px-4" id="mobile-translate-slot"></div>
+                <div class="px-4 space-y-1" id="mobile-translate-slot">
+                    <a href="#" data-lang="en" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇺🇸 English</a>
+                    <a href="#" data-lang="es" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇪🇸 Español</a>
+                    <a href="#" data-lang="id" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇩 Bahasa Indonesia</a>
+                    <a href="#" data-lang="pt" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇧🇷 Português</a>
+                    <a href="#" data-lang="ru" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇷🇺 Русский</a>
+                    <a href="#" data-lang="ko" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇰🇷 한국어</a>
+                    <a href="#" data-lang="ja" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇯🇵 日本語</a>
+                    <a href="#" data-lang="vi" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇻🇳 Tiếng Việt</a>
+                    <a href="#" data-lang="fr" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇫🇷 Français</a>
+                    <a href="#" data-lang="de" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇩🇪 Deutsch</a>
+                    <a href="#" data-lang="th" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇹🇭 ไทย</a>
+                    <a href="#" data-lang="ar" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇸🇦 العربية</a>
+                </div>
             </nav>
 
             <!-- 底部社交 -->

@@ -62,7 +62,20 @@
                   <button id="translate-toggle-btn" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#f4af47]/60 transition-all" title="切换语言">
                     <svg class="w-5 h-5" fill="none" stroke="#f4af47" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>
                   </button>
-                  <div id="nav-translate-panel" style="display:none;position:absolute;right:0;top:48px;background:#2d1b3d;border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:12px;box-shadow:0 20px 40px rgba(0,0,0,0.6);z-index:9999;min-width:180px;"></div>
+                  <div id="nav-translate-panel" class="lang-panel" style="display:none;position:absolute;right:0;top:48px;background:#2d1b3d;border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:10px;box-shadow:0 20px 40px rgba(0,0,0,0.6);z-index:9999;min-width:160px;">
+                    <a href="#" data-lang="en"><span class="flag">🇺🇸</span>English</a>
+                    <a href="#" data-lang="es"><span class="flag">🇪🇸</span>Español</a>
+                    <a href="#" data-lang="id"><span class="flag">🇮🇩</span>Bahasa Indonesia</a>
+                    <a href="#" data-lang="pt"><span class="flag">🇧🇷</span>Português</a>
+                    <a href="#" data-lang="ru"><span class="flag">🇷🇺</span>Русский</a>
+                    <a href="#" data-lang="ko"><span class="flag">🇰🇷</span>한국어</a>
+                    <a href="#" data-lang="ja"><span class="flag">🇯🇵</span>日本語</a>
+                    <a href="#" data-lang="vi"><span class="flag">🇻🇳</span>Tiếng Việt</a>
+                    <a href="#" data-lang="fr"><span class="flag">🇫🇷</span>Français</a>
+                    <a href="#" data-lang="de"><span class="flag">🇩🇪</span>Deutsch</a>
+                    <a href="#" data-lang="th"><span class="flag">🇹🇭</span>ไทย</a>
+                    <a href="#" data-lang="ar"><span class="flag">🇸🇦</span>العربية</a>
+                  </div>
                 </div>
                 <a href="reg.html" class="hidden sm:block bg-[#f4af47] text-[#1e0a27] px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">Code: nbjh</a>
                 <button id="m-btn" class="lg:hidden p-1.5 text-[#f4af47] border border-[#f4af47]/20 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
@@ -181,7 +194,20 @@
                 <div class="mt-4 mb-2 px-4">
                     <div class="text-[10px] font-black tracking-widest text-gray-500 uppercase">🌐 语言 / Language</div>
                 </div>
-                <div class="px-4" id="mobile-translate-slot"></div>
+                <div class="px-4 space-y-1" id="mobile-translate-slot">
+                    <a href="#" data-lang="en" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇺🇸 English</a>
+                    <a href="#" data-lang="es" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇪🇸 Español</a>
+                    <a href="#" data-lang="id" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇩 Bahasa Indonesia</a>
+                    <a href="#" data-lang="pt" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇧🇷 Português</a>
+                    <a href="#" data-lang="ru" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇷🇺 Русский</a>
+                    <a href="#" data-lang="ko" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇰🇷 한국어</a>
+                    <a href="#" data-lang="ja" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇯🇵 日本語</a>
+                    <a href="#" data-lang="vi" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇻🇳 Tiếng Việt</a>
+                    <a href="#" data-lang="fr" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇫🇷 Français</a>
+                    <a href="#" data-lang="de" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇩🇪 Deutsch</a>
+                    <a href="#" data-lang="th" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇹🇭 ไทย</a>
+                    <a href="#" data-lang="ar" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇸🇦 العربية</a>
+                </div>
             </nav>
 
             <!-- 底部社交 -->
