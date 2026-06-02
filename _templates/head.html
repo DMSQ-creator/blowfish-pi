@@ -30,9 +30,17 @@
         .breadcrumb a { color: #f4af47; text-decoration: none; }
         .breadcrumb a:hover { text-decoration: underline; }
         @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
-        .lang-panel a{display:block;padding:8px 14px;color:#cbd5e1;font-size:13px;font-weight:600;border-radius:8px;transition:all .15s;text-decoration:none;}
-        .lang-panel a:hover{background:rgba(244,175,71,0.15);color:#f4af47;}
-        .lang-panel a .flag{margin-right:6px;}
+        /* GTranslate overrides for dark theme */
+        .gt_float_wrapper{bottom:80px!important;top:auto!important;right:16px!important;}
+        @media(min-width:1024px){.gt_float_wrapper{bottom:24px!important;right:24px!important;}}
+        .gt_float_switcher{background:rgba(30,10,39,0.9)!important;border:1px solid rgba(255,255,255,0.15)!important;border-radius:50%!important;width:44px!important;height:44px!important;backdrop-filter:blur(10px)!important;}
+        .gt_float_switcher .gt_selected{background:transparent!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;}
+        .gt_float_switcher .gt_selected a{padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important;}
+        .gt_float_switcher .gt_selected a span{display:none!important;}
+        .gt_float_switcher .gt_selected a img{margin:0!important;width:24px!important;height:24px!important;}
+        .gt_float_switcher .gt_options{background:#2d1b3d!important;border:1px solid rgba(255,255,255,0.15)!important;border-radius:16px!important;bottom:52px!important;top:auto!important;box-shadow:0 20px 40px rgba(0,0,0,0.6)!important;min-width:160px!important;}
+        .gt_float_switcher .gt_options a{color:#cbd5e1!important;font-size:13px!important;font-weight:600!important;padding:8px 14px!important;}
+        .gt_float_switcher .gt_options a:hover{background:rgba(244,175,71,0.15)!important;color:#f4af47!important;}
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
     {{HEAD_EXTRA}}
@@ -40,45 +48,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
-<script>
-document.addEventListener('DOMContentLoaded',function(){
-  var btn=document.getElementById('translate-toggle-btn');
-  var panel=document.getElementById('nav-translate-panel');
-  if(btn&&panel){
-    btn.addEventListener('click',function(e){
-      e.stopPropagation();
-      panel.style.display=panel.style.display==='none'||panel.style.display===''?'block':'none';
-    });
-  }
-  document.addEventListener('click',function(e){
-    var w=document.getElementById('nav-translate-wrap');
-    if(panel&&w&&!w.contains(e.target))panel.style.display='none';
-  });
-  // Language links: open in Baidu Translate (国内直连)
-  var baiduLangs={'en':'en','es':'spa','id':'id','pt':'pt','ru':'ru','kor':'kor','ja':'jp','vi':'vie','fr':'fra','de':'de','th':'th','ar':'ara'};
-  var links=panel?panel.querySelectorAll('a[data-lang]'):[];
-  links.forEach(function(a){
-    a.addEventListener('click',function(e){
-      e.preventDefault();
-      var lang=a.getAttribute('data-lang');
-      var bl=baiduLangs[lang]||'en';
-      var url='https://fanyi.baidu.com/transpage?query='+encodeURIComponent(location.href)+'&from=zh&to='+bl+'&source=url';
-      window.open(url,'_blank');
-      panel.style.display='none';
-    });
-  });
-  // Mobile sidebar language links
-  var mlinks=document.querySelectorAll('#mobile-translate-slot a[data-lang]');
-  mlinks.forEach(function(a){
-    a.addEventListener('click',function(e){
-      e.preventDefault();
-      var lang=a.getAttribute('data-lang');
-      var bl=baiduLangs[lang]||'en';
-      var url='https://fanyi.baidu.com/transpage?query='+encodeURIComponent(location.href)+'&from=zh&to='+bl+'&source=url';
-      window.open(url,'_blank');
-    });
-  });
-});
-</script>
+<!-- GTranslate - 国内可直连 -->
+<script>window.gtranslateSettings={"default_language":"zh-CN","languages":["en","es","id","pt","ru","ko","ja","vi","fr","de","th","ar"],"wrapper_selector":".gtranslate_wrapper","float_switcher_open_direction":"top","switcher_horizontal_position":"right","switcher_vertical_position":"bottom","float_switcher_open_direction":"top"}</script>
+<script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
 </head>
 <body class="hero-bg min-h-screen{{BODY_CLASS}}">
+<div class="gtranslate_wrapper"></div>

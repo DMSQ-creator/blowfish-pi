@@ -30,9 +30,17 @@
         .breadcrumb a { color: #f4af47; text-decoration: none; }
         .breadcrumb a:hover { text-decoration: underline; }
         @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
-        .lang-panel a{display:block;padding:8px 14px;color:#cbd5e1;font-size:13px;font-weight:600;border-radius:8px;transition:all .15s;text-decoration:none;}
-        .lang-panel a:hover{background:rgba(244,175,71,0.15);color:#f4af47;}
-        .lang-panel a .flag{margin-right:6px;}
+        /* GTranslate overrides for dark theme */
+        .gt_float_wrapper{bottom:80px!important;top:auto!important;right:16px!important;}
+        @media(min-width:1024px){.gt_float_wrapper{bottom:24px!important;right:24px!important;}}
+        .gt_float_switcher{background:rgba(30,10,39,0.9)!important;border:1px solid rgba(255,255,255,0.15)!important;border-radius:50%!important;width:44px!important;height:44px!important;backdrop-filter:blur(10px)!important;}
+        .gt_float_switcher .gt_selected{background:transparent!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;}
+        .gt_float_switcher .gt_selected a{padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important;}
+        .gt_float_switcher .gt_selected a span{display:none!important;}
+        .gt_float_switcher .gt_selected a img{margin:0!important;width:24px!important;height:24px!important;}
+        .gt_float_switcher .gt_options{background:#2d1b3d!important;border:1px solid rgba(255,255,255,0.15)!important;border-radius:16px!important;bottom:52px!important;top:auto!important;box-shadow:0 20px 40px rgba(0,0,0,0.6)!important;min-width:160px!important;}
+        .gt_float_switcher .gt_options a{color:#cbd5e1!important;font-size:13px!important;font-weight:600!important;padding:8px 14px!important;}
+        .gt_float_switcher .gt_options a:hover{background:rgba(244,175,71,0.15)!important;color:#f4af47!important;}
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
         <title>Pi节点搭建教程 - 运行Node赚取更多 | 派币中文网</title>
@@ -48,48 +56,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
-<script>
-document.addEventListener('DOMContentLoaded',function(){
-  var btn=document.getElementById('translate-toggle-btn');
-  var panel=document.getElementById('nav-translate-panel');
-  if(btn&&panel){
-    btn.addEventListener('click',function(e){
-      e.stopPropagation();
-      panel.style.display=panel.style.display==='none'||panel.style.display===''?'block':'none';
-    });
-  }
-  document.addEventListener('click',function(e){
-    var w=document.getElementById('nav-translate-wrap');
-    if(panel&&w&&!w.contains(e.target))panel.style.display='none';
-  });
-  // Language links: open in Baidu Translate (国内直连)
-  var baiduLangs={'en':'en','es':'spa','id':'id','pt':'pt','ru':'ru','kor':'kor','ja':'jp','vi':'vie','fr':'fra','de':'de','th':'th','ar':'ara'};
-  var links=panel?panel.querySelectorAll('a[data-lang]'):[];
-  links.forEach(function(a){
-    a.addEventListener('click',function(e){
-      e.preventDefault();
-      var lang=a.getAttribute('data-lang');
-      var bl=baiduLangs[lang]||'en';
-      var url='https://fanyi.baidu.com/transpage?query='+encodeURIComponent(location.href)+'&from=zh&to='+bl+'&source=url';
-      window.open(url,'_blank');
-      panel.style.display='none';
-    });
-  });
-  // Mobile sidebar language links
-  var mlinks=document.querySelectorAll('#mobile-translate-slot a[data-lang]');
-  mlinks.forEach(function(a){
-    a.addEventListener('click',function(e){
-      e.preventDefault();
-      var lang=a.getAttribute('data-lang');
-      var bl=baiduLangs[lang]||'en';
-      var url='https://fanyi.baidu.com/transpage?query='+encodeURIComponent(location.href)+'&from=zh&to='+bl+'&source=url';
-      window.open(url,'_blank');
-    });
-  });
-});
-</script>
+<!-- GTranslate - 国内可直连 -->
+<script>window.gtranslateSettings={"default_language":"zh-CN","languages":["en","es","id","pt","ru","ko","ja","vi","fr","de","th","ar"],"wrapper_selector":".gtranslate_wrapper","float_switcher_open_direction":"top","switcher_horizontal_position":"right","switcher_vertical_position":"bottom","float_switcher_open_direction":"top"}</script>
+<script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
 </head>
 <body class="hero-bg min-h-screen pt-24">
+<div class="gtranslate_wrapper"></div>
 
     <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
         <span class="text-xl">🔥</span>
@@ -151,25 +123,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
             <div class="flex items-center gap-4">
                 <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer; noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-[#5865F2] items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a><a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer; noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-blue-500 items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg></a>
-                <div class="relative" id="nav-translate-wrap">
-                  <button id="translate-toggle-btn" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#f4af47]/60 transition-all" title="切换语言">
-                    <svg class="w-5 h-5" fill="none" stroke="#f4af47" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>
-                  </button>
-                  <div id="nav-translate-panel" class="lang-panel" style="display:none;position:absolute;right:0;top:48px;background:#2d1b3d;border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:10px;box-shadow:0 20px 40px rgba(0,0,0,0.6);z-index:9999;min-width:160px;">
-                    <a href="#" data-lang="en"><span class="flag">🇺🇸</span>English</a>
-                    <a href="#" data-lang="es"><span class="flag">🇪🇸</span>Español</a>
-                    <a href="#" data-lang="id"><span class="flag">🇮🇩</span>Bahasa Indonesia</a>
-                    <a href="#" data-lang="pt"><span class="flag">🇧🇷</span>Português</a>
-                    <a href="#" data-lang="ru"><span class="flag">🇷🇺</span>Русский</a>
-                    <a href="#" data-lang="ko"><span class="flag">🇰🇷</span>한국어</a>
-                    <a href="#" data-lang="ja"><span class="flag">🇯🇵</span>日本語</a>
-                    <a href="#" data-lang="vi"><span class="flag">🇻🇳</span>Tiếng Việt</a>
-                    <a href="#" data-lang="fr"><span class="flag">🇫🇷</span>Français</a>
-                    <a href="#" data-lang="de"><span class="flag">🇩🇪</span>Deutsch</a>
-                    <a href="#" data-lang="th"><span class="flag">🇹🇭</span>ไทย</a>
-                    <a href="#" data-lang="ar"><span class="flag">🇸🇦</span>العربية</a>
-                  </div>
-                </div>
+
                 <a href="reg.html" class="hidden sm:block bg-[#f4af47] text-[#1e0a27] px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">Code: nbjh</a>
                 <button id="m-btn" class="lg:hidden p-1.5 text-[#f4af47] border border-[#f4af47]/20 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
             </div>
@@ -283,24 +237,7 @@ document.addEventListener('DOMContentLoaded',function(){
                     <span class="font-bold text-white">关于我们</span>
                 </a>
 
-                <!-- 语言切换 -->
-                <div class="mt-4 mb-2 px-4">
-                    <div class="text-[10px] font-black tracking-widest text-gray-500 uppercase">🌐 语言 / Language</div>
-                </div>
-                <div class="px-4 space-y-1" id="mobile-translate-slot">
-                    <a href="#" data-lang="en" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇺🇸 English</a>
-                    <a href="#" data-lang="es" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇪🇸 Español</a>
-                    <a href="#" data-lang="id" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇩 Bahasa Indonesia</a>
-                    <a href="#" data-lang="pt" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇧🇷 Português</a>
-                    <a href="#" data-lang="ru" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇷🇺 Русский</a>
-                    <a href="#" data-lang="ko" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇰🇷 한국어</a>
-                    <a href="#" data-lang="ja" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇯🇵 日本語</a>
-                    <a href="#" data-lang="vi" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇻🇳 Tiếng Việt</a>
-                    <a href="#" data-lang="fr" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇫🇷 Français</a>
-                    <a href="#" data-lang="de" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇩🇪 Deutsch</a>
-                    <a href="#" data-lang="th" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇹🇭 ไทย</a>
-                    <a href="#" data-lang="ar" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇸🇦 العربية</a>
-                </div>
+
             </nav>
 
             <!-- 底部社交 -->
