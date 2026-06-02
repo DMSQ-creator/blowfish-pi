@@ -28,43 +28,44 @@
         .breadcrumb { font-size: 13px; color: #999; }
         .breadcrumb a { color: #f4af47; text-decoration: none; }
         .breadcrumb a:hover { text-decoration: underline; }
-        @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } body { padding-bottom: 70px; } }
+        @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
+        .goog-te-banner-frame{display:none!important;}
+        body{top:0!important;}
+        .goog-te-gadget{font-size:0!important;}
+        .goog-te-gadget span{display:none!important;}
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
     {{HEAD_EXTRA}}
   <!-- Chart.js CDN (for price page charts) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\\/script>')</script>
+  <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
 <!-- Google Translate -->
 <script>
 function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'zh-CN',includedLanguages:'en,es,id,pt,ru,ko,ja,vi,fr,de,th,tl,hi,ar,tr',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'google_translate_element');}
 </script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<style>
-.goog-te-banner-frame{display:none!important;}
-body{top:0!important;}
-.goog-te-gadget{font-size:0!important;}
-.goog-te-gadget span{display:none!important;}
-.translate-float{position:fixed;bottom:80px;right:16px;z-index:49;}
-@media(min-width:1024px){.translate-float{bottom:24px;right:24px;}}
-.translate-toggle{background:rgba(30,10,39,0.9);border:1px solid rgba(255,255,255,0.15);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(10px);transition:all .3s;}
-.translate-toggle:hover{border-color:#f4af47;transform:scale(1.1);}
-.translate-toggle svg{width:20px;height:20px;}
-.translate-panel{display:none;position:absolute;bottom:52px;right:0;background:rgba(30,10,39,0.95);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:12px;backdrop-filter:blur(16px);min-width:160px;}
-.translate-panel.open{display:block;}
-</style>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
-  var wrap=document.createElement('div');
-  wrap.className='translate-float';
-  wrap.innerHTML='<div class="translate-toggle" title="切换语言 / Change Language"><svg viewBox="0 0 24 24" fill="none" stroke="#f4af47" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg></div><div class="translate-panel" id="translate-panel"></div>';
-  document.body.appendChild(wrap);
-  var toggle=wrap.querySelector('.translate-toggle');
-  var panel=document.getElementById('translate-panel');
-  toggle.onclick=function(e){e.stopPropagation();panel.classList.toggle('open');};
-  document.addEventListener('click',function(e){if(!wrap.contains(e.target))panel.classList.remove('open');});
-  var poll=setInterval(function(){var gt=document.getElementById('google_translate_element');if(gt&&gt.childNodes.length>0){panel.appendChild(gt);gt.style.display='block';clearInterval(poll);}},200);
+  var poll=setInterval(function(){
+    var gt=document.getElementById('google_translate_element');
+    if(gt&&gt.childNodes.length>0){
+      var navPanel=document.getElementById('nav-translate-panel');
+      if(navPanel){navPanel.appendChild(gt);gt.style.display='block';}
+      clearInterval(poll);
+    }
+  },200);
+  document.addEventListener('click',function(e){
+    var p=document.getElementById('nav-translate-panel');
+    var w=document.getElementById('nav-translate-wrap');
+    if(p&&w&&!w.contains(e.target))p.classList.add('hidden');
+  });
+  // Mobile: clone translate gadget into sidebar slot
+  var mpoll=setInterval(function(){
+    var gt2=document.querySelector('#nav-translate-panel .goog-te-gadget');
+    var slot=document.getElementById('mobile-translate-slot');
+    if(gt2&&slot&&!slot.hasChildNodes()){var cl=gt2.cloneNode(true);slot.appendChild(cl);clearInterval(mpoll);}
+  },500);
 });
 </script>
 <div id="google_translate_element" style="display:none;"></div>
