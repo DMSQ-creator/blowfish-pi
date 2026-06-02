@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="/static/tailwind.css">
     <style>
         body { background-color: #1e0a27; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
-        .hero-bg { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
+        .hero-bg { background: #1e0a27; }
+        .hero-gradient { background: linear-gradient(135deg, #1e0a27 0%, #423f88 100%); }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
         .dropdown:hover .dropdown-menu { display: block; }
@@ -47,20 +48,28 @@ function googleTranslateElementInit(){new google.translate.TranslateElement({pag
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
+  // Toggle translate panel
+  var btn=document.getElementById('translate-toggle-btn');
+  var panel=document.getElementById('nav-translate-panel');
+  if(btn&&panel){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      panel.style.display=panel.style.display==='none'||panel.style.display===''?'block':'none';
+    });
+  }
+  document.addEventListener('click',function(e){
+    var w=document.getElementById('nav-translate-wrap');
+    if(panel&&w&&!w.contains(e.target))panel.style.display='none';
+  });
+  // Move Google Translate widget into nav panel
   var poll=setInterval(function(){
     var gt=document.getElementById('google_translate_element');
     if(gt&&gt.childNodes.length>0){
-      var navPanel=document.getElementById('nav-translate-panel');
-      if(navPanel){navPanel.appendChild(gt);gt.style.display='block';}
+      if(panel){panel.appendChild(gt);gt.style.display='block';}
       clearInterval(poll);
     }
   },200);
-  document.addEventListener('click',function(e){
-    var p=document.getElementById('nav-translate-panel');
-    var w=document.getElementById('nav-translate-wrap');
-    if(p&&w&&!w.contains(e.target))p.classList.add('hidden');
-  });
-  // Mobile: clone translate gadget into sidebar slot
+  // Mobile: clone into sidebar
   var mpoll=setInterval(function(){
     var gt2=document.querySelector('#nav-translate-panel .goog-te-gadget');
     var slot=document.getElementById('mobile-translate-slot');
