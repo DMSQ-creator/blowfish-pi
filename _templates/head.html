@@ -36,5 +36,29 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\\/script>')</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
+<!-- Google Translate -->
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'zh-CN',includedLanguages:'en,es,id,pt,ru,ko,ja,vi,fr,de,th,tl,hi,ar,tr',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'google_translate_element');}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<style>
+.goog-te-banner-frame{display:none!important;}
+body{top:0!important;}
+.translate-btn{position:fixed;bottom:80px;right:16px;z-index:49;background:rgba(30,10,39,0.9);border:1px solid rgba(255,255,255,0.15);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(10px);transition:all .3s;}
+.translate-btn:hover{border-color:#f4af47;transform:scale(1.1);}
+.translate-btn svg{width:20px;height:20px;}
+#google_translate_element{display:none;}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var btn=document.createElement('div');
+  btn.className='translate-btn';
+  btn.title='切换语言 / Change Language';
+  btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="#f4af47" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>';
+  btn.onclick=function(){var el=document.getElementById('google_translate_element');if(el)el.style.display=el.style.display==='block'?'none':'block';};
+  document.body.appendChild(btn);
+});
+</script>
+<div id="google_translate_element" style="position:fixed;bottom:130px;right:16px;z-index:49;"></div>
 </head>
 <body class="hero-bg min-h-screen{{BODY_CLASS}}">
