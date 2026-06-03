@@ -54,7 +54,7 @@
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
 <!-- GTranslate - 桌面导航栏 + 移动端底部栏 -->
-<script>window.gtranslateSettings={"default_language":"zh-CN","languages":["en","es","id","pt","ru","ko","ja","vi","fr","de","th","ar"],"wrapper_selector":".gtranslate_nav,.gtranslate_mobile","alt_flags":{"en":"us","pt":"br","es":"es"}}</script>
+<script>window.gtranslateSettings={"default_language":"zh-CN","languages":["zh-CN","en","es","id","pt","ru","ko","ja","vi","fr","de","th","ar","it","hi","tl"],"wrapper_selector":".gtranslate_nav,.gtranslate_mobile","alt_flags":{"en":"us","pt":"br","es":"es"}}</script>
 <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
 </head>
 <body class="hero-bg min-h-screen">
@@ -270,18 +270,24 @@
         <div id="mlang" class="hidden mt-3 bg-[#2d1b3d] border border-white/15 rounded-2xl p-3 max-h-[50vh] overflow-y-auto">
             <div class="grid grid-cols-2 gap-1">
                 <a href="#" onclick="window.location.href=window.location.pathname;return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇨🇳 简体中文</a>
-                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=en';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇺🇸 English</a>
-                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=es';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇪🇸 Español</a>
-                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=id';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇩 Indonesia</a>
-                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=pt';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇧🇷 Português</a>
-                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=ru';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇷🇺 Русский</a>
-                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=ko';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇰🇷 한국어</a>
-                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=ja';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇯🇵 日本語</a>
-                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=vi';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇻🇳 Tiếng Việt</a>
-                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=fr';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇫🇷 Français</a>
-                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=de';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇩🇪 Deutsch</a>
-                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=th';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇹🇭 ไทย</a>
-                <a href="#" onclick="window.location.href=window.location.pathname+'?gt-lang=ar';return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇸🇦 العربية</a>
+                <div class="gtranslate_mobile py-2"></div>
+                <div class="border-t border-white/5 my-2"></div>
+                <a href="#" onclick="doGTranslate('zh-CN|zh-CN');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇨🇳 简体中文</a>
+                <a href="#" onclick="doGTranslate('zh-CN|en');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇺🇸 English</a>
+                <a href="#" onclick="doGTranslate('zh-CN|es');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇪🇸 Español</a>
+                <a href="#" onclick="doGTranslate('zh-CN|id');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇩 Indonesia</a>
+                <a href="#" onclick="doGTranslate('zh-CN|pt');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇧🇷 Português</a>
+                <a href="#" onclick="doGTranslate('zh-CN|ru');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇷🇺 Русский</a>
+                <a href="#" onclick="doGTranslate('zh-CN|ko');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇰🇷 한국어</a>
+                <a href="#" onclick="doGTranslate('zh-CN|ja');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇯🇵 日本語</a>
+                <a href="#" onclick="doGTranslate('zh-CN|vi');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇻🇳 Tiếng Việt</a>
+                <a href="#" onclick="doGTranslate('zh-CN|fr');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇫🇷 Français</a>
+                <a href="#" onclick="doGTranslate('zh-CN|de');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇩🇪 Deutsch</a>
+                <a href="#" onclick="doGTranslate('zh-CN|th');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇹🇭 ไทย</a>
+                <a href="#" onclick="doGTranslate('zh-CN|ar');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇸🇦 العربية</a>
+                <a href="#" onclick="doGTranslate('zh-CN|it');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇹 Italiano</a>
+                <a href="#" onclick="doGTranslate('zh-CN|hi');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇳 हिन्दी</a>
+                <a href="#" onclick="doGTranslate('zh-CN|tl');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇵🇭 Filipino</a>
             </div>
         </div>
     </div>
