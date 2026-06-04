@@ -15,6 +15,16 @@
     </div>
 </footer>
 <script>
+function switchLang(lang){
+    if(lang==='zh-CN'){
+        document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;';
+        document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.pibizh.com;';
+    } else {
+        document.cookie='googtrans=/zh-CN/'+lang+'; path=/;';
+        document.cookie='googtrans=/zh-CN/'+lang+'; path=/; domain=.pibizh.com;';
+    }
+    window.location.reload();
+}
 (function(){
     var mm=document.getElementById('mobile-menu'),
         mp=document.getElementById('m-panel'),
