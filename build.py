@@ -108,6 +108,17 @@ def extract_page_content(html_path):
     
     page_content = content[content_start:content_end].strip()
     
+    # Strip old mobile bottom bars (now unified in nav template)
+    # Old bars appear as <!-- 移动端底部固定悬浮栏 --> ... </div></div></div>
+    # Regex can't handle deeply nested divs, so find the comment and cut to end
+    old_bar_start = page_content.find('移动端底部固定悬浮栏')
+    if old_bar_start > 0:
+        # Walk back to include the comment
+        comment_start = page_content.rfind('<!--', 0, old_bar_start)
+        if comment_start < 0:
+            comment_start = old_bar_start
+        page_content = page_content[:comment_start].rstrip()
+    
     # Also extract any page-specific <script> blocks that come after content but before </body>
     # (like the index.html blog fetcher, calculator logic, etc.)
     after_content = content[content_end:]
@@ -118,9 +129,12 @@ def extract_page_content(html_path):
         extra_scripts = re.findall(r'<script[^>]*>.*?</script>', after_footer, re.DOTALL)
         mobile_menu_scripts = [s for s in extra_scripts if 'mobile-menu' in s or 'm-panel' in s]
         page_scripts = [s for s in extra_scripts if s not in mobile_menu_scripts]
-        # Also extract any extra HTML (like the mobile bottom bar on index.html)
+        # Also extract any extra HTML
         extra_html = re.sub(r'<script[^>]*>.*?</script>', '', after_footer, flags=re.DOTALL).strip()
         extra_html = re.sub(r'</body>\s*</html>\s*', '', extra_html).strip()
+        # Strip out old mobile bottom bars (now in nav template) - they cause duplicates
+        extra_html = re.sub(r'<!--\s*移动端底部固定悬浮栏\s*-->\s*<div[^>]*fixed\s+bottom-0[^>]*>.*?</div>\s*</div>', '', extra_html, flags=re.DOTALL)
+        extra_html = re.sub(r'<div[^>]*class="fixed bottom-0[^"]*"[^>]*>.*?</div>\s*</div>', '', extra_html, flags=re.DOTALL)
         if extra_html:
             page_content += "\n" + extra_html
         for s in page_scripts:
