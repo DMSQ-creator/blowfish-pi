@@ -30,6 +30,20 @@
         .breadcrumb a { color: #f4af47; text-decoration: none; }
         .breadcrumb a:hover { text-decoration: underline; }
         @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
+        /* FAQ Accordion */
+        .faq-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; margin-bottom: 12px; overflow: hidden; transition: all 0.3s; }
+        .faq-card:hover { border-color: rgba(244,175,71,0.4); background: rgba(255,255,255,0.06); }
+        .faq-card .question { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; cursor: pointer; font-weight: 700; font-size: 16px; color: #f0f0f0; gap: 12px; line-height: 1.5; }
+        .faq-card .question svg { flex-shrink: 0; transition: transform 0.3s; }
+        .faq-card.active .question svg { transform: rotate(180deg); }
+        .faq-card .answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; padding: 0 24px; color: #c8c8d0; font-size: 15px; line-height: 1.8; }
+        .faq-card.active .answer { max-height: 600px; padding: 0 24px 20px; }
+        .faq-card .answer a { color: #f4af47; text-decoration: underline; }
+        @media (max-width: 768px) {
+            .faq-card .question { padding: 14px 16px; font-size: 14px; }
+            .faq-card .answer { font-size: 14px; padding: 0 16px; }
+            .faq-card.active .answer { padding: 0 16px 16px; }
+        }
         /* GTranslate nav dropdown dark theme */
         .gt_switcher_wrapper{background:#3a2355!important;border:1px solid rgba(255,255,255,0.15)!important;border-radius:12px!important;box-shadow:0 10px 30px rgba(0,0,0,0.5)!important;min-width:180px!important;max-height:320px!important;overflow-y:auto!important;}
         .gt_switcher_wrapper a{color:#e2e8f0!important;font-size:13px!important;font-weight:600!important;padding:10px 16px!important;background:#3a2355!important;border-bottom:1px solid rgba(255,255,255,0.06)!important;}
@@ -39,6 +53,7 @@
         /* Mobile GTranslate in bottom bar */
         .gtranslate_mobile .gt_switcher_wrapper{position:relative!important;min-width:100%!important;max-height:45vh!important;}
     </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
@@ -87,6 +102,9 @@
   <!-- Chart.js CDN (for price page charts) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\\/script>')</script>
+  <!-- Chart.js CDN (for price page charts) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
   <!-- Chart.js CDN (for price page charts) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
