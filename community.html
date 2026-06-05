@@ -370,22 +370,22 @@
         <div style="max-width:860px;margin:0 auto 2rem;">
             <h2 style="font-size:1.15rem;font-weight:800;margin-bottom:1rem;color:#f0f0f0;">🔥 热门话题</h2>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
-                <div class="topic-card" onclick="document.querySelector('.ask-form-card').scrollIntoView({behavior:\'smooth\'})">
+                <div class="topic-card" onclick="document.getElementById('disqus_thread').scrollIntoView({behavior:'smooth'})">
                     <div style="font-size:1.75rem;margin-bottom:0.5rem;">🚀</div>
                     <div style="font-weight:800;font-size:0.95rem;margin-bottom:0.25rem;">开放网络</div>
                     <div style="color:#888;font-size:0.8rem;">最新进展与动态</div>
                 </div>
-                <div class="topic-card" onclick="document.querySelector('.ask-form-card').scrollIntoView({behavior:\'smooth\'})">
+                <div class="topic-card" onclick="document.getElementById('disqus_thread').scrollIntoView({behavior:'smooth'})">
                     <div style="font-size:1.75rem;margin-bottom:0.5rem;">⛏️</div>
                     <div style="font-weight:800;font-size:0.95rem;margin-bottom:0.25rem;">新手挖矿</div>
                     <div style="color:#888;font-size:0.8rem;">如何开始挖矿</div>
                 </div>
-                <div class="topic-card" onclick="document.querySelector('.ask-form-card').scrollIntoView({behavior:\'smooth\'})">
+                <div class="topic-card" onclick="document.getElementById('disqus_thread').scrollIntoView({behavior:'smooth'})">
                     <div style="font-size:1.75rem;margin-bottom:0.5rem;">🔐</div>
                     <div style="font-weight:800;font-size:0.95rem;margin-bottom:0.25rem;">安全防骗</div>
                     <div style="color:#888;font-size:0.8rem;">账户保护指南</div>
                 </div>
-                <div class="topic-card" onclick="document.querySelector(\'.ask-form-card\').scrollIntoView({behavior:\'smooth\'})">
+                <div class="topic-card" onclick="document.getElementById('disqus_thread').scrollIntoView({behavior:'smooth'})">
                     <div style="font-size:1.75rem;margin-bottom:0.5rem;">💰</div>
                     <div style="font-weight:800;font-size:0.95rem;margin-bottom:0.25rem;">价格行情</div>
                     <div style="color:#888;font-size:0.8rem;">Pi 价格讨论</div>
@@ -412,98 +412,27 @@
             </div>
         </div>
 
-        <!-- Ask Form -->
+        <!-- Disqus Community Forum -->
         <div style="max-width:860px;margin:0 auto 2rem;">
-            <h2 style="font-size:1.15rem;font-weight:800;margin-bottom:1rem;color:#f0f0f0;">✍️ 发起提问</h2>
-            <div class="ask-form-card">
-                <div style="color:#b8b0cc;font-size:0.9rem;margin-bottom:1.25rem;">有问题？在这里提交，社区志愿者会尽快回复！</div>
-                <div style="display:flex;flex-direction:column;gap:1rem;">
-                    <input type="text" id="ask-nickname" class="ask-input" placeholder="你的昵称（选填）" maxlength="30" />
-                    <select id="ask-category" class="ask-select">
-                        <option value="">— 选择问题分类 —</option>
-                        <option value="basic">🪄 入门基础</option>
-                        <option value="mining">⛏️ 挖矿问题</option>
-                        <option value="wallet">💳 钱包问题</option>
-                        <option value="kyc">✅ KYC 认证</option>
-                        <option value="security">🔐 账户安全</option>
-                        <option value="ecosystem">🌐 生态应用</option>
-                        <option value="other">💬 其他话题</option>
-                    </select>
-                    <div>
-                        <textarea id="ask-content" class="ask-input" placeholder="请详细描述你的问题..." rows="4" style="resize:vertical;min-height:100px;" maxlength="500"></textarea>
-                        <div style="text-align:right;font-size:0.75rem;color:#555;margin-top:4px;"><span id="ask-count">0</span>/500</div>
-                    </div>
-                    <button class="ask-submit" onclick="submitQuestion()">🚀 提交问题</button>
-                </div>
-            </div>
+            <h2 style="font-size:1.15rem;font-weight:800;margin-bottom:1rem;color:#f0f0f0;">💬 社区讨论区</h2>
+            <p style="color:#b8b0cc;font-size:0.9rem;margin-bottom:1.5rem;">在这里提问、回答、分享经验，社区先锋互相帮助！</p>
+            <div id="disqus_thread"></div>
+            <noscript>请启用 JavaScript 以查看 <a href="https://disqus.com/?ref_noscript">Disqus 评论系统。</a></noscript>
         </div>
 
-        <!-- Featured Q&A -->
-        <div style="max-width:860px;margin:0 auto 2rem;">
-            <h2 style="font-size:1.15rem;font-weight:800;margin-bottom:1rem;color:#f0f0f0;">🌟 精选问答</h2>
-            <div style="display:flex;flex-direction:column;gap:1rem;">
-
-                <div class="qa-card">
-                    <div style="display:flex;gap:0.75rem;align-items:flex-start;">
-                        <div class="qa-avatar">🚀</div>
-                        <div style="flex:1;">
-                            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap;">
-                                <span style="font-weight:700;font-size:0.9rem;">先锋阿明</span>
-                                <span style="background:rgba(244,175,71,0.15);color:#f4af47;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:100px;">挖矿问题</span>
-                            </div>
-                            <div style="color:#e0e0e8;font-size:0.95rem;margin-bottom:0.75rem;line-height:1.6;">Q: 手机挖矿每天只能点一次吗？点击频率有影响吗？</div>
-                            <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:0.875rem;">
-                                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;">
-                                    <span style="font-weight:700;font-size:0.85rem;color:#f4af47;">社区志愿者 小李</span>
-                                </div>
-                                <div style="color:#b0b0c0;font-size:0.875rem;line-height:1.7;">A: 是的，Pi 挖矿每 24 小时只需打开 App 点击一次"挖矿"按钮即可。不需要频繁点击，频繁点击反而会被系统检测为异常行为。建议每天固定时间挖一次，保持规律就好！</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="qa-card">
-                    <div style="display:flex;gap:0.75rem;align-items:flex-start;">
-                        <div class="qa-avatar">🔐</div>
-                        <div style="flex:1;">
-                            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap;">
-                                <span style="font-weight:700;font-size:0.9rem;">新手小红</span>
-                                <span style="background:rgba(59,130,246,0.15);color:#60a5fa;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:100px;">账户安全</span>
-                            </div>
-                            <div style="color:#e0e0e8;font-size:0.95rem;margin-bottom:0.75rem;line-height:1.6;">Q: 收到了陌生人的私信，说可以帮我提高挖矿速度，是真的吗？</div>
-                            <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:0.875rem;">
-                                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;">
-                                    <span style="font-weight:700;font-size:0.85rem;color:#f4af47;">防骗志愿者</span>
-                                </div>
-                                <div style="color:#b0b0c0;font-size:0.875rem;line-height:1.7;">A: 绝对是骗子！Pi 官方从不主动联系用户，更不会索要密码或助记词。所有声称能帮你"提高挖矿速度"、"加速KYC"的都是诈骗。遇到这种情况立即拉黑，必要时向平台举报。保护好你的助记词！</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="qa-card">
-                    <div style="display:flex;gap:0.75rem;align-items:flex-start;">
-                        <div class="qa-avatar">💳</div>
-                        <div style="flex:1;">
-                            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap;">
-                                <span style="font-weight:700;font-size:0.9rem;">钱包用户老王</span>
-                                <span style="background:rgba(244,175,71,0.15);color:#f4af47;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:100px;">钱包问题</span>
-                            </div>
-                            <div style="color:#e0e0e8;font-size:0.95rem;margin-bottom:0.75rem;line-height:1.6;">Q: 主网钱包激活后，助记词丢了怎么办？</div>
-                            <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:0.875rem;">
-                                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;">
-                                    <span style="font-weight:700;font-size:0.85rem;color:#f4af47;">社区志愿者 小李</span>
-                                </div>
-                                <div style="color:#b0b0c0;font-size:0.875rem;line-height:1.7;">A: 非常遗憾，助记词一旦丢失无法恢复，这也是区块链去中心化的特性。请立即检查是否有纸质备份。如果彻底丢失，该钱包将无法恢复。强烈建议使用安全的离线方式备份所有重要信息。</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Bottom CTA -->
+        <script>
+        var disqus_config = function () {
+            this.page.url = 'https://pibizh.com/community.html';
+            this.page.identifier = 'pibizh-community';
+            this.page.title = 'Pi 社区广场 - 派币中文网';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://pibizh.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        </script>        <!-- Bottom CTA -->
         <div style="max-width:860px;margin:0 auto 2rem;">
             <div style="padding:2.5rem;background:linear-gradient(135deg,#2a1545,#423f88);border:1px solid rgba(244,175,71,0.2);border-radius:24px;text-align:center;">
                 <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:0.5rem;">还没找到答案？</h2>
@@ -517,33 +446,7 @@
 
     </main>
 
-    <!-- Success Overlay -->
-    <div id="success-overlay" class="success-overlay">
-        <div class="success-card">
-            <div style="font-size:4rem;margin-bottom:1rem;">✅</div>
-            <h3 style="font-size:1.4rem;font-weight:900;margin-bottom:0.75rem;">问题已提交！</h3>
-            <p style="color:#b8b0cc;margin-bottom:1.5rem;line-height:1.6;">感谢你的提问！我们的社区志愿者会尽快在 Telegram 群内回复你。</p>
-            <button onclick="document.getElementById(\'success-overlay\').style.display=\'none\'" style="background:linear-gradient(90deg,#f4af47,#fab44b);border:none;color:#1a0a2e;padding:0.875rem 2.5rem;border-radius:12px;font-weight:800;font-size:1rem;cursor:pointer;">好的，知道了</button>
-        </div>
-    </div>
 
-    <script>
-    function submitQuestion() {
-        var content = document.getElementById(\'ask-content\').value.trim();
-        if (!content) {
-            document.getElementById(\'ask-content\').focus();
-            return;
-        }
-        document.getElementById(\'success-overlay\').style.display = \'flex\';
-        document.getElementById(\'ask-content\').value = \'\';
-        document.getElementById(\'ask-nickname\').value = \'\';
-        document.getElementById(\'ask-category\').selectedIndex = 0;
-        document.getElementById(\'ask-count\').textContent = \'0\';
-    }
-    document.getElementById(\'ask-content\').addEventListener(\'input\', function() {
-        document.getElementById(\'ask-count\').textContent = this.value.length;
-    });
-    </script>
 </main>
 
 
