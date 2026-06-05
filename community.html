@@ -338,7 +338,7 @@
     <main class="max-w-5xl mx-auto py-16 px-6">
 
         <!-- Breadcrumb -->
-        <div class="max-w-5xl mx-auto px-6 pb-6">
+        <div style="padding-bottom:1rem;">
             <div class="breadcrumb"><a href="index.html">首页</a> &raquo; <a href="pi-guide.html">Pi百科</a> &raquo; <span class="text-gray-400">社区广场</span></div>
         </div>
 
@@ -361,22 +361,22 @@
         <div style="max-width:860px;margin:0 auto 2rem;">
             <h2 style="font-size:1.15rem;font-weight:800;margin-bottom:1rem;color:#f0f0f0;">🔥 热门话题</h2>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
-                <div class="topic-card" onclick="document.getElementById('disqus_thread').scrollIntoView({behavior:'smooth'})">
+                <div class="topic-card" onclick="document.getElementById('waline').scrollIntoView({behavior:'smooth',block:'start'})">
                     <div style="font-size:1.75rem;margin-bottom:0.5rem;">🚀</div>
                     <div style="font-weight:800;font-size:0.95rem;margin-bottom:0.25rem;">开放网络</div>
                     <div style="color:#888;font-size:0.8rem;">最新进展与动态</div>
                 </div>
-                <div class="topic-card" onclick="document.getElementById('disqus_thread').scrollIntoView({behavior:'smooth'})">
+                <div class="topic-card" onclick="document.getElementById('waline').scrollIntoView({behavior:'smooth',block:'start'})">
                     <div style="font-size:1.75rem;margin-bottom:0.5rem;">⛏️</div>
                     <div style="font-weight:800;font-size:0.95rem;margin-bottom:0.25rem;">新手挖矿</div>
                     <div style="color:#888;font-size:0.8rem;">如何开始挖矿</div>
                 </div>
-                <div class="topic-card" onclick="document.getElementById('disqus_thread').scrollIntoView({behavior:'smooth'})">
+                <div class="topic-card" onclick="document.getElementById('waline').scrollIntoView({behavior:'smooth',block:'start'})">
                     <div style="font-size:1.75rem;margin-bottom:0.5rem;">🔐</div>
                     <div style="font-weight:800;font-size:0.95rem;margin-bottom:0.25rem;">安全防骗</div>
                     <div style="color:#888;font-size:0.8rem;">账户保护指南</div>
                 </div>
-                <div class="topic-card" onclick="document.getElementById('disqus_thread').scrollIntoView({behavior:'smooth'})">
+                <div class="topic-card" onclick="document.getElementById('waline').scrollIntoView({behavior:'smooth',block:'start'})">
                     <div style="font-size:1.75rem;margin-bottom:0.5rem;">💰</div>
                     <div style="font-weight:800;font-size:0.95rem;margin-bottom:0.25rem;">价格行情</div>
                     <div style="color:#888;font-size:0.8rem;">Pi 价格讨论</div>
@@ -404,17 +404,35 @@
         </div>
 
         <!-- Waline Community Forum -->
-        <div style="max-width:860px;margin:0 auto 2rem;">
-            <h2 style="font-size:1.15rem;font-weight:800;margin-bottom:1rem;color:#f0f0f0;">💬 社区讨论区</h2>
-            <p style="color:#b8b0cc;font-size:0.9rem;margin-bottom:1.5rem;">在这里提问、回答、分享经验，社区先锋互相帮助！支持匿名、邮箱、GitHub、Google 等多种方式登录。</p>
+        <div style="max-width:860px;margin:0 auto 2.5rem;">
+            <div style="background:linear-gradient(135deg,rgba(244,175,71,0.08),rgba(66,63,136,0.15));border:1px solid rgba(244,175,71,0.2);border-radius:24px;padding:2rem 1.5rem 1.5rem;margin-bottom:1rem;">
+                <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:0.5rem;color:#f4af47;">💬 社区讨论区</h2>
+                <p style="color:#c8c0d8;font-size:0.95rem;margin-bottom:0;line-height:1.6;">提问、回答、分享经验 — 填个昵称就能发言，无需注册！</p>
+            </div>
             <div id="waline"></div>
         </div>
 
         <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
         <style>
-          .wl-card{--waline-bg-color:#2a1545;--waline-bg-color-light:#362252;--waline-color:#e0e0e8;--waline-border-color:rgba(255,255,255,0.12);--waline-active-color:#f4af47;--waline-theme-color:#f4af47;}
-          .wl-panel{background:rgba(255,255,255,0.04)!important;border:1px solid rgba(255,255,255,0.12)!important;border-radius:16px!important;}
-          .wl-comment{border-bottom-color:rgba(255,255,255,0.06)!important;}
+          :root {--waline-theme-color:#f4af47;--waline-active-color:#e6a040;}
+          [data-waline] {--waline-theme-color:#f4af47;--waline-active-color:#e6a040;}
+          .wl-container { font-family: 'Inter', sans-serif; }
+          .wl-panel { background: rgba(255,255,255,0.06) !important; border: 1px solid rgba(255,255,255,0.15) !important; border-radius: 16px !important; }
+          .wl-editor { background: rgba(255,255,255,0.04) !important; color: #e0e0e8 !important; border-radius: 12px !important; min-height: 120px !important; }
+          .wl-editor:focus { border-color: #f4af47 !important; box-shadow: 0 0 0 2px rgba(244,175,71,0.2) !important; }
+          .wl-input { background: rgba(255,255,255,0.04) !important; color: #e0e0e8 !important; border-radius: 10px !important; }
+          .wl-input:focus { border-color: #f4af47 !important; }
+          .wl-header-item { border-color: rgba(255,255,255,0.1) !important; }
+          .wl-btn { background: linear-gradient(90deg, #f4af47, #fab44b) !important; color: #1a0a2e !important; border: none !important; border-radius: 10px !important; font-weight: 800 !important; }
+          .wl-btn:hover { opacity: 0.9; transform: scale(1.02); }
+          .wl-card { background: rgba(255,255,255,0.03) !important; border: 1px solid rgba(255,255,255,0.08) !important; border-radius: 14px !important; padding: 1rem !important; margin-bottom: 0.75rem !important; }
+          .wl-comment-content { color: #d0d0d8 !important; }
+          .wl-quote { border-left-color: #f4af47 !important; }
+          .wl-meta { color: #888 !important; }
+          .wl-nick { color: #f4af47 !important; font-weight: 700 !important; }
+          .wl-reaction-img { filter: none !important; }
+          .wl-reaction { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.1) !important; }
+          .wl-reaction:hover { border-color: #f4af47 !important; }
         </style>
         <script type="module">
         import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
