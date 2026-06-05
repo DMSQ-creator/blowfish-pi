@@ -410,16 +410,21 @@
             <div id="waline"></div>
         </div>
 
+        <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
+        <style>
+          .wl-card{--waline-bg-color:#2a1545;--waline-bg-color-light:#362252;--waline-color:#e0e0e8;--waline-border-color:rgba(255,255,255,0.12);--waline-active-color:#f4af47;--waline-theme-color:#f4af47;}
+          .wl-panel{background:rgba(255,255,255,0.04)!important;border:1px solid rgba(255,255,255,0.12)!important;border-radius:16px!important;}
+          .wl-comment{border-bottom-color:rgba(255,255,255,0.06)!important;}
+        </style>
         <script type="module">
         import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
-        import '@waline/client@v3/dist/waline.css';
 
         init({
           el: '#waline',
           serverURL: 'https://pibizh-waline-dmsqcreators-projects.vercel.app',
           lang: 'zh-CN',
-          dark: 'auto',
-          meta: ['nick', 'mail', 'link'],
+          dark: true,
+          meta: ['nick', 'mail'],
           requiredMeta: ['nick'],
           login: 'enable',
           wordLimit: [5, 500],
@@ -428,6 +433,15 @@
           highlighter: false,
           texRenderer: false,
           search: false,
+          locale: {
+            placeholder: '在这里提问或回答，填昵称就能发言 ✍️',
+            nick: '昵称',
+            mail: '邮箱（选填，回复通知用）',
+            sofa: '还没有评论，快来第一个提问吧！',
+            submit: '发布',
+            reply: '回复',
+            more: '加载更多',
+          },
           emoji: [
             '//unpkg.com/@waline/emojis@1.2.0/weibo',
             '//unpkg.com/@waline/emojis@1.2.0/bilibili',
