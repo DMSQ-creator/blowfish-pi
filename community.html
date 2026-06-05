@@ -412,26 +412,36 @@
             </div>
         </div>
 
-        <!-- Disqus Community Forum -->
+        <!-- Waline Community Forum -->
         <div style="max-width:860px;margin:0 auto 2rem;">
             <h2 style="font-size:1.15rem;font-weight:800;margin-bottom:1rem;color:#f0f0f0;">💬 社区讨论区</h2>
-            <p style="color:#b8b0cc;font-size:0.9rem;margin-bottom:1.5rem;">在这里提问、回答、分享经验，社区先锋互相帮助！</p>
-            <div id="disqus_thread"></div>
-            <noscript>请启用 JavaScript 以查看 <a href="https://disqus.com/?ref_noscript">Disqus 评论系统。</a></noscript>
+            <p style="color:#b8b0cc;font-size:0.9rem;margin-bottom:1.5rem;">在这里提问、回答、分享经验，社区先锋互相帮助！支持匿名、邮箱、GitHub、Google 等多种方式登录。</p>
+            <div id="waline"></div>
         </div>
 
-        <script>
-        var disqus_config = function () {
-            this.page.url = 'https://pibizh.com/community.html';
-            this.page.identifier = 'pibizh-community';
-            this.page.title = 'Pi 社区广场 - 派币中文网';
-        };
-        (function() {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://pibizh.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
+        <script type="module">
+        import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+        import '@waline/client@v3/dist/waline.css';
+
+        init({
+          el: '#waline',
+          serverURL: 'https://pibizh-waline.vercel.app',
+          lang: 'zh-CN',
+          dark: 'auto',
+          meta: ['nick', 'mail', 'link'],
+          requiredMeta: ['nick'],
+          login: 'enable',
+          wordLimit: [5, 500],
+          pageSize: 10,
+          uploadImage: false,
+          highlighter: false,
+          texRenderer: false,
+          search: false,
+          emoji: [
+            '//unpkg.com/@waline/emojis@1.2.0/weibo',
+            '//unpkg.com/@waline/emojis@1.2.0/bilibili',
+          ],
+        });
         </script>        <!-- Bottom CTA -->
         <div style="max-width:860px;margin:0 auto 2rem;">
             <div style="padding:2.5rem;background:linear-gradient(135deg,#2a1545,#423f88);border:1px solid rgba(244,175,71,0.2);border-radius:24px;text-align:center;">
