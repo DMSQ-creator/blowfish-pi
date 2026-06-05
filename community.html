@@ -433,6 +433,29 @@
           .wl-reaction-img { filter: none !important; }
           .wl-reaction { background: rgba(255,255,255,0.04) !important; border-color: rgba(255,255,255,0.1) !important; }
           .wl-reaction:hover { border-color: #f4af47 !important; }
+          /* Fix invisible placeholder/labels/icons on dark background */
+          .wl-header label { color: #d0c8e0 !important; }
+          .wl-header .wl-header-item label { color: #d0c8e0 !important; font-weight: 600 !important; }
+          .wl-header input { color: #e8e4f0 !important; }
+          .wl-header input::placeholder { color: #a098b8 !important; }
+          .wl-editor::placeholder, .wl-editor .ql-editor.ql-blank::before { color: #a098b8 !important; }
+          .wl-header svg, .wl-header .wl-header-item svg { color: #c0b8d8 !important; fill: #c0b8d8 !important; stroke: #c0b8d8 !important; }
+          .wl-header .wl-header-item { color: #d0c8e0 !important; }
+          .wl-login-info { color: #d0c8e0 !important; }
+          .wl-login-info a { color: #f4af47 !important; }
+          .wl-sort li { color: #c0b8d8 !important; }
+          .wl-sort li.active { color: #f4af47 !important; }
+          .wl-count { color: #d0c8e0 !important; }
+          .wl-power { color: #8880a0 !important; }
+          .wl-power a { color: #a098b8 !important; }
+          .wl-emoji-popup { background: #2a1545 !important; border-color: rgba(255,255,255,0.15) !important; }
+          .wl-tab-wrapper .wl-tab { color: #c0b8d8 !important; }
+          .wl-tab-wrapper .wl-tab.active { color: #f4af47 !important; border-color: #f4af47 !important; }
+          .wl-close { color: #c0b8d8 !important; }
+          .wl-comment .wl-meta span { color: #a098b8 !important; }
+          .wl-comment .wl-meta span a { color: #c0b8d8 !important; }
+          .wl-action [type="button"] { color: #c0b8d8 !important; }
+          .wl-action [type="button"]:hover { color: #f4af47 !important; }
         </style>
         <script type="module">
         import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
