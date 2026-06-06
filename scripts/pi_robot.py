@@ -797,6 +797,7 @@ def generate_blog_html(title_cn, date_str, content_html, hero_img, slug):
         date=date_str,
         hero_image=hero_html,
         content=content_html,
+        slug=slug,
     )
 
     filepath = os.path.join(BLOG_DIR, f"{slug}.html")
