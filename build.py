@@ -128,7 +128,8 @@ def extract_page_content(html_path):
         # Extract any <script> blocks that aren't the mobile menu script
         extra_scripts = re.findall(r'<script[^>]*>.*?</script>', after_footer, re.DOTALL)
         mobile_menu_scripts = [s for s in extra_scripts if 'mobile-menu' in s or 'm-panel' in s]
-        page_scripts = [s for s in extra_scripts if s not in mobile_menu_scripts]
+        umami_scripts = [s for s in extra_scripts if 'umami' in s]
+        page_scripts = [s for s in extra_scripts if s not in mobile_menu_scripts and s not in umami_scripts]
         # Also extract any extra HTML
         extra_html = re.sub(r'<script[^>]*>.*?</script>', '', after_footer, flags=re.DOTALL).strip()
         extra_html = re.sub(r'</body>\s*</html>\s*', '', extra_html).strip()
@@ -139,6 +140,11 @@ def extract_page_content(html_path):
             page_content += "\n" + extra_html
         for s in page_scripts:
             page_content += "\n" + s
+    
+    # Remove any umami analytics from page content (it's in the footer template)
+    page_content = re.sub(r'<script[^>]*umami[^>]*>.*?</script>', '', page_content, flags=re.DOTALL)
+    page_content = re.sub(r'<!--\s*统一 Footer\s*-->', '', page_content)
+    page_content = page_content.rstrip()
     
     return page_content
 
