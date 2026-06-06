@@ -37,9 +37,8 @@ IMGBB_API_KEY = "0e0e8b6212d394dd3a99aac94e107c7c"  # imgbb 图床 API Key
 # ==========================================
 ARTICLE_TEMPLATE = """<!DOCTYPE html>
 <html lang="zh-CN">
-<!DOCTYPE html>
-<html lang="zh-CN">
 <head>
+    <title>{title} | 派币中文网</title>
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,7 +76,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://pibizh.com/blog/{slug}.html">
     <meta property="og:locale" content="zh_CN">
-    <script defer src="https://umami.cc.cd/script.js" data-website-id="40c4e4c7-3419-4e2c-aa0b-badadb809af8"></script>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="afe2922f-094d-4d10-9725-f3cfedc1a453"></script>
     <style>
         .prose h2 {{ font-size: 2.2rem; font-weight: 900; margin: 4rem 0 2rem; color: #f4af47; border-left: 6px solid #f4af47; padding-left: 1.5rem; }}
         .prose h3 {{ font-size: 1.6rem; font-weight: 800; margin: 2.5rem 0 1.2rem; color: #fff; }}
@@ -90,8 +89,6 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     </style>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
 </head>
-<body class="hero-bg min-h-screen">
-
 <body class="hero-bg min-h-screen">
     <a href="/reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#1e0a27] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#1e0a27]">
         <span class="text-xl">🔥</span>
