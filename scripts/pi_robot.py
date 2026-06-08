@@ -297,23 +297,9 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
      data-ad-slot="8883735919"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </main>
-    <!-- 广告位 -->
-    <section class="py-12 px-6">
-        <div class="container mx-auto max-w-4xl">
-<!-- AdSense 侧边栏广告 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-4800945095334481"
-     data-ad-slot="4735745107"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
-    </section>
     <!-- 页面底部广告 -->
     <section class="py-8 px-6 border-t border-white/5">
         <div class="container mx-auto max-w-4xl">
-<!-- AdSense 页面底部广告 -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4800945095334481"
