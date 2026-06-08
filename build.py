@@ -34,6 +34,11 @@ def extract_page_content(html_path):
     with open(html_path, "r", encoding="utf-8") as f:
         content = f.read()
     
+    # Strip any existing AdSense ad blocks (idempotent rebuilds)
+    content = re.sub(r'<!--\s*AdSense 文章中间广告\s*-->\s*<ins[^>]*data-ad-slot="8883735919"[^>]*>\s*</ins>\s*<script>\(adsbygoogle\s*=\s*window\.adsbygoogle\s*\|\|\s*\[\]\)\.push\(\{\}\);\s*</script>', '', content, flags=re.DOTALL)
+    for slot_id in ['4735745107', '9568510432']:
+        content = re.sub(rf'<!--\s*(?:广告位|页面底部广告)\s*-->\s*<section[^>]*>.*?data-ad-slot="{slot_id}".*?</section>', '', content, flags=re.DOTALL)
+    
     # Strategy: find content after the mobile menu closing </div>
     # The mobile menu ends with a </div> that has id="m-panel" as ancestor
     # After that, page content starts (breadcrumb, section, hero, etc.)
