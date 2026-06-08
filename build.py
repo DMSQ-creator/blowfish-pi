@@ -206,10 +206,64 @@ def build_page(page_file, source_html, page_meta=None):
     head_extra, body_extra = extract_head_extras(source_html, page_meta)
     page_content = extract_page_content(source_html)
     
+    # Insert in-article ad in content pages (not listing/utility pages)
+    listing_pages = {'index.html', 'blog.html', 'price.html', 'community.html'}
+    no_ad_pages = {'404.html', 'reg.html', 'search.html', 'technical-whitepaper.html'}
+    if page_file not in listing_pages and page_file not in no_ad_pages:
+        in_article_ad = '''\n<!-- AdSense 文章中间广告 -->\n<ins class="adsbygoogle"\n     style="display:block; text-align:center;"\n     data-ad-layout="in-article"\n     data-ad-format="fluid"\n     data-ad-client="ca-pub-4800945095334481"\n     data-ad-slot="8883735919"></ins>\n<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>'''
+        # Try after 2nd </section>, else at ~50% of content
+        sections = list(re.finditer(r'</section>', page_content))
+        if len(sections) >= 2:
+            pos = sections[1].end()
+        elif len(sections) >= 1:
+            pos = sections[0].end()
+        else:
+            # Fallback: insert at roughly 50% of content length
+            pos = len(page_content) // 2
+            # Snap to nearest </div> or </p> after midpoint
+            for tag in ['</div>', '</p>', '</h2>', '</h3>']:
+                snap = page_content.find(tag, pos)
+                if snap != -1:
+                    pos = snap + len(tag)
+                    break
+        page_content = page_content[:pos] + in_article_ad + page_content[pos:]
+    
     # Assemble the page
     head_html = HEAD_TMPL.replace("{{HEAD_EXTRA}}", head_extra).replace("{{BODY_CLASS}}", body_extra)
     
-    full_html = head_html + "\n" + NAV_TMPL + "\n    " + page_content + "\n" + FOOTER_TMPL
+    # Insert footer ads before FOOTER_TMPL for non-utility pages
+    no_ad_pages = {'404.html', 'reg.html', 'search.html', 'technical-whitepaper.html'}
+    footer_ads = ''
+    if page_file not in no_ad_pages:
+        footer_ads = '''    <!-- 广告位 -->
+    <section class="py-12 px-6">
+        <div class="container mx-auto max-w-4xl">
+<!-- AdSense 侧边栏广告 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4800945095334481"
+     data-ad-slot="4735745107"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </section>
+    <!-- 页面底部广告 -->
+    <section class="py-8 px-6 border-t border-white/5">
+        <div class="container mx-auto max-w-4xl">
+<!-- AdSense 页面底部广告 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4800945095334481"
+     data-ad-slot="9568510432"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </section>
+'''
+    
+    full_html = head_html + "\n" + NAV_TMPL + "\n    " + page_content + "\n" + footer_ads + FOOTER_TMPL
     
     # Clean up any duplicate </body></html>
     full_html = re.sub(r'(</body>\s*</html>\s*)+', '</body>\n</html>', full_html)

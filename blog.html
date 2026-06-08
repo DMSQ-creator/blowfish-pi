@@ -329,12 +329,6 @@
     <main class="max-w-5xl mx-auto py-20 px-6">
         <h1 class="text-6xl font-black mb-16 tracking-tighter">资讯中心</h1>
         <div id="blog-grid" class="grid gap-10">
-            <!-- vibe-code-social -->
-            <a href="blog/vibe-code-social.html" class="blog-card block">
-                <div class="text-[#f4af47] font-bold mb-4">June 5, 2026 · 官方公告</div>
-                <h2 class="text-3xl font-bold mb-4">先锋们，帮助将更多人工智能创建的应用程序引入 Pi 并参加抽奖活动，赢取 Pi 商品！</h2>
-                <p class="text-gray-500 mb-6 text-sm">想要帮助发展 Pi 生态系统吗？邀请 vibe 程序员通过 Pi App Studio 将他们的 AI 创建的应用程序引入 Pi 的真实分发网络和实用生态系统！</p>
-            </a>
             <!-- cidi-games-beta -->
             <a href="blog/cidi-games-beta.html" class="blog-card block">
                 <img src="/static/blog/cidi-games-beta.jpg" class="w-full rounded-2xl mb-4" alt="CiDi Games Beta">
@@ -494,7 +488,7 @@
                 a.href = href || '#';
                 a.className = [
                     'px-4 py-2 rounded-full font-black text-xs transition-all border',
-                    active ? 'bg-[#f4af47] text-[#2a1545] border-[#f4af47]' : 'bg-white/5 text-white border-white/10 hover:border-[#f4af47]/70',
+                    active ? 'bg-[#f4af47] text-[#1e0a27] border-[#f4af47]' : 'bg-white/5 text-white border-white/10 hover:border-[#f4af47]/70',
                     disabled ? 'opacity-40 pointer-events-none' : ''
                 ].join(' ');
                 return a;
@@ -537,6 +531,19 @@
             pager.appendChild(btn('下一页 →', pageLink(page + 1), page >= totalPages));
         })();
     </script>
+    <!-- 广告位 -->
+    <section class="py-12 px-6">
+        <div class="container mx-auto max-w-4xl">
+<!-- AdSense 侧边栏广告 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4800945095334481"
+     data-ad-slot="4735745107"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </section>
     <!-- 页面底部广告 -->
     <section class="py-8 px-6 border-t border-white/5">
         <div class="container mx-auto max-w-4xl">
@@ -550,8 +557,6 @@
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
     </section>
-
-
     <footer class="py-12 pb-12 bg-[#221636] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
     <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>

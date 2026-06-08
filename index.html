@@ -332,13 +332,13 @@
             <h1 class="text-6xl md:text-[6.5rem] font-black mb-10 leading-[1] tracking-tighter text-white">首个手机<br /><span class="text-pi-gold italic">区块链网络</span></h1>
             <p class="text-xl text-gray-400 max-w-xl mx-auto lg:mx-0 mb-14 leading-relaxed font-medium italic">填写邀请码 <span class="text-[#f4af47] font-black underline underline-offset-8">nbjh</span> 开启你的零成本数字资产时代。已有全球 5500 万先锋加入。</p>
             <div class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
-                <a href="reg.html" class="bg-[#f4af47] text-[#2a1545] px-14 py-6 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl text-center">立即开启挖矿</a>
+                <a href="reg.html" class="bg-[#f4af47] text-[#1e0a27] px-14 py-6 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl text-center">立即开启挖矿</a>
                 <a href="mining-tutorial.html" class="border-2 border-[#f4af47]/40 text-[#f4af47] px-10 py-6 rounded-2xl font-black text-xl hover:bg-[#f4af47]/10 transition-all text-center">查看挖矿教程</a>
             </div>
             <p class="text-[#f4af47] text-lg font-black mt-6 text-center lg:text-left tracking-wide">🔥 邀请码：<span class="text-2xl">nbjh</span></p>
         </div>
         <div class="hidden lg:flex justify-end scale-110">
-            <div class="w-80 h-[600px] bg-gradient-to-b from-[#f4af47] to-[#2a1545] rounded-[50px] border-[12px] border-[#3a2355] shadow-[0_0_120px_rgba(244,175,71,0.2)] flex flex-col items-center justify-center p-8 text-center group" onclick="location.href='reg.html'">
+            <div class="w-80 h-[600px] bg-gradient-to-b from-[#f4af47] to-[#1e0a27] rounded-[50px] border-[12px] border-[#2d1b3d] shadow-[0_0_120px_rgba(244,175,71,0.2)] flex flex-col items-center justify-center p-8 text-center group" onclick="location.href='reg.html'">
                 <div class="text-white font-black text-[150px] leading-none mb-6 group-hover:scale-110 transition-transform italic">π</div>
                 <div class="text-[#f4af47] font-black text-2xl uppercase mb-10">Mining...</div>
                 <p class="text-white text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase mb-8">Consensus Community</p>
@@ -387,13 +387,13 @@
                     <h2 class="text-4xl md:text-5xl font-black tracking-tighter">最新资讯</h2>
                     <p class="text-gray-400 mt-3">展示资讯中心最新文章，点击查看详情。</p>
                 </div>
-                <a href="blog.html" class="hidden sm:inline-flex items-center gap-2 bg-[#f4af47] text-[#2a1545] px-6 py-3 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">查看全部 →</a>
+                <a href="blog.html" class="hidden sm:inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">查看全部 →</a>
             </div>
 
             <div id="home-blog-grid" class="grid gap-8"></div>
 
             <div class="mt-10 sm:hidden">
-                <a href="blog.html" class="inline-flex items-center gap-2 bg-[#f4af47] text-[#2a1545] px-6 py-3 rounded-full font-black text-xs shadow-xl">查看全部 →</a>
+                <a href="blog.html" class="inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs shadow-xl">查看全部 →</a>
             </div>
         </div>
     
@@ -475,43 +475,19 @@
                     </div>
                 </section>
 </section>
-<script>
-        // 首页自动展示资讯中心最新文章（从 blog.html 解析前 6 条）
-        (async () => {
-            try {
-                const res = await fetch('blog.html', { cache: 'no-store' });
-                const html = await res.text();
-                const doc = new DOMParser().parseFromString(html, 'text/html');
-                const cards = Array.from(doc.querySelectorAll('#blog-grid > a.blog-card')).slice(0, 6);
-                const grid = document.getElementById('home-blog-grid');
-                if (!grid) return;
-
-                if (cards.length === 0) {
-                    grid.innerHTML = '<div class="text-gray-400">暂无文章，稍后再试。</div>';
-                    return;
-                }
-
-                grid.innerHTML = cards.map(a => {
-                    const href = a.getAttribute('href') || 'blog.html';
-                    const meta = a.querySelector('div')?.outerHTML || '';
-                    const title = a.querySelector('h2')?.outerHTML || '';
-                    const desc = a.querySelector('p')?.outerHTML || '';
-                    return `
-                        <a href="${href}" class="blog-card block">
-                            ${meta}
-                            ${title}
-                            ${desc}
-                        </a>
-                    `;
-                }).join('');
-            } catch (e) {
-                const grid = document.getElementById('home-blog-grid');
-                if (grid) grid.innerHTML = '<div class="text-gray-400">加载文章列表失败，请点击进入资讯中心查看。</div>';
-                console.error(e);
-            }
-        })();
-    </script>
-<!-- deploy-test: 20260601-114916 -->
+    <!-- 广告位 -->
+    <section class="py-12 px-6">
+        <div class="container mx-auto max-w-4xl">
+<!-- AdSense 侧边栏广告 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4800945095334481"
+     data-ad-slot="4735745107"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </section>
     <!-- 页面底部广告 -->
     <section class="py-8 px-6 border-t border-white/5">
         <div class="container mx-auto max-w-4xl">
@@ -525,8 +501,6 @@
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
     </section>
-
-
     <footer class="py-12 pb-12 bg-[#221636] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
     <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
