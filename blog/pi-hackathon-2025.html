@@ -8,10 +8,11 @@
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <link rel="stylesheet" href="/static/tailwind.css">
     <style>
-        body { background-color: #2a1545; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
-        .hero-bg { background: linear-gradient(135deg, #2a1545 0%, #423f88 100%); }
+        body { background-color: #362252; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        .hero-bg { background: #362252; }
+        .hero-gradient { background: linear-gradient(135deg, #2a1545 0%, #423f88 100%); }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .nav-blur { background: rgba(54, 34, 82, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
         .dropdown:hover .dropdown-menu { display: block; }
         .dropdown-menu { background: #3a2355; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
         .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -20,102 +21,148 @@
         #mobile-menu { display: none; }
         .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+        .step-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 2rem; }
+        .info-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 2rem; }
+        .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; }
         .breadcrumb { font-size: 13px; color: #999; }
         .breadcrumb a { color: #f4af47; text-decoration: none; }
         .breadcrumb a:hover { text-decoration: underline; }
-
-        .prose h2 { font-size: 2.2rem; font-weight: 900; margin: 4rem 0 2rem; color: #f4af47; border-left: 6px solid #f4af47; padding-left: 1.5rem; }
-        .prose h3 { font-size: 1.6rem; font-weight: 800; margin: 2.5rem 0 1.2rem; color: #fff; }
-        .prose p { margin-bottom: 2rem; font-size: 1.2rem; color: #cbd5e1; }
-        .prose ul { list-style: disc; margin-left: 2.5rem; margin-bottom: 2.5rem; }
-        .prose li { margin-bottom: 1rem; color: #cbd5e1; }
-        .prose blockquote { border-left: 4px solid #f4af47; padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: #f4af47; font-weight: bold; }
-        .img-wrap { margin: 4rem 0; border-radius: 40px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
-        .prose img { border-radius: 1.5rem; margin: 2rem 0; }
+        @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
+        /* FAQ Accordion */
+        .faq-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; margin-bottom: 12px; overflow: hidden; transition: all 0.3s; }
+        .faq-card:hover { border-color: rgba(244,175,71,0.4); background: rgba(255,255,255,0.06); }
+        .faq-card .question { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; cursor: pointer; font-weight: 700; font-size: 16px; color: #f0f0f0; gap: 12px; line-height: 1.5; }
+        .faq-card .question svg { flex-shrink: 0; transition: transform 0.3s; }
+        .faq-card.active .question svg { transform: rotate(180deg); }
+        .faq-card .answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; padding: 0 24px; color: #c8c8d0; font-size: 15px; line-height: 1.8; }
+        .faq-card.active .answer { max-height: 600px; padding: 0 24px 20px; }
+        .faq-card .answer a { color: #f4af47; text-decoration: underline; }
+        @media (max-width: 768px) {
+            .faq-card .question { padding: 14px 16px; font-size: 14px; }
+            .faq-card .answer { font-size: 14px; padding: 0 16px; }
+            .faq-card.active .answer { padding: 0 16px 16px; }
+        }
+        /* GTranslate nav dropdown dark theme */
+        .gt_switcher_wrapper{background:#3a2355!important;border:1px solid rgba(255,255,255,0.15)!important;border-radius:12px!important;box-shadow:0 10px 30px rgba(0,0,0,0.5)!important;min-width:180px!important;max-height:320px!important;overflow-y:auto!important;}
+        .gt_switcher_wrapper a{color:#e2e8f0!important;font-size:13px!important;font-weight:600!important;padding:10px 16px!important;background:#3a2355!important;border-bottom:1px solid rgba(255,255,255,0.06)!important;}
+        .gt_switcher_wrapper a:hover{background:#4a3565!important;color:#f4af47!important;}
+        .gt_switcher_wrapper a.selected{color:#f4af47!important;}
+        .gt_switcher_wrapper img{display:inline!important;vertical-align:middle!important;margin-right:6px!important;}
+        /* Mobile GTranslate in bottom bar */
+        .gtranslate_mobile .gt_switcher_wrapper{position:relative!important;min-width:100%!important;max-height:45vh!important;}
     </style>
-    <title>Pi 黑客松 2025：在开放网络时代增强 Pi 实用性  | 派币中文网</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
+        <title>Pi 黑客松 2025：在开放网络时代增强 Pi 实用性  | 派币中文网</title>
     <meta name="description" content="Pi 黑客松 2025：在开放网络时代增强 Pi 实用性 - Pi Network 官方中文资讯，派币中文网第一时间翻译发布。">
     <link rel="canonical" href="https://pibizh.com/blog/pi-hackathon-2025.html">
     <meta property="og:title" content="Pi 黑客松 2025：在开放网络时代增强 Pi 实用性  | 派币中文网">
     <meta property="og:description" content="Pi 黑客松 2025：在开放网络时代增强 Pi 实用性 - Pi Network 官方中文资讯，派币中文网第一时间翻译发布。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://pibizh.com/blog/pi-hackathon-2025.html">
+    <meta property="og:image" content="/static/favicon.png">
     <meta property="og:locale" content="zh_CN">
+  <!-- Chart.js CDN (for price page charts) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
-<script defer src="https://cloud.umami.is/script.js" data-website-id="afe2922f-094d-4d10-9725-f3cfedc1a453"></script>
-<style>.gtranslate_mobile .gt_switcher_wrapper{position:relative!important;min-width:100%!important;max-height:45vh!important;}</style>
-<!-- GTranslate -->
+<!-- GTranslate - 桌面导航栏 + 移动端底部栏 -->
 <script>window.gtranslateSettings={"default_language":"zh-CN","languages":["zh-CN","en","es","id","pt","ru","ko","ja","vi","fr","de","th","ar","it","hi","tl"],"wrapper_selector":".gtranslate_nav,.gtranslate_mobile","alt_flags":{"en":"us","pt":"br","es":"es"}}</script>
 <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
 </head>
-<body class="hero-bg min-h-screen">
-    <a href="/reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#2a1545] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#2a1545]">
+<body class="hero-bg min-h-screen pt-24">
+
+    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#362252] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#362252]">
         <span class="text-xl">🔥</span>
         <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
     </a>
         <!-- 导航栏 (1:1 官网结构复刻) -->
     <header class="fixed top-0 w-full z-[100] nav-blur border-b border-white/5">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='/index.html'">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
                 <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10" loading="lazy">
                 <span class="text-xl font-black tracking-tighter uppercase whitespace-nowrap">Pi Network 中文网</span>
             </div>
             
             <!-- 桌面菜单 (全量复刻) -->
             <div class="hidden lg:flex items-center gap-8">
-                <a href="/price.html" class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase hover:opacity-90">派币价格</a>
+                <a href="price.html" class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase hover:opacity-90">派币价格</a>
                 <!-- Blockchain -->
                 <div class="dropdown relative group">
                     <div class="text-[11px] font-black tracking-widest text-gray-400 uppercase cursor-pointer hover:text-[#f4af47] flex items-center gap-1">Pi 区块链 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
                     <div class="dropdown-menu absolute hidden pt-4 w-48 left-0">
-                        <a href="/nodes.html">Pi 节点 (Node)</a>
-                        <a href="/blockchain.html">区块浏览器</a>
-                        <a href="/technical-whitepaper.html">技术白皮书</a>
-                        <a href="/roadmap.html">项目路线图</a>
+                        <a href="nodes.html">Pi 节点 (Node)</a>
+                        <a href="blockchain.html">区块浏览器</a>
+                        <a href="technical-whitepaper.html">技术白皮书</a>
+                        <a href="roadmap.html">项目路线图</a>
                     </div>
                 </div>
                 <!-- Ecosystem -->
                 <div class="dropdown relative group">
                     <div class="text-[11px] font-black tracking-widest text-gray-400 uppercase cursor-pointer hover:text-[#f4af47] flex items-center gap-1">生态系统 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
                     <div class="dropdown-menu absolute hidden pt-4 w-56 left-0">
-                        <a href="/developers.html">开发者中心</a>
-                        <a href="/browser.html">Pi 浏览器下载</a>
-                        <a href="/pi-shopping.html">Pi 购物</a>
+                        <a href="developers.html">开发者中心</a>
+                        <a href="browser.html">Pi 浏览器下载</a>
+                        <a href="pi-shopping.html">Pi 购物</a>
                     </div>
                 </div>
-                <a href="/about.html" class="text-[11px] font-black tracking-widest text-gray-400 uppercase hover:text-[#f4af47]">关于我们</a>
+                <a href="about.html" class="text-[11px] font-black tracking-widest text-gray-400 uppercase hover:text-[#f4af47]">关于我们</a>
                 <div class="dropdown relative group">
                     <div class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase cursor-pointer flex items-center gap-1">📚 Pi百科 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
                     <div class="dropdown-menu absolute hidden pt-4 w-48 right-0">
-                        <a href="/pi-guide.html">百科首页</a>
-                        <a href="/pi-download.html">📲 下载安装</a>
-                        <a href="/mining-tutorial.html">⛏️ 挖矿教程</a>
-                        <a href="/wallet-guide.html">💳 钱包交易</a>
-                        <a href="/pi-mainnet.html">🚀 主网迁移</a>
-                        <a href="/kyc.html">✅ KYC认证</a>
-                        <a href="/pi-legit.html">🛡️ 安全与合规</a>
+                        <a href="pi-guide.html">百科首页</a>
+                        <a href="pi-download.html">📲 下载安装</a>
+                        <a href="mining-tutorial.html">⛏️ 挖矿教程</a>
+                        <a href="wallet-guide.html">💳 钱包交易</a>
+                        <a href="pi-mainnet.html">🚀 主网迁移</a>
+                        <a href="kyc.html">✅ KYC认证</a>
+                        <a href="pi-legit.html">🛡️ 安全与合规</a>
                     </div>
                 </div>
                 <!-- Community -->
                 <div class="dropdown relative group">
                     <div class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase cursor-pointer flex items-center gap-1">社区资讯 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
                     <div class="dropdown-menu absolute hidden pt-4 w-52 left-0">
-                        <a href="/blog.html">官方新闻动态</a>
-                        <a href="/pi-news.html">Pi 最新动态</a>
-                        <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer">Telegram 交流群</a>
+                        <a href="blog.html">官方新闻动态</a>
+                        <a href="community.html">Pi 社区广场</a>
                     </div>
                 </div>
             </div>
 
             <div class="flex items-center gap-4">
-                <!-- PC端翻译下拉 -->
-                <div class="lg:flex items-center gap-1 cursor-pointer" id="gt-pc-toggle" onclick="var d=document.getElementById('gt-nav-dd');if(d)d.style.display=d.style.display==='block'?'none':'block'">
-                    <span style="font-size:18px">🌐</span>
-                    <span class="text-[11px] font-black tracking-widest text-gray-400 hover:text-[#f4af47]">翻译</span>
+                <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer; noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-[#5865F2] items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
+                <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-blue-500 items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg></a>
+                <!-- 隐藏容器：让GTranslate初始化 -->
+                <div class="gtranslate_nav" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;"></div>
+                <!-- 语言切换 (桌面端) - hover展开 一键切换 -->
+                <div class="dropdown relative group hidden lg:flex">
+                    <div class="flex items-center gap-1.5 cursor-pointer px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+                        <span style="font-size:16px">🌐</span>
+                        <span class="text-[11px] font-bold text-[#f4af47] tracking-wide">语言</span>
+                        <svg class="w-3 h-3 text-[#f4af47]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="dropdown-menu absolute hidden pt-2 right-0" style="min-width:180px">
+                        <a href="#" onclick="switchLang('zh-CN');return false;">🇨🇳 简体中文</a>
+                        <a href="#" onclick="switchLang('en');return false;">🇺🇸 English</a>
+                        <a href="#" onclick="switchLang('ko');return false;">🇰🇷 한국어</a>
+                        <a href="#" onclick="switchLang('ja');return false;">🇯🇵 日本語</a>
+                        <a href="#" onclick="switchLang('ru');return false;">🇷🇺 Русский</a>
+                        <a href="#" onclick="switchLang('es');return false;">🇪🇸 Español</a>
+                        <a href="#" onclick="switchLang('pt');return false;">🇧🇷 Português</a>
+                        <a href="#" onclick="switchLang('id');return false;">🇮🇩 Indonesia</a>
+                        <a href="#" onclick="switchLang('vi');return false;">🇻🇳 Tiếng Việt</a>
+                        <a href="#" onclick="switchLang('fr');return false;">🇫🇷 Français</a>
+                        <a href="#" onclick="switchLang('de');return false;">🇩🇪 Deutsch</a>
+                        <a href="#" onclick="switchLang('th');return false;">🇹🇭 ไทย</a>
+                        <a href="#" onclick="switchLang('ar');return false;">🇸🇦 العربية</a>
+                        <a href="#" onclick="switchLang('it');return false;">🇮🇹 Italiano</a>
+                        <a href="#" onclick="switchLang('hi');return false;">🇮🇳 हिन्दी</a>
+                        <a href="#" onclick="switchLang('tl');return false;">🇵🇭 Filipino</a>
+                    </div>
                 </div>
-                <div id="gt-nav-dd" class="gtranslate_nav absolute top-full right-0 mt-2 z-[200]" style="display:none"></div>
-                <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer; noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-[#5865F2] items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a><a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer; noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-blue-500 items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg></a>
-                <a href="/reg.html" class="hidden sm:block bg-[#f4af47] text-[#2a1545] px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">Code: nbjh</a>
+
+                <a href="reg.html" class="hidden sm:block bg-[#f4af47] text-[#362252] px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">Code: nbjh</a>
                 <button id="m-btn" class="lg:hidden p-1.5 text-[#f4af47] border border-[#f4af47]/20 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
             </div>
         </nav>
@@ -123,7 +170,7 @@
     <!-- 手机侧边栏 (重新设计) -->
     <div id="mobile-menu" class="fixed inset-0 z-[1000] lg:hidden" style="display:none;">
         <div id="m-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-        <div id="m-panel" class="absolute top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#2a1545] border-l border-white/10 overflow-y-auto" style="transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);">
+        <div id="m-panel" class="absolute top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#362252] border-l border-white/10 overflow-y-auto" style="transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);">
             <!-- 顶栏：Logo + 关闭 -->
             <div class="flex items-center justify-between p-5 border-b border-white/5">
                 <div class="flex items-center gap-2">
@@ -141,16 +188,16 @@
                     <div class="text-[10px] font-bold text-[#f4af47]/60 uppercase tracking-widest">邀请码</div>
                     <div class="text-lg font-black text-[#f4af47] tracking-wide">nbjh</div>
                 </div>
-                <a href="/reg.html" class="bg-[#f4af47] text-[#2a1545] px-4 py-2 rounded-lg font-black text-xs hover:scale-105 transition-transform">立即注册</a>
+                <a href="reg.html" class="bg-[#f4af47] text-[#362252] px-4 py-2 rounded-lg font-black text-xs hover:scale-105 transition-transform">立即注册</a>
             </div>
 
             <!-- 导航列表 -->
             <nav class="p-4 space-y-1">
-                <a href="/index.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="index.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">🏠</span>
                     <span class="font-bold text-white">首页</span>
                 </a>
-                <a href="/price.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="price.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">💰</span>
                     <span class="font-bold text-[#f4af47]">派币实时价格</span>
                 </a>
@@ -159,19 +206,19 @@
                 <div class="mt-4 mb-2 px-4">
                     <div class="text-[10px] font-black tracking-widest text-gray-500 uppercase">Pi 区块链</div>
                 </div>
-                <a href="/nodes.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="nodes.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">🖥️</span>
                     <span class="font-bold text-white">Pi 节点</span>
                 </a>
-                <a href="/blockchain.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="blockchain.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">🔍</span>
                     <span class="font-bold text-white">区块浏览器</span>
                 </a>
-                <a href="/technical-whitepaper.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="technical-whitepaper.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">📄</span>
                     <span class="font-bold text-white">技术白皮书</span>
                 </a>
-                <a href="/roadmap.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="roadmap.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">🗺️</span>
                     <span class="font-bold text-white">项目路线图</span>
                 </a>
@@ -180,74 +227,55 @@
                 <div class="mt-4 mb-2 px-4">
                     <div class="text-[10px] font-black tracking-widest text-gray-500 uppercase">生态系统</div>
                 </div>
-                <a href="/developers.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="developers.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">💻</span>
                     <span class="font-bold text-white">开发者中心</span>
                 </a>
-                <a href="/browser.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="browser.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">🌐</span>
                     <span class="font-bold text-white">Pi 浏览器</span>
                 </a>
-                <a href="/pi-shopping.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="pi-shopping.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">🛒</span>
                     <span class="font-bold text-white">Pi 购物</span>
                 </a>
 
                 
                 <div class="mt-4 mb-2 px-4"><div class="text-[10px] font-black tracking-widest text-gray-500 uppercase">📚 Pi百科</div></div>
-                <a href="/pi-guide.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">📚</span><span class="font-bold text-[#f4af47]">百科首页（全部教程）</span></a>
-                <a href="/pi-download.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">📲</span><span class="font-bold text-white">下载安装</span></a>
-                <a href="/mining-tutorial.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">⛏️</span><span class="font-bold text-white">挖矿教程</span></a>
-                <a href="/wallet-guide.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">💳</span><span class="font-bold text-white">钱包交易</span></a>
-                <a href="/pi-mainnet.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🚀</span><span class="font-bold text-white">主网迁移</span></a>
-                <a href="/kyc.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">✅</span><span class="font-bold text-white">KYC认证</span></a>
-                <a href="/pi-legit.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🛡️</span><span class="font-bold text-white">安全与合规</span></a>
+                <a href="pi-guide.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">📚</span><span class="font-bold text-[#f4af47]">百科首页（全部教程）</span></a>
+                <a href="pi-download.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">📲</span><span class="font-bold text-white">下载安装</span></a>
+                <a href="mining-tutorial.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">⛏️</span><span class="font-bold text-white">挖矿教程</span></a>
+                <a href="wallet-guide.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">💳</span><span class="font-bold text-white">钱包交易</span></a>
+                <a href="pi-mainnet.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🚀</span><span class="font-bold text-white">主网迁移</span></a>
+                <a href="kyc.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">✅</span><span class="font-bold text-white">KYC认证</span></a>
+                <a href="pi-legit.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🛡️</span><span class="font-bold text-white">安全与合规</span></a>
 
                 <!-- 社区资讯 -->
                 <div class="mt-4 mb-2 px-4">
                     <div class="text-[10px] font-black tracking-widest text-gray-500 uppercase">社区资讯</div>
                 </div>
-                <a href="/blog.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="blog.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">📰</span>
                     <span class="font-bold text-white">官方新闻</span>
                 </a>
-                <a href="/pi-news.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
-                    <span class="text-lg">⚡</span>
-                    <span class="font-bold text-white">Pi 最新动态</span>
+                <a href="community.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                    <span class="text-lg">💬</span>
+                    <span class="font-bold text-white">Pi 社区广场</span>
                 </a>
-                <a href="/search.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="search.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">🔎</span>
                     <span class="font-bold text-white">搜索</span>
                 </a>
-                <a href="/faq.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="faq.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">❓</span>
                     <span class="font-bold text-white">常见问题</span>
                 </a>
-                <a href="/about.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="about.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">ℹ️</span>
                     <span class="font-bold text-white">关于我们</span>
                 </a>
-                            <!-- 语言切换 -->
-                <div class="mt-4 mb-2 px-4">
-                    <div class="text-[10px] font-black tracking-widest text-gray-500 uppercase">🌐 语言 / Language</div>
-                </div>
-                <div class="gtranslate_mobile" style="display:none"></div>
-                <a href="#" onclick="doGTranslate('zh-CN|zh-CN');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇨🇳</span><span class="font-bold text-white">简体中文</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|en');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇺🇸</span><span class="font-bold text-white">English</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|es');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇪🇸</span><span class="font-bold text-white">Español</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|ko');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇰🇷</span><span class="font-bold text-white">한국어</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|ja');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇯🇵</span><span class="font-bold text-white">日本語</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|ru');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇷🇺</span><span class="font-bold text-white">Русский</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|pt');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇧🇷</span><span class="font-bold text-white">Português</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|id');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇮🇩</span><span class="font-bold text-white">Indonesia</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|vi');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇻🇳</span><span class="font-bold text-white">Tiếng Việt</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|fr');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇫🇷</span><span class="font-bold text-white">Français</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|de');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇩🇪</span><span class="font-bold text-white">Deutsch</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|th');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇹🇭</span><span class="font-bold text-white">ไทย</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|ar');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇸🇦</span><span class="font-bold text-white">العربية</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|it');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇮🇹</span><span class="font-bold text-white">Italiano</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|hi');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇮🇳</span><span class="font-bold text-white">हिन्दी</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|tl');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇵🇭</span><span class="font-bold text-white">Filipino</span></a>
+
+
 
             </nav>
 
@@ -267,8 +295,46 @@
         </div>
     </div>
 
+    <!-- 移动端底部注册栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-[#2a1545]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
+        <div class="flex gap-3 items-center">
+            <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#362252] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
+            <button onclick="var p=document.getElementById('mlang');p.classList.toggle('hidden')" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0" title="切换语言">
+                <svg class="w-5 h-5" fill="none" stroke="#f4af47" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>
+            </button>
+            <a href="community.html" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+            </a>
+            <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
+            </a>
+        </div>
+        <!-- 移动端语言面板 - 直接显示语言列表 -->
+        <div id="mlang" class="hidden mt-3 bg-[#3a2355] border border-white/15 rounded-2xl p-3 max-h-[50vh] overflow-y-auto">
+            <div class="grid grid-cols-2 gap-1">
+                <a href="#" onclick="switchLang('zh-CN');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇨🇳 简体中文</a>
+                <a href="#" onclick="switchLang('en');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇺🇸 English</a>
+                <a href="#" onclick="switchLang('es');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇪🇸 Español</a>
+                <a href="#" onclick="switchLang('ko');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇰🇷 한국어</a>
+                <a href="#" onclick="switchLang('ja');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇯🇵 日本語</a>
+                <a href="#" onclick="switchLang('ru');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇷🇺 Русский</a>
+                <a href="#" onclick="switchLang('pt');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇧🇷 Português</a>
+                <a href="#" onclick="switchLang('id');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇩 Indonesia</a>
+                <a href="#" onclick="switchLang('vi');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇻🇳 Tiếng Việt</a>
+                <a href="#" onclick="switchLang('fr');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇫🇷 Français</a>
+                <a href="#" onclick="switchLang('de');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇩🇪 Deutsch</a>
+                <a href="#" onclick="switchLang('th');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇹🇭 ไทย</a>
+                <a href="#" onclick="switchLang('ar');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇸🇦 العربية</a>
+                <a href="#" onclick="switchLang('it');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇹 Italiano</a>
+                <a href="#" onclick="switchLang('hi');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇳 हिन्दी</a>
+                <a href="#" onclick="switchLang('tl');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇵🇭 Filipino</a>
+                <div class="gtranslate_mobile" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;"></div>
+            </div>
+        </div>
+    </div>
 
-    <main class="max-w-3xl mx-auto pt-28 pb-20 px-6">
+
+        <main class="max-w-3xl mx-auto pt-28 pb-20 px-6">
 
         <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter leading-tight">Pi 黑客松 2025：在开放网络时代增强 Pi 实用性</h1>
         <p class="text-gray-500 mb-10">2025-08-15</p>
@@ -276,23 +342,47 @@
 <div class="inner-wrap"> <div class="post-content" data-hide-featured-media="1"> <div class="content-inner"> <div id="fws_6a120fc66d0dc" data-column-margin="default" data-midnight="dark" class="wpb_row vc_row-fluid vc_row" style="padding-top:0px;padding-bottom:0px"><div class="row-bg-wrap" data-bg-animation="none" data-bg-animation-delay="" data-bg-overlay="false"><div class="inner-wrap row-bg-layer"><div class="row-bg viewport-desktop" style=""></div></div></div><div class="row_col_wrap_12 col span_12 dark left"> <div class="vc_col-sm-12 wpb_column column_container vc_column_container col no-extra-padding inherit_tablet inherit_phone " data-padding-pos="all" data-has-bg-color="false" data-bg-color="" data-bg-opacity="1" data-animation="" data-delay="0"> <div class="vc_column-inner"> <div class="wpb_wrapper"> <div class="wpb_text_column wpb_content_element "> <p class="nitro-lazy"><span style="font-weight:400">Pi Network is excited to launch Pi Hackathon 2025, the ecosystem’s first hackathon after the launch of </span><a href="https://minepi.com/blog/open-network/" target="_blank" rel="noopener"><span style="font-weight:400">Open Network</span></a><span style="font-weight:400">. This hackathon invites developers to build and deploy meaningful Pi Apps that empower real-world utility using Pi and help shape the ecosystem—and compete for a chance to win up to</span><b> 160,000 Pi in total prizes.</b></p> <p><span style="font-weight:400">Open Network’s external connectivity presents the opportunity to build upon the current utility of Pi through practical apps that deliver real use cases and utility for everyday users, including those who have never mined Pi.</span></p> <p><span style="font-weight:400">Following the app-building momentum from </span><a href="https://minepi.com/blog/pi2day2025/" target="_blank" rel="noopener"><span style="font-weight:400">Pi2Day 2025</span></a><span style="font-weight:400">, this hackathon encourages developers to create tools, apps, and experiences that make Pi more usable and accessible across the world.</span></p> <h2><span style="font-weight:400">The Challenge</span></h2> <p><span style="font-weight:400">Build a Pi App that promotes the utility of Pi by encouraging and enabling people to engage with the ecosystem. This hackathon features a general, open-ended theme to invite broad creativity. Your app can focus on any use case, as long as it follows the </span><a href="https://pi-apps.github.io/community-developer-guide/docs/gettingStarted/mainnetListingRequirements/" target="_blank" rel="noopener"><span style="font-weight:400">Mainnet Listing Requirements</span></a><span style="font-weight:400"> and brings real utility to the Pi community.</span></p> <p><span style="font-weight:400">Developers are encouraged to:</span></p> <ul> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Be creative by innovating based on real user needs;</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Take advantage of community contributions by building an open-source project using </span><a href="https://github.com/pi-apps/PiOS" target="_blank" rel="noopener"><span style="font-weight:400">Pi Open Source (PiOS)</span></a><span style="font-weight:400">;&nbsp;</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Use </span><a href="https://minepi.com/blog/pi-hackathon-2025/#brainstorm-app-studio"><span style="font-weight:400">Pi App Studio and the Brainstorm app</span></a><span style="font-weight:400"> as starting points to transform early ideas into full-featured apps; and</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Use AI technologies, including coding assistants, to support the development and iteration of their apps.&nbsp;</span></li> </ul> <h2><span style="font-weight:400">Prizes</span></h2> <p><span style="font-weight:400">The winning teams will receive the following prizes:</span></p> <ul> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">🥇 1st Place: </span><b class="nitro-lazy">75,000 Pi</b></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">🥈 2nd Place: </span><b>45,000 Pi</b></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">🥉 3rd Place: </span><b>15,000 Pi</b></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">🏅 Honorable Mentions (up to 5 teams): </span><b>5,000 Pi</b><span style="font-weight:400"> each</span></li> </ul> <h2><span style="font-weight:400">How to Participate</span></h2> <p><span style="font-weight:400">To join the hackathon:</span></p> <ol> <li style="font-weight:400" aria-level="1"><b>Register</b><span style="font-weight:400"> using the official </span><a href="https://docs.google.com/forms/u/1/d/e/1FAIpQLSc9JYTkOAnppQCexuE47D1JWteyZztuAS_8vYLsuGC6QzAIVg/viewform?usp=send_form" target="_blank" rel="noopener"><span style="font-weight:400">Hackathon Registration Form</span></a><span style="font-weight:400"> and join the </span><a href="https://groups.google.com/u/4/a/picoreteam.org/g/pihackathon2025" target="_blank" rel="noopener"><span style="font-weight:400">Email list</span></a><span style="font-weight:400"> to receive updates.</span></li> <li style="font-weight:400" aria-level="1"><b>Build and collaborate</b><span style="font-weight:400"> with your team using </span><a href="http://appstudio.pinet.com" target="_blank" rel="noopener"><span style="font-weight:400">Pi App Studio,</span></a><span style="font-weight:400"> the </span><a href="http://develop.pinet.com" target="_blank" rel="noopener"><span style="font-weight:400">Dev</span><span style="font-weight:400">eloper</span><span style="font-weight:400"> Portal</span></a><span style="font-weight:400">, and </span><a href="https://minepi.com/blog/pi-hackathon-2025/#resources"><span style="font-weight:400">shared resources</span></a><span style="font-weight:400">.</span></li> </ol> <h2><span style="font-weight:400">Timeline&nbsp;</span></h2> <ul> <li style="font-weight:400" aria-level="1"><b>(August 15) Registration &amp; Team Formation Begins: </b><span style="font-weight:400">Participants can register for the hackathon, and begin forming or joining teams.</span></li> <li style="font-weight:400" aria-level="1"><b>(August 21)</b> <b>Hackathon Officially Begins: </b><span style="font-weight:400">Formal kickoff of the hackathon.</span></li> <li style="font-weight:400" aria-level="1"><b>(September 19) Midpoint Check-In: </b><span style="font-weight:400">Teams are encouraged to submit a midpoint check form. Projects that submit may receive additional mentorship, potential exposure to the Pi community, and feedback ahead of final judging.</span></li> <li style="font-weight:400" aria-level="1"><b>(October 15) Final Submission Deadline: </b><span style="font-weight:400">All final submissions are due, including the app listing via Developer Portal, demo video, and submission form.</span></li> </ul> <h2><span style="font-weight:400">Team Size</span></h2> <p><span style="font-weight:400"><wbr /><wbr />There is no limit on team size. Developers are encouraged to collaborate and form focused teams to build fewer but higher quality apps. Teams must submit a final team member list in the final submission form by October 15. Also note that all team members will have to pass Pi KYC in order to be eligible to receive the prizes.&nbsp;</span></p> <h2><span style="font-weight:400">Submission Requirements</span></h2> <p><span style="font-weight:400">In order for your app to be considered a valid submission for Pi Hackathon 2025, you must complete two steps:</span></p> <ul> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Submit the </span><b>Hackathon Submission Google Form</b><span style="font-weight:400"> (to be shared closer to the deadline) with your </span><b>demo video</b><span style="font-weight:400"> attached; and</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Submit your app in the </span><b>Pi Developer Portal</b><span style="font-weight:400">.</span></li> </ul> <p><span style="font-weight:400">Both steps are required to count as a complete submission. More details and links will be shared with participants as the deadline approaches.</span></p> <h3><span style="font-weight:400">1. Recommended: Midpoint Submission (Due by September 19, 2025)</span></h3> <p><span style="font-weight:400">To help track your progress and offer support, teams are encouraged to complete a midpoint check-in. While not required for final evaluation, completing this step may make your team eligible for additional mentorship and feedback, and potentially gain early user attention and community exposure as the submission date approaches.</span></p> <p><span style="font-weight:400">The midpoint submission may require the following:</span></p> <ul> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Your app name and URL;</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Preview screenshots of your app in development; and</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">A brief written development plan outlining your intended features and functionality.</span></li> </ul> <p><span style="font-weight:400">The submission form and specific requirements will be distributed directly to all registered participants prior to the submission deadline. </span></p> <h3><span style="font-weight:400">2. Final Submission Form + Demo Video</span></h3> <p><span style="font-weight:400">The final submission form will be distributed directly to all registered participants prior to the deadline.&nbsp;</span></p> <p><span style="font-weight:400">Each team must create a demo video showcasing the final version of their app. This video should be publicly available on YouTube or another video sharing platform, and the link must be included in the submission form.</span></p> <p><span style="font-weight:400">Your demo video should cover:</span></p> <ul> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">A short introduction describing your app and its purpose;</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">A walkthrough of your app’s functionality and user interface;</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">An explanation of your target audience;</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">The problem or need your app addresses; and</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">How Pi is integrated into the user experience (payments, login, etc.).</span></li> </ul> <p><span style="font-weight:400">Please ensure the demo is concise, informative, and </span><b>no longer than 3 minutes</b><span style="font-weight:400"> in total.</span></p> <h3><span style="font-weight:400">3. Final App Submission via Developer Portal</span></h3> <p>Complete the following steps to submit your app through the Developer Portal.</p> <p><span style="font-weight:400">I. Enter the Hackathon Code</span></p> <ul style="margin-top:-15px !important"> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Open the Pi Browser and go to the Developer Portal.</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Tap the “Hackathon” button on the main “Develop” page.</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Enter the hackathon code: </span><b>hackathon25</b></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Tap “Join”. This will mark your Developer Portal account as a Hackathon participant.</span></li> </ul> <p><span style="font-weight:400">II. Create and Register a Mainnet App</span></p> <ul style="margin-top:-15px !important"> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">If you already have a Mainnet app in progress, select the app you want to submit for the hackathon and complete as much of the Developer Portal Checklist as possible.</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">If you want to start from scratch, tap “New App” in </span><span style="font-weight:400">the</span><span style="font-weight:400"> Developer Portal and follow the normal app creation flow.</span> <ul> <li style="font-weight:400" aria-level="2"><span style="font-weight:400">Choose “Mainnet” as the app type.</span></li> <li style="font-weight:400" aria-level="2"><span style="font-weight:400">Proceed through the registration steps as usual.</span></li> <li style="font-weight:400" aria-level="2"><span style="font-weight:400">Note: registering a Mainnet app still requires linking a Testnet version.</span></li> <li style="font-weight:400" aria-level="2"><span style="font-weight:400">Complete as much of the Developer Portal Checklist as possible.</span></li> </ul> </li> </ul> <p><span style="font-weight:400">III. Submit Your App for the Hackathon</span> <span style="font-weight:400">If you enter the code during the eligible Hackathon period, a new “Submit to Hackathon” button will appear once you reach Checklist Step 10 (the “Add a PiNet subdomain” step).</span></p> <ul style="margin-top:-15px !important"> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Tap “Submit to Hackathon”.</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Your app will be automatically submitted to the Hackathon category.</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Submitted apps will be listed on the Hackathon Submissions page in the Pi Apps tab of the Pi Browser in a few weeks.</span></li> </ul> <p><span style="font-weight:400">IV. App Wallet and Ecosystem Setup</span></p> <ul style="margin-top:-15px !important"> <li><span style="font-weight:400">Wallet Requirement: For now, wallet setup is not required for a hackathon submission. Teams may complete this step after the event, especially if they are selected as winners or proceed toward formal ecosystem listing.</span></li> </ul> <p><span style="font-weight:400">V. App Eligibility</span></p> <ul style="margin-top:-15px !important"> <li><span style="font-weight:400">Each user can submit up to 2 Mainnet apps to the hackathon.</span></li> <li><span style="font-weight:400">Apps should follow all required </span><a href="https://pi-apps.github.io/community-developer-guide/docs/gettingStarted/mainnetListingRequirements/" target="_blank" rel="noopener"><span style="font-weight:400">Mainnet Listing Guidelines</span></a><span style="font-weight:400">, and must be original and Pi-utility focused.</span></li> </ul> <h3 id="app-review-criteria"><span style="font-weight:400">4. </span><span style="font-weight:400">App Review Criteria</span></h3> <p><span style="font-weight:400">All apps will be judged based on the following criteria:&nbsp;</span></p> <ul> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Alignment with</span><a href="https://pi-apps.github.io/community-developer-guide/docs/gettingStarted/mainnetListingRequirements/" target="_blank" rel="noopener"><span style="font-weight:400"> the </span><span style="font-weight:400">Mainnet Listing Guidelines</span></a></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Pi utility and alignment with overall community needs</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Technical completeness and innovation</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">UI/UX, accessibility, and ease of navigation</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Long-term utility on the Pi Mainnet blockchain</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Uniqueness and distinctive use cases</span></li> </ul> <p><span style="font-weight:400">Apps must also:</span></p> <ul> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Have an English name</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Have a logo, compliant with</span><a href="https://minepi.com/pi-trademark-guidelines/" target="_blank" rel="noopener"> <span style="font-weight:400">trademark guidelines</span></a></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Have an accurate description in English</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Include preview/demo images that showcase the UI and UX of the application</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Integrate with </span><a href="https://pi-apps.github.io/community-developer-guide/docs/importantTopics/piNet/#pinet" target="_blank" rel="noopener"><span style="font-weight:400">PiNet</span></a><span style="font-weight:400">&nbsp;</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Include a privacy policy</span></li> </ul> <h2 id="resources"><span style="font-weight:400">Resources</span></h2> <ul> <li style="font-weight:400" aria-level="1"><a href="https://pi-apps.github.io/community-developer-guide/" target="_blank" rel="noopener"><span style="font-weight:400">Developer Onboarding Guide</span></a><span style="font-weight:400">: Details the steps needed to get set up as a new developer in the Pi Ecosystem. If this is your first time building on Pi, start here.</span></li> <li style="font-weight:400" aria-level="1"><a href="https://pi-apps.github.io/community-developer-guide/docs/gettingStarted/gettingStartedChecklist/" target="_blank" rel="noopener"><span style="font-weight:400">Getting Started Checklist:</span></a><span style="font-weight:400"> A quick start guide of the steps needed to start building on Pi.</span></li> <li style="font-weight:400" aria-level="1"><a href="https://github.com/pi-apps/pi-platform-docs" target="_blank" rel="noopener"><span style="font-weight:400">Pi Platform Github Repository</span></a><span style="font-weight:400">: Pi&#8217;s developer documentation with all of the information needed to integrate the </span><a href="https://github.com/pi-apps/pi-platform-docs/blob/master/SDK_reference.md" target="_blank" rel="noopener"><span style="font-weight:400">Pi SDK</span></a><span style="font-weight:400"> and </span><a href="https://github.com/pi-apps/pi-platform-docs/blob/master/platform_API.md" target="_blank" rel="noopener"><span style="font-weight:400">APIs</span></a>.</li> <li style="font-weight:400" aria-level="1"><a href="https://github.com/pi-apps/demo" target="_blank" rel="noopener"><span style="font-weight:400">Pi Demo App Repository</span></a><span style="font-weight:400">: Review or clone Pi’s demo application code as a blueprint for your apps. To try it out, navigate to “demo.pi” within the Pi Browser.</span></li> <li style="font-weight:400" aria-level="1"><a href="https://github.com/pi-apps/PiOS" target="_blank" rel="noopener"><span style="font-weight:400">PiOS:</span></a><span style="font-weight:400"> Learn about the Pi Open Source software license and how to use it.</span></li> <li style="font-weight:400" aria-level="1"><a href="https://www.youtube.com/watch?v=IxTI3DsSml0" target="_blank" rel="noopener"><span style="font-weight:400">SDK Workshop</span></a><span style="font-weight:400">: Watch a presentation on how to use the Pi SDK.</span></li> <li style="font-weight:400" aria-level="1"><a href="https://www.youtube.com/watch?v=tNFT7bPRsbQ" target="_blank" rel="noopener"><span style="font-weight:400">Product Workshop</span></a><span style="font-weight:400">: Watch a product design guide for Pi Apps </span><span style="font-weight:400">built</span><span style="font-weight:400"> on Pi, tailored for hackathon participants.</span></li> <li style="font-weight:400" aria-level="1"><a href="https://pi-apps.github.io/community-developer-guide/docs/gettingStarted/mainnetListingRequirements/" target="_blank" rel="noopener"><span style="font-weight:400">Mainnet Listing Guidelines</span></a><span style="font-weight:400">: Learn about the standards for Mainnet Apps.</span></li> <li style="font-weight:400" aria-level="1"><a href="https://pi-apps.github.io/community-developer-guide/docs/importantTopics/piNet/#what-is-pinet" target="_blank" rel="noopener"><span style="font-weight:400">PiNet </span></a><span style="font-weight:400">: Instructions on how to set up a PiNet URL.</span></li> <li style="font-weight:400" aria-level="1"><a href="https://www.youtube.com/watch?v=BF40GMKJ5Co" target="_blank" rel="noopener"><span style="font-weight:400">Pi App Studio</span></a><span style="font-weight:400">: Watch a demo video on how to use Pi App Studio.</span></li> </ul> <h2 id="brainstorm-app-studio"><span style="font-weight:400">Brainstorm app and Pi App Studio</span></h2> <p><span style="font-weight:400">Participants can use the Brainstorm app on Pi Browser to share their prototypes, connect with others, and increase visibility within the Pi community.</span></p> <p><span style="font-weight:400">If you’ve created an app prototype using Pi App Studio or the Developer Portal, you can link it directly to your project listing on Brainstorm. This helps you showcase your idea, gather early feedback, and discover potential teammates or collaborators for the hackathon.</span></p> <p><span style="font-weight:400">To link your app to Brainstorm:</span></p> <ol> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Open the Brainstorm app from the Pi Browser.</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Tap the “Propose” button on the bottom navigation bar.</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Fill in your project name and a short summary by following the instructions on the page.</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">After submitting, scroll to the bottom of your project page and tap “Link this project with an Application on the Developer Portal.”</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">You’ll be able to select from the apps you’ve already created in Pi App Studio or the Developer Portal.</span><span style="font-weight:400"><br /> </span></li> </ol> <p><span style="font-weight:400">Once linked, your project will be visible to other Brainstorm users, allowing more Pioneers to view, follow, and interact with your idea.&nbsp;</span></p> <h2><span style="font-weight:400">Developers, Start Building!</span></h2> <p><span style="font-weight:400">Pi Hackathon 2025 is an opportunity for developers to contribute meaningfully to the Pi Ecosystem by building real-world applications that encourage Pi utility and community participation. Whether you&#8217;re an experienced developer or just getting started, this is your chance to create something impactful, collaborate with others, and showcase your ideas to the global Pi community.</span></p> <p><span style="font-weight:400">The network is ready for the creativity, innovation, and dedication that participants will bring to this event!</span></p> </div> </div> </div> </div> </div></div> <div id="translations" data-column-margin="default" data-midnight="dark" class="wpb_row vc_row-fluid vc_row" style="padding-top:0px;padding-bottom:0px"><div class="row-bg-wrap" data-bg-animation="none" data-bg-animation-delay="" data-bg-overlay="false"><div class="inner-wrap row-bg-layer"><div class="row-bg viewport-desktop" style=""></div></div></div><div class="row_col_wrap_12 col span_12 dark left"> <div class="vc_col-sm-12 wpb_column column_container vc_column_container col no-extra-padding inherit_tablet inherit_phone " data-padding-pos="all" data-has-bg-color="false" data-bg-color="" data-bg-opacity="1" data-animation="" data-delay="0"> <div class="vc_column-inner"> <div class="wpb_wrapper"> <div class="divider-wrap" data-alignment="default"><div style="margin-top:12.5px;height:1px;margin-bottom:12.5px" data-width="100%" data-animate="" data-animation-delay="" data-color="default" class="divider-border"></div></div> <div class="wpb_text_column wpb_content_element "> <p><strong>Hackathon blog translations:</strong></p> <ul> <li><a href="https://minepi.com/wp-content/uploads/2025/09/Pi-黑客松-2025：在开放主网时代，一起打造更实用的Pi应用！.pdf" target="_blank" rel="noopener">Chinese</a></li> <li><a href="https://minepi.com/wp-content/uploads/2025/08/2025-Improved-Hackathon-Planning.pdf" target="_blank" rel="noopener">Korean</a></li> <li><a href="https://minepi.com/wp-content/uploads/2025/08/2025-Improved-Hackathon-Planning-1.pdf" target="_blank" rel="noopener">Vietnamese</a></li> </ul> <p><strong>Translations Disclaimer</strong><br /> The translations provided on this site are generated through automated machine translation and the contributions of our community. The English version of the content is the official version. For official reference and authoritative information, users should always consult the English version of the documents. We do not guarantee the accuracy or reliability of translations from English to other languages.</p> </div> </div> </div> </div> </div></div> </div> </div> </div>
         </div>
     
+    
     </main>
-    <footer class="py-12 bg-[#251a35] text-center border-t border-white/5">
+    <!-- 页面底部广告 -->
+    <section class="py-8 px-6 border-t border-white/5">
+        <div class="container mx-auto max-w-4xl">
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4800945095334481"
+     data-ad-slot="9568510432"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </section>
+    <footer class="py-12 pb-12 bg-[#221636] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
     <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
+    <p class="text-xs text-gray-600 mt-2 mb-4">推荐交易所：<a href="https://www.promoohivex.com/join/7761670" target="_blank" rel="noopener noreferrer" class="text-[#f4af47] hover:underline">OKX 欧易</a></p>
     <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
-        <a href="/reg.html" class="hover:text-[#f4af47]">Pi注册下载</a>
-        <a href="/mining-tutorial.html" class="hover:text-white">手机挖矿教程</a>
-        <a href="/wallet-guide.html" class="hover:text-white">钱包使用指南</a>
-        <a href="/pi-guide.html" class="hover:text-[#f4af47]">📚 Pi百科</a>
-        <a href="/price.html" class="hover:text-[#f4af47]">Pi实时价格</a>
-        <a href="/kyc.html" class="hover:text-white">KYC认证教程</a>
-        <a href="/pi-news.html" class="hover:text-white">Pi最新动态</a>
-        <a href="/faq.html" class="hover:text-white">常见问题</a>
-        <a href="/about.html" class="hover:text-white">关于我们</a>
+        <a href="reg.html" class="hover:text-[#f4af47]">Pi注册下载</a>
+        <a href="mining-tutorial.html" class="hover:text-white">手机挖矿教程</a>
+        <a href="wallet-guide.html" class="hover:text-white">钱包使用指南</a>
+        <a href="pi-guide.html" class="hover:text-[#f4af47]">📚 Pi百科</a>
+        <a href="price.html" class="hover:text-[#f4af47]">Pi实时价格</a>
+        <a href="kyc.html" class="hover:text-white">KYC认证教程</a>
+        <a href="community.html" class="hover:text-white">Pi社区广场</a>
+        <a href="faq.html" class="hover:text-white">常见问题</a>
+        <a href="about.html" class="hover:text-white">关于我们</a>
     </div>
 </footer>
 <script>
+function switchLang(lang){
+    if(lang==='zh-CN'){
+        document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;';
+        document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.pibizh.com;';
+    } else {
+        document.cookie='googtrans=/zh-CN/'+lang+'; path=/;';
+        document.cookie='googtrans=/zh-CN/'+lang+'; path=/; domain=.pibizh.com;';
+    }
+    window.location.reload();
+}
 (function(){
     var mm=document.getElementById('mobile-menu'),
         mp=document.getElementById('m-panel'),
@@ -307,8 +397,6 @@
     if(mo) mo.onclick=close;
 })();
 </script>
-</body>
-</html>
-
+<script defer src="https://cloud.umami.is/script.js" data-website-id="afe2922f-094d-4d10-9725-f3cfedc1a453"></script>
 </body>
 </html>

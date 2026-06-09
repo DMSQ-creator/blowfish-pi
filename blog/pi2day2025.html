@@ -8,10 +8,11 @@
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <link rel="stylesheet" href="/static/tailwind.css">
     <style>
-        body { background-color: #2a1545; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
-        .hero-bg { background: linear-gradient(135deg, #2a1545 0%, #423f88 100%); }
+        body { background-color: #362252; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        .hero-bg { background: #362252; }
+        .hero-gradient { background: linear-gradient(135deg, #2a1545 0%, #423f88 100%); }
         .text-pi-gold { background: linear-gradient(90deg, #f4af47 0%, #fab44b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-blur { background: rgba(30, 10, 39, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .nav-blur { background: rgba(54, 34, 82, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
         .dropdown:hover .dropdown-menu { display: block; }
         .dropdown-menu { background: #3a2355; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
         .dropdown-menu a { display: block; padding: 12px 24px; font-size: 14px; color: #ffffff !important; font-weight: 600; transition: all 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -20,102 +21,148 @@
         #mobile-menu { display: none; }
         .fixed-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .step-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 2rem; transition: all 0.3s; }
+        .step-card:hover { border-color: #f4af47; background: rgba(244,175,71,0.05); }
+        .warning-box { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); border-radius: 20px; padding: 2rem; }
+        .info-box { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 20px; padding: 2rem; }
+        .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 2.5rem; }
         .breadcrumb { font-size: 13px; color: #999; }
         .breadcrumb a { color: #f4af47; text-decoration: none; }
         .breadcrumb a:hover { text-decoration: underline; }
-
-        .prose h2 { font-size: 2.2rem; font-weight: 900; margin: 4rem 0 2rem; color: #f4af47; border-left: 6px solid #f4af47; padding-left: 1.5rem; }
-        .prose h3 { font-size: 1.6rem; font-weight: 800; margin: 2.5rem 0 1.2rem; color: #fff; }
-        .prose p { margin-bottom: 2rem; font-size: 1.2rem; color: #cbd5e1; }
-        .prose ul { list-style: disc; margin-left: 2.5rem; margin-bottom: 2.5rem; }
-        .prose li { margin-bottom: 1rem; color: #cbd5e1; }
-        .prose blockquote { border-left: 4px solid #f4af47; padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: #f4af47; font-weight: bold; }
-        .img-wrap { margin: 4rem 0; border-radius: 40px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
-        .prose img { border-radius: 1.5rem; margin: 2rem 0; }
+        @media (max-width: 768px) { .step-card { padding: 1.5rem; } .section-card { padding: 1.5rem; } }
+        /* FAQ Accordion */
+        .faq-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; margin-bottom: 12px; overflow: hidden; transition: all 0.3s; }
+        .faq-card:hover { border-color: rgba(244,175,71,0.4); background: rgba(255,255,255,0.06); }
+        .faq-card .question { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; cursor: pointer; font-weight: 700; font-size: 16px; color: #f0f0f0; gap: 12px; line-height: 1.5; }
+        .faq-card .question svg { flex-shrink: 0; transition: transform 0.3s; }
+        .faq-card.active .question svg { transform: rotate(180deg); }
+        .faq-card .answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; padding: 0 24px; color: #c8c8d0; font-size: 15px; line-height: 1.8; }
+        .faq-card.active .answer { max-height: 600px; padding: 0 24px 20px; }
+        .faq-card .answer a { color: #f4af47; text-decoration: underline; }
+        @media (max-width: 768px) {
+            .faq-card .question { padding: 14px 16px; font-size: 14px; }
+            .faq-card .answer { font-size: 14px; padding: 0 16px; }
+            .faq-card.active .answer { padding: 0 16px 16px; }
+        }
+        /* GTranslate nav dropdown dark theme */
+        .gt_switcher_wrapper{background:#3a2355!important;border:1px solid rgba(255,255,255,0.15)!important;border-radius:12px!important;box-shadow:0 10px 30px rgba(0,0,0,0.5)!important;min-width:180px!important;max-height:320px!important;overflow-y:auto!important;}
+        .gt_switcher_wrapper a{color:#e2e8f0!important;font-size:13px!important;font-weight:600!important;padding:10px 16px!important;background:#3a2355!important;border-bottom:1px solid rgba(255,255,255,0.06)!important;}
+        .gt_switcher_wrapper a:hover{background:#4a3565!important;color:#f4af47!important;}
+        .gt_switcher_wrapper a.selected{color:#f4af47!important;}
+        .gt_switcher_wrapper img{display:inline!important;vertical-align:middle!important;margin-right:6px!important;}
+        /* Mobile GTranslate in bottom bar */
+        .gtranslate_mobile .gt_switcher_wrapper{position:relative!important;min-width:100%!important;max-height:45vh!important;}
     </style>
-    <title>Pi2Day 2025：推出 AI 倡议以扩展下一代应用  | 派币中文网</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4800945095334481" crossorigin="anonymous"></script>
+        <title>Pi2Day 2025：推出 AI 倡议以扩展下一代应用  | 派币中文网</title>
     <meta name="description" content="Pi2Day 2025：推出 AI 倡议以扩展下一代应用 - Pi Network 官方中文资讯，派币中文网第一时间翻译发布。">
     <link rel="canonical" href="https://pibizh.com/blog/pi2day2025.html">
     <meta property="og:title" content="Pi2Day 2025：推出 AI 倡议以扩展下一代应用  | 派币中文网">
     <meta property="og:description" content="Pi2Day 2025：推出 AI 倡议以扩展下一代应用 - Pi Network 官方中文资讯，派币中文网第一时间翻译发布。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://pibizh.com/blog/pi2day2025.html">
+    <meta property="og:image" content="/static/favicon.png">
     <meta property="og:locale" content="zh_CN">
+  <!-- Chart.js CDN (for price page charts) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Inter:wght@400;700;900&amp;display=swap">
-<script defer src="https://cloud.umami.is/script.js" data-website-id="afe2922f-094d-4d10-9725-f3cfedc1a453"></script>
-<style>.gtranslate_mobile .gt_switcher_wrapper{position:relative!important;min-width:100%!important;max-height:45vh!important;}</style>
-<!-- GTranslate -->
+<!-- GTranslate - 桌面导航栏 + 移动端底部栏 -->
 <script>window.gtranslateSettings={"default_language":"zh-CN","languages":["zh-CN","en","es","id","pt","ru","ko","ja","vi","fr","de","th","ar","it","hi","tl"],"wrapper_selector":".gtranslate_nav,.gtranslate_mobile","alt_flags":{"en":"us","pt":"br","es":"es"}}</script>
 <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
 </head>
-<body class="hero-bg min-h-screen">
-    <a href="/reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#2a1545] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#2a1545]">
+<body class="hero-bg min-h-screen pt-24">
+
+    <a href="reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#362252] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#362252]">
         <span class="text-xl">🔥</span>
         <div class="text-[10px] font-black leading-none uppercase">注册教程</div>
     </a>
         <!-- 导航栏 (1:1 官网结构复刻) -->
     <header class="fixed top-0 w-full z-[100] nav-blur border-b border-white/5">
         <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='/index.html'">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
                 <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10" loading="lazy">
                 <span class="text-xl font-black tracking-tighter uppercase whitespace-nowrap">Pi Network 中文网</span>
             </div>
             
             <!-- 桌面菜单 (全量复刻) -->
             <div class="hidden lg:flex items-center gap-8">
-                <a href="/price.html" class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase hover:opacity-90">派币价格</a>
+                <a href="price.html" class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase hover:opacity-90">派币价格</a>
                 <!-- Blockchain -->
                 <div class="dropdown relative group">
                     <div class="text-[11px] font-black tracking-widest text-gray-400 uppercase cursor-pointer hover:text-[#f4af47] flex items-center gap-1">Pi 区块链 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
                     <div class="dropdown-menu absolute hidden pt-4 w-48 left-0">
-                        <a href="/nodes.html">Pi 节点 (Node)</a>
-                        <a href="/blockchain.html">区块浏览器</a>
-                        <a href="/technical-whitepaper.html">技术白皮书</a>
-                        <a href="/roadmap.html">项目路线图</a>
+                        <a href="nodes.html">Pi 节点 (Node)</a>
+                        <a href="blockchain.html">区块浏览器</a>
+                        <a href="technical-whitepaper.html">技术白皮书</a>
+                        <a href="roadmap.html">项目路线图</a>
                     </div>
                 </div>
                 <!-- Ecosystem -->
                 <div class="dropdown relative group">
                     <div class="text-[11px] font-black tracking-widest text-gray-400 uppercase cursor-pointer hover:text-[#f4af47] flex items-center gap-1">生态系统 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
                     <div class="dropdown-menu absolute hidden pt-4 w-56 left-0">
-                        <a href="/developers.html">开发者中心</a>
-                        <a href="/browser.html">Pi 浏览器下载</a>
-                        <a href="/pi-shopping.html">Pi 购物</a>
+                        <a href="developers.html">开发者中心</a>
+                        <a href="browser.html">Pi 浏览器下载</a>
+                        <a href="pi-shopping.html">Pi 购物</a>
                     </div>
                 </div>
-                <a href="/about.html" class="text-[11px] font-black tracking-widest text-gray-400 uppercase hover:text-[#f4af47]">关于我们</a>
+                <a href="about.html" class="text-[11px] font-black tracking-widest text-gray-400 uppercase hover:text-[#f4af47]">关于我们</a>
                 <div class="dropdown relative group">
                     <div class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase cursor-pointer flex items-center gap-1">📚 Pi百科 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
                     <div class="dropdown-menu absolute hidden pt-4 w-48 right-0">
-                        <a href="/pi-guide.html">百科首页</a>
-                        <a href="/pi-download.html">📲 下载安装</a>
-                        <a href="/mining-tutorial.html">⛏️ 挖矿教程</a>
-                        <a href="/wallet-guide.html">💳 钱包交易</a>
-                        <a href="/pi-mainnet.html">🚀 主网迁移</a>
-                        <a href="/kyc.html">✅ KYC认证</a>
-                        <a href="/pi-legit.html">🛡️ 安全与合规</a>
+                        <a href="pi-guide.html">百科首页</a>
+                        <a href="pi-download.html">📲 下载安装</a>
+                        <a href="mining-tutorial.html">⛏️ 挖矿教程</a>
+                        <a href="wallet-guide.html">💳 钱包交易</a>
+                        <a href="pi-mainnet.html">🚀 主网迁移</a>
+                        <a href="kyc.html">✅ KYC认证</a>
+                        <a href="pi-legit.html">🛡️ 安全与合规</a>
                     </div>
                 </div>
                 <!-- Community -->
                 <div class="dropdown relative group">
                     <div class="text-[11px] font-black tracking-widest text-[#f4af47] uppercase cursor-pointer flex items-center gap-1">社区资讯 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></div>
                     <div class="dropdown-menu absolute hidden pt-4 w-52 left-0">
-                        <a href="/blog.html">官方新闻动态</a>
-                        <a href="/pi-news.html">Pi 最新动态</a>
-                        <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer">Telegram 交流群</a>
+                        <a href="blog.html">官方新闻动态</a>
+                        <a href="community.html">Pi 社区广场</a>
                     </div>
                 </div>
             </div>
 
             <div class="flex items-center gap-4">
-                <!-- PC端翻译下拉 -->
-                <div class="lg:flex items-center gap-1 cursor-pointer" id="gt-pc-toggle" onclick="var d=document.getElementById('gt-nav-dd');if(d)d.style.display=d.style.display==='block'?'none':'block'">
-                    <span style="font-size:18px">🌐</span>
-                    <span class="text-[11px] font-black tracking-widest text-gray-400 hover:text-[#f4af47]">翻译</span>
+                <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer; noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-[#5865F2] items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
+                <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-blue-500 items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg></a>
+                <!-- 隐藏容器：让GTranslate初始化 -->
+                <div class="gtranslate_nav" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;"></div>
+                <!-- 语言切换 (桌面端) - hover展开 一键切换 -->
+                <div class="dropdown relative group hidden lg:flex">
+                    <div class="flex items-center gap-1.5 cursor-pointer px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+                        <span style="font-size:16px">🌐</span>
+                        <span class="text-[11px] font-bold text-[#f4af47] tracking-wide">语言</span>
+                        <svg class="w-3 h-3 text-[#f4af47]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="dropdown-menu absolute hidden pt-2 right-0" style="min-width:180px">
+                        <a href="#" onclick="switchLang('zh-CN');return false;">🇨🇳 简体中文</a>
+                        <a href="#" onclick="switchLang('en');return false;">🇺🇸 English</a>
+                        <a href="#" onclick="switchLang('ko');return false;">🇰🇷 한국어</a>
+                        <a href="#" onclick="switchLang('ja');return false;">🇯🇵 日本語</a>
+                        <a href="#" onclick="switchLang('ru');return false;">🇷🇺 Русский</a>
+                        <a href="#" onclick="switchLang('es');return false;">🇪🇸 Español</a>
+                        <a href="#" onclick="switchLang('pt');return false;">🇧🇷 Português</a>
+                        <a href="#" onclick="switchLang('id');return false;">🇮🇩 Indonesia</a>
+                        <a href="#" onclick="switchLang('vi');return false;">🇻🇳 Tiếng Việt</a>
+                        <a href="#" onclick="switchLang('fr');return false;">🇫🇷 Français</a>
+                        <a href="#" onclick="switchLang('de');return false;">🇩🇪 Deutsch</a>
+                        <a href="#" onclick="switchLang('th');return false;">🇹🇭 ไทย</a>
+                        <a href="#" onclick="switchLang('ar');return false;">🇸🇦 العربية</a>
+                        <a href="#" onclick="switchLang('it');return false;">🇮🇹 Italiano</a>
+                        <a href="#" onclick="switchLang('hi');return false;">🇮🇳 हिन्दी</a>
+                        <a href="#" onclick="switchLang('tl');return false;">🇵🇭 Filipino</a>
+                    </div>
                 </div>
-                <div id="gt-nav-dd" class="gtranslate_nav absolute top-full right-0 mt-2 z-[200]" style="display:none"></div>
-                <a href="https://discord.gg/tGQddPDh" target="_blank" rel="noopener noreferrer; noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-[#5865F2] items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a><a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer; noopener noreferrer" class="hidden lg:flex w-10 h-10 rounded-full bg-blue-500 items-center justify-center shadow-lg"><svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg></a>
-                <a href="/reg.html" class="hidden sm:block bg-[#f4af47] text-[#2a1545] px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">Code: nbjh</a>
+
+                <a href="reg.html" class="hidden sm:block bg-[#f4af47] text-[#362252] px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">Code: nbjh</a>
                 <button id="m-btn" class="lg:hidden p-1.5 text-[#f4af47] border border-[#f4af47]/20 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
             </div>
         </nav>
@@ -123,7 +170,7 @@
     <!-- 手机侧边栏 (重新设计) -->
     <div id="mobile-menu" class="fixed inset-0 z-[1000] lg:hidden" style="display:none;">
         <div id="m-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-        <div id="m-panel" class="absolute top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#2a1545] border-l border-white/10 overflow-y-auto" style="transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);">
+        <div id="m-panel" class="absolute top-0 right-0 bottom-0 w-[85%] max-w-sm bg-[#362252] border-l border-white/10 overflow-y-auto" style="transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);">
             <!-- 顶栏：Logo + 关闭 -->
             <div class="flex items-center justify-between p-5 border-b border-white/5">
                 <div class="flex items-center gap-2">
@@ -141,16 +188,16 @@
                     <div class="text-[10px] font-bold text-[#f4af47]/60 uppercase tracking-widest">邀请码</div>
                     <div class="text-lg font-black text-[#f4af47] tracking-wide">nbjh</div>
                 </div>
-                <a href="/reg.html" class="bg-[#f4af47] text-[#2a1545] px-4 py-2 rounded-lg font-black text-xs hover:scale-105 transition-transform">立即注册</a>
+                <a href="reg.html" class="bg-[#f4af47] text-[#362252] px-4 py-2 rounded-lg font-black text-xs hover:scale-105 transition-transform">立即注册</a>
             </div>
 
             <!-- 导航列表 -->
             <nav class="p-4 space-y-1">
-                <a href="/index.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="index.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">🏠</span>
                     <span class="font-bold text-white">首页</span>
                 </a>
-                <a href="/price.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="price.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">💰</span>
                     <span class="font-bold text-[#f4af47]">派币实时价格</span>
                 </a>
@@ -159,19 +206,19 @@
                 <div class="mt-4 mb-2 px-4">
                     <div class="text-[10px] font-black tracking-widest text-gray-500 uppercase">Pi 区块链</div>
                 </div>
-                <a href="/nodes.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="nodes.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">🖥️</span>
                     <span class="font-bold text-white">Pi 节点</span>
                 </a>
-                <a href="/blockchain.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="blockchain.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">🔍</span>
                     <span class="font-bold text-white">区块浏览器</span>
                 </a>
-                <a href="/technical-whitepaper.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="technical-whitepaper.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">📄</span>
                     <span class="font-bold text-white">技术白皮书</span>
                 </a>
-                <a href="/roadmap.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="roadmap.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">🗺️</span>
                     <span class="font-bold text-white">项目路线图</span>
                 </a>
@@ -180,74 +227,55 @@
                 <div class="mt-4 mb-2 px-4">
                     <div class="text-[10px] font-black tracking-widest text-gray-500 uppercase">生态系统</div>
                 </div>
-                <a href="/developers.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="developers.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">💻</span>
                     <span class="font-bold text-white">开发者中心</span>
                 </a>
-                <a href="/browser.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="browser.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">🌐</span>
                     <span class="font-bold text-white">Pi 浏览器</span>
                 </a>
-                <a href="/pi-shopping.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="pi-shopping.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">🛒</span>
                     <span class="font-bold text-white">Pi 购物</span>
                 </a>
 
                 
                 <div class="mt-4 mb-2 px-4"><div class="text-[10px] font-black tracking-widest text-gray-500 uppercase">📚 Pi百科</div></div>
-                <a href="/pi-guide.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">📚</span><span class="font-bold text-[#f4af47]">百科首页（全部教程）</span></a>
-                <a href="/pi-download.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">📲</span><span class="font-bold text-white">下载安装</span></a>
-                <a href="/mining-tutorial.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">⛏️</span><span class="font-bold text-white">挖矿教程</span></a>
-                <a href="/wallet-guide.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">💳</span><span class="font-bold text-white">钱包交易</span></a>
-                <a href="/pi-mainnet.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🚀</span><span class="font-bold text-white">主网迁移</span></a>
-                <a href="/kyc.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">✅</span><span class="font-bold text-white">KYC认证</span></a>
-                <a href="/pi-legit.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🛡️</span><span class="font-bold text-white">安全与合规</span></a>
+                <a href="pi-guide.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">📚</span><span class="font-bold text-[#f4af47]">百科首页（全部教程）</span></a>
+                <a href="pi-download.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">📲</span><span class="font-bold text-white">下载安装</span></a>
+                <a href="mining-tutorial.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">⛏️</span><span class="font-bold text-white">挖矿教程</span></a>
+                <a href="wallet-guide.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">💳</span><span class="font-bold text-white">钱包交易</span></a>
+                <a href="pi-mainnet.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🚀</span><span class="font-bold text-white">主网迁移</span></a>
+                <a href="kyc.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">✅</span><span class="font-bold text-white">KYC认证</span></a>
+                <a href="pi-legit.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🛡️</span><span class="font-bold text-white">安全与合规</span></a>
 
                 <!-- 社区资讯 -->
                 <div class="mt-4 mb-2 px-4">
                     <div class="text-[10px] font-black tracking-widest text-gray-500 uppercase">社区资讯</div>
                 </div>
-                <a href="/blog.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="blog.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">📰</span>
                     <span class="font-bold text-white">官方新闻</span>
                 </a>
-                <a href="/pi-news.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
-                    <span class="text-lg">⚡</span>
-                    <span class="font-bold text-white">Pi 最新动态</span>
+                <a href="community.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                    <span class="text-lg">💬</span>
+                    <span class="font-bold text-white">Pi 社区广场</span>
                 </a>
-                <a href="/search.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="search.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">🔎</span>
                     <span class="font-bold text-white">搜索</span>
                 </a>
-                <a href="/faq.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="faq.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">❓</span>
                     <span class="font-bold text-white">常见问题</span>
                 </a>
-                <a href="/about.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
+                <a href="about.html" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors">
                     <span class="text-lg">ℹ️</span>
                     <span class="font-bold text-white">关于我们</span>
                 </a>
-                            <!-- 语言切换 -->
-                <div class="mt-4 mb-2 px-4">
-                    <div class="text-[10px] font-black tracking-widest text-gray-500 uppercase">🌐 语言 / Language</div>
-                </div>
-                <div class="gtranslate_mobile" style="display:none"></div>
-                <a href="#" onclick="doGTranslate('zh-CN|zh-CN');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇨🇳</span><span class="font-bold text-white">简体中文</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|en');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇺🇸</span><span class="font-bold text-white">English</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|es');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇪🇸</span><span class="font-bold text-white">Español</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|ko');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇰🇷</span><span class="font-bold text-white">한국어</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|ja');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇯🇵</span><span class="font-bold text-white">日本語</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|ru');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇷🇺</span><span class="font-bold text-white">Русский</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|pt');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇧🇷</span><span class="font-bold text-white">Português</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|id');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇮🇩</span><span class="font-bold text-white">Indonesia</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|vi');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇻🇳</span><span class="font-bold text-white">Tiếng Việt</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|fr');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇫🇷</span><span class="font-bold text-white">Français</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|de');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇩🇪</span><span class="font-bold text-white">Deutsch</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|th');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇹🇭</span><span class="font-bold text-white">ไทย</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|ar');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇸🇦</span><span class="font-bold text-white">العربية</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|it');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇮🇹</span><span class="font-bold text-white">Italiano</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|hi');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇮🇳</span><span class="font-bold text-white">हिन्दी</span></a>
-                <a href="#" onclick="doGTranslate('zh-CN|tl');return false;" class="mobile-nav-item flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors"><span class="text-lg">🇵🇭</span><span class="font-bold text-white">Filipino</span></a>
+
+
 
             </nav>
 
@@ -267,8 +295,46 @@
         </div>
     </div>
 
+    <!-- 移动端底部注册栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-[#2a1545]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
+        <div class="flex gap-3 items-center">
+            <a href="reg.html" class="flex-1 bg-[#f4af47] text-[#362252] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
+            <button onclick="var p=document.getElementById('mlang');p.classList.toggle('hidden')" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0" title="切换语言">
+                <svg class="w-5 h-5" fill="none" stroke="#f4af47" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>
+            </button>
+            <a href="community.html" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+            </a>
+            <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.89 1.2-5.33 3.52-.5.35-.96.52-1.37.51-.45-.01-1.31-.26-1.95-.47-.78-.26-1.4-.4-1.35-.85.03-.23.35-.47.96-.71 3.76-1.63 6.27-2.71 7.52-3.24 3.58-1.48 4.32-1.74 4.81-1.75.11 0 .35.03.5.15.13.1.17.23.18.33.02.09.03.26.01.4z"/></svg>
+            </a>
+        </div>
+        <!-- 移动端语言面板 - 直接显示语言列表 -->
+        <div id="mlang" class="hidden mt-3 bg-[#3a2355] border border-white/15 rounded-2xl p-3 max-h-[50vh] overflow-y-auto">
+            <div class="grid grid-cols-2 gap-1">
+                <a href="#" onclick="switchLang('zh-CN');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇨🇳 简体中文</a>
+                <a href="#" onclick="switchLang('en');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇺🇸 English</a>
+                <a href="#" onclick="switchLang('es');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇪🇸 Español</a>
+                <a href="#" onclick="switchLang('ko');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇰🇷 한국어</a>
+                <a href="#" onclick="switchLang('ja');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇯🇵 日本語</a>
+                <a href="#" onclick="switchLang('ru');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇷🇺 Русский</a>
+                <a href="#" onclick="switchLang('pt');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇧🇷 Português</a>
+                <a href="#" onclick="switchLang('id');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇩 Indonesia</a>
+                <a href="#" onclick="switchLang('vi');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇻🇳 Tiếng Việt</a>
+                <a href="#" onclick="switchLang('fr');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇫🇷 Français</a>
+                <a href="#" onclick="switchLang('de');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇩🇪 Deutsch</a>
+                <a href="#" onclick="switchLang('th');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇹🇭 ไทย</a>
+                <a href="#" onclick="switchLang('ar');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇸🇦 العربية</a>
+                <a href="#" onclick="switchLang('it');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇹 Italiano</a>
+                <a href="#" onclick="switchLang('hi');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇮🇳 हिन्दी</a>
+                <a href="#" onclick="switchLang('tl');return false;" class="block px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-white/5 hover:text-[#f4af47]">🇵🇭 Filipino</a>
+                <div class="gtranslate_mobile" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;"></div>
+            </div>
+        </div>
+    </div>
 
-    <main class="max-w-3xl mx-auto pt-28 pb-20 px-6">
+
+        <main class="max-w-3xl mx-auto pt-28 pb-20 px-6">
 
         <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter leading-tight">Pi2Day 2025：推出 AI 倡议以扩展下一代应用</h1>
         <p class="text-gray-500 mb-10">2025-06-27</p>
@@ -276,23 +342,47 @@
 <div class="inner-wrap"> <div class="post-content" data-hide-featured-media="1"> <div class="content-inner"> <div id="fws_6a120fd41b579" data-column-margin="default" data-midnight="dark" class="wpb_row vc_row-fluid vc_row" style="padding-top:0px;padding-bottom:0px"><div class="row-bg-wrap" data-bg-animation="none" data-bg-animation-delay="" data-bg-overlay="false"><div class="inner-wrap row-bg-layer"><div class="row-bg viewport-desktop" style=""></div></div></div><div class="row_col_wrap_12 col span_12 dark left"> <div class="vc_col-sm-12 wpb_column column_container vc_column_container col no-extra-padding inherit_tablet inherit_phone " data-padding-pos="all" data-has-bg-color="false" data-bg-color="" data-bg-opacity="1" data-animation="" data-delay="0"> <div class="vc_column-inner"> <div class="wpb_wrapper"> <div class="wpb_text_column wpb_content_element "> <p class="nitro-lazy"><span style="font-weight:400">Happy Pi2Day 2025, Pioneers!&nbsp;</span></p> <p><span style="font-weight:400">Today, Pi released two major features: (1) an AI application platform that intends to solve problems the world faces as AI advances, based on both blockchain and AI technologies, as well as expand Pioneers’ access to contribute to, engage with, and support Pi apps and utilities in the ecosystem; and (2) another platform-level utility allowing Pioneers and businesses to support Pi apps and utilities via a staking mechanism.&nbsp;</span></p> <p><span style="font-weight:400">In addition, various tech and product updates have been released along with a new Pi2Day Ecosystem Challenge, which takes Pioneers through new releases and Pi ecosystem features to obtain digital prizes.</span></p> <p><span style="font-weight:400">Before discussing Pi2Day’s releases, let’s dive deeper into the questions on </span><b>AI, blockchain, and Pi Network</b><span style="font-weight:400"> that were posed to the community earlier this week: “How is GenAI related to Pi Network?”&nbsp;</span></p> <h2><span style="font-weight:400">Pi’s Solution to an AI-Driven World</span></h2> <p><span style="font-weight:400">The ultimate utility of any technology, including blockchain, resides in solving the fundamental problems of humankind. Today we’re at a pivotal moment with respect to AI infrastructure breakthroughs. However, the world is facing the following problems that are yet to be solved.&nbsp;</span></p> <ul> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">The infancy of the AI application layer between AI infrastructure and real production;</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">A lack of clarity regarding the role of human labor and intelligence; and&nbsp;</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Lingering questions on human well-being in an AI-pervasive world where AI could generate an unprecedented amount of production and how the resulting benefits are distributed to human beings in a way that maintains an acceptable or improved level of equality and equity.</span></li> </ul> <p><span style="font-weight:400">Pi believes that the world can solve these problems using both AI and blockchain technologies. In Pi’s view, the intersection between the two technologies expands beyond the typical understanding of &#8220;decentralized AI applications,&#8221; which often narrowly focuses on decentralized data, computing, governance, and ownership for AI accountability. While these aspects remain important, Pi Network sees a more fundamental utility of blockchain: </span><b class="nitro-lazy">a scalable and accessible solution for societal distribution and redistribution</b><span style="font-weight:400">. Thus, Pi emphasizes a broader vision for blockchain and AI: the macro-level decentralization of the production created by AI through blockchain. Through blockchain technology, production by AI should be equitably and inclusively distributed among humans in crypto networks, addressing core challenges around human well-being, economic equity, and the sustainable role of human intelligence in an AI-driven future.</span></p> <p><span style="font-weight:400">Achieving this vision requires a few critical components. First, </span><b>authenticity</b><span style="font-weight:400"> must be established, accurately distinguishing real humans from AI entities to ensure distribution goes to real humans. Second, there needs to be a flourishing and prolific </span><b>AI application layer</b><span style="font-weight:400"> bridging advanced AI infrastructure with practical, real-world production; this means empowering creators to easily build innovative AI-driven applications integrated with blockchain. Third, a </span><b>vibrant social network</b><span style="font-weight:400"> is essential to widely distribute these applications, facilitating their practical use by many people and enabling sustainable business models. Finally, leveraging</span><b> blockchain’s intrinsic features</b><span style="font-weight:400"> of accountability and transparent rights management</span> <span style="font-weight:400">ensures that the production generated by these applications directly and equitably benefits genuine human users within the ecosystem.</span></p> <p><span style="font-weight:400">Pi Network is uniquely positioned to tackle these challenges effectively, having already established the critical foundational elements necessary to do so. For authenticity, Pi has developed a </span><b>native KYC solution</b><span style="font-weight:400">, requiring every account to pass identity verification before onboarding onto the Pi Mainnet, ensuring a high level of humanness in the community. Currently over 13.7 million people have migrated to the Pi Mainnet after their identity verifications were processed by Pi KYC. To meet the need for a large social network, Pi boasts one of the largest global crypto-enabled social networks, with over </span><b>60 million engaged members</b><span style="font-weight:400"> across more than 200 countries and regions.&nbsp;</span></p> <p><span style="font-weight:400">For blockchain accountability and transparent features, Pi </span><b>originated as a blockchain project</b><span style="font-weight:400"> and employed </span><b>equitable design principles in its mining mechanism</b><span style="font-weight:400"> to ensure that the benefits of its network are widely accessible and inclusively shared by the community. Finally, to facilitate a flourishing and prolific AI application layer, today Pi officially released the</span><b> Pi App Studio</b><span style="font-weight:400"> powered by GenAI capabilities, enabling creators—not just engineers—to easily create and launch innovative, blockchain-integrated AI applications. Supporting Pi App Studio, existing Pi products such as the </span><b>Pi Ad Network, .pi Domains, and Pi Wallet, in addition to the Ecosystem Directory Staking feature </b><span style="font-weight:400">released today, serve to further enable the practical use of these applications and help establish sustainable business models within the Pi ecosystem.</span></p> <h2 id="pi-app-studio"><span style="font-weight:400">Pi App Studio: A New Model of App Creation in the AI Era</span></h2> <p><span style="font-weight:400">Pi App Studio is one attempt to attain a vision shared by many technologists: a world where anyone can create and run apps using human languages, without needing a technical background. In addition to its GenAI capability, important aspects that differentiate Pi App Studio from other current GenAI vibe programming platforms are its guided app-creation workflows, access to millions of potential creators, and users for these generated apps, which provides for an efficient iteration process that we believe is necessary for real product building. So instead of just creating and running <i>apps</i>, Pi App Studio, along with other existing Pi ecosystem components, enables the creation of functional online <i>products</i>. </span></p> <p><span style="font-weight:400">The need for guided workflows is based on Pi’s insight that not everyone has the expertise to build products. In order to enable anyone to build products, solving the engineering barrier of entry is not enough—that is only half of the problem. With the rise of AI, the limiting factor in app creation has been the increased shift from technical ability to creativity and distribution, i.e. what to build and where to deploy.</span></p> <p><span style="font-weight:400">Guided workflows are essential to help ordinary people bring out and integrate their domain knowledge, expertise, and talent into real products that benefit others. To explain this in an analogy, if you give a blank canvas and brush to a person who never learned to paint, they may still not be able to produce a good painting despite having the necessary tools. To produce a beautiful painting incorporating a person’s unique perspective and creativity requires an educational and guided workflow to be in place to provide the necessary structure for them to produce their work.&nbsp;</span></p> <p><span style="font-weight:400">New products need users who test and provide feedback, which permits further iteration and improvement to the features and business models to ensure that the products are sustainable. That’s what the existing social network and ecosystem components of Pi Network can provide to app creators. App creators can benefit from real-world feedback on their products from existing Pioneers, thus allowing app creators to improve their products, and create business models in Pi with the assistance of current Pi products, such as Pi Ad Network, .pi Domains, Pi Wallet, etc. In turn, the Pi ecosystem benefits from scalable app creation by creators, utility expansion, and community engagement.&nbsp;&nbsp;</span></p> <p><span style="font-weight:400">The significance of this AI initiative is threefold:&nbsp;</span></p> <ul> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Contributing to the AI application layer of the world. Pi Network innovates through guided app-creation workflows atop the world’s recent AI infrastructure breakthroughs while leveraging the crowd creativity of the Pi community and the distribution channels of Pi’s social network;</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Experimenting to explore an economic model which provides for the sustainable coexistence of human intelligence and AI using blockchain—an essential global problem to solve in the future age of AI; and</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Scaling the grassroots capability of non-technical Pioneers to use their respective expertise to innovate, create apps, and develop ecosystem utility using AI and the blockchain.&nbsp;</span></li> </ul> <p><span style="font-weight:400">This allows for more iterations and attempts by a wider-range of people at app creation in a decentralized way—at cheaper engineering costs than what it took to create the applications in the Web2 era.</span></p> <p><span style="font-weight:400">By combining AI with the tools and collective resources of Pi Network, Pi App Studio is positioned to assist people with turning what they know into real-world applications that others can use and benefit from.</span></p> <p><span style="font-weight:400">The version released today includes two options. First is a workflow that gives Pioneers the ability to create </span><b>topic-specific chatbots</b><span style="font-weight:400"> trained and automated through AI, which take advantage of the creator’s domain knowledge and expertise to refine a GenAI chatbot and better answer users&#8217; questions on specific topics and customize user experience. While generic chatbots can provide answers, refined AI chatbots that leverage individual creators’ domain expertise and creativity can deliver more tailored responses and diverse user experiences—potentially extending beyond traditional chatbot interfaces. After all, who says question-answer interactions must always take the form of a “chatbot”? What if they appeared as step-by-step wizards, interactive quizzes, recommendation engines, or even something playful like a magic 8-ball? Moreover, most mainstream users beyond tech- and AI-savvy audiences do not yet rely on generic GenAI chatbots for everyday information needs. To accelerate mass adoption and enhance human productivity, more targeted, topic-specific AI applications—infused with individual creators’ expertise and creativity—can offer a more intuitive and effective entry point for broader public engagement with AI.&nbsp;&nbsp;</span></p> <p><span style="font-weight:400">The second option is an open platform in Beta that allows Pioneers to create any type of app they already have in mind without the need to code. Pioneers can use human language, not code, to create the app they want to build and own. <strong>Because this is still in Beta, note that access may be limited, and the user experience is still being refined.</strong></span></p> <p><span style="font-weight:400">More workflows created on top of the current platform can guide the creation of more app types.</span></p> <p><span style="font-weight:400">Once creators&#8217; chatbots, other types of apps, or custom apps are complete, Pi App Studio helps app creators deploy their apps to cloud servers automatically using AI and to launch their own apps to the Pi ecosystem. Based on user feedback, creators iteratively determine what resonates with Pioneers, make changes to their apps through a process similar to the creation flow, and redeploy and republish their apps to the community—all through Pi App Studio without the need to code.&nbsp;</span></p> <p><span style="font-weight:400">In order to increase user onboarding and engagement like any other products, Pi App Studio creators can also take advantage of Pi’s other products, like Fireside Forum and Pi Chats, to connect their app with the broader community of Pioneers. To create a business model in Pi, creators can later make use of Pi Ad Network where Pi apps owners are currently making revenue, and creators can currently bid for a .pi Domain for their app for easy accessibility.</span></p> <p><span style="font-weight:400">Pi Network’s unique strengths—such as potential engagement from Pi’s tens of millions of identity-verified Pioneers who use and own Pi cryptocurrency—motivate app creators to prioritize quality, growth, and accuracy. The better an app performs, the more likely people will use it.</span></p> <p><span style="font-weight:400">Creating apps through Pi App Studio therefore means that you are able to own and run a</span><b> business and product built entirely around your knowledge and ideas</b><span style="font-weight:400">, which is made possible through the use of AI and supported by the blockchain ecosystem of Pi .</span></p> <h2><span style="font-weight:400">Ecosystem Directory Staking: Use Pi to Support Pi Apps and Utilities in the Ecosystem</span></h2> <p><b>Ecosystem Directory Staking</b><span style="font-weight:400"> is a new platform-level utility that introduces a decentralized way for Pioneers and businesses to actively support and promote the ranking of Pi apps and utilities in the Ecosystem Interface. Accessible through the Pi Browser, and being rolled out starting on June 28,&nbsp; this feature enables Pioneers and businesses to stake their Pi, on the Mainnet blockchain, for apps of their choosing, directly boosting that app’s ranking within the ecosystem. In addition to the utility of Pi in staking, this also seeks to provide greater exposure to apps that are of higher quality and provide for meaningful community engagement. UPDATED 6/29/2025: Staking is an optional way for Pioneers and businesses to support the apps they use and enjoy in the Ecosystem Interface. </span><b>Note there are no Pi rewards on the protocol level for the staking</b><span style="font-weight:400"> as it does not make sense for the network to promote one Pi app over another through this staking feature. It is up to the third-party developer of a specific Pi app or service if they want to provide any incentive, whether that be in the form of app features and quality, user experience, in-app rewards, promotions etc, to Pioneers to stake Pi for their app or service and increase their ranking in the ecosystem. The original staked amount will be returned to the users once the staked duration has ended.</span></p> <p><span style="font-weight:400">Strategically, this mechanism is a platform-level utility making use of Pi’s collective attention resource that not only supports apps and utilities through the crowd-power of the Pi community, but also distinguishes itself from typical Web2 app ranking systems which are largely controlled by either rigid algorithms that create information silos or advertising corporations. The feature promotes a </span><b>cycle designed to elevate quality and decentralize influence across Pi Network</b><span style="font-weight:400">.</span></p> <h2><span style="font-weight:400">Integration by Third-party Onramper and On-Ramp Services</span></h2> <p><span style="font-weight:400">The Pi Wallet now integrates </span><b>Onramper</b><span style="font-weight:400">, a third-party, KYB-verified on-ramp aggregator that simplifies on-ramp services for Pioneers. Pioneers may access Onramper through the Pi Wallet to choose KYB-compliant on-ramp services they prefer, subject to the on-ramps’ regional availability and other restrictions. This integration offers more Pioneers a streamlined way to participate in the Mainnet ecosystem. Accessibility will be rolled out gradually next week.&nbsp;</span></p> <h2 id="node-updates" style="padding-top:20px;margin-top:-20px"><span style="font-weight:400">Node Updates: Node Version 0.5.2 and Node Ranking Page</span></h2> <p><b>Node Version 0.5.2 </b><span style="font-weight:400">has been released and includes multiple key updates:</span></p> <ul> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">The application has been re-named to </span><b>Pi Desktop</b><span style="font-weight:400"> and includes both the Pi Node and Pi mining app. This change allows the app to be more general, accurate, and open to current and future integrations on desktop computers that are not necessarily related to Node, e.g. accessing Pi App Studio on a large computer display. (To open App Studio </span><span style="font-weight:400">on Pi Desktop,</span><span style="font-weight:400"> select Pi Utilities under the Ξ hamburger menu of the Pi App tab)</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Security has been improved overall.</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">Pioneers can view their public key directly in the Node section, for identifying their Node in the Node ranking page. This public key can be used to verify and identify a user’s Node.&nbsp;</span></li> <li style="font-weight:400" aria-level="1"><span style="font-weight:400">The desktop app window is resizable for improved usability by certain features such as Pi App Studio.</span></li> </ul> <p><span style="font-weight:400">The new </span><a href="https://blockexplorer.minepi.com/mainnet/nodes" target="_blank" rel="noopener"><b>Node ranking page</b></a><span style="font-weight:400"> in the Pi Blockexplorer displays the top 5,000 Pi Nodes based on key performance metrics, including reliability, availability, open ports, total active days, and CPU performance. The rankings are refreshed every 24 hours to reflect the most up-to-date data from the network. This page helps highlight the most stable and high-performing nodes contributing to the Pi ecosystem.</span></p> <h2><span style="font-weight:400">Mainnet Migration and KYC Updates: Unblocking Over 500,000 </span><span style="font-weight:400">Additional</span><span style="font-weight:400"> Pioneers</span></h2> <p><span style="font-weight:400">Recent updates to Mainnet Migration and KYC have enabled more Pioneers to become eligible for migration. These updates have unblocked over 500,000 additional Pioneers who were previously unable to proceed, in addition to the normal migration flow which has migrated over 3 million Pioneers since the launch of Open Network.&nbsp;</span></p> <p><span style="font-weight:400">One KYC update specifically helped unblock Pioneers </span><span style="font-weight:400">in certain regions with unique challenges that required further checks </span><span style="font-weight:400">with their Tentative KYC status, to reach their final KYC status and allow them to continue in the Mainnet migration process.</span></p> <p><span style="font-weight:400">The migration process was also improved by having dedicated blockchain API servers that separate from other blockchain traffic. This helps improve migration stability and throughput</span><span style="font-weight:400">.</span></p> <p><span style="font-weight:400">Pioneers may still need to complete specific actions before migration can occur. The exact timing will depend on when each individual finishes those steps, but they are no longer restricted by system limitations that previously prevented their migration.</span></p> <h2><span style="font-weight:400">.pi Domains Auction Extension</span></h2> <p><span style="font-weight:400">As discussed in a previous blog, .pi Domains are intended to be functional Web3 identifiers—anchors for Pi-powered apps, services, and storefronts. Due to the release of Pi App Studio where many more Pioneers will be able to create and run their own apps, thus needing domains for use with their apps, the .pi Domains Auction deadline is extended to September 30, 2025</span><span style="font-weight:400">&nbsp;in order to provide Pioneers with more time to innovate and build functional apps, and to bid for their desired .pi Domains for their apps.</span></p> <h2><span style="font-weight:400">Pi2Day Interactive Ecosystem Challenge</span></h2> <p><span style="font-weight:400">To celebrate Pi2Day’s various ecosystem and utility-supporting updates, Pioneers can participate in the <a href="https://minepi.com/blog/pi2day2025-challenge/" target="_blank" rel="noopener">Pi2Day Ecosystem Challenge</a>. The Challenge will take Pioneers through various new features, including many of those announced in this announcement, and help them explore the Pi ecosystem and Pi products. Pioneers will also receive fun digital prizes after completing certain tiers of steps!</span></p> <p><span style="font-weight:400">Participate as soon as you can! The Ecosystem Challenge will run from June 27 – July 7.</span></p> </div> </div> </div> </div> </div></div> </div> </div> </div>
         </div>
     
+    
     </main>
-    <footer class="py-12 bg-[#251a35] text-center border-t border-white/5">
+    <!-- 页面底部广告 -->
+    <section class="py-8 px-6 border-t border-white/5">
+        <div class="container mx-auto max-w-4xl">
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4800945095334481"
+     data-ad-slot="9568510432"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </section>
+    <footer class="py-12 pb-12 bg-[#221636] text-center border-t border-white/5">
     <img alt="Pi Network Logo" src="/static/favicon.png" class="w-10 h-10 mb-6 mx-auto grayscale brightness-200" loading="lazy">
     <p class="text-sm font-bold text-gray-500 mb-6">© 2026 PI NETWORK 官方中文社区 · 邀请码: nbjh</p>
+    <p class="text-xs text-gray-600 mt-2 mb-4">推荐交易所：<a href="https://www.promoohivex.com/join/7761670" target="_blank" rel="noopener noreferrer" class="text-[#f4af47] hover:underline">OKX 欧易</a></p>
     <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-bold text-gray-600 max-w-3xl mx-auto px-4">
-        <a href="/reg.html" class="hover:text-[#f4af47]">Pi注册下载</a>
-        <a href="/mining-tutorial.html" class="hover:text-white">手机挖矿教程</a>
-        <a href="/wallet-guide.html" class="hover:text-white">钱包使用指南</a>
-        <a href="/pi-guide.html" class="hover:text-[#f4af47]">📚 Pi百科</a>
-        <a href="/price.html" class="hover:text-[#f4af47]">Pi实时价格</a>
-        <a href="/kyc.html" class="hover:text-white">KYC认证教程</a>
-        <a href="/pi-news.html" class="hover:text-white">Pi最新动态</a>
-        <a href="/faq.html" class="hover:text-white">常见问题</a>
-        <a href="/about.html" class="hover:text-white">关于我们</a>
+        <a href="reg.html" class="hover:text-[#f4af47]">Pi注册下载</a>
+        <a href="mining-tutorial.html" class="hover:text-white">手机挖矿教程</a>
+        <a href="wallet-guide.html" class="hover:text-white">钱包使用指南</a>
+        <a href="pi-guide.html" class="hover:text-[#f4af47]">📚 Pi百科</a>
+        <a href="price.html" class="hover:text-[#f4af47]">Pi实时价格</a>
+        <a href="kyc.html" class="hover:text-white">KYC认证教程</a>
+        <a href="community.html" class="hover:text-white">Pi社区广场</a>
+        <a href="faq.html" class="hover:text-white">常见问题</a>
+        <a href="about.html" class="hover:text-white">关于我们</a>
     </div>
 </footer>
 <script>
+function switchLang(lang){
+    if(lang==='zh-CN'){
+        document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;';
+        document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.pibizh.com;';
+    } else {
+        document.cookie='googtrans=/zh-CN/'+lang+'; path=/;';
+        document.cookie='googtrans=/zh-CN/'+lang+'; path=/; domain=.pibizh.com;';
+    }
+    window.location.reload();
+}
 (function(){
     var mm=document.getElementById('mobile-menu'),
         mp=document.getElementById('m-panel'),
@@ -307,8 +397,6 @@
     if(mo) mo.onclick=close;
 })();
 </script>
-</body>
-</html>
-
+<script defer src="https://cloud.umami.is/script.js" data-website-id="afe2922f-094d-4d10-9725-f3cfedc1a453"></script>
 </body>
 </html>
