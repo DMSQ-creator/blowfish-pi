@@ -116,6 +116,20 @@ def build_page(page_name, meta):
         print(f"  SKIP: {page_file} (empty content)")
         return None
 
+    # 🚨 内容合规检查：_content/ 里不允许出现外壳元素
+    forbidden = [
+        ('<head', '_content/ 不得包含 <head>，head 由模板注入'),
+        ('</head>', '_content/ 不得包含 </head>，head 由模板注入'),
+        ('<!-- 导航栏', '_content/ 不得包含导航栏，nav 由模板注入'),
+        ('<footer', '_content/ 不得包含 <footer>，footer 由模板注入'),
+        ('© 2026 PI NETWORK', '_content/ 不得包含页脚内容，footer 由模板注入'),
+    ]
+    for pattern, msg in forbidden:
+        if pattern in page_content:
+            print(f"  🚨 RULE VIOLATION: {page_file} → {msg}")
+            print(f"     请只放 <main> 内的正文内容，外壳由 _templates/ 提供")
+            return None
+
     # 2. 从 pages.yml 获取元数据
     title = meta.get('title', f'{page_name} | 派币中文网')
     desc = meta.get('description', '')
