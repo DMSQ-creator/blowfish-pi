@@ -1,0 +1,398 @@
+<main class="pt-28 pb-20 px-4">
+    <section class="container mx-auto max-w-[1600px]">
+      <div class="glass rounded-[36px] p-6 md:p-10 shadow-[0_0_120px_rgba(244,175,71,0.12)]">
+        <div class="flex flex-col gap-10">
+          <div class="w-full">
+            <h1 class="text-5xl md:text-6xl font-black tracking-tighter leading-[1.05]">派币 <span class="text-pi-gold italic">实时价格</span></h1>
+            <p class="text-gray-300 mt-6 max-w-2xl">自动拉取交易所公开行情（无需翻墙），展示最新价、24H涨跌、成交量，并提供价格曲线。</p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+              <!-- 为避免小屏溢出，数值允许换行/截断 -->
+              <div class="metric rounded-2xl p-5">
+                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">最新价 (USDT)</div>
+                <div id="m-last" class="text-2xl font-black mt-2 skeleton rounded-lg h-8"></div>
+              </div>
+              <div class="metric rounded-2xl p-5">
+                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">24H 涨跌</div>
+                <div id="m-change" class="text-2xl font-black mt-2 skeleton rounded-lg h-8"></div>
+              </div>
+              <div class="metric rounded-2xl p-5">
+                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">24H 最高 / 最低</div>
+                <div id="m-hl" class="text-base font-black mt-3 skeleton rounded-lg h-7 break-words"></div>
+              </div>
+              <div class="metric rounded-2xl p-5">
+                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">24H 成交量 (PI)</div>
+                <div id="m-vol" class="text-base font-black mt-3 skeleton rounded-lg h-7 break-words"></div>
+              </div>
+            </div>
+
+            <div class="mt-10 flex flex-wrap items-center gap-3">
+              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="5m" data-limit="120">5分钟</button>
+              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="1H" data-limit="168">1小时</button>
+              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="4H" data-limit="180">4小时</button>
+              <button class="range px-5 py-3 rounded-full bg-white/5 border border-white/10 font-black text-xs hover:border-[#f4af47]/60 transition-all" data-bar="1D" data-limit="200">日线</button>
+              <span id="updated" class="text-xs text-white/50 font-bold ml-2 whitespace-nowrap"></span>
+            </div>
+          </div>
+
+          <div class="w-full">
+            <div class="metric rounded-[28px] p-6">
+              <div class="flex items-center justify-between gap-4 mb-4">
+                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">PI/USDT</div>
+                <a class="text-[#f4af47] text-xs font-black hover:underline whitespace-nowrap" href="blog.html">去看资讯 →</a>
+              </div>
+              <canvas id="chart" height="520"></canvas>
+              <div class="mt-4 text-[10px] text-white/40 font-bold">声明：行情来自公开接口，仅供参考，不构成投资建议。</div>
+            </div>
+          </div>
+
+          <!-- 弹幕区域 -->
+          <div class="w-full">
+            <div class="metric rounded-[28px] p-6 relative overflow-hidden" style="min-height:220px;">
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+                <div class="text-[10px] uppercase tracking-widest text-gray-400 font-black">💬 实时弹幕 · 说说你对 PI 的看法</div>
+                <div class="flex items-center gap-2">
+                  <button id="dm-toggle" class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-black hover:border-[#f4af47]/60 transition-all">弹幕 ON</button>
+                </div>
+              </div>
+
+              <!-- 弹幕画布 -->
+              <div id="dm-stage" class="relative w-full overflow-hidden" style="height:160px;"></div>
+
+              <!-- 发送栏 -->
+              <div class="flex items-center gap-3 mt-4">
+                <input id="dm-input" type="text" maxlength="30" placeholder="发一条弹幕（最多30字）" class="flex-1 bg-white/5 border border-white/10 rounded-full px-5 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-[#f4af47]/60 transition-all" />
+                <button id="dm-send" class="bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl whitespace-nowrap">发送</button>
+              </div>
+              <div id="dm-cooldown" class="text-[10px] text-white/30 mt-2 hidden">冷却中…请稍后再发</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const OKX = {
+      ticker: (instId) => `https://www.okx.com/api/v5/market/ticker?instId=${encodeURIComponent(instId)}`,
+      candles: (instId, bar, limit) => `https://www.okx.com/api/v5/market/candles?instId=${encodeURIComponent(instId)}&bar=${encodeURIComponent(bar)}&limit=${encodeURIComponent(limit)}`
+    };
+
+    const instId = 'PI-USDT';
+
+    function fmt(n, digits=4){
+      const x = Number(n);
+      if (!Number.isFinite(x)) return '-';
+      return x.toFixed(digits);
+    }
+
+    function pct(n, digits=2){
+      const x = Number(n);
+      if (!Number.isFinite(x)) return '-';
+      const s = (x >= 0 ? '+' : '') + x.toFixed(digits) + '%';
+      return s;
+    }
+
+    function setBox(id, text, cls){
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.remove('skeleton','h-8','h-7','rounded-lg');
+      el.textContent = text;
+      el.className = el.className.replace(/text-\w+-\d+/g,'');
+      if (cls) el.classList.add(...cls.split(' '));
+    }
+
+    async function loadTicker(){
+      const res = await fetch(OKX.ticker(instId), { cache: 'no-store' });
+      const j = await res.json();
+      const d = j?.data?.[0];
+      if (!d) throw new Error('ticker empty');
+
+      const last = Number(d.last);
+      const open = Number(d.open24h);
+      const changePct = open ? ((last - open) / open) * 100 : 0;
+
+      setBox('m-last', fmt(last, 4), '');
+      setBox('m-change', pct(changePct, 2), changePct >= 0 ? 'text-green-400' : 'text-red-400');
+      setBox('m-hl', `${fmt(d.high24h,4)} / ${fmt(d.low24h,4)}`, '');
+      setBox('m-vol', `${Number(d.vol24h).toLocaleString()}`, '');
+
+      const up = document.getElementById('updated');
+      if (up) {
+        const now = new Date();
+        const pad = n => String(n).padStart(2,'0');
+        up.textContent = `更新：${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      }
+    }
+
+    let chart;
+    async function loadCandles(bar='1H', limit=168){
+      const res = await fetch(OKX.candles(instId, bar, limit), { cache: 'no-store' });
+      const j = await res.json();
+      const data = (j?.data || []).map(row => ({
+        t: new Date(Number(row[0])),
+        o: Number(row[1]),
+        h: Number(row[2]),
+        l: Number(row[3]),
+        c: Number(row[4])
+      })).reverse();
+
+      const labels = data.map(x => {
+        const d = x.t;
+        const pad = n => String(n).padStart(2,'0');
+        // short label depending on bar interval
+        if (['1D','1W','1M'].includes(bar)) {
+          return `${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+        }
+        return `${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+      });
+      const closes = data.map(x => x.c);
+
+      const ctx = document.getElementById('chart');
+      if (!ctx) return;
+
+      if (chart) chart.destroy();
+      // ensure the container height is stable
+      const parent = ctx.parentElement;
+      if (parent) parent.style.height = '520px';
+
+      chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            label: 'PI/USDT',
+            data: closes,
+            borderColor: '#f4af47',
+            backgroundColor: 'rgba(244,175,71,0.10)',
+            fill: true,
+            tension: 0.22,
+            pointRadius: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              mode: 'index',
+              intersect: false,
+              callbacks: {
+                label: (ctx) => `  ${ctx.parsed.y?.toFixed(4)}`
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: 'rgba(255,255,255,0.55)', maxTicksLimit: 6 },
+              grid: { color: 'rgba(255,255,255,0.06)' }
+            },
+            y: {
+              ticks: { color: 'rgba(255,255,255,0.55)' },
+              grid: { color: 'rgba(255,255,255,0.06)' }
+            }
+          }
+        }
+      });
+    }
+
+    function setActiveRange(btn){
+      document.querySelectorAll('.range').forEach(b => b.classList.remove('border-[#f4af47]','bg-[#f4af47]/15'));
+      btn.classList.add('border-[#f4af47]','bg-[#f4af47]/15');
+    }
+
+    async function refreshAll(bar='1H', limit=168){
+      await Promise.all([loadTicker(), loadCandles(bar, limit)]);
+    }
+
+    // init
+    document.querySelectorAll('.range').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        setActiveRange(btn);
+        await refreshAll(btn.dataset.bar, Number(btn.dataset.limit || 168));
+      });
+    });
+
+    (async () => {
+      // If Chart.js fails to load (CDN blocked/slow), show a friendly message instead of endless blank space.
+      if (typeof window.Chart === 'undefined') {
+        const up = document.getElementById('updated');
+        if (up) up.textContent = '图表组件加载失败（CDN 不可用），请稍后刷新或更换网络。';
+        return;
+      }
+
+      const first = document.querySelector('.range[data-bar="1H"]') || document.querySelector('.range');
+      if (first) setActiveRange(first);
+      await refreshAll('1H', 168);
+      // refresh ticker periodically
+      setInterval(() => loadTicker().catch(()=>{}), 15000);
+    })().catch(err => {
+      console.error(err);
+      const up = document.getElementById('updated');
+      if (up) up.textContent = '加载失败：请稍后刷新。';
+    });
+  </script>
+
+
+
+  <!-- 弹幕系统 -->
+  <script>
+    (() => {
+      const stage = document.getElementById('dm-stage');
+      const input = document.getElementById('dm-input');
+      const sendBtn = document.getElementById('dm-send');
+      const toggleBtn = document.getElementById('dm-toggle');
+      const cooldownEl = document.getElementById('dm-cooldown');
+      if (!stage || !input || !sendBtn) return;
+
+      let enabled = true;
+      const COOLDOWN = 5000;      // 5秒冷却
+      const MAX_PER_MIN = 6;      // 每分钟最多6条
+      const MAX_LEN = 30;         // 最长30字
+      const STORAGE_KEY = 'pi_danmaku';
+      const TS_KEY = 'pi_dm_ts';
+      const COLORS = ['#f4af47','#4fc3f7','#81c784','#e57373','#ba68c8','#fff176','#ff8a65','#4dd0e1'];
+
+      // 预设弹幕池（无用户弹幕时也有内容滚动）
+      const PRESET = [
+        '🚀 PI to the moon!',
+        '💎 HODL!',
+        '挖矿第三年了！',
+        'Pi Day 快乐！',
+        '等主网迁移完成 🙏',
+        '社区力量 💪',
+        '长期看好 📈',
+        'KYC 通过啦 ✅',
+        '节点运行中 🖥️',
+        '邀请码 nbjh',
+        '派就是未来',
+        '一起见证历史',
+        '坚持就是胜利',
+        '去中心化的力量 🌍',
+        '先锋们加油！',
+      ];
+
+      // 从 localStorage 读取用户弹幕
+      function getUserDM() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]').slice(-50); } catch { return []; }
+      }
+      function saveUserDM(list) {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list.slice(-50))); } catch {}
+      }
+      function getTimestamps() {
+        try { return JSON.parse(localStorage.getItem(TS_KEY) || '[]'); } catch { return []; }
+      }
+      function saveTimestamps(ts) {
+        try { localStorage.setItem(TS_KEY, JSON.stringify(ts.slice(-20))); } catch {}
+      }
+
+      // XSS 过滤
+      function sanitize(str) {
+        const el = document.createElement('span');
+        el.textContent = str;
+        return el.innerHTML;
+      }
+
+      // 发射一条弹幕
+      function fireDM(text, color) {
+        if (!enabled) return;
+        const el = document.createElement('div');
+        el.textContent = text;
+        el.style.cssText = `
+          position:absolute; white-space:nowrap;
+          color:${color || COLORS[Math.floor(Math.random()*COLORS.length)]};
+          font-size:${12 + Math.floor(Math.random()*4)}px;
+          font-weight:700;
+          text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+          top:${Math.floor(Math.random() * (stage.offsetHeight - 24))}px;
+          left:100%;
+          transition: none;
+          pointer-events: none;
+        `;
+        stage.appendChild(el);
+
+        const w = el.offsetWidth + stage.offsetWidth;
+        const duration = Math.max(6000, w * 8);
+        el.animate([
+          { transform: 'translateX(0)' },
+          { transform: `translateX(-${w + 50}px)` }
+        ], { duration, easing: 'linear', fill: 'forwards' });
+
+        setTimeout(() => el.remove(), duration + 200);
+      }
+
+      // 频率限制检查
+      function canSend() {
+        const now = Date.now();
+        const ts = getTimestamps().filter(t => now - t < 60000);
+        return ts.length < MAX_PER_MIN;
+      }
+
+      let cooldownTimer = null;
+      function startCooldown() {
+        sendBtn.disabled = true;
+        sendBtn.style.opacity = '0.4';
+        cooldownEl.classList.remove('hidden');
+        cooldownTimer = setTimeout(() => {
+          sendBtn.disabled = false;
+          sendBtn.style.opacity = '1';
+          cooldownEl.classList.add('hidden');
+        }, COOLDOWN);
+      }
+
+      // 发送
+      function handleSend() {
+        const raw = input.value.trim();
+        if (!raw || raw.length > MAX_LEN) return;
+        if (!canSend()) {
+          cooldownEl.textContent = '发送太频繁，请稍后再试';
+          cooldownEl.classList.remove('hidden');
+          setTimeout(() => cooldownEl.classList.add('hidden'), 3000);
+          return;
+        }
+
+        const text = sanitize(raw);
+        fireDM(text, '#f4af47');
+
+        // 保存
+        const list = getUserDM();
+        list.push(text);
+        saveUserDM(list);
+
+        const ts = getTimestamps();
+        ts.push(Date.now());
+        saveTimestamps(ts);
+
+        input.value = '';
+        startCooldown();
+      }
+
+      sendBtn.addEventListener('click', handleSend);
+      input.addEventListener('keydown', e => { if (e.key === 'Enter') handleSend(); });
+
+      // 开关
+      toggleBtn.addEventListener('click', () => {
+        enabled = !enabled;
+        toggleBtn.textContent = enabled ? '弹幕 ON' : '弹幕 OFF';
+        toggleBtn.classList.toggle('border-[#f4af47]', enabled);
+        if (!enabled) stage.innerHTML = '';
+      });
+
+      // 自动播放弹幕（预设 + 用户历史）
+      const pool = [...PRESET, ...getUserDM()];
+      let idx = 0;
+      function autoFire() {
+        if (!enabled || pool.length === 0) return;
+        fireDM(pool[idx % pool.length]);
+        idx++;
+      }
+      // 每 2-4 秒发一条
+      setInterval(autoFire, 2500);
+      // 开始时连发几条填充
+      setTimeout(() => autoFire(), 300);
+      setTimeout(() => autoFire(), 800);
+      setTimeout(() => autoFire(), 1500);
+    })();
+  </script>
