@@ -23,9 +23,27 @@ BLOG_LIST_PAGE = "blog.html"
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "8190223294")
 
-LLM_API_KEY = os.environ.get("LLM_API_KEY", "L5c05RSdm4mgZyr3CaC8")
-LLM_API_URL = "https://api.modelverse.cn/v1/chat/completions"
-LLM_MODEL = "deepseek-chat"
+LLM_API_KEY = os.environ.get("LLM_API_KEY", "")
+LLM_API_URL = os.environ.get("LLM_API_URL", "https://api.modelverse.cn/v1/chat/completions")
+LLM_MODEL = os.environ.get("LLM_MODEL", "deepseek-chat")
+
+# 检查 LLM API 是否可用
+if LLM_API_KEY:
+    try:
+        _test = requests.post(
+            LLM_API_URL,
+            headers={"Authorization": f"Bearer {LLM_API_KEY}", "Content-Type": "application/json"},
+            json={"model": LLM_MODEL, "messages": [{"role": "user", "content": "hi"}], "max_tokens": 5},
+            timeout=10,
+        )
+        if _test.status_code != 200:
+            print(f"[!] LLM API 不可用 (HTTP {_test.status_code})，将仅使用 Google Translate")
+            LLM_API_KEY = ""
+    except Exception as e:
+        print(f"[!] LLM API 连接失败 ({e})，将仅使用 Google Translate")
+        LLM_API_KEY = ""
+else:
+    print("[*] 未配置 LLM_API_KEY，翻译将使用 Google Translate（免费无 Key）")
 
 # 检查 token 是否配置
 if not TG_BOT_TOKEN:
@@ -656,8 +674,8 @@ def run_sync():
         title_cn = title_cn.strip("\"'`\n")
         print(f"[*] 中文标题: {title_cn}")
 
-        # 3. 一次性翻译整篇文章（NVIDIA Qwen3.5，保留结构）
-        print("[*] 正在用 NVIDIA Qwen3.5 翻译全文...")
+        # 3. 翻译整篇文章（优先 Google Translate，备用 LLM）
+        print("[*] 正在翻译全文...")
         translated_paragraphs = translate_article(paragraphs, title_en)
         if translated_paragraphs is None:
             print(f"[!] 文章翻译失败（API 无效或中文率不足），跳过: {title_en}")
