@@ -1,5 +1,11 @@
 [
   {
+    "id": "v25-menu-redesign",
+    "date": "July 15, 2026",
+    "title": "即将推出的协议 v25 升级和挖矿应用程序设计更新",
+    "excerpt": "Pi 计划于 7 月 22 日星期三升级到协议 v25。此次升级主要侧重于提高网络稳定性和可靠性，同时还增加了新功能，以实现更高效、保护隐私的智能合约。"
+  },
+  {
     "id": "app-studio-backend-updates",
     "date": "July 7, 2026",
     "title": "Pi App Studio 为新创建的应用程序添加后端基础设施支持和应用程序规划",
