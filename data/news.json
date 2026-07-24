@@ -1,5 +1,11 @@
 [
   {
+    "id": "launchpad-liquidity-pool",
+    "date": "July 24, 2026",
+    "title": "Pi Launchpad 分发 SLICE 测试代币并引入流动性池价格跟踪",
+    "excerpt": "Pi Launchpad 已完成第二个测试网代币 SLICE 的分发。"
+  },
+  {
     "id": "v25-menu-redesign",
     "date": "July 15, 2026",
     "title": "即将推出的协议 v25 升级和挖矿应用程序设计更新",
