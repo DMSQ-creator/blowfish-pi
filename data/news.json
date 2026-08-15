@@ -1,5 +1,11 @@
 [
   {
+    "id": "pi-node-0-6-2",
+    "date": "August 14, 2026",
+    "title": "Pi Node 版本 0.6.2 发布和 SoloHost 更新",
+    "excerpt": "Pi Node 版本 0.6.2 已发布，引入了对 SoloHost、节点连接和 Pi 桌面用户体验的改进。"
+  },
+  {
     "id": "pi2day-2026-recap",
     "date": "August 5, 2026",
     "title": "Pi2Day 2026 回顾",
