@@ -1,5 +1,11 @@
 [
   {
+    "id": "app-studio-pricing",
+    "date": "August 17, 2026",
+    "title": "更新 Pi App Studio 创建定价",
+    "excerpt": "从 2026 年 8 月 24 日开始，Pi App Studio 将更新应用程序创建和编辑的定价方式。"
+  },
+  {
     "id": "pi-node-0-6-2",
     "date": "August 14, 2026",
     "title": "Pi Node 版本 0.6.2 发布和 SoloHost 更新",
