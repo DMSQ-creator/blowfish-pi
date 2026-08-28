@@ -1,5 +1,11 @@
 [
   {
+    "id": "new-solohost-apps",
+    "date": "August 27, 2026",
+    "title": "具有新的 SoloHost 应用程序：OpenClaw 和 Atlassian MCP 服务器",
+    "excerpt": "OpenClaw 和 Atlassian MCP Server 应用程序现已在 Pi Desktop 上的 SoloHost 中提供，扩大了有用的自托管软件的范围，用户可以更轻松地在自己的计算机上安装..."
+  },
+  {
     "id": "app-studio-pricing",
     "date": "August 17, 2026",
     "title": "更新 Pi App Studio 创建定价",
