@@ -1,5 +1,11 @@
 [
   {
+    "id": "dev-capabilities-documentation",
+    "date": "September 4, 2026",
+    "title": "Pi 增加了新的开发人员功能并为开发人员发布了新文档",
+    "excerpt": "Pi 为基于 Pi 的开发人员引入了新功能，包括本地存储支持、访问生态系统目录 Stake 中特定于应用程序的 Stake 数据以及文件和视频共享。 Pi 的新开发人员文档现已上线，为技术资源提供了单..."
+  },
+  {
     "id": "new-solohost-apps",
     "date": "August 27, 2026",
     "title": "具有新的 SoloHost 应用程序：OpenClaw 和 Atlassian MCP 服务器",
