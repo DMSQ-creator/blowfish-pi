@@ -1,5 +1,11 @@
 [
   {
+    "id": "solohost-pi-desktop-0-6-3",
+    "date": "September 9, 2026",
+    "title": "Pi Desktop 0.6.3 版中的 SoloHost 更新：改进的应用程序发现、可靠性和开发人员工具",
+    "excerpt": "SoloHost 更新已与 Pi Desktop 版本 0.6.3 一起发布，引入了对应用程序发现和管理、应用程序可靠性以及用于构建 SoloHost 应用程序和故障排除的开发人员工具的改进。"
+  },
+  {
     "id": "dev-capabilities-documentation",
     "date": "September 4, 2026",
     "title": "Pi 增加了新的开发人员功能并为开发人员发布了新文档",
