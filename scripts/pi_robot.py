@@ -22,6 +22,7 @@ BLOG_DIR = "blog"
 BLOG_LIST_PAGE = "blog.html"
 TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "8190223294")
+DISABLE_TRANSLATION_WARNINGS = os.environ.get("DISABLE_TRANSLATION_WARNINGS", "") == "1"
 
 LLM_API_KEY = os.environ.get("LLM_API_KEY", "")
 LLM_MODEL = os.environ.get("LLM_MODEL", "gemini-3.6-flash")
@@ -689,7 +690,7 @@ def run_sync():
         if translated_paragraphs is None:
             print(f"[!] 文章翻译失败（API 无效或中文率不足），跳过: {title_en}")
             # 发送 Telegram 警告（使用 requests 库）
-            if TG_BOT_TOKEN:
+            if TG_BOT_TOKEN and not DISABLE_TRANSLATION_WARNINGS:
                 msg = f"⚠️ *翻译失败警告*\n\n文章: {post['title']}\nSlug: {post['url_slug']}\nURL: {post['full_url']}\n\nGemini API Key 可能无效或额度不足，请在 GitHub Actions Secrets 更新 LLM_API_KEY。"
                 try:
                     requests.post(

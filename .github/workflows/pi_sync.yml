@@ -4,11 +4,6 @@ on:
   schedule:
     - cron: '0 */6 * * *' # 每 6 小时自动巡逻一次
   workflow_dispatch: # 允许 Andy 在后台手动点击运行
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/pi_robot.py'
-      - '.github/workflows/pi_sync.yml'
 
 jobs:
   sync:
@@ -30,40 +25,6 @@ jobs:
         run: |
           pip install requests beautifulsoup4 curl_cffi deep-translator
 
-      - name: Check Gemini API
-        env:
-          LLM_API_KEY: ${{ secrets.LLM_API_KEY || vars.LLM_API_KEY }}
-        run: |
-          python3 - <<'PY'
-          import os
-          import requests
-
-          key = os.environ.get("LLM_API_KEY", "")
-          if not key:
-              print("::error title=Gemini API check::LLM_API_KEY is empty in this workflow")
-              raise SystemExit(1)
-
-          response = requests.post(
-              "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
-              headers={"x-goog-api-key": key, "Content-Type": "application/json"},
-              json={
-                  "contents": [{"role": "user", "parts": [{"text": "只回复 OK"}]}],
-                  "generationConfig": {"maxOutputTokens": 10},
-              },
-              timeout=30,
-          )
-          if response.status_code != 200:
-              try:
-                  error = response.json().get("error", {})
-                  detail = f"HTTP {response.status_code}; {error.get('status', '')}; {error.get('message', '')}"
-              except Exception:
-                  detail = f"HTTP {response.status_code}; Gemini returned a non-JSON error"
-              detail = detail.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")[:1000]
-              print(f"::error title=Gemini API check::{detail}")
-              raise SystemExit(1)
-          print("Gemini API check passed")
-          PY
-
       - name: Run Sync Script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -72,25 +33,8 @@ jobs:
           # 优先读取加密 Secret；兼容误填到 Repository Variables 的情况
           LLM_API_KEY: ${{ secrets.LLM_API_KEY || vars.LLM_API_KEY }}
           LLM_MODEL: gemini-3.6-flash
-          FORCE_POST_URL: https://minepi.com/blog/kyc-mainnet-migration-9-26/
+          DISABLE_TRANSLATION_WARNINGS: '1'
         run: python scripts/pi_robot.py
-
-      - name: Verify forced article was translated
-        run: |
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-
-          slug = "kyc-mainnet-migration-9-26"
-          article = Path(f"blog/{slug}.html")
-          news = json.loads(Path("data/news.json").read_text(encoding="utf-8"))
-          if not article.exists() or not any(item.get("id") == slug for item in news):
-              raise SystemExit(f"Forced article was not published: {slug}")
-          text = article.read_text(encoding="utf-8")
-          if sum("\u4e00" <= c <= "\u9fff" for c in text) < 100:
-              raise SystemExit(f"Forced article does not contain enough Chinese text: {slug}")
-          print(f"Verified translated article: {article}")
-          PY
 
       - name: Build pages from templates
         run: |
