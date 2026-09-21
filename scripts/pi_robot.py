@@ -603,7 +603,14 @@ def fetch_latest_posts():
     """抓取 minepi.com 博客首页，获取最新文章列表"""
     print("[*] 正在巡逻 MinePi.com 官网博客...")
     try:
-        r = crequests.get(BLOG_URL, impersonate="chrome120", timeout=30)
+        # 加时间戳和禁用缓存头，避免 GitHub Runner 命中 MinePi/CDN 的旧博客首页
+        blog_url = f"{BLOG_URL}?_sync={int(time.time())}"
+        r = crequests.get(
+            blog_url,
+            impersonate="chrome120",
+            headers={"Cache-Control": "no-cache", "Pragma": "no-cache"},
+            timeout=30,
+        )
         soup = BeautifulSoup(r.text, "html.parser")
         articles = soup.find_all("article")
 
