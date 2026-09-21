@@ -49,19 +49,9 @@ def call_gemini(prompt, max_tokens, timeout):
         raise RuntimeError(f"Gemini 返回空内容: {str(data)[:300]}")
     return text
 
-# 检查 LLM API 是否可用
-if LLM_API_KEY:
-    try:
-        # Gemini 3.8 会先消耗思考 Token，10 个输出 Token 不足以返回正文
-        call_gemini("只回复 OK", 256, 30)
-    except Exception as e:
-        message = f"Gemini API 连接失败 ({e})，将仅使用 Google Translate"
-        print(f"[!] {message}")
-        if DISABLE_TRANSLATION_WARNINGS:
-            safe_message = message.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")[:1200]
-            print(f"::error title=Gemini API 初始化失败::{safe_message}")
-        LLM_API_KEY = ""
-else:
+# 不在启动时探测 Gemini；高负载时的临时 503 不应导致整次任务禁用 LLM。
+# 真正翻译时由 translate_article / translate_text 负责重试。
+if not LLM_API_KEY:
     print("[*] 未配置 LLM_API_KEY，翻译将使用 Google Translate（免费无 Key）")
 
 # 检查 token 是否配置
@@ -130,7 +120,7 @@ def send_tg_notification(title, slug):
         print(f"[!] Telegram 通知发送失败: {e}")
 
 
-def translate_article(paragraphs, title_en, max_retries=2):
+def translate_article(paragraphs, title_en, max_retries=4):
     """翻译整篇文章，优先逐段 Google Translate，备用 LLM 整体翻译"""
     # 方法1: 逐段 Google Translate（免费，无需 API key）
     translated = []
@@ -249,7 +239,9 @@ def translate_article(paragraphs, title_en, max_retries=2):
         except Exception as e:
             print(f"[!] 翻译失败 (尝试 {attempt+1}): {e}")
             if attempt < max_retries:
-                time.sleep(5)
+                wait_seconds = 15 * (attempt + 1)
+                print(f"[*] Gemini 临时不可用，{wait_seconds} 秒后重试...")
+                time.sleep(wait_seconds)
 
     print("[!] 全部翻译方法失败，跳过本文")
     return None
