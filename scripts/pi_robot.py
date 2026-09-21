@@ -36,7 +36,12 @@ def call_gemini(prompt, max_tokens, timeout):
         headers={"x-goog-api-key": LLM_API_KEY, "Content-Type": "application/json"},
         json={
             "contents": [{"role": "user", "parts": [{"text": prompt}]}],
-            "generationConfig": {"temperature": 0.3, "maxOutputTokens": max_tokens},
+            "generationConfig": {
+                "temperature": 0.3,
+                "maxOutputTokens": max_tokens,
+                # 翻译无需推理；关闭思考预算，避免正文输出被思考 Token 吃光
+                "thinkingConfig": {"thinkingBudget": 0},
+            },
         },
         timeout=timeout,
     )
@@ -244,6 +249,8 @@ def translate_article(paragraphs, title_en, max_retries=4):
                 time.sleep(wait_seconds)
 
     print("[!] 全部翻译方法失败，跳过本文")
+    if DISABLE_TRANSLATION_WARNINGS:
+        print("::error title=Gemini 全文翻译失败::所有 Gemini 重试均未返回可用中文正文")
     return None
 
 
