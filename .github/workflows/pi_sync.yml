@@ -29,35 +29,6 @@ jobs:
         run: |
           pip install requests beautifulsoup4 curl_cffi deep-translator
 
-      - name: Check Gemini 3.8 API
-        env:
-          LLM_API_KEY: *** secrets.LLM_API_KEY || vars.LLM_API_KEY }}
-        run: |
-          python3 - <<'PY'
-          import os
-          import requests
-
-          response = requests.post(
-              "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent",
-              headers={"x-goog-api-key": ***, "Content-Type": "application/json"},
-              json={
-                  "contents": [{"role": "user", "parts": [{"text": "只回复 OK"}]}],
-                  "generationConfig": {"maxOutputTokens": 10},
-              },
-              timeout=30,
-          )
-          if response.status_code != 200:
-              try:
-                  error = response.json().get("error", {})
-                  detail = f"HTTP {response.status_code}; {error.get('status', '')}; {error.get('message', '')}"
-              except Exception:
-                  detail = f"HTTP {response.status_code}; non-JSON response"
-              detail = detail.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")[:1200]
-              print(f"::error title=Gemini 3.8 API::{detail}")
-              raise SystemExit(1)
-          print("Gemini 3.8 API check passed")
-          PY
-
       - name: Run Sync Script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
