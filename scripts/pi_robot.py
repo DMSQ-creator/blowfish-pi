@@ -632,6 +632,18 @@ def fetch_latest_posts():
                     "url_slug": slug,
                     "full_url": full_url,
                 })
+        # 可指定单篇文章强制补发；用于首页缓存或文章已滑出首页时的恢复
+        force_post_url = os.environ.get("FORCE_POST_URL", "").strip()
+        if force_post_url:
+            force_slug = force_post_url.rstrip("/").split("/")[-1]
+            if force_slug and all(item["url_slug"] != force_slug for item in latest_items):
+                latest_items.insert(0, {
+                    "title": force_slug,
+                    "url_slug": force_slug,
+                    "full_url": force_post_url,
+                })
+                print(f"[*] 已加入强制补发文章: {force_slug}")
+
         print(f"[*] 发现 {len(latest_items)} 篇文章")
         return latest_items
     except Exception as e:

@@ -36,6 +36,7 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          FORCE_POST_URL: https://minepi.com/blog/kyc-mainnet-migration-9-26/
         run: python scripts/pi_robot.py
 
       - name: Build pages from templates
