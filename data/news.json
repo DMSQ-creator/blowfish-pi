@@ -1,5 +1,11 @@
 [
   {
+    "id": "kyc-mainnet-migration-9-26",
+    "date": "September 17, 2026",
+    "title": "KYC 与主网迁移更新：解决阻碍 KYC 申请和迁移进度的其他极端情况并改进流程",
+    "excerpt": "Pi 针对 KYC 和主网迁移流程发布了多项技术更新，以解决特定的 KYC 申请边缘案例、改进验证流程，并帮助此前无法推进的合规先锋继续向前迈进。"
+  },
+  {
     "id": "solohost-pi-desktop-0-6-3",
     "date": "September 9, 2026",
     "title": "Pi Desktop 0.6.3 版中的 SoloHost 更新：改进的应用程序发现、可靠性和开发人员工具",
