@@ -44,7 +44,7 @@ jobs:
               raise SystemExit(1)
 
           response = requests.post(
-              "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+              "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent",
               headers={"x-goog-api-key": key, "Content-Type": "application/json"},
               json={
                   "contents": [{"role": "user", "parts": [{"text": "只回复 OK"}]}],
@@ -71,7 +71,7 @@ jobs:
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           # 优先读取加密 Secret；兼容误填到 Repository Variables 的情况
           LLM_API_KEY: ${{ secrets.LLM_API_KEY || vars.LLM_API_KEY }}
-          LLM_MODEL: gemini-2.5-flash
+          LLM_MODEL: gemini-3.6-flash
           FORCE_POST_URL: https://minepi.com/blog/kyc-mainnet-migration-9-26/
         run: python scripts/pi_robot.py
 

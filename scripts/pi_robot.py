@@ -24,7 +24,7 @@ TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "8190223294")
 
 LLM_API_KEY = os.environ.get("LLM_API_KEY", "")
-LLM_MODEL = os.environ.get("LLM_MODEL", "gemini-2.5-flash-lite")
+LLM_MODEL = os.environ.get("LLM_MODEL", "gemini-3.6-flash")
 
 
 def call_gemini(prompt, max_tokens, timeout):
