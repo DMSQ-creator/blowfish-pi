@@ -4,11 +4,6 @@ on:
   schedule:
     - cron: '0 */6 * * *' # 每 6 小时自动巡逻一次
   workflow_dispatch: # 允许 Andy 在后台手动点击运行
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/pi_sync.yml'
-      - 'scripts/pi_robot.py'
 
 jobs:
   sync:
@@ -39,24 +34,7 @@ jobs:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY || vars.LLM_API_KEY }}
           LLM_MODEL: gemini-3.8-flash
           DISABLE_TRANSLATION_WARNINGS: '1'
-          FORCE_POST_URL: https://minepi.com/blog/kyc-mainnet-migration-9-26/
         run: python scripts/pi_robot.py
-
-      - name: Verify test article
-        run: |
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-
-          slug = "kyc-mainnet-migration-9-26"
-          article = Path(f"blog/{slug}.html")
-          news = json.loads(Path("data/news.json").read_text(encoding="utf-8"))
-          if not article.exists() or not any(item.get("id") == slug for item in news):
-              raise SystemExit(f"Test article was not published: {slug}")
-          if sum("\u4e00" <= c <= "\u9fff" for c in article.read_text(encoding="utf-8")) < 100:
-              raise SystemExit(f"Test article contains insufficient Chinese text: {slug}")
-          print(f"Verified translated article: {article}")
-          PY
 
       - name: Build pages from templates
         run: |
