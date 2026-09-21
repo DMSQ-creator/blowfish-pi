@@ -41,6 +41,23 @@ jobs:
           FORCE_POST_URL: https://minepi.com/blog/kyc-mainnet-migration-9-26/
         run: python scripts/pi_robot.py
 
+      - name: Verify forced article was translated
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          slug = "kyc-mainnet-migration-9-26"
+          article = Path(f"blog/{slug}.html")
+          news = json.loads(Path("data/news.json").read_text(encoding="utf-8"))
+          if not article.exists() or not any(item.get("id") == slug for item in news):
+              raise SystemExit(f"Forced article was not published: {slug}")
+          text = article.read_text(encoding="utf-8")
+          if sum("\u4e00" <= c <= "\u9fff" for c in text) < 100:
+              raise SystemExit(f"Forced article does not contain enough Chinese text: {slug}")
+          print(f"Verified translated article: {article}")
+          PY
+
       - name: Build pages from templates
         run: |
           pip install pyyaml
