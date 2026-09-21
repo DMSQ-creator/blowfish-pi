@@ -30,6 +30,41 @@ jobs:
         run: |
           pip install requests beautifulsoup4 curl_cffi deep-translator
 
+      - name: Check Gemini API
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY || vars.LLM_API_KEY }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import requests
+
+          key = os.environ.get("LLM_API_KEY", "")
+          if not key:
+              print("::error title=Gemini API check::LLM_API_KEY is empty in this workflow")
+              raise SystemExit(1)
+
+          response = requests.post(
+              "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+              headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
+              json={
+                  "model": "gemini-2.5-flash",
+                  "messages": [{"role": "user", "content": "只回复 OK"}],
+                  "max_tokens": 10,
+              },
+              timeout=30,
+          )
+          if response.status_code != 200:
+              try:
+                  error = response.json().get("error", {})
+                  detail = f"HTTP {response.status_code}; {error.get('status', '')}; {error.get('message', '')}"
+              except Exception:
+                  detail = f"HTTP {response.status_code}; Gemini returned a non-JSON error"
+              detail = detail.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")[:1000]
+              print(f"::error title=Gemini API check::{detail}")
+              raise SystemExit(1)
+          print("Gemini API check passed")
+          PY
+
       - name: Run Sync Script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
