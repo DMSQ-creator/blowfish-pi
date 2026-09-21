@@ -52,7 +52,8 @@ def call_gemini(prompt, max_tokens, timeout):
 # 检查 LLM API 是否可用
 if LLM_API_KEY:
     try:
-        call_gemini("只回复 OK", 10, 15)
+        # Gemini 3.8 会先消耗思考 Token，10 个输出 Token 不足以返回正文
+        call_gemini("只回复 OK", 256, 30)
     except Exception as e:
         message = f"Gemini API 连接失败 ({e})，将仅使用 Google Translate"
         print(f"[!] {message}")
