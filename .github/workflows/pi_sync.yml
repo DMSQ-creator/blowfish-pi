@@ -44,12 +44,11 @@ jobs:
               raise SystemExit(1)
 
           response = requests.post(
-              "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
-              headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
+              "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+              headers={"x-goog-api-key": key, "Content-Type": "application/json"},
               json={
-                  "model": "gemini-2.5-flash",
-                  "messages": [{"role": "user", "content": "只回复 OK"}],
-                  "max_tokens": 10,
+                  "contents": [{"role": "user", "parts": [{"text": "只回复 OK"}]}],
+                  "generationConfig": {"maxOutputTokens": 10},
               },
               timeout=30,
           )

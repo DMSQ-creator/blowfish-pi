@@ -24,21 +24,34 @@ TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "8190223294")
 
 LLM_API_KEY = os.environ.get("LLM_API_KEY", "")
-LLM_API_URL = os.environ.get("LLM_API_URL", "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions")
 LLM_MODEL = os.environ.get("LLM_MODEL", "gemini-2.5-flash-lite")
+
+
+def call_gemini(prompt, max_tokens, timeout):
+    """调用 Google 官方 Gemini 原生接口并返回文本。"""
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{LLM_MODEL}:generateContent"
+    response = requests.post(
+        url,
+        headers={"x-goog-api-key": LLM_API_KEY, "Content-Type": "application/json"},
+        json={
+            "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+            "generationConfig": {"temperature": 0.3, "maxOutputTokens": max_tokens},
+        },
+        timeout=timeout,
+    )
+    if response.status_code != 200:
+        raise RuntimeError(f"HTTP {response.status_code} - {response.text[:300]}")
+    data = response.json()
+    parts = data.get("candidates", [{}])[0].get("content", {}).get("parts", [])
+    text = "".join(part.get("text", "") for part in parts).strip()
+    if not text:
+        raise RuntimeError(f"Gemini 返回空内容: {str(data)[:300]}")
+    return text
 
 # 检查 LLM API 是否可用
 if LLM_API_KEY:
     try:
-        _test = requests.post(
-            LLM_API_URL,
-            headers={"Authorization": f"Bearer {LLM_API_KEY}", "Content-Type": "application/json"},
-            json={"model": LLM_MODEL, "messages": [{"role": "user", "content": "只回复 OK"}], "max_tokens": 5},
-            timeout=10,
-        )
-        if _test.status_code != 200:
-            print(f"[!] Gemini API 不可用 (HTTP {_test.status_code})，将仅使用 Google Translate")
-            LLM_API_KEY = ""
+        call_gemini("只回复 OK", 10, 15)
     except Exception as e:
         print(f"[!] Gemini API 连接失败 ({e})，将仅使用 Google Translate")
         LLM_API_KEY = ""
@@ -191,56 +204,42 @@ def translate_article(paragraphs, title_en, max_retries=2):
 
     for attempt in range(max_retries + 1):
         try:
-            resp = requests.post(
-                LLM_API_URL,
-                headers={"Authorization": f"Bearer {LLM_API_KEY}", "Content-Type": "application/json"},
-                json={
-                    "model": LLM_MODEL,
-                    "messages": [{"role": "user", "content": prompt}],
-                    "temperature": 0.3,
-                    "max_tokens": 8000,
-                },
-                timeout=120,
+            result = call_gemini(prompt, 8000, 120)
+            translated = []
+            result_lines = {}
+            for line in result.split("\n"):
+                line = line.strip()
+                if not line:
+                    continue
+                m = re.match(r'^\[(\d+)\]\[\w+\]\s*(.*)', line)
+                if m:
+                    idx = int(m.group(1))
+                    text = m.group(2).strip()
+                    result_lines[idx] = text
+
+            for i, p in enumerate(paragraphs):
+                if p["type"] in ("img", "video"):
+                    translated.append(p)
+                else:
+                    text = result_lines.get(i, p["text"])
+                    if text == "__SKIP__":
+                        text = p["text"]
+                    translated.append({"type": p["type"], "text": text})
+
+            chinese_count = sum(
+                sum(1 for c in tp["text"] if '\u4e00' <= c <= '\u9fff')
+                for tp in translated if tp["type"] not in ("img", "video")
             )
-            if resp.status_code == 200:
-                result = resp.json()["choices"][0]["message"]["content"].strip()
-                translated = []
-                result_lines = {}
-                for line in result.split("\n"):
-                    line = line.strip()
-                    if not line:
-                        continue
-                    m = re.match(r'^\[(\d+)\]\[\w+\]\s*(.*)', line)
-                    if m:
-                        idx = int(m.group(1))
-                        text = m.group(2).strip()
-                        result_lines[idx] = text
-
-                for i, p in enumerate(paragraphs):
-                    if p["type"] in ("img", "video"):
-                        translated.append(p)
-                    else:
-                        text = result_lines.get(i, p["text"])
-                        if text == "__SKIP__":
-                            text = p["text"]
-                        translated.append({"type": p["type"], "text": text})
-
-                chinese_count = sum(
-                    sum(1 for c in tp["text"] if '\u4e00' <= c <= '\u9fff')
-                    for tp in translated if tp["type"] not in ("img", "video")
-                )
-                total_chars = sum(
-                    len(tp["text"])
-                    for tp in translated if tp["type"] not in ("img", "video")
-                )
-                chinese_ratio = chinese_count / total_chars if total_chars > 0 else 0
-                print(f"[✓] LLM 翻译完成，共 {len(translated)} 个段落，中文率 {chinese_ratio:.1%}")
-                if chinese_ratio < 0.05:
-                    print(f"[!] 翻译结果中文比例过低，判定为 API 失败，跳过本文")
-                    return None
-                return translated
-            else:
-                print(f"[!] LLM API 错误: HTTP {resp.status_code} - {resp.text[:100]}")
+            total_chars = sum(
+                len(tp["text"])
+                for tp in translated if tp["type"] not in ("img", "video")
+            )
+            chinese_ratio = chinese_count / total_chars if total_chars > 0 else 0
+            print(f"[✓] Gemini 翻译完成，共 {len(translated)} 个段落，中文率 {chinese_ratio:.1%}")
+            if chinese_ratio < 0.05:
+                print("[!] 翻译结果中文比例过低，判定为 API 失败，跳过本文")
+                return None
+            return translated
         except Exception as e:
             print(f"[!] 翻译失败 (尝试 {attempt+1}): {e}")
             if attempt < max_retries:
@@ -268,20 +267,11 @@ def translate_text(text, max_retries=2):
     if LLM_API_KEY:
         for attempt in range(max_retries + 1):
             try:
-                resp = requests.post(
-                    LLM_API_URL,
-                    headers={"Authorization": f"Bearer {LLM_API_KEY}", "Content-Type": "application/json"},
-                    json={
-                        "model": LLM_MODEL,
-                        "messages": [{"role": "user", "content": f"将以下英文翻译为简体中文，只输出翻译结果，不要加任何解释：\n{text}"}],
-                        "temperature": 0.3,
-                        "max_tokens": 500,
-                    },
-                    timeout=30,
+                return call_gemini(
+                    f"将以下英文翻译为简体中文，只输出翻译结果，不要加任何解释：\n{text}",
+                    500,
+                    30,
                 )
-                if resp.status_code == 200:
-                    return resp.json()["choices"][0]["message"]["content"].strip()
-                print(f"[!] LLM翻译失败: HTTP {resp.status_code}")
             except Exception as e:
                 print(f"[!] LLM翻译失败 (尝试 {attempt+1}): {e}")
                 if attempt < max_retries:
