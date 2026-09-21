@@ -24,8 +24,8 @@ TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "8190223294")
 
 LLM_API_KEY = os.environ.get("LLM_API_KEY", "")
-LLM_API_URL = os.environ.get("LLM_API_URL", "https://api.modelverse.cn/v1/chat/completions")
-LLM_MODEL = os.environ.get("LLM_MODEL", "deepseek-chat")
+LLM_API_URL = os.environ.get("LLM_API_URL", "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions")
+LLM_MODEL = os.environ.get("LLM_MODEL", "gemini-2.5-flash-lite")
 
 # 检查 LLM API 是否可用
 if LLM_API_KEY:
@@ -33,14 +33,14 @@ if LLM_API_KEY:
         _test = requests.post(
             LLM_API_URL,
             headers={"Authorization": f"Bearer {LLM_API_KEY}", "Content-Type": "application/json"},
-            json={"model": LLM_MODEL, "messages": [{"role": "user", "content": "hi"}], "max_tokens": 5},
+            json={"model": LLM_MODEL, "messages": [{"role": "user", "content": "只回复 OK"}], "max_tokens": 5},
             timeout=10,
         )
         if _test.status_code != 200:
-            print(f"[!] LLM API 不可用 (HTTP {_test.status_code})，将仅使用 Google Translate")
+            print(f"[!] Gemini API 不可用 (HTTP {_test.status_code})，将仅使用 Google Translate")
             LLM_API_KEY = ""
     except Exception as e:
-        print(f"[!] LLM API 连接失败 ({e})，将仅使用 Google Translate")
+        print(f"[!] Gemini API 连接失败 ({e})，将仅使用 Google Translate")
         LLM_API_KEY = ""
 else:
     print("[*] 未配置 LLM_API_KEY，翻译将使用 Google Translate（免费无 Key）")
@@ -674,14 +674,14 @@ def run_sync():
         title_cn = title_cn.strip("\"'`\n")
         print(f"[*] 中文标题: {title_cn}")
 
-        # 3. 翻译整篇文章（优先 Google Translate，备用 LLM）
-        print("[*] 正在翻译全文...")
+        # 3. 翻译整篇文章（优先 Google Translate，备用 Gemini）
+        print(f"[*] 正在翻译全文（备用模型：{LLM_MODEL}）...")
         translated_paragraphs = translate_article(paragraphs, title_en)
         if translated_paragraphs is None:
             print(f"[!] 文章翻译失败（API 无效或中文率不足），跳过: {title_en}")
             # 发送 Telegram 警告（使用 requests 库）
             if TG_BOT_TOKEN:
-                msg = f"⚠️ *翻译失败警告*\n\n文章: {post['title']}\nSlug: {post['url_slug']}\nURL: {post['full_url']}\n\nAPI Key 可能已失效，请在 GitHub Variables 更新 LLM_API_KEY。"
+                msg = f"⚠️ *翻译失败警告*\n\n文章: {post['title']}\nSlug: {post['url_slug']}\nURL: {post['full_url']}\n\nGemini API Key 可能无效或额度不足，请在 GitHub Actions Secrets 更新 LLM_API_KEY。"
                 try:
                     requests.post(
                         f"https://api.telegram.org/bot{TG_BOT_TOKEN}/sendMessage",
