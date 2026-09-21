@@ -32,7 +32,7 @@ jobs:
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           # 优先读取加密 Secret；兼容误填到 Repository Variables 的情况
           LLM_API_KEY: ${{ secrets.LLM_API_KEY || vars.LLM_API_KEY }}
-          LLM_MODEL: gemini-3.6-flash
+          LLM_MODEL: gemini-3.8-flash
           DISABLE_TRANSLATION_WARNINGS: '1'
         run: python scripts/pi_robot.py
 

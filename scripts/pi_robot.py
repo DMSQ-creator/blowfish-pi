@@ -25,7 +25,7 @@ TG_CHAT_ID = os.environ.get("TG_CHAT_ID", "8190223294")
 DISABLE_TRANSLATION_WARNINGS = os.environ.get("DISABLE_TRANSLATION_WARNINGS", "") == "1"
 
 LLM_API_KEY = os.environ.get("LLM_API_KEY", "")
-LLM_MODEL = os.environ.get("LLM_MODEL", "gemini-3.6-flash")
+LLM_MODEL = os.environ.get("LLM_MODEL", "gemini-3.8-flash")
 
 
 def call_gemini(prompt, max_tokens, timeout):
