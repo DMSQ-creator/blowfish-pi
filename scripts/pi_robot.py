@@ -54,7 +54,11 @@ if LLM_API_KEY:
     try:
         call_gemini("只回复 OK", 10, 15)
     except Exception as e:
-        print(f"[!] Gemini API 连接失败 ({e})，将仅使用 Google Translate")
+        message = f"Gemini API 连接失败 ({e})，将仅使用 Google Translate"
+        print(f"[!] {message}")
+        if DISABLE_TRANSLATION_WARNINGS:
+            safe_message = message.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")[:1200]
+            print(f"::error title=Gemini API 初始化失败::{safe_message}")
         LLM_API_KEY = ""
 else:
     print("[*] 未配置 LLM_API_KEY，翻译将使用 Google Translate（免费无 Key）")

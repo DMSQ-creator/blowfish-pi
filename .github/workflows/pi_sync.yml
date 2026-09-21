@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/pi_sync.yml'
+      - 'scripts/pi_robot.py'
 
 jobs:
   sync:
