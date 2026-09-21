@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '0 */6 * * *' # 每 6 小时自动巡逻一次
   workflow_dispatch: # 允许 Andy 在后台手动点击运行
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/pi_robot.py'
+      - '.github/workflows/pi_sync.yml'
 
 jobs:
   sync:
