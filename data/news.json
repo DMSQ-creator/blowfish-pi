@@ -1,5 +1,11 @@
 [
   {
+    "id": "solohost-pi-desktop-0-6-4",
+    "date": "October 22, 2026",
+    "title": "Pi Desktop Version 0.6.4: Easier Remote Access and Stronger SoloHost App Protections",
+    "excerpt": "Pi Desktop 0.6.4 版本推出了更新的 SoloHost 远程连接功能，使远程访问更加简便和安全，先锋们无需配置家庭路由器，即可通过 Pi 浏览器访问其本地托管的应用程序。该版本还为 So..."
+  },
+  {
     "id": "introducing-ecosystem-summit",
     "date": "October 15, 2026",
     "title": "Introducing Pi’s First Ever Ecosystem Summit: Coming November 17-19",
