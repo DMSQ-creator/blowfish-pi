@@ -62,6 +62,7 @@ if not LLM_API_KEY:
 # 检查 token 是否配置
 if not TG_BOT_TOKEN:
     print("[!] 警告：TG_BOT_TOKEN 环境变量未设置，Telegram 通知已禁用")
+IMGBB_API_KEY = os.environ.get("IMGBB_API_KEY", "")
 
 # ==========================================
 # HTML 博文模板
@@ -439,16 +440,19 @@ def build_chinese_html(paragraphs_cn, images, hero_img):
     return "\n            ".join(html_parts)
 
 
-def save_image_locally(image_url, slug, label):
-    """把官方图片保存进仓库，避免第三方图床失效或返回占位图。"""
+def upload_to_imgbb(image_url, slug, label):
+    """下载官方原图后以二进制上传到 imgbb，并验证返回图片可访问。"""
     if not image_url or not image_url.startswith("http"):
+        return image_url
+    if not IMGBB_API_KEY:
+        print("[!] IMGBB_API_KEY 未配置，保留官方原图链接")
         return image_url
 
     try:
-        resp = crequests.get(image_url, impersonate="chrome120", timeout=30)
-        content_type = resp.headers.get("content-type", "").split(";", 1)[0].lower()
-        if resp.status_code != 200 or not content_type.startswith("image/") or len(resp.content) < 1024:
-            print(f"[!] 图片下载失败 (HTTP {resp.status_code}, {content_type}): {image_url[:80]}")
+        source = crequests.get(image_url, impersonate="chrome120", timeout=30)
+        content_type = source.headers.get("content-type", "").split(";", 1)[0].lower()
+        if source.status_code != 200 or not content_type.startswith("image/") or len(source.content) < 1024:
+            print(f"[!] 官方图片下载失败 (HTTP {source.status_code}, {content_type}): {image_url[:80]}")
             return image_url
 
         extensions = {
@@ -460,18 +464,33 @@ def save_image_locally(image_url, slug, label):
         ext = extensions.get(content_type, "jpg")
         safe_slug = re.sub(r"[^a-z0-9-]+", "-", slug.lower()).strip("-")
         safe_label = re.sub(r"[^a-z0-9-]+", "-", label.lower()).strip("-")
-        output_dir = os.path.join(_PROJECT_DIR, "static", "blog-images")
-        os.makedirs(output_dir, exist_ok=True)
         filename = f"{safe_slug}-{safe_label}.{ext}"
-        output_path = os.path.join(output_dir, filename)
-        with open(output_path, "wb") as f:
-            f.write(resp.content)
+        upload = requests.post(
+            "https://api.imgbb.com/1/upload",
+            data={"key": IMGBB_API_KEY, "name": f"{safe_slug}-{safe_label}"},
+            files={"image": (filename, source.content, content_type)},
+            timeout=60,
+        )
+        if upload.status_code != 200:
+            print(f"[!] imgbb 上传失败 (HTTP {upload.status_code}): {upload.text[:200]}")
+            return image_url
 
-        local_url = f"/static/blog-images/{filename}"
-        print(f"[✓] 图片已保存到站内: {local_url}")
-        return local_url
+        data = upload.json()
+        hosted_url = data.get("data", {}).get("url")
+        if not data.get("success") or not hosted_url:
+            print(f"[!] imgbb 返回无效结果: {str(data)[:200]}")
+            return image_url
+
+        verify = crequests.get(hosted_url, impersonate="chrome120", timeout=30)
+        verify_type = verify.headers.get("content-type", "").split(";", 1)[0].lower()
+        if verify.status_code != 200 or not verify_type.startswith("image/") or len(verify.content) < 1024:
+            print(f"[!] imgbb 图片验证失败 (HTTP {verify.status_code}, {verify_type})")
+            return image_url
+
+        print(f"[✓] imgbb 上传并验证成功: {hosted_url}")
+        return hosted_url
     except Exception as e:
-        print(f"[!] 图片本地化异常: {e}")
+        print(f"[!] imgbb 上传异常: {e}")
         return image_url
 
 
@@ -695,11 +714,11 @@ def run_sync():
                     print(f"[!] 翻译失败警告通知失败: {warn_err}")
             continue  # 不覆盖已有 HTML，不更新 news.json
 
-        # 4. 将图片保存到本站（hero + 内容图片）
+        # 4. 上传图片到 imgbb（hero + 内容图片）
         all_imgs = [p["text"] for p in translated_paragraphs if p["type"] == "img"]
-        print(f"[*] 正在保存 {len(all_imgs)+1} 张图片到本站...")
+        print(f"[*] 正在上传 {len(all_imgs)+1} 张图片到 imgbb...")
         hero_source = hero_img
-        hero_img = save_image_locally(hero_img, post["url_slug"], "hero") if hero_img else hero_img
+        hero_img = upload_to_imgbb(hero_img, post["url_slug"], "hero") if hero_img else hero_img
         # 替换 paragraphs 里的图片 URL
         image_index = 0
         for p in translated_paragraphs:
@@ -708,7 +727,7 @@ def run_sync():
                 if p["text"] == hero_source and hero_img:
                     p["text"] = hero_img
                 else:
-                    p["text"] = save_image_locally(
+                    p["text"] = upload_to_imgbb(
                         p["text"], post["url_slug"], f"content-{image_index}"
                     )
 

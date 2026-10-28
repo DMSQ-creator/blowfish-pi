@@ -30,6 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
           # 优先读取加密 Secret；兼容误填到 Repository Variables 的情况
           LLM_API_KEY: ${{ secrets.LLM_API_KEY || vars.LLM_API_KEY }}
           LLM_MODEL: gemini-3.8-flash
