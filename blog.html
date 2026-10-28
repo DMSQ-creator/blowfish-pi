@@ -888,14 +888,14 @@
             </a>
         </div>
 
-        <!-- Pagination (client-side, 6 posts per page) -->
+        <!-- Pagination (client-side, 15 posts per page) -->
         <div id="pager" class="flex items-center justify-center gap-3 mt-14"></div>
     </main>
 
     <script>
         // Client-side pagination for static blog list
         (() => {
-            const PAGE_SIZE = 6;
+            const PAGE_SIZE = 15;
             const grid = document.getElementById('blog-grid');
             const pager = document.getElementById('pager');
             if (!grid || !pager) return;

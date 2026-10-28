@@ -62,7 +62,6 @@ if not LLM_API_KEY:
 # 检查 token 是否配置
 if not TG_BOT_TOKEN:
     print("[!] 警告：TG_BOT_TOKEN 环境变量未设置，Telegram 通知已禁用")
-IMGBB_API_KEY = "0e0e8b6212d394dd3a99aac94e107c7c"  # imgbb 图床 API Key
 
 # ==========================================
 # HTML 博文模板
@@ -440,24 +439,40 @@ def build_chinese_html(paragraphs_cn, images, hero_img):
     return "\n            ".join(html_parts)
 
 
-def upload_to_imgbb(image_url):
-    """将图片上传到 imgbb 图床，返回永久链接；失败则返回原 URL"""
+def save_image_locally(image_url, slug, label):
+    """把官方图片保存进仓库，避免第三方图床失效或返回占位图。"""
+    if not image_url or not image_url.startswith("http"):
+        return image_url
+
     try:
-        resp = requests.post(
-            "https://api.imgbb.com/1/upload",
-            data={"key": IMGBB_API_KEY, "image": image_url},
-            timeout=30,
-        )
-        if resp.status_code == 200:
-            data = resp.json()
-            if data.get("success"):
-                new_url = data["data"]["url"]
-                print(f"[✓] 图床上传成功: {image_url[:60]}... -> {new_url}")
-                return new_url
-        print(f"[!] imgbb 上传失败 (HTTP {resp.status_code}): {image_url[:60]}")
+        resp = crequests.get(image_url, impersonate="chrome120", timeout=30)
+        content_type = resp.headers.get("content-type", "").split(";", 1)[0].lower()
+        if resp.status_code != 200 or not content_type.startswith("image/") or len(resp.content) < 1024:
+            print(f"[!] 图片下载失败 (HTTP {resp.status_code}, {content_type}): {image_url[:80]}")
+            return image_url
+
+        extensions = {
+            "image/jpeg": "jpg",
+            "image/png": "png",
+            "image/webp": "webp",
+            "image/gif": "gif",
+        }
+        ext = extensions.get(content_type, "jpg")
+        safe_slug = re.sub(r"[^a-z0-9-]+", "-", slug.lower()).strip("-")
+        safe_label = re.sub(r"[^a-z0-9-]+", "-", label.lower()).strip("-")
+        output_dir = os.path.join(_PROJECT_DIR, "static", "blog-images")
+        os.makedirs(output_dir, exist_ok=True)
+        filename = f"{safe_slug}-{safe_label}.{ext}"
+        output_path = os.path.join(output_dir, filename)
+        with open(output_path, "wb") as f:
+            f.write(resp.content)
+
+        local_url = f"/static/blog-images/{filename}"
+        print(f"[✓] 图片已保存到站内: {local_url}")
+        return local_url
     except Exception as e:
-        print(f"[!] imgbb 上传异常: {e}")
-    return image_url  # 失败时回退到原始链接
+        print(f"[!] 图片本地化异常: {e}")
+        return image_url
 
 
 def fetch_article_content(url):
@@ -521,6 +536,7 @@ def generate_blog_html(title_cn, date_str, content_html, hero_img, slug):
     # 2. 组装 head + nav + article + footer（与 build.py 同源）
     canonical = f'https://pibizh.com/blog/{slug}.html'
     desc = f'{title_cn} - Pi Network 官方中文资讯，派币中文网第一时间翻译发布。'
+    social_image = hero_img if hero_img else '/static/favicon.png'
     head_extra = f'''    <title>{title_cn} | 派币中文网</title>
     <meta name="description" content="{desc}">
     <link rel="canonical" href="{canonical}">
@@ -528,7 +544,7 @@ def generate_blog_html(title_cn, date_str, content_html, hero_img, slug):
     <meta property="og:description" content="{desc}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="{canonical}">
-    <meta property="og:image" content="/static/favicon.png">
+    <meta property="og:image" content="{social_image}">
     <meta property="og:locale" content="zh_CN">
 {_ARTICLE_STYLE_TMPL}'''
 
@@ -679,14 +695,22 @@ def run_sync():
                     print(f"[!] 翻译失败警告通知失败: {warn_err}")
             continue  # 不覆盖已有 HTML，不更新 news.json
 
-        # 4. 上传图片到图床（hero + 内容图片）
+        # 4. 将图片保存到本站（hero + 内容图片）
         all_imgs = [p["text"] for p in translated_paragraphs if p["type"] == "img"]
-        print(f"[*] 正在上传 {len(all_imgs)+1} 张图片到 imgbb 图床...")
-        hero_img = upload_to_imgbb(hero_img) if hero_img else hero_img
+        print(f"[*] 正在保存 {len(all_imgs)+1} 张图片到本站...")
+        hero_source = hero_img
+        hero_img = save_image_locally(hero_img, post["url_slug"], "hero") if hero_img else hero_img
         # 替换 paragraphs 里的图片 URL
+        image_index = 0
         for p in translated_paragraphs:
             if p["type"] == "img":
-                p["text"] = upload_to_imgbb(p["text"])
+                image_index += 1
+                if p["text"] == hero_source and hero_img:
+                    p["text"] = hero_img
+                else:
+                    p["text"] = save_image_locally(
+                        p["text"], post["url_slug"], f"content-{image_index}"
+                    )
 
         # 5. 构建干净的中文 HTML
         content_html = build_chinese_html(translated_paragraphs, images, hero_img)
