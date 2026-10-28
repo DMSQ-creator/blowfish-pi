@@ -90,6 +90,7 @@ def _load_template(name):
 _HEAD_TMPL = _load_template("head.html")
 _NAV_TMPL = _load_template("nav.html")
 _FOOTER_TMPL = _load_template("footer.html")
+_ARTICLE_STYLE_TMPL = _load_template("article-style.html")
 
 
 # blog.html 列表卡片模板
@@ -528,7 +529,8 @@ def generate_blog_html(title_cn, date_str, content_html, hero_img, slug):
     <meta property="og:type" content="article">
     <meta property="og:url" content="{canonical}">
     <meta property="og:image" content="/static/favicon.png">
-    <meta property="og:locale" content="zh_CN">'''
+    <meta property="og:locale" content="zh_CN">
+{_ARTICLE_STYLE_TMPL}'''
 
     head_html = _HEAD_TMPL.replace("{{HEAD_EXTRA}}", head_extra).replace("{{BODY_CLASS}}", " pt-24")
 

@@ -55,6 +55,10 @@ def parse_blog_date(value):
     match = re.fullmatch(r'([A-Za-z]+)\s+(\d{1,2}),\s*(20\d{2})', value)
     if match and match.group(1).lower() in MONTHS:
         return datetime(int(match.group(3)), MONTHS[match.group(1).lower()], int(match.group(2)))
+
+    match = re.fullmatch(r'(20\d{2})年(\d{1,2})月(\d{1,2})日', value)
+    if match:
+        return datetime(int(match.group(1)), int(match.group(2)), int(match.group(3)))
     return None
 
 
@@ -121,6 +125,41 @@ def load_template(name):
 HEAD_TMPL = load_template("head.html")
 NAV_TMPL = load_template("nav.html")
 FOOTER_TMPL = load_template("footer.html")
+ARTICLE_STYLE_TMPL = load_template("article-style.html")
+
+
+def sync_blog_article_styles():
+    """把统一正文样式同步进所有已生成博文；重复构建保持幂等。"""
+    style_pattern = re.compile(
+        r'(?:<style\s+id=["\']article-content-styles["\']>.*?</style>|'
+        r'<link\s+id=["\']article-content-styles["\'][^>]*>)\s*',
+        re.I | re.S,
+    )
+    date_pattern = re.compile(
+        r'(<p\b[^>]*class=["\'][^"\']*text-gray-500[^"\']*mb-10[^"\']*["\'][^>]*>)(.*?)(</p>)',
+        re.I | re.S,
+    )
+
+    def localize_date(match):
+        published = parse_blog_date(match.group(2))
+        if not published:
+            return match.group(0)
+        date_cn = f'{published.year}年{published.month}月{published.day}日'
+        return f'{match.group(1)}{date_cn}{match.group(3)}'
+
+    updated = 0
+    for path in BLOG_DIR.glob('*.html'):
+        html = path.read_text(encoding='utf-8', errors='ignore')
+        without_old_style = style_pattern.sub('', html)
+        without_old_style = date_pattern.sub(localize_date, without_old_style)
+        if '</head>' not in without_old_style:
+            print(f"  WARN: blog/{path.name} 缺少 </head>，无法同步正文样式")
+            continue
+        refreshed = without_old_style.replace('</head>', ARTICLE_STYLE_TMPL + '\n</head>', 1)
+        if refreshed != html:
+            path.write_text(refreshed, encoding='utf-8')
+            updated += 1
+    print(f"Synced article styles to {updated} blog pages")
 
 # ─── 加载页面元数据 ───
 def load_pages_yml():
@@ -260,6 +299,7 @@ def build_page(page_name, meta):
 
 # ─── 主流程 ───
 def main():
+    sync_blog_article_styles()
     page_metas = load_pages_yml()
     print(f"Loaded {len(page_metas)} page metas from pages.yml")
 
