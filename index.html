@@ -386,7 +386,7 @@
         </div>
     </section>
 
-    <!-- 最新资讯（自动从 blog.html 取最新 6 条） -->
+    <!-- 最新资讯（构建时按发布日期取最新 10 条） -->
     <section class="py-28 px-6 bg-black/30 border-t border-white/5">
         <div class="container mx-auto max-w-6xl">
             <div class="flex items-end justify-between gap-6 mb-12">
@@ -398,7 +398,98 @@
                 <a href="blog.html" class="hidden sm:inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">查看全部 →</a>
             </div>
 
-            <div id="home-blog-grid" class="grid gap-8"></div>
+            <div id="home-blog-grid" class="grid md:grid-cols-2 gap-8">
+            <a href="blog/kyc-mainnet-migration-9-26.html" class="blog-card block">
+                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
+                    <div class="p-6">
+                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年9月17日 · 官方公告</div>
+                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">KYC 与主网迁移更新：解决阻碍 KYC 申请和迁移进度的其他极端情况并改进流程</h2>
+                        <p class="text-gray-400 text-sm line-clamp-2">Pi 针对 KYC 和主网迁移流程发布了多项技术更新，以解决特定的 KYC 申请边缘案例、改进验证流程，并帮助此前无法推进的合规先锋继续向前迈进。</p>
+                    </div>
+                </div>
+            </a>
+            <a href="blog/solohost-pi-desktop-0-6-3.html" class="blog-card block">
+                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
+                    <div class="p-6">
+                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年9月9日 · 官方公告</div>
+                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">Pi Desktop 0.6.3 版中的 SoloHost 更新：改进的应用程序发现、可靠性和开发人员工具</h2>
+                        <p class="text-gray-400 text-sm line-clamp-2">SoloHost 更新已与 Pi Desktop 版本 0.6.3 一起发布，引入了对应用程序发现和管理、应用程序可靠性以及用于构建 SoloHost 应用程序和故障排除的开发人员工具的改进。</p>
+                    </div>
+                </div>
+            </a>
+            <a href="blog/dev-capabilities-documentation.html" class="blog-card block">
+                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
+                    <div class="p-6">
+                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年9月4日 · 官方公告</div>
+                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">Pi 增加了新的开发人员功能并为开发人员发布了新文档</h2>
+                        <p class="text-gray-400 text-sm line-clamp-2">Pi 为基于 Pi 的开发人员引入了新功能，包括本地存储支持、访问生态系统目录 Stake 中特定于应用程序的 Stake 数据以及文件和视频共享。 Pi 的新开发人员文档现已上线，为技术资源提供了单一目的地，并提供了从入门到构建和启动应用程序的更清晰的路径。</p>
+                    </div>
+                </div>
+            </a>
+            <a href="blog/new-solohost-apps.html" class="blog-card block">
+                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
+                    <div class="p-6">
+                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年8月27日 · 官方公告</div>
+                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">具有新的 SoloHost 应用程序：OpenClaw 和 Atlassian MCP 服务器</h2>
+                        <p class="text-gray-400 text-sm line-clamp-2">OpenClaw 和 Atlassian MCP Server 应用程序现已在 Pi Desktop 上的 SoloHost 中提供，扩大了有用的自托管软件的范围，用户可以更轻松地在自己的计算机上安装和运行。</p>
+                    </div>
+                </div>
+            </a>
+            <a href="blog/app-studio-pricing.html" class="blog-card block">
+                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
+                    <div class="p-6">
+                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年8月17日 · 官方公告</div>
+                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">更新 Pi App Studio 创建定价</h2>
+                        <p class="text-gray-400 text-sm line-clamp-2">从 2026 年 8 月 24 日开始，Pi App Studio 将更新应用程序创建和编辑的定价方式。</p>
+                    </div>
+                </div>
+            </a>
+            <a href="blog/pi-node-0-6-2.html" class="blog-card block">
+                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
+                    <div class="p-6">
+                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年8月14日 · 官方公告</div>
+                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">Pi Node 版本 0.6.2 发布和 SoloHost 更新</h2>
+                        <p class="text-gray-400 text-sm line-clamp-2">Pi Node 版本 0.6.2 已发布，引入了对 SoloHost、节点连接和 Pi 桌面用户体验的改进。</p>
+                    </div>
+                </div>
+            </a>
+            <a href="blog/pi2day-2026-recap.html" class="blog-card block">
+                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
+                    <div class="p-6">
+                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年8月5日 · 官方公告</div>
+                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">Pi2Day 2026 回顾</h2>
+                        <p class="text-gray-400 text-sm line-clamp-2">Pi2Day 2026 生态系统探索于 6 月 28 日至 7 月 13 日运行，庆祝并强调 Pi2Day 的主要生态系统和实用程序支持更新。</p>
+                    </div>
+                </div>
+            </a>
+            <a href="blog/launchpad-liquidity-pool.html" class="blog-card block">
+                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
+                    <div class="p-6">
+                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年7月24日 · 官方公告</div>
+                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">Pi Launchpad 分发 SLICE 测试代币并引入流动性池价格跟踪</h2>
+                        <p class="text-gray-400 text-sm line-clamp-2">Pi Launchpad 已完成第二个测试网代币 SLICE 的分发。</p>
+                    </div>
+                </div>
+            </a>
+            <a href="blog/v25-menu-redesign.html" class="blog-card block">
+                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
+                    <div class="p-6">
+                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年7月15日 · 官方公告</div>
+                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">即将推出的协议 v25 升级和挖矿应用程序设计更新</h2>
+                        <p class="text-gray-400 text-sm line-clamp-2">Pi 计划于 7 月 22 日星期三升级到协议 v25。此次升级主要侧重于提高网络稳定性和可靠性，同时还增加了新功能，以实现更高效、保护隐私的智能合约。</p>
+                    </div>
+                </div>
+            </a>
+            <a href="blog/app-studio-backend-updates.html" class="blog-card block">
+                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
+                    <div class="p-6">
+                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年7月7日 · 官方公告</div>
+                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">Pi App Studio 为新创建的应用程序添加后端基础设施支持和应用程序规划</h2>
+                        <p class="text-gray-400 text-sm line-clamp-2">Pi App Studio 推出了两项更新，以帮助创建者构建更有用的应用程序体验：新创建的应用程序在后端的持久存储以及应用程序生成开始之前的人工智能辅助应用程序规划阶段。</p>
+                    </div>
+                </div>
+            </a>
+            </div>
 
             <div class="mt-10 sm:hidden">
                 <a href="blog.html" class="inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs shadow-xl">查看全部 →</a>

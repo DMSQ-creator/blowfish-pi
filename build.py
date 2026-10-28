@@ -18,6 +18,8 @@ pibizh.com 静态站构建脚本 v2
 
 import os
 import re
+from datetime import datetime
+from html import escape, unescape
 import yaml
 from pathlib import Path
 
@@ -26,6 +28,89 @@ TEMPLATES_DIR = BASE_DIR / "_templates"
 PAGES_DIR = BASE_DIR / "_pages"
 CONTENT_DIR = BASE_DIR / "_content"
 DIST_DIR = BASE_DIR  # 输出到根目录
+BLOG_DIR = BASE_DIR / "blog"
+
+MONTHS = {
+    'january': 1, 'february': 2, 'march': 3, 'april': 4,
+    'may': 5, 'june': 6, 'july': 7, 'august': 8,
+    'september': 9, 'october': 10, 'november': 11, 'december': 12,
+}
+
+
+def plain_text(value):
+    """将一小段 HTML 转成适合资讯卡片的纯文本。"""
+    value = re.sub(r'<[^>]+>', ' ', value or '')
+    return re.sub(r'\s+', ' ', unescape(value)).strip()
+
+
+def parse_blog_date(value):
+    """兼容机器人历史上写入的三种日期格式。"""
+    value = plain_text(value)
+    for fmt in ('%Y-%m-%d', '%Y.%m.%d'):
+        try:
+            return datetime.strptime(value, fmt)
+        except ValueError:
+            pass
+
+    match = re.fullmatch(r'([A-Za-z]+)\s+(\d{1,2}),\s*(20\d{2})', value)
+    if match and match.group(1).lower() in MONTHS:
+        return datetime(int(match.group(3)), MONTHS[match.group(1).lower()], int(match.group(2)))
+    return None
+
+
+def load_blog_posts():
+    """从已生成的中文博文中读取标题、日期和摘要，并按发布日期倒序。"""
+    posts = []
+    for path in BLOG_DIR.glob('*.html'):
+        html = path.read_text(encoding='utf-8', errors='ignore')
+        main_match = re.search(r'<main\b[^>]*>(.*?)</main>', html, re.I | re.S)
+        main_html = main_match.group(1) if main_match else html
+
+        title_match = re.search(r'<h1\b[^>]*>(.*?)</h1>', main_html, re.I | re.S)
+        date_match = re.search(
+            r'<p\b[^>]*class=["\'][^"\']*text-gray-500[^"\']*mb-10[^"\']*["\'][^>]*>(.*?)</p>',
+            main_html,
+            re.I | re.S,
+        )
+        prose_match = re.search(r'<div\b[^>]*class=["\'][^"\']*prose[^"\']*["\'][^>]*>(.*?)</div>', main_html, re.I | re.S)
+        excerpt_match = re.search(r'<p\b[^>]*>(.*?)</p>', prose_match.group(1), re.I | re.S) if prose_match else None
+
+        title = plain_text(title_match.group(1)) if title_match else ''
+        published = parse_blog_date(date_match.group(1)) if date_match else None
+        excerpt = plain_text(excerpt_match.group(1)) if excerpt_match else title
+        if not title or not published:
+            print(f"  WARN: blog/{path.name} 缺少可识别的标题或日期，不加入资讯列表")
+            continue
+
+        posts.append({
+            'slug': path.stem,
+            'title': title,
+            'published': published,
+            'excerpt': excerpt[:150],
+        })
+
+    posts.sort(key=lambda item: (item['published'], item['slug']), reverse=True)
+    return posts
+
+
+def render_blog_cards(posts):
+    """生成全中文日期的静态资讯卡片。"""
+    cards = []
+    for post in posts:
+        date_cn = f"{post['published'].year}年{post['published'].month}月{post['published'].day}日"
+        cards.append(f'''            <a href="blog/{post['slug']}.html" class="blog-card block">
+                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
+                    <div class="p-6">
+                        <div class="text-[#f4af47] font-bold mb-2 text-sm">{date_cn} · 官方公告</div>
+                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">{escape(post['title'])}</h2>
+                        <p class="text-gray-400 text-sm line-clamp-2">{escape(post['excerpt'])}</p>
+                    </div>
+                </div>
+            </a>''')
+    return '\n'.join(cards)
+
+
+BLOG_POSTS = load_blog_posts()
 
 # ─── 加载模板 ───
 def load_template(name):
@@ -111,6 +196,12 @@ def build_page(page_name, meta):
     # 1. 读取纯内容片段
     with open(content_path, "r", encoding="utf-8") as f:
         page_content = f.read().strip()
+
+    # 资讯列表在构建时从 blog/*.html 正向生成，避免机器人插入顺序错乱。
+    if page_file == 'blog.html':
+        page_content = page_content.replace('{{BLOG_CARDS}}', render_blog_cards(BLOG_POSTS))
+    elif page_file == 'index.html':
+        page_content = page_content.replace('{{HOME_BLOG_CARDS}}', render_blog_cards(BLOG_POSTS[:10]))
 
     if not page_content:
         print(f"  SKIP: {page_file} (empty content)")

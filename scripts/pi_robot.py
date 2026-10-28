@@ -493,42 +493,8 @@ def fetch_article_content(url):
 
 
 def update_blog_list_page(new_entry):
-    """在 blog.html 中插入新文章卡片"""
-    if not os.path.exists(BLOG_LIST_PAGE):
-        print("[!] blog.html 不存在，跳过列表更新")
-        return
-
-    try:
-        with open(BLOG_LIST_PAGE, "r", encoding="utf-8") as f:
-            html = f.read()
-
-        slug = new_entry["id"]
-        if f'blog/{slug}.html' in html:
-            print(f"[*] blog.html 已包含 {slug}，跳过")
-            return
-
-        # 生成新卡片
-        card = BLOG_CARD_TEMPLATE.format(
-            slug=slug,
-            date=new_entry["date"].replace("-", "."),
-            category="官方公告",
-            title=new_entry["title"],
-            excerpt=new_entry["excerpt"][:80],
-        )
-
-        # 在 blog-grid 开头插入（第一个 <!-- 之前）
-        insert_marker = '<div id="blog-grid" class="grid gap-10">'
-        if insert_marker in html:
-            html = html.replace(insert_marker, insert_marker + card, 1)
-
-            with open(BLOG_LIST_PAGE, "w", encoding="utf-8") as f:
-                f.write(html)
-            print(f"[*] blog.html 已更新，插入了 {slug}")
-        else:
-            print("[!] 找不到 blog-grid 插入点")
-
-    except Exception as e:
-        print(f"[!] 更新 blog.html 失败: {e}")
+    """列表由 build.py 从 blog/*.html 按日期生成，不再直接修改输出页。"""
+    print(f"[*] {new_entry['id']} 将由 build.py 自动加入按日期排序的资讯列表")
 
 
 def generate_blog_html(title_cn, date_str, content_html, hero_img, slug):

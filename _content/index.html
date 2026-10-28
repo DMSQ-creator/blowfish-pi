@@ -50,7 +50,7 @@
         </div>
     </section>
 
-    <!-- 最新资讯（自动从 blog.html 取最新 6 条） -->
+    <!-- 最新资讯（构建时按发布日期取最新 10 条） -->
     <section class="py-28 px-6 bg-black/30 border-t border-white/5">
         <div class="container mx-auto max-w-6xl">
             <div class="flex items-end justify-between gap-6 mb-12">
@@ -62,7 +62,9 @@
                 <a href="blog.html" class="hidden sm:inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">查看全部 →</a>
             </div>
 
-            <div id="home-blog-grid" class="grid gap-8"></div>
+            <div id="home-blog-grid" class="grid md:grid-cols-2 gap-8">
+{{HOME_BLOG_CARDS}}
+            </div>
 
             <div class="mt-10 sm:hidden">
                 <a href="blog.html" class="inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs shadow-xl">查看全部 →</a>
