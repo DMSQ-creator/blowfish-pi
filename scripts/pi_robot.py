@@ -262,8 +262,10 @@ def translate_text(text, max_retries=2):
     for attempt in range(max_retries + 1):
         try:
             result = GoogleTranslator(source='en', target='zh-CN').translate(text)
-            if result and len(result.strip()) > 0:
+            if result and re.search(r'[\u4e00-\u9fff]', result):
                 return result.strip()
+            print("[!] Google 标题翻译未返回中文，改用备用模型")
+            break
         except Exception as e:
             print(f"[!] Google翻译失败 (尝试 {attempt+1}): {e}")
             if attempt < max_retries:
@@ -272,11 +274,14 @@ def translate_text(text, max_retries=2):
     if LLM_API_KEY:
         for attempt in range(max_retries + 1):
             try:
-                return call_gemini(
+                result = call_gemini(
                     f"将以下英文翻译为简体中文，只输出翻译结果，不要加任何解释：\n{text}",
                     500,
                     30,
                 )
+                if result and re.search(r'[\u4e00-\u9fff]', result):
+                    return result.strip()
+                print("[!] 备用模型的标题翻译仍未返回中文")
             except Exception as e:
                 print(f"[!] LLM翻译失败 (尝试 {attempt+1}): {e}")
                 if attempt < max_retries:
@@ -649,8 +654,8 @@ def run_sync():
         print("[*] 正在翻译标题...")
         title_cn = translate_text(title_en)
         if not title_cn:
-            print("[!] 标题翻译失败，使用原文")
-            title_cn = post["title"]
+            print(f"[!] 标题翻译失败，为避免发布英文标题，跳过本文: {title_en}")
+            continue
         title_cn = title_cn.strip("\"'`\n")
         print(f"[*] 中文标题: {title_cn}")
 
