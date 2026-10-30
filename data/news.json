@@ -1,5 +1,11 @@
 [
   {
+    "id": "developer-platform-updates",
+    "date": "October 29, 2026",
+    "title": "Pi 更新动态：开发者门户界面、区块浏览器代币追踪、SoloHost AI 应用打包以及 PiVerify",
+    "excerpt": "Pi Network 对其开发者工具和产品推出了一系列技术更新，包括改进开发者门户（Developer Portal）流程与界面、在 Pi 区块浏览器（BlockExplorer）中加入 Launch..."
+  },
+  {
     "id": "solohost-pi-desktop-0-6-4",
     "date": "October 22, 2026",
     "title": "Pi Desktop 0.6.4：更便捷的远程访问与更强的 SoloHost 应用保护",
