@@ -1,5 +1,11 @@
 [
   {
+    "id": "summit-schedule",
+    "date": "November 6, 2026",
+    "title": "Pi 生态峰会：锁定日期！",
+    "excerpt": "Pi Network 首届生态系统峰会即将拉开帷幕！在11月17日至19日这为期三天的线上活动中，将汇聚全新的开发者平台发布、技术演示、开发者对话，以及展示在整个 Pi 生态系统中构建实用性的 Pi ..."
+  },
+  {
     "id": "developer-platform-updates",
     "date": "October 29, 2026",
     "title": "Pi 更新动态：开发者门户界面、区块浏览器代币追踪、SoloHost AI 应用打包以及 PiVerify",
