@@ -1,5 +1,17 @@
 [
   {
+    "id": "ecosystem-summit-begins",
+    "date": "November 17, 2026",
+    "title": "Pi生态峰会今天开幕！",
+    "excerpt": "Pi Network 首届生态系统峰会于今日正式开幕！在接下来的三天里，本次线上峰会将带来全新开发者平台发布、开发者对话和技术演示，重点展示助力拓展 Pi 全生态实用性的各项工具与应用程序。"
+  },
+  {
+    "id": "pi-ecosystem-summit-2",
+    "date": "November 18, 2026",
+    "title": "Pi生态峰会第2天：AI与生态系统",
+    "excerpt": "Pi Network 生态峰会今天（11 月 18 日）继续进行！继昨天的开发者平台发布和技术演示之后，第二天的重点是 Pi 的基础设施如何支持人工智能（AI）、人类协作以及现实世界的落地应用。"
+  },
+  {
     "id": "ecosystem-summit-developers",
     "date": "November 12, 2026",
     "title": "为何在 Pi 上构建：AI 时代的开发者机遇",
