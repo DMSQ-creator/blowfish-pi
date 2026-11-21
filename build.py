@@ -102,14 +102,10 @@ def render_blog_cards(posts):
     cards = []
     for post in posts:
         date_cn = f"{post['published'].year}年{post['published'].month}月{post['published'].day}日"
-        cards.append(f'''            <a href="blog/{post['slug']}.html" class="blog-card block">
-                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
-                    <div class="p-6">
-                        <div class="text-[#f4af47] font-bold mb-2 text-sm">{date_cn} · 官方公告</div>
-                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">{escape(post['title'])}</h2>
-                        <p class="text-gray-400 text-sm line-clamp-2">{escape(post['excerpt'])}</p>
-                    </div>
-                </div>
+        cards.append(f'''            <a href="blog/{post['slug']}.html" class="blog-card reader-story">
+                <div class="reader-story-meta"><time datetime="{post['published']:%Y-%m-%d}">{date_cn}</time><span>官方资讯 · 中文整理</span></div>
+                <h3>{escape(post['title'])}</h3>
+                <p>{escape(post['excerpt'])}</p>
             </a>''')
     return '\n'.join(cards)
 
@@ -126,6 +122,7 @@ HEAD_TMPL = load_template("head.html")
 NAV_TMPL = load_template("nav.html")
 FOOTER_TMPL = load_template("footer.html")
 ARTICLE_STYLE_TMPL = load_template("article-style.html")
+COMMUNITY_TMPL = load_template("community-invite.html")
 
 
 def sync_blog_article_styles():
@@ -155,7 +152,12 @@ def sync_blog_article_styles():
         if '</head>' not in without_old_style:
             print(f"  WARN: blog/{path.name} 缺少 </head>，无法同步正文样式")
             continue
+        without_old_style = re.sub(r'<section id="reader-community-invite".*?</section>\s*', '', without_old_style, flags=re.S)
         refreshed = without_old_style.replace('</head>', ARTICLE_STYLE_TMPL + '\n</head>', 1)
+        if '</main>' in refreshed:
+            refreshed = refreshed.replace('</main>', COMMUNITY_TMPL + '</main>', 1)
+        elif '<footer' in refreshed:
+            refreshed = refreshed.replace('<footer', COMMUNITY_TMPL + '<footer', 1)
         if refreshed != html:
             path.write_text(refreshed, encoding='utf-8')
             updated += 1
@@ -240,7 +242,12 @@ def build_page(page_name, meta):
     if page_file == 'blog.html':
         page_content = page_content.replace('{{BLOG_CARDS}}', render_blog_cards(BLOG_POSTS))
     elif page_file == 'index.html':
-        page_content = page_content.replace('{{HOME_BLOG_CARDS}}', render_blog_cards(BLOG_POSTS[:10]))
+        invite = COMMUNITY_TMPL.replace('这条资讯，你怎么看？', '想和其他读者聊聊 Pi？').replace('placement="article"', 'placement="home-feed"')
+        home_cards = render_blog_cards(BLOG_POSTS[:3])
+        if len(BLOG_POSTS) >= 3:
+            home_cards += '\n' + invite
+        home_cards += '\n' + render_blog_cards(BLOG_POSTS[3:10])
+        page_content = page_content.replace('{{HOME_BLOG_CARDS}}', home_cards)
 
     if not page_content:
         print(f"  SKIP: {page_file} (empty content)")
@@ -281,6 +288,10 @@ def build_page(page_name, meta):
     <meta property="og:url" content="{canonical}">
     <meta property="og:image" content="/static/favicon.png">
     <meta property="og:locale" content="zh_CN">'''
+
+    if page_name in ('index', 'blog'):
+        body_extra = ' reader-page'
+        head_extra += '\n<link rel="stylesheet" href="/static/reader.css?v=20261121">'
 
     # 3. 插入广告
     page_content = insert_ads(page_content, page_file)

@@ -95,3 +95,13 @@
   .prose blockquote { padding: 1rem 1.1rem; }
   .prose img { margin: 2rem auto; border-radius: 16px; }
 }
+
+/* Contextual invitation: no overlay, no membership promises. */
+.reader-inline-community{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px;margin:20px 0;border:1px solid #67513c;border-radius:10px;background:#2a2034;clear:both}
+.reader-inline-community strong{display:block;color:#f1e8fa;font-size:16px;line-height:1.5}
+.reader-inline-community p{font-size:13px;line-height:1.7;color:#c3b8ce;margin:5px 0 0}
+.reader-inline-community a{display:inline-flex;align-items:center;min-height:44px;color:#f2bf7c;font-size:14px;font-weight:600;flex-shrink:0;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:760px){.reader-inline-community{flex-direction:column;align-items:flex-start;gap:6px;padding:14px;margin:16px 0}.reader-inline-community a{font-size:13px}}
+
+.adsbygoogle{max-width:100%;overflow:hidden}
+@media(max-width:480px){header nav>div:first-child{gap:6px}header nav>div:first-child span{font-size:16px}header nav>div:first-child img{width:28px;height:28px}}

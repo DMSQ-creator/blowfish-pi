@@ -63,6 +63,7 @@
     <meta property="og:url" content="https://pibizh.com/index.html">
     <meta property="og:image" content="/static/favicon.png">
     <meta property="og:locale" content="zh_CN">
+<link rel="stylesheet" href="/static/reader.css?v=20261121">
   <!-- Chart.js CDN (for price page charts) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>window.Chart||document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>')</script>
@@ -71,7 +72,7 @@
 <script>window.gtranslateSettings={"default_language":"zh-CN","languages":["zh-CN","en","es","id","pt","ru","ko","ja","vi","fr","de","th","ar","it","hi","tl"],"wrapper_selector":".gtranslate_nav,.gtranslate_mobile","alt_flags":{"en":"us","pt":"br","es":"es"}}</script>
 <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
 </head>
-<body class="hero-bg min-h-screen">
+<body class="hero-bg min-h-screen reader-page">
 
     <a href="/reg.html" class="fixed-cta hidden lg:flex bg-[#f4af47] text-[#362252] p-4 rounded-2xl font-black shadow-2xl flex items-center gap-3 border-4 border-[#362252]">
         <span class="text-xl">🔥</span>
@@ -163,7 +164,7 @@
                 </div>
 
                 <a href="/reg.html" class="hidden sm:block bg-[#f4af47] text-[#362252] px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">Code: nbjh</a>
-                <button id="m-btn" class="lg:hidden p-1.5 text-[#f4af47] border border-[#f4af47]/20 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
+                <button aria-label="打开导航菜单" id="m-btn" class="lg:hidden p-1.5 text-[#f4af47] border border-[#f4af47]/20 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
             </div>
         </nav>
     </header>
@@ -177,7 +178,7 @@
                     <img alt="Pi" src="/static/favicon.png" class="w-8 h-8" loading="lazy">
                     <span class="text-sm font-black tracking-tight uppercase text-white">Pi 中文网</span>
                 </div>
-                <button id="m-close" class="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
+                <button aria-label="关闭导航菜单" id="m-close" class="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
                     <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
             </div>
@@ -296,7 +297,7 @@
     </div>
 
     <!-- 移动端底部注册栏 -->
-    <div class="fixed bottom-0 left-0 right-0 bg-[#2a1545]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
+    <div class="mobile-registration-bar fixed bottom-0 left-0 right-0 bg-[#2a1545]/95 backdrop-blur-xl border-t border-white/10 p-4 z-50 lg:hidden">
         <div class="flex gap-3 items-center">
             <a href="/reg.html" class="flex-1 bg-[#f4af47] text-[#362252] py-3 rounded-xl font-black text-center text-sm">🔥 立即注册</a>
             <button onclick="var p=document.getElementById('mlang');p.classList.toggle('hidden')" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0" title="切换语言">
@@ -334,246 +335,97 @@
     </div>
 
 
-    <section class="min-h-screen flex items-center pt-32 lg:pt-0 px-6 container mx-auto grid lg:grid-cols-2 gap-16 items-center">
-        <div class="text-center lg:text-left">
-            <div class="inline-block px-4 py-1 rounded-full bg-orange-500/10 border border-[#f4af47]/20 text-[#f4af47] text-[10px] font-black uppercase mb-10 tracking-widest">Stanford Ph.D 团队打造</div>
-            <h1 class="text-6xl md:text-[6.5rem] font-black mb-10 leading-[1] tracking-tighter text-white">首个手机<br /><span class="text-pi-gold italic">区块链网络</span></h1>
-            <p class="text-xl text-gray-400 max-w-xl mx-auto lg:mx-0 mb-14 leading-relaxed font-medium italic">填写邀请码 <span class="text-[#f4af47] font-black underline underline-offset-8">nbjh</span> 开启你的零成本数字资产时代。已有全球 5500 万先锋加入。</p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
-                <a href="reg.html" class="bg-[#f4af47] text-[#1e0a27] px-14 py-6 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-2xl text-center">立即开启挖矿</a>
-                <a href="mining-tutorial.html" class="border-2 border-[#f4af47]/40 text-[#f4af47] px-10 py-6 rounded-2xl font-black text-xl hover:bg-[#f4af47]/10 transition-all text-center">查看挖矿教程</a>
-            </div>
-            <p class="text-[#f4af47] text-lg font-black mt-6 text-center lg:text-left tracking-wide">🔥 邀请码：<span class="text-2xl">nbjh</span></p>
-        </div>
-        <div class="hidden lg:flex justify-end scale-110">
-            <div class="w-80 h-[600px] bg-gradient-to-b from-[#f4af47] to-[#1e0a27] rounded-[50px] border-[12px] border-[#2d1b3d] shadow-[0_0_120px_rgba(244,175,71,0.2)] flex flex-col items-center justify-center p-8 text-center group" onclick="location.href='reg.html'">
-                <div class="text-white font-black text-[150px] leading-none mb-6 group-hover:scale-110 transition-transform italic">π</div>
-                <div class="text-[#f4af47] font-black text-2xl uppercase mb-10">Mining...</div>
-                <p class="text-white text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase mb-8">Consensus Community</p>
-                <div class="w-full h-1 bg-white/10 rounded-full overflow-hidden"><div class="w-3/4 h-full bg-[#f4af47] animate-pulse"></div></div>
-            </div>
-        </div>
+    <main class="reader-shell">
+    <section class="reader-intro" aria-labelledby="home-title">
+        <p class="reader-eyebrow">PI NETWORK · 中文资讯与实用指南</p>
+        <h1 id="home-title">看懂 Pi 动态，找到实用答案</h1>
+        <p>最新公告、生态进展与操作教程。中文社区整理，非 Pi 官方网站。</p>
     </section>
-
-    <!-- 数据统计横条 -->
-    <section class="py-16 px-6 bg-[#150820] border-y border-white/5">
-        <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
-            <div>
-                <div class="text-pi-gold text-4xl md:text-5xl font-black mb-2">5500万+</div>
-                <div class="text-gray-400 text-sm font-bold">全球先锋</div>
-            </div>
-            <div>
-                <div class="text-pi-gold text-4xl md:text-5xl font-black mb-2">200+</div>
-                <div class="text-gray-400 text-sm font-bold">国家地区</div>
-            </div>
-            <div>
-                <div class="text-pi-gold text-4xl md:text-5xl font-black mb-2">0元</div>
-                <div class="text-gray-400 text-sm font-bold">挖矿成本</div>
-            </div>
-            <div>
-                <div class="text-pi-gold text-4xl md:text-5xl font-black mb-2">1次/日</div>
-                <div class="text-gray-400 text-sm font-bold">点击闪电即可</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 丰富的内容区块 (复刻官网深度) -->
-    <section class="py-32 px-6 bg-black/40 border-y border-white/5 backdrop-blur-sm">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-20 text-center">
-            <div class="group"><div class="text-6xl mb-8">🛡️</div><h3 class="text-2xl font-black mb-6 uppercase tracking-tighter text-white">去中心化</h3><p class="text-gray-400 font-medium">安全、不可篡改的加密货币，保护全球用户的资产。</p></div>
-            <div class="group"><div class="text-6xl mb-8">📱</div><h3 class="text-2xl font-black mb-6 uppercase tracking-tighter text-white">移动优先</h3><p class="text-gray-400 font-medium">首创手机共识挖掘，无需矿机，手机即是节点。</p></div>
-            <div class="group"><div class="text-6xl mb-8">🌍</div><h3 class="text-2xl font-black mb-6 uppercase tracking-tighter text-white">全球共识</h3><p class="text-gray-400 font-medium">超 5500 万先锋共同构建，全球覆盖最广的 Web3 生态。</p></div>
-        </div>
-    </section>
-
-    <!-- 最新资讯（构建时按发布日期取最新 10 条） -->
-    <section class="py-28 px-6 bg-black/30 border-t border-white/5">
-        <div class="container mx-auto max-w-6xl">
-            <div class="flex items-end justify-between gap-6 mb-12">
-                <div>
-                    <div class="text-[10px] font-black tracking-widest uppercase text-[#f4af47] mb-3">Latest</div>
-                    <h2 class="text-4xl md:text-5xl font-black tracking-tighter">最新资讯</h2>
-                    <p class="text-gray-400 mt-3">展示资讯中心最新文章，点击查看详情。</p>
-                </div>
-                <a href="blog.html" class="hidden sm:inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs hover:scale-105 transition-all shadow-xl">查看全部 →</a>
-            </div>
-
-            <div id="home-blog-grid" class="grid md:grid-cols-2 gap-8">
-            <a href="blog/pi-ecosystem-summit-2.html" class="blog-card block">
-                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
-                    <div class="p-6">
-                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年11月18日 · 官方公告</div>
-                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">Pi生态峰会第2天：AI与生态系统</h2>
-                        <p class="text-gray-400 text-sm line-clamp-2">Pi生态峰会第2天：AI与生态系统</p>
-                    </div>
-                </div>
+    <div class="reader-shortcuts" aria-label="常用入口">
+        <a href="blog.html" aria-current="page">最新资讯</a><a href="price.html">实时价格</a><a href="kyc.html">KYC 认证</a><a href="pi-mainnet.html">主网迁移</a><a href="wallet-guide.html">钱包指南</a><a href="pi-guide.html">新手入门</a>
+    </div>
+    <div class="reader-layout">
+        <section class="reader-news" aria-labelledby="latest-title">
+            <div class="reader-section-heading"><h2 id="latest-title">最新资讯</h2><a href="blog.html">全部资讯 →</a></div>
+            <div id="home-blog-grid" class="reader-feed">
+            <a href="blog/pi-ecosystem-summit-2.html" class="blog-card reader-story">
+                <div class="reader-story-meta"><time datetime="2026-11-18">2026年11月18日</time><span>官方资讯 · 中文整理</span></div>
+                <h3>Pi生态峰会第2天：AI与生态系统</h3>
+                <p>Pi生态峰会第2天：AI与生态系统</p>
             </a>
-            <a href="blog/ecosystem-summit-begins.html" class="blog-card block">
-                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
-                    <div class="p-6">
-                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年11月17日 · 官方公告</div>
-                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">Pi生态峰会今天开幕！</h2>
-                        <p class="text-gray-400 text-sm line-clamp-2">Pi生态峰会今天开幕！</p>
-                    </div>
-                </div>
+            <a href="blog/ecosystem-summit-begins.html" class="blog-card reader-story">
+                <div class="reader-story-meta"><time datetime="2026-11-17">2026年11月17日</time><span>官方资讯 · 中文整理</span></div>
+                <h3>Pi生态峰会今天开幕！</h3>
+                <p>Pi生态峰会今天开幕！</p>
             </a>
-            <a href="blog/ecosystem-summit-developers.html" class="blog-card block">
-                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
-                    <div class="p-6">
-                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年11月12日 · 官方公告</div>
-                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">为何在 Pi 上构建：AI 时代的开发者机遇</h2>
-                        <p class="text-gray-400 text-sm line-clamp-2">随着人工智能让软件开发变得愈发容易，触达用户并保持用户粘性已成为开发者面临的更重要挑战。Pi 通过提供简化应用开发与集成的工具，以及开放一个成熟的生态系统让开发者能够将其产品与真实用户相连，从而双管齐下解决了这一过程中的难题。</p>
-                    </div>
-                </div>
+            <a href="blog/ecosystem-summit-developers.html" class="blog-card reader-story">
+                <div class="reader-story-meta"><time datetime="2026-11-12">2026年11月12日</time><span>官方资讯 · 中文整理</span></div>
+                <h3>为何在 Pi 上构建：AI 时代的开发者机遇</h3>
+                <p>随着人工智能让软件开发变得愈发容易，触达用户并保持用户粘性已成为开发者面临的更重要挑战。Pi 通过提供简化应用开发与集成的工具，以及开放一个成熟的生态系统让开发者能够将其产品与真实用户相连，从而双管齐下解决了这一过程中的难题。</p>
             </a>
-            <a href="blog/summit-schedule.html" class="blog-card block">
-                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
-                    <div class="p-6">
-                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年11月6日 · 官方公告</div>
-                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">Pi 生态峰会：锁定日期！</h2>
-                        <p class="text-gray-400 text-sm line-clamp-2">Pi Network 首届生态系统峰会即将拉开帷幕！在11月17日至19日这为期三天的线上活动中，将汇聚全新的开发者平台发布、技术演示、开发者对话，以及展示在整个 Pi 生态系统中构建实用性的 Pi 应用。</p>
-                    </div>
-                </div>
-            </a>
-            <a href="blog/developer-platform-updates.html" class="blog-card block">
-                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
-                    <div class="p-6">
-                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年10月29日 · 官方公告</div>
-                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">Pi 更新动态：开发者门户界面、区块浏览器代币追踪、SoloHost AI 应用打包以及 PiVerify</h2>
-                        <p class="text-gray-400 text-sm line-clamp-2">Pi Network 对其开发者工具和产品推出了一系列技术更新，包括改进开发者门户（Developer Portal）流程与界面、在 Pi 区块浏览器（BlockExplorer）中加入 Launchpad 代币价格追踪、AI 辅助的 SoloHost 应用打包，以及 PiVerify 功能升级。</p>
-                    </div>
-                </div>
-            </a>
-            <a href="blog/solohost-pi-desktop-0-6-4.html" class="blog-card block">
-                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
-                    <div class="p-6">
-                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年10月22日 · 官方公告</div>
-                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">Pi Desktop 0.6.4：更便捷的远程访问与更强的 SoloHost 应用保护</h2>
-                        <p class="text-gray-400 text-sm line-clamp-2">Pi Desktop 0.6.4 版本推出了更新的 SoloHost 远程连接功能，使远程访问更加简便和安全，先锋们无需配置家庭路由器，即可通过 Pi 浏览器访问其本地托管的应用程序。该版本还为 SoloHost 应用程序引入了更强大的安全防护，并带来了轻微的界面改进。</p>
-                    </div>
-                </div>
-            </a>
-            <a href="blog/introducing-ecosystem-summit.html" class="blog-card block">
-                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
-                    <div class="p-6">
-                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年10月15日 · 官方公告</div>
-                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">Pi 首届生态系统峰会即将举行：11月17日至19日</h2>
-                        <p class="text-gray-400 text-sm line-clamp-2">Pi Network 隆重推出 Pi 生态峰会（Pi Ecosystem Summit），这是一场将于 2026 年 11 月 17 日至 19 日举行的为期三天的线上盛会，专注于 Pi 的开发者平台、生态系统建设以及效用打造。本次峰会的内容将包括：新平台与新功能的发布、开发者工具演示、合作伙伴与社</p>
-                    </div>
-                </div>
-            </a>
-            <a href="blog/pi-stablecoins.html" class="blog-card block">
-                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
-                    <div class="p-6">
-                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年10月8日 · 官方公告</div>
-                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">Pi Network 的稳定币策略</h2>
-                        <p class="text-gray-400 text-sm line-clamp-2">Pi Network 基于实用性的生态系统一直在持续扩展，涵盖了应用程序、开发者工具、平台级服务、商业和支付等诸多领域，为先锋和企业参与网络以及在网络上进行建设创造了更多途径。稳定币可以在扩展 Pi 生态系统的特定实用性方面发挥重要作用，尤其是在可预测的价格稳定性至关重要的用例中。</p>
-                    </div>
-                </div>
-            </a>
-            <a href="blog/kyc-mainnet-migration-9-26.html" class="blog-card block">
-                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
-                    <div class="p-6">
-                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年9月17日 · 官方公告</div>
-                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">KYC 与主网迁移更新：解决阻碍 KYC 申请和迁移进度的其他极端情况并改进流程</h2>
-                        <p class="text-gray-400 text-sm line-clamp-2">Pi 针对 KYC 和主网迁移流程发布了多项技术更新，以解决特定的 KYC 申请边缘案例、改进验证流程，并帮助此前无法推进的合规先锋继续向前迈进。</p>
-                    </div>
-                </div>
-            </a>
-            <a href="blog/solohost-pi-desktop-0-6-3.html" class="blog-card block">
-                <div class="bg-white/5 rounded-[24px] overflow-hidden border border-white/10 hover:border-[#f4af47]/40 transition-all hover:shadow-lg hover:shadow-[#f4af47]/10 h-full">
-                    <div class="p-6">
-                        <div class="text-[#f4af47] font-bold mb-2 text-sm">2026年9月9日 · 官方公告</div>
-                        <h2 class="text-xl font-bold mb-3 text-white leading-snug">Pi Desktop 0.6.3 版中的 SoloHost 更新：改进的应用程序发现、可靠性和开发人员工具</h2>
-                        <p class="text-gray-400 text-sm line-clamp-2">SoloHost 更新已与 Pi Desktop 版本 0.6.3 一起发布，引入了对应用程序发现和管理、应用程序可靠性以及用于构建 SoloHost 应用程序和故障排除的开发人员工具的改进。</p>
-                    </div>
-                </div>
-            </a>
-            </div>
-
-            <div class="mt-10 sm:hidden">
-                <a href="blog.html" class="inline-flex items-center gap-2 bg-[#f4af47] text-[#1e0a27] px-6 py-3 rounded-full font-black text-xs shadow-xl">查看全部 →</a>
-            </div>
-        </div>
-    
-                <section class="py-12 px-6">
-                    <div class="container mx-auto max-w-5xl">
-                        <h2 class="text-3xl font-black mb-8 text-center">Pi Network <span class="text-pi-gold">核心数据</span></h2>
-                        <div class="grid md:grid-cols-4 gap-6">
-                            <div class="step-card text-center">
-                                <p class="text-4xl font-black text-pi-gold mb-2">55M+</p>
-                                <p class="text-gray-400 text-sm">全球活跃用户</p>
-                            </div>
-                            <div class="step-card text-center">
-                                <p class="text-4xl font-black text-pi-gold mb-2">200+</p>
-                                <p class="text-gray-400 text-sm">覆盖国家和地区</p>
-                            </div>
-                            <div class="step-card text-center">
-                                <p class="text-4xl font-black text-pi-gold mb-2">100+</p>
-                                <p class="text-gray-400 text-sm">Pi生态应用</p>
-                            </div>
-                            <div class="step-card text-center">
-                                <p class="text-4xl font-black text-pi-gold mb-2">0</p>
-                                <p class="text-gray-400 text-sm">挖矿成本</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="py-12 px-6">
-                    <div class="container mx-auto max-w-5xl">
-                        <h2 class="text-3xl font-black mb-8 text-center">Pi Network <span class="text-pi-gold">是什么？</span></h2>
-                        <div class="max-w-3xl mx-auto">
-                            <p class="text-gray-300 text-lg mb-6 leading-relaxed">Pi Network是由斯坦福大学博士团队打造的移动端区块链项目，致力于让每个人都能零成本参与加密货币。你只需要一部手机，每天点击一次闪电按钮，就能免费挖矿获得Pi币。</p>
-                            <p class="text-gray-400 mb-6">与传统加密货币不同，Pi不需要昂贵的矿机和电力消耗。Pi采用基于信任图谱的恒星共识协议改良版，通过安全圈机制确保网络安全，让普通人也能参与去中心化经济。</p>
-                            <div class="grid md:grid-cols-3 gap-4 mb-6">
-                                <div class="step-card text-center">
-                                    <div class="text-3xl mb-2">🆓</div>
-                                    <p class="font-bold text-white">零成本</p>
-                                    <p class="text-gray-400 text-xs">无需矿机、无需投资、只需手机</p>
-                                </div>
-                                <div class="step-card text-center">
-                                    <div class="text-3xl mb-2">⚡</div>
-                                    <p class="font-bold text-white">低能耗</p>
-                                    <p class="text-gray-400 text-xs">不耗电、不发热、环保友好</p>
-                                </div>
-                                <div class="step-card text-center">
-                                    <div class="text-3xl mb-2">🌍</div>
-                                    <p class="font-bold text-white">全球通用</p>
-                                    <p class="text-gray-400 text-xs">200+国家、无国界支付</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="py-12 px-6">
-                    <div class="container mx-auto max-w-5xl">
-                        <h2 class="text-3xl font-black mb-8 text-center">Pi Network 是什么？</h2>
-                        <div class="max-w-3xl mx-auto">
-                            <p class="text-gray-300 text-lg mb-6 leading-relaxed">Pi Network是由斯坦福大学博士团队打造的移动端区块链项目，致力于让每个人都能零成本参与加密货币。你只需要一部手机，每天点击一次闪电按钮，就能免费挖矿获得Pi币。</p>
-                            <p class="text-gray-400 mb-6">与传统加密货币不同，Pi不需要昂贵的矿机和电力消耗。Pi采用基于信任图谱的恒星共识协议改良版，通过安全圈机制确保网络安全，让普通人也能参与去中心化经济。</p>
-                            <div class="grid md:grid-cols-3 gap-4">
-                                <div class="step-card text-center">
-                                    <div class="text-3xl mb-2">🆓</div>
-                                    <p class="font-bold text-white">零成本</p>
-                                    <p class="text-gray-400 text-xs">无需矿机、无需投资、只需手机</p>
-                                </div>
-                                <div class="step-card text-center">
-                                    <div class="text-3xl mb-2">⚡</div>
-                                    <p class="font-bold text-white">低能耗</p>
-                                    <p class="text-gray-400 text-xs">不耗电、不发热、环保友好</p>
-                                </div>
-                                <div class="step-card text-center">
-                                    <div class="text-3xl mb-2">🌍</div>
-                                    <p class="font-bold text-white">全球通用</p>
-                                    <p class="text-gray-400 text-xs">200+国家、无国界支付</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+<section id="reader-community-invite" class="reader-inline-community" aria-label="读者交流">
+    <div><strong>想和其他读者聊聊 Pi？</strong><p>与中文社区读者讨论 Pi 动态、交流使用经验。请勿分享钱包助记词。</p></div>
+    <a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" data-umami-event="telegram_click" data-umami-event-placement="home-feed">查看 Telegram 群组邀请 ↗</a>
 </section>
+
+            <a href="blog/summit-schedule.html" class="blog-card reader-story">
+                <div class="reader-story-meta"><time datetime="2026-11-06">2026年11月6日</time><span>官方资讯 · 中文整理</span></div>
+                <h3>Pi 生态峰会：锁定日期！</h3>
+                <p>Pi Network 首届生态系统峰会即将拉开帷幕！在11月17日至19日这为期三天的线上活动中，将汇聚全新的开发者平台发布、技术演示、开发者对话，以及展示在整个 Pi 生态系统中构建实用性的 Pi 应用。</p>
+            </a>
+            <a href="blog/developer-platform-updates.html" class="blog-card reader-story">
+                <div class="reader-story-meta"><time datetime="2026-10-29">2026年10月29日</time><span>官方资讯 · 中文整理</span></div>
+                <h3>Pi 更新动态：开发者门户界面、区块浏览器代币追踪、SoloHost AI 应用打包以及 PiVerify</h3>
+                <p>Pi Network 对其开发者工具和产品推出了一系列技术更新，包括改进开发者门户（Developer Portal）流程与界面、在 Pi 区块浏览器（BlockExplorer）中加入 Launchpad 代币价格追踪、AI 辅助的 SoloHost 应用打包，以及 PiVerify 功能升级。</p>
+            </a>
+            <a href="blog/solohost-pi-desktop-0-6-4.html" class="blog-card reader-story">
+                <div class="reader-story-meta"><time datetime="2026-10-22">2026年10月22日</time><span>官方资讯 · 中文整理</span></div>
+                <h3>Pi Desktop 0.6.4：更便捷的远程访问与更强的 SoloHost 应用保护</h3>
+                <p>Pi Desktop 0.6.4 版本推出了更新的 SoloHost 远程连接功能，使远程访问更加简便和安全，先锋们无需配置家庭路由器，即可通过 Pi 浏览器访问其本地托管的应用程序。该版本还为 SoloHost 应用程序引入了更强大的安全防护，并带来了轻微的界面改进。</p>
+            </a>
+            <a href="blog/introducing-ecosystem-summit.html" class="blog-card reader-story">
+                <div class="reader-story-meta"><time datetime="2026-10-15">2026年10月15日</time><span>官方资讯 · 中文整理</span></div>
+                <h3>Pi 首届生态系统峰会即将举行：11月17日至19日</h3>
+                <p>Pi Network 隆重推出 Pi 生态峰会（Pi Ecosystem Summit），这是一场将于 2026 年 11 月 17 日至 19 日举行的为期三天的线上盛会，专注于 Pi 的开发者平台、生态系统建设以及效用打造。本次峰会的内容将包括：新平台与新功能的发布、开发者工具演示、合作伙伴与社</p>
+            </a>
+            <a href="blog/pi-stablecoins.html" class="blog-card reader-story">
+                <div class="reader-story-meta"><time datetime="2026-10-08">2026年10月8日</time><span>官方资讯 · 中文整理</span></div>
+                <h3>Pi Network 的稳定币策略</h3>
+                <p>Pi Network 基于实用性的生态系统一直在持续扩展，涵盖了应用程序、开发者工具、平台级服务、商业和支付等诸多领域，为先锋和企业参与网络以及在网络上进行建设创造了更多途径。稳定币可以在扩展 Pi 生态系统的特定实用性方面发挥重要作用，尤其是在可预测的价格稳定性至关重要的用例中。</p>
+            </a>
+            <a href="blog/kyc-mainnet-migration-9-26.html" class="blog-card reader-story">
+                <div class="reader-story-meta"><time datetime="2026-09-17">2026年9月17日</time><span>官方资讯 · 中文整理</span></div>
+                <h3>KYC 与主网迁移更新：解决阻碍 KYC 申请和迁移进度的其他极端情况并改进流程</h3>
+                <p>Pi 针对 KYC 和主网迁移流程发布了多项技术更新，以解决特定的 KYC 申请边缘案例、改进验证流程，并帮助此前无法推进的合规先锋继续向前迈进。</p>
+            </a>
+            <a href="blog/solohost-pi-desktop-0-6-3.html" class="blog-card reader-story">
+                <div class="reader-story-meta"><time datetime="2026-09-09">2026年9月9日</time><span>官方资讯 · 中文整理</span></div>
+                <h3>Pi Desktop 0.6.3 版中的 SoloHost 更新：改进的应用程序发现、可靠性和开发人员工具</h3>
+                <p>SoloHost 更新已与 Pi Desktop 版本 0.6.3 一起发布，引入了对应用程序发现和管理、应用程序可靠性以及用于构建 SoloHost 应用程序和故障排除的开发人员工具的改进。</p>
+            </a>
+            </div>
+            <a class="reader-more" href="blog.html">浏览更多资讯 →</a>
+        </section>
+        <aside class="reader-sidebar" aria-label="指南与社区">
+            <section class="reader-panel">
+                <h2>你想解决什么问题？</h2>
+                <div class="reader-guides">
+                    <a href="reg.html"><strong>刚接触 Pi？</strong><span>下载安装与注册指南 →</span></a>
+                    <a href="kyc.html"><strong>身份认证卡住了？</strong><span>了解 KYC 流程与常见问题 →</span></a>
+                    <a href="pi-mainnet.html"><strong>准备迁移到主网？</strong><span>查看迁移清单与注意事项 →</span></a>
+                    <a href="wallet-guide.html"><strong>钱包怎么用？</strong><span>创建、备份与交易指南 →</span></a>
+                </div>
+            </section>
+            <section class="reader-panel reader-community">
+                <p class="reader-eyebrow">一起交流</p><h2>读完资讯，也聊聊你的看法</h2>
+                <p>前往 Pi 中文 Telegram 交流群，与其他读者讨论资讯、交流使用经验。</p>
+                <a class="community-link" href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" data-umami-event="telegram_click" data-umami-event-placement="home">打开 Telegram 交流群 ↗</a>
+                <small>需要能够访问 Telegram。请勿向任何人提供钱包助记词。</small>
+            </section>
+            <section class="reader-panel"><h2>关于 Pi Network</h2><p>Pi Network 是一个包含移动端应用、区块链和生态应用的项目。首次使用可从基础教程开始，涉及资产操作时请核对官方说明。</p><a class="reader-text-link" href="pi-guide.html">阅读 Pi 百科 →</a><p class="reader-disclaimer">本站内容仅供参考，不构成投资建议。</p></section>
+        </aside>
+    </div>
+</main>
     <!-- 页面底部广告 -->
     <section class="py-8 px-6 border-t border-white/5">
         <div class="container mx-auto max-w-4xl">

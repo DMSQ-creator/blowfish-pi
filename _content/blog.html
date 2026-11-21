@@ -1,11 +1,12 @@
-<main class="max-w-5xl mx-auto py-20 px-6">
-        <h1 class="text-6xl font-black mb-16 tracking-tighter">资讯中心</h1>
-        <div id="blog-grid" class="grid md:grid-cols-2 gap-8">
+<main class="reader-shell reader-archive">
+        <section class="reader-intro"><p class="reader-eyebrow">PI NETWORK · 资讯中心</p><h1>最新动态，一页看清</h1><p>官方公告与生态进展的中文整理，按发布日期倒序排列。</p></section>
+        <div class="reader-shortcuts"><a href="index.html">首页</a><a href="blog.html" aria-current="page">全部资讯</a><a href="pi-guide.html">实用教程</a><a href="https://t.me/+6tlAJx6e1081Mjhh" target="_blank" rel="noopener noreferrer" data-umami-event="telegram_click" data-umami-event-placement="news">Telegram 交流 ↗</a></div>
+        <div id="blog-grid" class="reader-feed">
 {{BLOG_CARDS}}
         </div>
 
         <!-- Pagination (client-side, 15 posts per page) -->
-        <div id="pager" class="flex items-center justify-center gap-3 mt-14"></div>
+        <div id="pager" class="reader-pager" aria-label="资讯分页"></div>
     </main>
 
     <script>
@@ -49,6 +50,8 @@
                     active ? 'bg-[#f4af47] text-[#1e0a27] border-[#f4af47]' : 'bg-white/5 text-white border-white/10 hover:border-[#f4af47]/70',
                     disabled ? 'opacity-40 pointer-events-none' : ''
                 ].join(' ');
+                if (active) a.setAttribute("aria-current", "page");
+                if (disabled) { a.setAttribute("aria-disabled", "true"); a.tabIndex = -1; }
                 return a;
             }
 
@@ -56,7 +59,7 @@
             pager.appendChild(btn('← 上一页', pageLink(page - 1), page <= 1));
 
             // Page numbers (compact)
-            const windowSize = 5;
+            const windowSize = window.innerWidth < 480 ? 3 : 5;
             let left = Math.max(1, page - Math.floor(windowSize / 2));
             let right = Math.min(totalPages, left + windowSize - 1);
             left = Math.max(1, right - windowSize + 1);
